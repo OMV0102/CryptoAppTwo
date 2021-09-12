@@ -23,12 +23,13 @@ namespace CryptoAppTwo
         // при ЗАГРУЗКЕ ФОРМЫ
         private void Form_main_Load(object sender, EventArgs e)
         {
+            this.tabControlMain.SelectedIndex = 0;
+
+            #region Дефолтные установки других алгоритмов
             this.tabHesh.Parent = null;
             this.tabSimAlg.Parent = null;
             this.tabAsimAlg.Parent = null;
             this.tabEds.Parent = null;
-
-            this.tabControlMain.SelectedIndex = 0;
 
             this.checkBox_autoHesh.Checked = false; // автохэширование выкл по дефолту
             this.btn_clear_Hesh_byte_in_Click(null, null); // очистили входные поля (кнопка очистить)
@@ -44,9 +45,15 @@ namespace CryptoAppTwo
             //======================================
             this.radioBtn_eds1.Checked = true; // при запуске режим подписания документа ЭЦП
             this.btn_eds_clear_Click(null, null); // Очистить всё на ЭЦП при запуске
+            #endregion
+
+            this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
+            this.btnGamClear.PerformClick(); // жмем кнопку очистить для Гамирования
         }
 
-        //=====================================================================
+        #region Функции обработчкики от других методов
+
+        //=============================Хэширование========================================
 
         // ВЫБОР метода хэширования
         private void comboBox_HeshAlg_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,7 +172,7 @@ namespace CryptoAppTwo
             sfd.Dispose();
         }
         
-        //=============================================================
+        //========================Симметричное шифрование=====================================
         
         // кнопка ШИФРОВАТЬ/РАСшифровать Симметрично
         private void btn_SimmEncrypt_Click(object sender, EventArgs e)
@@ -429,7 +436,7 @@ namespace CryptoAppTwo
             }
         }
 
-        //===========================================================================
+        //=========================Асимметричное шифрование==================================================
 
         // кнопка ШИФРОВАТЬ/РАСшифровать Асимметрично
         private void btn_AsimEncrypt_Click(object sender, EventArgs e)
@@ -651,7 +658,7 @@ namespace CryptoAppTwo
             }
         }
 
-        //===========================================================================
+        //===========================ЭЦП================================================
 
         // кнопка ПОДПИСАТЬ/ПРОВЕРИТЬ у ЭЦП
         private void btn_edsDO_Click(object sender, EventArgs e)
@@ -857,7 +864,7 @@ namespace CryptoAppTwo
                 {
                     if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
                     {
-                        // очистили ВЫходные байты // нейтралное положение нужно
+                        // очистили ВЫходные байты // нейтральное положение нужно
                         this.clearBeforeLoadDataORSign();
                         // Считали байты из файла
                         Global.eds_byte_message = File.ReadAllBytes(ofd.FileName);
@@ -974,7 +981,12 @@ namespace CryptoAppTwo
                 this.label_eds_info.Text += "> Нажать кнопку Проверить.";
             }
         }
+
+        //=======================================================================
+        #endregion
+
+
     }
-    
-    
+
+
 }

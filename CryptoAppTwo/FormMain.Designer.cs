@@ -105,7 +105,6 @@
             this.txtGamFileIn = new System.Windows.Forms.TextBox();
             this.btnGamEnterKey = new System.Windows.Forms.Button();
             this.labelGamCaptionOut = new System.Windows.Forms.Label();
-            this.comboBoxGamAlg = new System.Windows.Forms.ComboBox();
             this.radioBtnGamDecrypt = new System.Windows.Forms.RadioButton();
             this.radioBtnGamEncrypt = new System.Windows.Forms.RadioButton();
             this.btnGamSaveKey = new System.Windows.Forms.Button();
@@ -116,7 +115,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.btnGamChoiceFileIn = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -1029,7 +1027,6 @@
             this.tabGam.Controls.Add(this.txtGamFileIn);
             this.tabGam.Controls.Add(this.btnGamEnterKey);
             this.tabGam.Controls.Add(this.labelGamCaptionOut);
-            this.tabGam.Controls.Add(this.comboBoxGamAlg);
             this.tabGam.Controls.Add(this.radioBtnGamDecrypt);
             this.tabGam.Controls.Add(this.radioBtnGamEncrypt);
             this.tabGam.Controls.Add(this.btnGamSaveKey);
@@ -1040,7 +1037,6 @@
             this.tabGam.Controls.Add(this.label30);
             this.tabGam.Controls.Add(this.btnGamChoiceFileIn);
             this.tabGam.Controls.Add(this.label31);
-            this.tabGam.Controls.Add(this.label32);
             this.tabGam.Controls.Add(this.label33);
             this.tabGam.Controls.Add(this.label34);
             this.tabGam.Controls.Add(this.label35);
@@ -1141,24 +1137,6 @@
             this.labelGamCaptionOut.Size = new System.Drawing.Size(261, 25);
             this.labelGamCaptionOut.TabIndex = 75;
             this.labelGamCaptionOut.Text = "Обработанные данные";
-            // 
-            // comboBoxGamAlg
-            // 
-            this.comboBoxGamAlg.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxGamAlg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxGamAlg.DisplayMember = "0";
-            this.comboBoxGamAlg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGamAlg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxGamAlg.FormattingEnabled = true;
-            this.comboBoxGamAlg.Items.AddRange(new object[] {
-            "AES",
-            "3DES"});
-            this.comboBoxGamAlg.Location = new System.Drawing.Point(117, 13);
-            this.comboBoxGamAlg.MaxDropDownItems = 10;
-            this.comboBoxGamAlg.Name = "comboBoxGamAlg";
-            this.comboBoxGamAlg.Size = new System.Drawing.Size(211, 32);
-            this.comboBoxGamAlg.TabIndex = 63;
-            this.comboBoxGamAlg.TabStop = false;
             // 
             // radioBtnGamDecrypt
             // 
@@ -1275,15 +1253,6 @@
             this.label31.Size = new System.Drawing.Size(76, 24);
             this.label31.TabIndex = 74;
             this.label31.Text = "Режим:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(8, 16);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(103, 24);
-            this.label32.TabIndex = 64;
-            this.label32.Text = "Алгоритм:";
             // 
             // label33
             // 
@@ -1745,7 +1714,6 @@
         private System.Windows.Forms.TextBox txtGamFileIn;
         public System.Windows.Forms.Button btnGamEnterKey;
         private System.Windows.Forms.Label labelGamCaptionOut;
-        private System.Windows.Forms.ComboBox comboBoxGamAlg;
         private System.Windows.Forms.RadioButton radioBtnGamDecrypt;
         private System.Windows.Forms.RadioButton radioBtnGamEncrypt;
         private System.Windows.Forms.Button btnGamSaveKey;
@@ -1756,7 +1724,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button btnGamChoiceFileIn;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
