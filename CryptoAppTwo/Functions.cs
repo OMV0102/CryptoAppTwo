@@ -77,11 +77,12 @@ namespace CryptoAppTwo
             string strBin = "";
             int N = byteArr.Length;
             int step = 8;
+            string temp = "";
             for(int i = 0; i < N-1; i++)
             {
-                strBin += Convert.ToString(byteArr[i], 2) + "-";
+                strBin += Convert.ToString(byteArr[i], 2).PadLeft(step, '0') + "-";
             }
-            strBin += Convert.ToString(byteArr[N - 1], 2);
+            strBin += Convert.ToString(byteArr[N - 1], 2).PadLeft(step, '0');
             return strBin;
         }
 

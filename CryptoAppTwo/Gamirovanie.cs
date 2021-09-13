@@ -8,20 +8,21 @@ namespace CryptoAppTwo
 {
     class Gamirovanie
     {
-        public byte[] GamTextInByte; // Входной массив байтов
-        public TypeDisplay GamTextInType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
+        public byte[] TextInByte; // Входной массив байтов
+        public TypeDisplay TextInType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
 
-        public byte[] GamTextOutByte; // ВЫходной массив байтов
-        public int GamTextOutType = 1; // 0 - symbol, 1 - Hex, 2 - binary
+        public byte[] TextOutByte; // ВЫходной массив байтов
+        public TypeDisplay TextOutType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
 
-        public byte[] GamKeyByte; // Ключ
-        public TypeDisplay GamKeyType = TypeDisplay.Symbol; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
-        public bool GamKeyIsEntry = false; // Введенн ли ключ или нет
+        public byte[] KeyByte; // Ключ
+        public TypeDisplay KeyType = TypeDisplay.Symbol; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
+        public bool KeyIsEntry = false; // Введен ли ключ или нет
 
-        public bool GamEncryptOrDecrypt = true; // Режим либо шифруем либо ДЕшифруем
-        
-        public string GamFileExtension = "";  // Расширение считанного файла
+        public bool EncryptOrDecrypt = true; // Режим либо шифруем либо ДЕшифруем
 
-        public bool GamIsEdited = false;
+        public string FileExtension = "";  // Расширение считанного файла
+
+        public bool TextInIsEdited = false;
+        public bool TextOutIsEdited = false;
     }
 }
