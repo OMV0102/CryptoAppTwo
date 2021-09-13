@@ -997,13 +997,15 @@ namespace CryptoAppTwo
         private void radioBtnGamEncrypt_CheckedChanged(object sender, EventArgs e)
         {
             gamirovanie.EncryptOrDecrypt = true;
-            this.btnGamEncrypt.Text = "🡻 Шифровать 🡻";
+            this.btnGamEncryptDecrypt.Text = "🡻 Шифровать 🡻";
             this.labelGamCaptionIn.Text = "Входные данные";
-            this.labelGamCaptionOut.Text = "Зашифрованные данные";
-            this.label_simm_onText_out.Text = "Примерный вид зашифрованных данных:";
-            this.label_simm_underText_out.Text = "(В файл шифротекст сохраниться в бинарном виде,\n но с таким же расширением, что и исходный файл)";
-            this.btn_simm_saveData.Text = "Сохранить шифротекст в файл";
-            this.btn_choice_fileinSimm.Text = "Выбрать файл с данными";
+            this.labelGamTextInCaption.Text = "Исходный текст:";
+            this.labelGamCaptionOut.Text = "Зашифрованные данные:";
+            this.labelGamTextOutCaption.Text = "Шифротекст:";
+            this.labelGamTextOutCaptionUnder.Text = "(В файл шифротекст сохраниться в бинарном виде,\n с таким же расширением, что и исходный файл.)";
+            this.btnGamSaveData.Text = "Сохранить шифротекст в файл";
+            this.btnGamChoiceFileIn.Text = "Выбрать файл с данными";
+            
             btn_simm_clear_Click(null, null); // Очистить всё при переключении
         }
 
@@ -1011,13 +1013,14 @@ namespace CryptoAppTwo
         private void radioBtnGamDecrypt_CheckedChanged(object sender, EventArgs e)
         {
             gamirovanie.EncryptOrDecrypt = false;
-            this.btn_SimmEncrypt.Text = "🡻 Дешифровать 🡻";
+            this.btnGamEncryptDecrypt.Text = "🡻 Дешифровать 🡻";
             this.labelGamCaptionIn.Text = "Зашифрованные данные";
             this.labelGamCaptionOut.Text = "Дешифрованные данные";
-            this.label_simm_onText_out.Text = "Дешифрованные данные:";
-            this.label_simm_underText_out.Text = "(В файл данные сохраняться в виде байт, но при открытие\n файл будет отображаться корректно так как будет сохранен\n с таким же расширеним, что и шифрованный файл)";
-            this.btn_simm_saveData.Text = "Сохранить данные в файл";
-            this.btn_choice_fileinSimm.Text = "Выбрать файл с шифротекстом";
+            this.labelGamTextInCaption.Text = "Шифротекст:";
+            this.labelGamTextOutCaption.Text = "Дешифрованные данные:";
+            this.labelGamTextOutCaptionUnder.Text = "(В файл данные сохраняться в виде байт. Расширение файла\nбудет таким же, как и у файла с шифротекстом.)";
+            this.btnGamSaveData.Text = "Сохранить данные в файл";
+            this.btnGamChoiceFileIn.Text = "Выбрать файл с шифротекстом";
             btn_simm_clear_Click(null, null); // Очистить всё при переключении
         }
 
@@ -1105,6 +1108,66 @@ namespace CryptoAppTwo
 
             gamirovanie.TextInType = TypeDisplay.Hex;
             this.txtGamTextIn.Text = Functions.ByteToHex(gamirovanie.TextInByte);
+        }
+
+        // кнопка Bin вЫход текста
+        private void btnGamTextOutBinary_Click(object sender, EventArgs e)
+        {
+            this.checkBoxGamEditTextOut.Checked = false;
+
+            TypeDisplay typeOld = gamirovanie.TextOutType;
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                if (typeOld == TypeDisplay.Binary)
+                    gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
+                else if (typeOld == TypeDisplay.Hex)
+                    gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
+                else if (typeOld == TypeDisplay.Symbol)
+                    gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
+            }
+
+            gamirovanie.TextOutType = TypeDisplay.Binary;
+            this.txtGamTextOut.Text = Functions.ByteToBinary(gamirovanie.TextOutByte);
+        }
+
+        // кнопка Abs вЫход текста
+        private void btnGamTextOutSymbol_Click(object sender, EventArgs e)
+        {
+            this.checkBoxGamEditTextOut.Checked = false;
+
+            TypeDisplay typeOld = gamirovanie.TextOutType;
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                if (typeOld == TypeDisplay.Binary)
+                    gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
+                else if (typeOld == TypeDisplay.Hex)
+                    gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
+                else if (typeOld == TypeDisplay.Symbol)
+                    gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
+            }
+
+            gamirovanie.TextOutType = TypeDisplay.Symbol;
+            this.txtGamTextOut.Text = Functions.ByteToSymbol(gamirovanie.TextOutByte);
+        }
+
+        // кнопка Hex вЫход текста
+        private void btnGamTextOutHex_Click(object sender, EventArgs e)
+        {
+            this.checkBoxGamEditTextOut.Checked = false;
+
+            TypeDisplay typeOld = gamirovanie.TextOutType;
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                if (typeOld == TypeDisplay.Binary)
+                    gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
+                else if (typeOld == TypeDisplay.Hex)
+                    gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
+                else if (typeOld == TypeDisplay.Symbol)
+                    gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
+            }
+
+            gamirovanie.TextOutType = TypeDisplay.Hex;
+            this.txtGamTextOut.Text = Functions.ByteToHex(gamirovanie.TextOutByte);
         }
     }
 
