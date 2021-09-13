@@ -49,8 +49,8 @@ namespace CryptoAppTwo
             // если раннее были введенны ключи то вывести их на форму
             if (Global.Simm_KeyIV_isEntry)
             {
-                this.txt_key.Text = Algorithms.ByteArrayTOStringHex(Global.Simm_byte_key);
-                this.txt_iv.Text = Algorithms.ByteArrayTOStringHex(Global.Simm_byte_iv);
+                this.txt_key.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_key);
+                this.txt_iv.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_iv);
             }
 
             // Подсказка у кнопки загрузки ключа
@@ -88,8 +88,8 @@ namespace CryptoAppTwo
             {
                 if (txt_iv.Text.Length == txt_iv.MaxLength)
                 {
-                    Global.Simm_byte_key = Algorithms.StringHexToByteArray(txt_key.Text); // Запомнили ключ
-                    Global.Simm_byte_iv = Algorithms.StringHexToByteArray(txt_iv.Text); // Запомнили IV
+                    Global.Simm_byte_key = Functions.StringHexToByteArray(txt_key.Text); // Запомнили ключ
+                    Global.Simm_byte_iv = Functions.StringHexToByteArray(txt_iv.Text); // Запомнили IV
                     Global.Simm_KeyIV_isEntry = true;
 
                     form1_btn_simm_entryKeyIV.Text = "Изменить ключ и IV (введенно)"; // Изменили название кнопки на основной форме
@@ -114,13 +114,13 @@ namespace CryptoAppTwo
             if(AlgName == "AES")
             {
                 aescng.GenerateKey();
-                this.txt_key.Text = Algorithms.ByteArrayTOStringHex(aescng.Key);
+                this.txt_key.Text = Functions.ByteArrayTOStringHex(aescng.Key);
             }
 
             if (AlgName == "3DES")
             {
                 tripledes.GenerateKey();
-                this.txt_key.Text = Algorithms.ByteArrayTOStringHex(tripledes.Key);
+                this.txt_key.Text = Functions.ByteArrayTOStringHex(tripledes.Key);
             }
         }
 
@@ -130,13 +130,13 @@ namespace CryptoAppTwo
             if (AlgName == "AES")
             {
                 aescng.GenerateIV();
-                this.txt_iv.Text = Algorithms.ByteArrayTOStringHex(aescng.IV);
+                this.txt_iv.Text = Functions.ByteArrayTOStringHex(aescng.IV);
             }
 
             if (AlgName == "3DES")
             {
                 tripledes.GenerateIV();
-                this.txt_iv.Text = Algorithms.ByteArrayTOStringHex(tripledes.IV);
+                this.txt_iv.Text = Functions.ByteArrayTOStringHex(tripledes.IV);
             }
         }
 
@@ -145,6 +145,8 @@ namespace CryptoAppTwo
         {
             if((e.KeyChar >= 48 && e.KeyChar <= 57) || (e.KeyChar >= 65 && e.KeyChar <= 70) || (e.KeyChar >= 97 && e.KeyChar <= 102) || e.KeyChar == 8 || e.KeyChar == 127)
             {
+                //8 - Backspace
+                //127 - Delete
                 e.Handled = false;
             }
             else

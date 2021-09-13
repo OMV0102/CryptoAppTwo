@@ -98,6 +98,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabGam = new System.Windows.Forms.TabPage();
+            this.btnGamTextOutBinary = new System.Windows.Forms.Button();
+            this.btnGamTextOutHex = new System.Windows.Forms.Button();
+            this.btnGamTextOutSymbol = new System.Windows.Forms.Button();
+            this.btnGamTextInBinary = new System.Windows.Forms.Button();
+            this.btnGamTextInHex = new System.Windows.Forms.Button();
+            this.btnGamTextInSymbol = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.btnGamSaveData = new System.Windows.Forms.Button();
             this.txtGamTextOut = new System.Windows.Forms.RichTextBox();
@@ -143,13 +150,8 @@
             this.label_eds_lineUp = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
-            this.label24 = new System.Windows.Forms.Label();
-            this.btnGamTextInTypeSymbol = new System.Windows.Forms.Button();
-            this.btnGamTextInTypeHex = new System.Windows.Forms.Button();
-            this.btnGamTextInTypeBinary = new System.Windows.Forms.Button();
-            this.btnGamTextOutTypeBinary = new System.Windows.Forms.Button();
-            this.btnGamTextOutTypeHex = new System.Windows.Forms.Button();
-            this.btnGamTextOutTypeSymbol = new System.Windows.Forms.Button();
+            this.checkBoxGamEditTextIn = new System.Windows.Forms.CheckBox();
+            this.checkBoxGamEditTextOut = new System.Windows.Forms.CheckBox();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1026,12 +1028,14 @@
             // tabGam
             // 
             this.tabGam.BackColor = System.Drawing.Color.LightGray;
-            this.tabGam.Controls.Add(this.btnGamTextOutTypeBinary);
-            this.tabGam.Controls.Add(this.btnGamTextOutTypeHex);
-            this.tabGam.Controls.Add(this.btnGamTextOutTypeSymbol);
-            this.tabGam.Controls.Add(this.btnGamTextInTypeBinary);
-            this.tabGam.Controls.Add(this.btnGamTextInTypeHex);
-            this.tabGam.Controls.Add(this.btnGamTextInTypeSymbol);
+            this.tabGam.Controls.Add(this.checkBoxGamEditTextOut);
+            this.tabGam.Controls.Add(this.checkBoxGamEditTextIn);
+            this.tabGam.Controls.Add(this.btnGamTextOutBinary);
+            this.tabGam.Controls.Add(this.btnGamTextOutHex);
+            this.tabGam.Controls.Add(this.btnGamTextOutSymbol);
+            this.tabGam.Controls.Add(this.btnGamTextInBinary);
+            this.tabGam.Controls.Add(this.btnGamTextInHex);
+            this.tabGam.Controls.Add(this.btnGamTextInSymbol);
             this.tabGam.Controls.Add(this.label24);
             this.tabGam.Controls.Add(this.label16);
             this.tabGam.Controls.Add(this.btnGamSaveData);
@@ -1063,14 +1067,102 @@
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гамирование";
             // 
+            // btnGamTextOutBinary
+            // 
+            this.btnGamTextOutBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextOutBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextOutBinary.Location = new System.Drawing.Point(425, 333);
+            this.btnGamTextOutBinary.Name = "btnGamTextOutBinary";
+            this.btnGamTextOutBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnGamTextOutBinary.TabIndex = 93;
+            this.btnGamTextOutBinary.TabStop = false;
+            this.btnGamTextOutBinary.Tag = "";
+            this.btnGamTextOutBinary.Text = "Bin";
+            this.btnGamTextOutBinary.UseVisualStyleBackColor = true;
+            // 
+            // btnGamTextOutHex
+            // 
+            this.btnGamTextOutHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextOutHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextOutHex.Location = new System.Drawing.Point(434, 396);
+            this.btnGamTextOutHex.Name = "btnGamTextOutHex";
+            this.btnGamTextOutHex.Size = new System.Drawing.Size(50, 30);
+            this.btnGamTextOutHex.TabIndex = 92;
+            this.btnGamTextOutHex.TabStop = false;
+            this.btnGamTextOutHex.Tag = "";
+            this.btnGamTextOutHex.Text = "Hex";
+            this.btnGamTextOutHex.UseVisualStyleBackColor = true;
+            // 
+            // btnGamTextOutSymbol
+            // 
+            this.btnGamTextOutSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextOutSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextOutSymbol.Location = new System.Drawing.Point(429, 369);
+            this.btnGamTextOutSymbol.Name = "btnGamTextOutSymbol";
+            this.btnGamTextOutSymbol.Size = new System.Drawing.Size(50, 30);
+            this.btnGamTextOutSymbol.TabIndex = 91;
+            this.btnGamTextOutSymbol.TabStop = false;
+            this.btnGamTextOutSymbol.Tag = "";
+            this.btnGamTextOutSymbol.Text = "Abc";
+            this.btnGamTextOutSymbol.UseVisualStyleBackColor = true;
+            // 
+            // btnGamTextInBinary
+            // 
+            this.btnGamTextInBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextInBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextInBinary.Location = new System.Drawing.Point(190, 347);
+            this.btnGamTextInBinary.Name = "btnGamTextInBinary";
+            this.btnGamTextInBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnGamTextInBinary.TabIndex = 90;
+            this.btnGamTextInBinary.TabStop = false;
+            this.btnGamTextInBinary.Tag = "";
+            this.btnGamTextInBinary.Text = "Bin";
+            this.btnGamTextInBinary.UseVisualStyleBackColor = true;
+            this.btnGamTextInBinary.Click += new System.EventHandler(this.btnGamTextInBinary_Click);
+            // 
+            // btnGamTextInHex
+            // 
+            this.btnGamTextInHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextInHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextInHex.Location = new System.Drawing.Point(321, 347);
+            this.btnGamTextInHex.Name = "btnGamTextInHex";
+            this.btnGamTextInHex.Size = new System.Drawing.Size(50, 30);
+            this.btnGamTextInHex.TabIndex = 89;
+            this.btnGamTextInHex.TabStop = false;
+            this.btnGamTextInHex.Tag = "";
+            this.btnGamTextInHex.Text = "Hex";
+            this.btnGamTextInHex.UseVisualStyleBackColor = true;
+            // 
+            // btnGamTextInSymbol
+            // 
+            this.btnGamTextInSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextInSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextInSymbol.Location = new System.Drawing.Point(255, 347);
+            this.btnGamTextInSymbol.Name = "btnGamTextInSymbol";
+            this.btnGamTextInSymbol.Size = new System.Drawing.Size(50, 30);
+            this.btnGamTextInSymbol.TabIndex = 88;
+            this.btnGamTextInSymbol.TabStop = false;
+            this.btnGamTextInSymbol.Tag = "";
+            this.btnGamTextInSymbol.Text = "Abc";
+            this.btnGamTextInSymbol.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(8, 350);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(176, 24);
+            this.label24.TabIndex = 87;
+            this.label24.Text = "Вид отображения:";
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(425, 160);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(383, 24);
+            this.label16.Size = new System.Drawing.Size(238, 24);
             this.label16.TabIndex = 85;
-            this.label16.Text = "Примерный вид зашифрованных данных:";
+            this.label16.Text = "Зашифрованных данные:";
             // 
             // btnGamSaveData
             // 
@@ -1125,6 +1217,7 @@
             this.txtGamFileIn.ReadOnly = true;
             this.txtGamFileIn.Size = new System.Drawing.Size(381, 26);
             this.txtGamFileIn.TabIndex = 72;
+            this.txtGamFileIn.TabStop = false;
             // 
             // btnGamEnterKey
             // 
@@ -1586,92 +1679,31 @@
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
             // 
-            // label24
+            // checkBoxGamEditTextIn
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(8, 350);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(176, 24);
-            this.label24.TabIndex = 87;
-            this.label24.Text = "Вид отображения:";
+            this.checkBoxGamEditTextIn.AutoSize = true;
+            this.checkBoxGamEditTextIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxGamEditTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxGamEditTextIn.Location = new System.Drawing.Point(337, 223);
+            this.checkBoxGamEditTextIn.Name = "checkBoxGamEditTextIn";
+            this.checkBoxGamEditTextIn.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxGamEditTextIn.TabIndex = 94;
+            this.checkBoxGamEditTextIn.Text = "Edit";
+            this.checkBoxGamEditTextIn.UseVisualStyleBackColor = true;
+            this.checkBoxGamEditTextIn.CheckedChanged += new System.EventHandler(this.checkBoxGamEditTextIn_CheckedChanged);
             // 
-            // btnGamTextInTypeSymbol
+            // checkBoxGamEditTextOut
             // 
-            this.btnGamTextInTypeSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextInTypeSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextInTypeSymbol.Location = new System.Drawing.Point(255, 347);
-            this.btnGamTextInTypeSymbol.Name = "btnGamTextInTypeSymbol";
-            this.btnGamTextInTypeSymbol.Size = new System.Drawing.Size(50, 30);
-            this.btnGamTextInTypeSymbol.TabIndex = 88;
-            this.btnGamTextInTypeSymbol.TabStop = false;
-            this.btnGamTextInTypeSymbol.Tag = "";
-            this.btnGamTextInTypeSymbol.Text = "Abc";
-            this.btnGamTextInTypeSymbol.UseVisualStyleBackColor = true;
-            // 
-            // btnGamTextInTypeHex
-            // 
-            this.btnGamTextInTypeHex.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextInTypeHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextInTypeHex.Location = new System.Drawing.Point(321, 347);
-            this.btnGamTextInTypeHex.Name = "btnGamTextInTypeHex";
-            this.btnGamTextInTypeHex.Size = new System.Drawing.Size(50, 30);
-            this.btnGamTextInTypeHex.TabIndex = 89;
-            this.btnGamTextInTypeHex.TabStop = false;
-            this.btnGamTextInTypeHex.Tag = "";
-            this.btnGamTextInTypeHex.Text = "Hex";
-            this.btnGamTextInTypeHex.UseVisualStyleBackColor = true;
-            // 
-            // btnGamTextInTypeBinary
-            // 
-            this.btnGamTextInTypeBinary.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextInTypeBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextInTypeBinary.Location = new System.Drawing.Point(190, 347);
-            this.btnGamTextInTypeBinary.Name = "btnGamTextInTypeBinary";
-            this.btnGamTextInTypeBinary.Size = new System.Drawing.Size(50, 30);
-            this.btnGamTextInTypeBinary.TabIndex = 90;
-            this.btnGamTextInTypeBinary.TabStop = false;
-            this.btnGamTextInTypeBinary.Tag = "";
-            this.btnGamTextInTypeBinary.Text = "Bin";
-            this.btnGamTextInTypeBinary.UseVisualStyleBackColor = true;
-            // 
-            // btnGamTextOutTypeBinary
-            // 
-            this.btnGamTextOutTypeBinary.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextOutTypeBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextOutTypeBinary.Location = new System.Drawing.Point(425, 333);
-            this.btnGamTextOutTypeBinary.Name = "btnGamTextOutTypeBinary";
-            this.btnGamTextOutTypeBinary.Size = new System.Drawing.Size(50, 30);
-            this.btnGamTextOutTypeBinary.TabIndex = 93;
-            this.btnGamTextOutTypeBinary.TabStop = false;
-            this.btnGamTextOutTypeBinary.Tag = "";
-            this.btnGamTextOutTypeBinary.Text = "Bin";
-            this.btnGamTextOutTypeBinary.UseVisualStyleBackColor = true;
-            // 
-            // btnGamTextOutTypeHex
-            // 
-            this.btnGamTextOutTypeHex.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextOutTypeHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextOutTypeHex.Location = new System.Drawing.Point(434, 396);
-            this.btnGamTextOutTypeHex.Name = "btnGamTextOutTypeHex";
-            this.btnGamTextOutTypeHex.Size = new System.Drawing.Size(50, 30);
-            this.btnGamTextOutTypeHex.TabIndex = 92;
-            this.btnGamTextOutTypeHex.TabStop = false;
-            this.btnGamTextOutTypeHex.Tag = "";
-            this.btnGamTextOutTypeHex.Text = "Hex";
-            this.btnGamTextOutTypeHex.UseVisualStyleBackColor = true;
-            // 
-            // btnGamTextOutTypeSymbol
-            // 
-            this.btnGamTextOutTypeSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextOutTypeSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextOutTypeSymbol.Location = new System.Drawing.Point(429, 369);
-            this.btnGamTextOutTypeSymbol.Name = "btnGamTextOutTypeSymbol";
-            this.btnGamTextOutTypeSymbol.Size = new System.Drawing.Size(50, 30);
-            this.btnGamTextOutTypeSymbol.TabIndex = 91;
-            this.btnGamTextOutTypeSymbol.TabStop = false;
-            this.btnGamTextOutTypeSymbol.Tag = "";
-            this.btnGamTextOutTypeSymbol.Text = "Abc";
-            this.btnGamTextOutTypeSymbol.UseVisualStyleBackColor = true;
+            this.checkBoxGamEditTextOut.AutoSize = true;
+            this.checkBoxGamEditTextOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxGamEditTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxGamEditTextOut.Location = new System.Drawing.Point(750, 160);
+            this.checkBoxGamEditTextOut.Name = "checkBoxGamEditTextOut";
+            this.checkBoxGamEditTextOut.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxGamEditTextOut.TabIndex = 95;
+            this.checkBoxGamEditTextOut.Text = "Edit";
+            this.checkBoxGamEditTextOut.UseVisualStyleBackColor = true;
+            this.checkBoxGamEditTextOut.CheckedChanged += new System.EventHandler(this.checkBoxGamEditTextOut_CheckedChanged);
             // 
             // FormMain
             // 
@@ -1819,13 +1851,15 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Button btnGamTextInTypeSymbol;
+        private System.Windows.Forms.Button btnGamTextInSymbol;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button btnGamTextInTypeBinary;
-        private System.Windows.Forms.Button btnGamTextInTypeHex;
-        private System.Windows.Forms.Button btnGamTextOutTypeBinary;
-        private System.Windows.Forms.Button btnGamTextOutTypeHex;
-        private System.Windows.Forms.Button btnGamTextOutTypeSymbol;
+        private System.Windows.Forms.Button btnGamTextInBinary;
+        private System.Windows.Forms.Button btnGamTextInHex;
+        private System.Windows.Forms.Button btnGamTextOutBinary;
+        private System.Windows.Forms.Button btnGamTextOutHex;
+        private System.Windows.Forms.Button btnGamTextOutSymbol;
+        private System.Windows.Forms.CheckBox checkBoxGamEditTextIn;
+        private System.Windows.Forms.CheckBox checkBoxGamEditTextOut;
     }
 }
 

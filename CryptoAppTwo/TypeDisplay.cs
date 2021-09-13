@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CryptoAppTwo
 {
-    public static class FilesFunctions
+    public enum TypeDisplay : int
     {
-        public static Byte[] readAllBytesFromFile(String fileName)
-        {
-            return null;
-        }
+        Symbol = 0,
+        Binary = 2,
+        Hex = 1
     }
 }

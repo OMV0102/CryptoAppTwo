@@ -15,6 +15,8 @@ namespace CryptoAppTwo
 {
     public partial class FormMain : Form
     {
+        private Gamirovanie gamirovanie = null;
+
         public FormMain()
         {
             InitializeComponent();
@@ -47,7 +49,12 @@ namespace CryptoAppTwo
             this.btn_eds_clear_Click(null, null); // Очистить всё на ЭЦП при запуске
             #endregion
 
+            gamirovanie = new Gamirovanie();
             this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
+            this.checkBoxGamEditTextIn.Checked = false;
+            this.checkBoxGamEditTextOut.Checked = false;
+            this.txtGamTextIn.ReadOnly = true;
+            this.txtGamTextOut.ReadOnly = true;
             this.btnGamClear.PerformClick(); // жмем кнопку очистить для Гамирования
         }
 
@@ -190,7 +197,7 @@ namespace CryptoAppTwo
                         if (Global.Simm_EncryptOrDecrypt == true) // Если шифруем
                         {
                             // вывели байты на форму виде 16-ричной строки
-                            this.txt_simm_text_out.Text = Algorithms.ByteArrayTOStringHex(Global.Simm_byte_out);
+                            this.txt_simm_text_out.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_out);
                         }
                         else // Если расшифровываем
                         {
@@ -370,8 +377,8 @@ namespace CryptoAppTwo
                     // массив с двумя строками с ключом и IV
                     string[] KeyAndIV = new string[2]
                     {
-                        Algorithms.ByteArrayTOStringHex(Global.Simm_byte_key),
-                        Algorithms.ByteArrayTOStringHex(Global.Simm_byte_iv)
+                        Functions.ByteArrayTOStringHex(Global.Simm_byte_key),
+                        Functions.ByteArrayTOStringHex(Global.Simm_byte_iv)
                     };
                     // сохраняем байты в файл
                     File.WriteAllLines(filename, KeyAndIV, Encoding.UTF8);
@@ -454,7 +461,7 @@ namespace CryptoAppTwo
                         if (Global.Asim_EncryptOrDecrypt == true) // Если шифруем
                         {
                             // вывели байты на форму виде 16-ричной строки
-                            this.txt_Asim_text_out.Text = Algorithms.ByteArrayTOStringHex(Global.Asim_byte_out);
+                            this.txt_Asim_text_out.Text = Functions.ByteArrayTOStringHex(Global.Asim_byte_out);
                         }
                         else // Если расшифровываем
                         {
@@ -989,7 +996,7 @@ namespace CryptoAppTwo
         // кнопка режим Гамирование ШИФРОВАТЬ
         private void radioBtnGamEncrypt_CheckedChanged(object sender, EventArgs e)
         {
-            //Global.Simm_EncryptOrDecrypt = true;
+            gamirovanie.GamEncryptOrDecrypt = true;
             this.btnGamEncrypt.Text = "🡻 Шифровать 🡻";
             this.labelGamCaptionIn.Text = "Входные данные";
             this.labelGamCaptionOut.Text = "Зашифрованные данные";
@@ -1003,7 +1010,7 @@ namespace CryptoAppTwo
         // кнопка режим Гамирование ДЕШИФРОВАТЬ
         private void radioBtnGamDecrypt_CheckedChanged(object sender, EventArgs e)
         {
-            Global.Simm_EncryptOrDecrypt = false;
+            gamirovanie.GamEncryptOrDecrypt = false;
             this.btn_SimmEncrypt.Text = "🡻 Дешифровать 🡻";
             this.labelGamCaptionIn.Text = "Зашифрованные данные";
             this.labelGamCaptionOut.Text = "Дешифрованные данные";
@@ -1012,6 +1019,43 @@ namespace CryptoAppTwo
             this.btn_simm_saveData.Text = "Сохранить данные в файл";
             this.btn_choice_fileinSimm.Text = "Выбрать файл с шифротекстом";
             btn_simm_clear_Click(null, null); // Очистить всё при переключении
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование вход текста
+        private void checkBoxGamEditTextIn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxGamEditTextIn.Checked == true)
+            {
+                if (gamirovanie.GamTextInType == TypeDisplay.Symbol)
+                    gamirovanie.GamIsEdited = true;
+                this.txtGamTextIn.ReadOnly = false;
+            }
+            else
+                this.txtGamTextIn.ReadOnly = true;
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование вЫход текста
+        private void checkBoxGamEditTextOut_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxGamEditTextOut.Checked == true)
+                this.txtGamTextOut.ReadOnly = false;
+            else
+                this.txtGamTextOut.ReadOnly = true;
+        }
+
+        // кнопка Bin вход текста
+        private void btnGamTextInBinary_Click(object sender, EventArgs e)
+        {
+            this.checkBoxGamEditTextIn.Checked = false;
+
+            if (gamirovanie.GamIsEdited == true)
+            {
+                if (gamirovanie.GamTextInType == TypeDisplay.Binary)
+                    gamirovanie.GamTextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
+            }
+
+            gamirovanie.GamTextInType = TypeDisplay.Binary;
+            this.txtGamTextIn.Text = "";
         }
     }
 
