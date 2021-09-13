@@ -982,10 +982,37 @@ namespace CryptoAppTwo
             }
         }
 
+
         //=======================================================================
         #endregion
 
+        // кнопка режим Гамирование ШИФРОВАТЬ
+        private void radioBtnGamEncrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            //Global.Simm_EncryptOrDecrypt = true;
+            this.btnGamEncrypt.Text = "🡻 Шифровать 🡻";
+            this.labelGamCaptionIn.Text = "Входные данные";
+            this.labelGamCaptionOut.Text = "Зашифрованные данные";
+            this.label_simm_onText_out.Text = "Примерный вид зашифрованных данных:";
+            this.label_simm_underText_out.Text = "(В файл шифротекст сохраниться в бинарном виде,\n но с таким же расширением, что и исходный файл)";
+            this.btn_simm_saveData.Text = "Сохранить шифротекст в файл";
+            this.btn_choice_fileinSimm.Text = "Выбрать файл с данными";
+            btn_simm_clear_Click(null, null); // Очистить всё при переключении
+        }
 
+        // кнопка режим Гамирование ДЕШИФРОВАТЬ
+        private void radioBtnGamDecrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            Global.Simm_EncryptOrDecrypt = false;
+            this.btn_SimmEncrypt.Text = "🡻 Дешифровать 🡻";
+            this.labelGamCaptionIn.Text = "Зашифрованные данные";
+            this.labelGamCaptionOut.Text = "Дешифрованные данные";
+            this.label_simm_onText_out.Text = "Дешифрованные данные:";
+            this.label_simm_underText_out.Text = "(В файл данные сохраняться в виде байт, но при открытие\n файл будет отображаться корректно так как будет сохранен\n с таким же расширеним, что и шифрованный файл)";
+            this.btn_simm_saveData.Text = "Сохранить данные в файл";
+            this.btn_choice_fileinSimm.Text = "Выбрать файл с шифротекстом";
+            btn_simm_clear_Click(null, null); // Очистить всё при переключении
+        }
     }
 
 

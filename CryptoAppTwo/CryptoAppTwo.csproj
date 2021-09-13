@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms.cs" />
+    <Compile Include="FilesFunctions.cs" />
     <Compile Include="FormAsimmEnterKey.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +72,7 @@
     <Compile Include="FormSimmEnterKey.designer.cs">
       <DependentUpon>FormSimmEnterKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamirovanie.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
