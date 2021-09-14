@@ -153,6 +153,7 @@
             this.label_eds_lineUp = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1397,6 +1398,7 @@
             this.btnGamChoiceFileIn.Tag = "";
             this.btnGamChoiceFileIn.Text = "Выбрать файл с данными";
             this.btnGamChoiceFileIn.UseVisualStyleBackColor = true;
+            this.btnGamChoiceFileIn.Click += new System.EventHandler(this.btnGamChoiceFileIn_Click);
             // 
             // label31
             // 
@@ -1881,6 +1883,7 @@
         private System.Windows.Forms.CheckBox checkBoxGamEditTextIn;
         private System.Windows.Forms.CheckBox checkBoxGamEditTextOut;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ToolTip toolTipGamFileIn;
     }
 }
 

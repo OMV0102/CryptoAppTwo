@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms.cs" />
+    <Compile Include="FormGamEnterKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGamEnterKey.designer.cs">
+      <DependentUpon>FormGamEnterKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="FormAsimmEnterKey.cs">
       <SubType>Form</SubType>
@@ -82,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEdsEnterKey.resx">
       <DependentUpon>FormEdsEnterKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGamEnterKey.resx">
+      <DependentUpon>FormGamEnterKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

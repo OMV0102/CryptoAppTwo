@@ -1055,6 +1055,14 @@ namespace CryptoAppTwo
         {
             this.checkBoxGamEditTextIn.Checked = false;
 
+            if(gamirovanie.TextInByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарнмо виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
+            }
+
             TypeDisplay typeOld = gamirovanie.TextInType;
             if (this.txtGamTextIn.Text.Length > 0 && gamirovanie.TextInIsEdited == true)
             {
@@ -1066,10 +1074,6 @@ namespace CryptoAppTwo
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
 
                 gamirovanie.TextInIsEdited = false;
-            }
-            else if (this.txtGamTextIn.Text.Length < 1 && gamirovanie.TextInIsEdited == true)
-            {
-
             }
             this.txtGamTextIn.Text = Functions.ByteToBinary(gamirovanie.TextInByte);
 
@@ -1131,7 +1135,7 @@ namespace CryptoAppTwo
             
         }
 
-        // кнопка Bin вЫход текста
+        // кнопка Bin вЫход текста // АААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void btnGamTextOutBinary_Click(object sender, EventArgs e)
         {
             this.checkBoxGamEditTextOut.Checked = false;
@@ -1154,7 +1158,7 @@ namespace CryptoAppTwo
             this.txtGamTextOut.Text = Functions.ByteToBinary(gamirovanie.TextOutByte);
         }
 
-        // кнопка Abs вЫход текста
+        // кнопка Abs вЫход текста// АААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void btnGamTextOutSymbol_Click(object sender, EventArgs e)
         {
             this.checkBoxGamEditTextOut.Checked = false;
@@ -1177,7 +1181,7 @@ namespace CryptoAppTwo
             this.txtGamTextOut.Text = Functions.ByteToSymbol(gamirovanie.TextOutByte);
         }
 
-        // кнопка Hex вЫход текста
+        // кнопка Hex вЫход текста// АААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void btnGamTextOutHex_Click(object sender, EventArgs e)
         {
             this.checkBoxGamEditTextOut.Checked = false;
@@ -1301,9 +1305,71 @@ namespace CryptoAppTwo
             this.txtGamTextOut.Text = "";
             // очистили расширение входного файла
             //gamirovanie.FileExtension = "";
+            this.btnGamTextInSymbol.Enabled = true;
 
             this.btnGamTextInSymbol.PerformClick();
             this.btnGamTextOutSymbol.PerformClick();
+        }
+
+        // кнопка ВЫБРАТЬ ФАЙЛ
+        private void btnGamChoiceFileIn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Выбрать файл ..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        // очистили 
+                        this.btnGamClear.PerformClick();
+                        // Считали байты из файла
+                        gamirovanie.TextInByte = File.ReadAllBytes(ofd.FileName);
+                        this.labelGamByteNumber.Text = gamirovanie.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
+                        this.txtGamFileIn.Text = ofd.FileName; // вывели путь к файлу в textbox
+                        this.toolTipGamFileIn.SetToolTip(this.txtGamFileIn, this.txtGamFileIn.Text); // текст подсказки запомнили
+                        gamirovanie.FileExtension = ofd.SafeFileName.Substring(ofd.SafeFileName.LastIndexOf('.'));  // Запомнили расширение считанного файла
+                        if(gamirovanie.FileExtension == "txt")
+                        {
+                            this.btnGamTextInSymbol.Enabled = true;
+                        }
+                        else
+                        {
+                            this.btnGamTextInHex.PerformClick();
+                            this.btnGamTextInSymbol.Enabled = false;
+                        }
+                        // вывели на форму считанное в кодировке UTF8
+                        if (gamirovanie.TextInType == TypeDisplay.Hex)
+                        {
+                            this.txtGamTextIn.Text = Functions.ByteToHex(gamirovanie.TextInByte);
+                        }
+                        else if (gamirovanie.TextInType == TypeDisplay.Binary)
+                        {
+                            this.txtGamTextIn.Text = Functions.ByteToBinary(gamirovanie.TextInByte);
+                        }
+                        
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Файла {" + ofd.FileName + "} не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
         }
     }
 

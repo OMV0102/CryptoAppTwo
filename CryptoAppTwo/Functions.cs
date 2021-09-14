@@ -93,7 +93,6 @@ namespace CryptoAppTwo
             string strBin = "";
             int N = byteArr.Length;
             int step = 8;
-            string temp = "";
             if (byteArr.Length < 1) return "";
             for (int i = 0; i < N-1; i++)
             {
