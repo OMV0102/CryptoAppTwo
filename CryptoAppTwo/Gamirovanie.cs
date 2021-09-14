@@ -8,14 +8,14 @@ namespace CryptoAppTwo
 {
     class Gamirovanie
     {
-        public byte[] TextInByte; // Входной массив байтов
+        public byte[] TextInByte = new byte[0]; // Входной массив байтов
         public TypeDisplay TextInType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
 
-        public byte[] TextOutByte; // ВЫходной массив байтов
+        public byte[] TextOutByte = new byte[0]; // ВЫходной массив байтов
         public TypeDisplay TextOutType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
 
-        public byte[] KeyByte; // Ключ
-        public TypeDisplay KeyType = TypeDisplay.Symbol; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
+        public byte[] KeyByte = new byte[0]; // Ключ
+        public TypeDisplay KeyType = TypeDisplay.Hex; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
         public bool KeyIsEntry = false; // Введен ли ключ или нет
 
         public bool EncryptOrDecrypt = true; // Режим либо шифруем либо ДЕшифруем

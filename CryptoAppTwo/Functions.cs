@@ -15,10 +15,21 @@ namespace CryptoAppTwo
             return null;
         }
 
+        // Проверка символа Hex или нет
         public static bool checkSymbolIsHex(int numberChar)
         {
-            // цифры                                       заглавные A-F                                строчные a-f
-            if ((numberChar >= 48 && numberChar <= 57) || (numberChar >= 65 && numberChar <= 70) || (numberChar >= 97 && numberChar <= 102))
+            // цифры                                       заглавные A-F                                строчные a-f                            тире разделитель
+            if ((numberChar >= 48 && numberChar <= 57) || (numberChar >= 65 && numberChar <= 70) || (numberChar >= 97 && numberChar <= 102) || ((numberChar == 45)))
+                return true;
+            else
+                return false;
+        }
+
+        // Проверка символа Binary или нет
+        public static bool checkSymbolIsBinary(int numberChar)
+        {
+            // ноль                 единица              тире разделитель
+            if (numberChar == 48 || numberChar == 49|| numberChar == 45)
                 return true;
             else
                 return false;
@@ -31,14 +42,16 @@ namespace CryptoAppTwo
             int N = strHEX.Length;
             int step = 2;
             byte[] bytes = new byte[N / step];
-            for (int i = 0, j = 0; i < N; i += step, j++)
-                bytes[j] = Convert.ToByte(strHEX.Substring(i, step), 16);
+            if (bytes.Length > 0)
+                for (int i = 0, j = 0; i < N; i += step, j++)
+                    bytes[j] = Convert.ToByte(strHEX.Substring(i, step), 16);
             return bytes;
         }
 
         // Byte to Hex
         public static string ByteToHex(byte[] byteArr)
         {
+            if (byteArr.Length < 1) return "";
             return BitConverter.ToString(byteArr).ToUpper();
         }
 
@@ -47,8 +60,9 @@ namespace CryptoAppTwo
         {
             int N = str.Length;
             byte[] bytes = new byte[N];
-            for (int i = 0; i < N; i++)
-                bytes[i] = Convert.ToByte(str[i]);
+            if (bytes.Length > 0)
+                for (int i = 0; i < N; i++)
+                    bytes[i] = Convert.ToByte(str[i]);
 
             return bytes;
         }
@@ -56,6 +70,7 @@ namespace CryptoAppTwo
         // Byte to Symbol
         public static string ByteToSymbol(byte[] byteArr)
         {
+            if (byteArr.Length < 1) return "";
             return Encoding.UTF8.GetString(byteArr);
         }
 
@@ -66,8 +81,9 @@ namespace CryptoAppTwo
             int N = strBin.Length;
             int step = 8;
             byte[] bytes = new byte[N / step];
-            for (int i = 0, j = 0; i < N; i += step, j++)
-                bytes[j] = Convert.ToByte(strBin.Substring(i, step), 2);
+            if(bytes.Length > 0)
+                for (int i = 0, j = 0; i < N; i += step, j++)
+                    bytes[j] = Convert.ToByte(strBin.Substring(i, step), 2);
             return bytes;
         }
 
@@ -78,7 +94,8 @@ namespace CryptoAppTwo
             int N = byteArr.Length;
             int step = 8;
             string temp = "";
-            for(int i = 0; i < N-1; i++)
+            if (byteArr.Length < 1) return "";
+            for (int i = 0; i < N-1; i++)
             {
                 strBin += Convert.ToString(byteArr[i], 2).PadLeft(step, '0') + "-";
             }

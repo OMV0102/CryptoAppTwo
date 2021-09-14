@@ -1056,7 +1056,7 @@ namespace CryptoAppTwo
             this.checkBoxGamEditTextIn.Checked = false;
 
             TypeDisplay typeOld = gamirovanie.TextInType;
-            if (gamirovanie.TextInIsEdited == true)
+            if (this.txtGamTextIn.Text.Length > 0 && gamirovanie.TextInIsEdited == true)
             {
                 if (typeOld == TypeDisplay.Binary)
                     gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
@@ -1064,10 +1064,19 @@ namespace CryptoAppTwo
                     gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
                 else if (typeOld == TypeDisplay.Symbol)
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
+
+                gamirovanie.TextInIsEdited = false;
             }
+            else if (this.txtGamTextIn.Text.Length < 1 && gamirovanie.TextInIsEdited == true)
+            {
+
+            }
+            this.txtGamTextIn.Text = Functions.ByteToBinary(gamirovanie.TextInByte);
 
             gamirovanie.TextInType = TypeDisplay.Binary;
-            this.txtGamTextIn.Text = Functions.ByteToBinary(gamirovanie.TextInByte);
+            this.btnGamTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnGamTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
         // кнопка Abc вход текста
@@ -1084,10 +1093,16 @@ namespace CryptoAppTwo
                     gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
                 else if (typeOld == TypeDisplay.Symbol)
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
+
+                gamirovanie.TextInIsEdited = false;
             }
+            this.txtGamTextIn.Text = Functions.ByteToSymbol(gamirovanie.TextInByte);
 
             gamirovanie.TextInType = TypeDisplay.Symbol;
-            this.txtGamTextIn.Text = Functions.ByteToSymbol(gamirovanie.TextInByte);
+            this.btnGamTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnGamTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            
         }
 
         // кнопка Hex вход текста
@@ -1104,10 +1119,16 @@ namespace CryptoAppTwo
                     gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
                 else if (typeOld == TypeDisplay.Symbol)
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
+
+                gamirovanie.TextInIsEdited = false;
             }
+            this.txtGamTextIn.Text = Functions.ByteToHex(gamirovanie.TextInByte);
 
             gamirovanie.TextInType = TypeDisplay.Hex;
-            this.txtGamTextIn.Text = Functions.ByteToHex(gamirovanie.TextInByte);
+            this.btnGamTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            
         }
 
         // кнопка Bin вЫход текста
@@ -1127,6 +1148,9 @@ namespace CryptoAppTwo
             }
 
             gamirovanie.TextOutType = TypeDisplay.Binary;
+            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
             this.txtGamTextOut.Text = Functions.ByteToBinary(gamirovanie.TextOutByte);
         }
 
@@ -1147,6 +1171,9 @@ namespace CryptoAppTwo
             }
 
             gamirovanie.TextOutType = TypeDisplay.Symbol;
+            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
             this.txtGamTextOut.Text = Functions.ByteToSymbol(gamirovanie.TextOutByte);
         }
 
@@ -1167,7 +1194,116 @@ namespace CryptoAppTwo
             }
 
             gamirovanie.TextOutType = TypeDisplay.Hex;
+            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
             this.txtGamTextOut.Text = Functions.ByteToHex(gamirovanie.TextOutByte);
+        }
+
+        // ввод текста ВХОД
+        private void txtGamTextIn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxGamEditTextIn.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                gamirovanie.TextInIsEdited = true;
+            }
+            else if (gamirovanie.TextInType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                gamirovanie.TextInIsEdited = true;
+            }
+            else if (gamirovanie.TextInType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                gamirovanie.TextInIsEdited = true;
+            }
+            else if(gamirovanie.TextInType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                gamirovanie.TextInIsEdited = true;
+            }
+            else
+            {
+                e.Handled = true;
+                gamirovanie.TextInIsEdited = false;
+            }
+
+        }
+
+        // изменение текста ВХОД
+        private void txtGamTextIn_TextChanged(object sender, EventArgs e)
+        {
+            if (gamirovanie.TextInType == TypeDisplay.Hex)
+                this.txtGamTextIn.Text = this.txtGamTextIn.Text.ToUpper();
+        }
+
+        // ввод текста ВЫХОД
+        private void txtGamTextOut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxGamEditTextOut.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                gamirovanie.TextOutIsEdited = true;
+            }
+            else if (gamirovanie.TextOutType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                gamirovanie.TextOutIsEdited = true;
+            }
+            else if (gamirovanie.TextOutType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                gamirovanie.TextOutIsEdited = true;
+            }
+            else if (gamirovanie.TextOutType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                gamirovanie.TextOutIsEdited = true;
+            }
+            else
+            {
+                e.Handled = true;
+                gamirovanie.TextOutIsEdited = false;
+            }
+        }
+
+        // кнопка ОЧИСТИТЬ Гамирование
+        private void btnGamClear_Click(object sender, EventArgs e)
+        {
+            gamirovanie = new Gamirovanie();
+
+            //========очистка ключа======
+            // меняем кнопку ввод ключа на обычную
+            this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
+            this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            // очищаем ключ и вектор
+            //gamirovanie.KeyByte = new byte[0];
+            //gamirovanie.KeyType = TypeDisplay.Hex;
+            // флаг меняем что не введенны
+            //gamirovanie.KeyIsEntry = false;
+            //===================================
+            // входные данные стираем
+            //gamirovanie.TextInByte = new byte[0];
+            //gamirovanie.TextInType = TypeDisplay.Symbol;
+            //gamirovanie.TextInIsEdited = false;
+            this.txtGamTextIn.Text = "";
+            this.txtGamFileIn.Text = "";
+            this.labelGamByteNumber.Text = "0";
+            // ВЫходные данные стираем
+            //gamirovanie.TextOutByte = new byte[0];
+            this.txtGamTextOut.Text = "";
+            // очистили расширение входного файла
+            //gamirovanie.FileExtension = "";
+
+            this.btnGamTextInSymbol.PerformClick();
+            this.btnGamTextOutSymbol.PerformClick();
         }
     }
 

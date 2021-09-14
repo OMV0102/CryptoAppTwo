@@ -98,6 +98,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabGam = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
             this.checkBoxGamEditTextOut = new System.Windows.Forms.CheckBox();
             this.checkBoxGamEditTextIn = new System.Windows.Forms.CheckBox();
             this.btnGamTextOutBinary = new System.Windows.Forms.Button();
@@ -119,7 +120,7 @@
             this.btnGamSaveKey = new System.Windows.Forms.Button();
             this.btnGamEncryptDecrypt = new System.Windows.Forms.Button();
             this.labelGamCaptionIn = new System.Windows.Forms.Label();
-            this.labelGamByteIn = new System.Windows.Forms.Label();
+            this.labelGamByteNumber = new System.Windows.Forms.Label();
             this.btnGamClear = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.btnGamChoiceFileIn = new System.Windows.Forms.Button();
@@ -152,7 +153,6 @@
             this.label_eds_lineUp = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
-            this.label16 = new System.Windows.Forms.Label();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1051,7 +1051,7 @@
             this.tabGam.Controls.Add(this.btnGamSaveKey);
             this.tabGam.Controls.Add(this.btnGamEncryptDecrypt);
             this.tabGam.Controls.Add(this.labelGamCaptionIn);
-            this.tabGam.Controls.Add(this.labelGamByteIn);
+            this.tabGam.Controls.Add(this.labelGamByteNumber);
             this.tabGam.Controls.Add(this.btnGamClear);
             this.tabGam.Controls.Add(this.label30);
             this.tabGam.Controls.Add(this.btnGamChoiceFileIn);
@@ -1068,6 +1068,15 @@
             this.tabGam.Size = new System.Drawing.Size(833, 429);
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гамирование";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(425, 274);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(176, 24);
+            this.label16.TabIndex = 96;
+            this.label16.Text = "Вид отображения:";
             // 
             // checkBoxGamEditTextOut
             // 
@@ -1225,6 +1234,7 @@
             this.txtGamTextOut.TabIndex = 82;
             this.txtGamTextOut.TabStop = false;
             this.txtGamTextOut.Text = "";
+            this.txtGamTextOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGamTextOut_KeyPress);
             // 
             // txtGamTextIn
             // 
@@ -1240,6 +1250,8 @@
             this.txtGamTextIn.TabIndex = 79;
             this.txtGamTextIn.TabStop = false;
             this.txtGamTextIn.Text = "";
+            this.txtGamTextIn.TextChanged += new System.EventHandler(this.txtGamTextIn_TextChanged);
+            this.txtGamTextIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGamTextIn_KeyPress);
             // 
             // txtGamFileIn
             // 
@@ -1341,14 +1353,14 @@
             this.labelGamCaptionIn.TabIndex = 61;
             this.labelGamCaptionIn.Text = "Входные данные";
             // 
-            // labelGamByteIn
+            // labelGamByteNumber
             // 
-            this.labelGamByteIn.BackColor = System.Drawing.Color.Transparent;
-            this.labelGamByteIn.Location = new System.Drawing.Point(230, 193);
-            this.labelGamByteIn.Name = "labelGamByteIn";
-            this.labelGamByteIn.Size = new System.Drawing.Size(146, 30);
-            this.labelGamByteIn.TabIndex = 60;
-            this.labelGamByteIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelGamByteNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelGamByteNumber.Location = new System.Drawing.Point(230, 193);
+            this.labelGamByteNumber.Name = "labelGamByteNumber";
+            this.labelGamByteNumber.Size = new System.Drawing.Size(163, 30);
+            this.labelGamByteNumber.TabIndex = 60;
+            this.labelGamByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnGamClear
             // 
@@ -1362,6 +1374,7 @@
             this.btnGamClear.Tag = "";
             this.btnGamClear.Text = "Очистить";
             this.btnGamClear.UseVisualStyleBackColor = true;
+            this.btnGamClear.Click += new System.EventHandler(this.btnGamClear_Click);
             // 
             // label30
             // 
@@ -1712,15 +1725,6 @@
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(425, 274);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(176, 24);
-            this.label16.TabIndex = 96;
-            this.label16.Text = "Вид отображения:";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -1858,7 +1862,7 @@
         private System.Windows.Forms.Button btnGamSaveKey;
         private System.Windows.Forms.Button btnGamEncryptDecrypt;
         private System.Windows.Forms.Label labelGamCaptionIn;
-        private System.Windows.Forms.Label labelGamByteIn;
+        private System.Windows.Forms.Label labelGamByteNumber;
         private System.Windows.Forms.Button btnGamClear;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button btnGamChoiceFileIn;
