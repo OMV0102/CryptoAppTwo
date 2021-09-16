@@ -98,6 +98,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabGam = new System.Windows.Forms.TabPage();
+            this.btnGamTextOutSaveChanged = new System.Windows.Forms.Button();
+            this.flagTextOutIsEdited = new System.Windows.Forms.CheckBox();
+            this.flagTextInIsEdited = new System.Windows.Forms.CheckBox();
+            this.btnGamTextInSaveChanged = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.checkBoxGamEditTextOut = new System.Windows.Forms.CheckBox();
             this.checkBoxGamEditTextIn = new System.Windows.Forms.CheckBox();
@@ -1030,6 +1034,10 @@
             // tabGam
             // 
             this.tabGam.BackColor = System.Drawing.Color.LightGray;
+            this.tabGam.Controls.Add(this.btnGamTextOutSaveChanged);
+            this.tabGam.Controls.Add(this.flagTextOutIsEdited);
+            this.tabGam.Controls.Add(this.flagTextInIsEdited);
+            this.tabGam.Controls.Add(this.btnGamTextInSaveChanged);
             this.tabGam.Controls.Add(this.label16);
             this.tabGam.Controls.Add(this.checkBoxGamEditTextOut);
             this.tabGam.Controls.Add(this.checkBoxGamEditTextIn);
@@ -1070,6 +1078,68 @@
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гамирование";
             // 
+            // btnGamTextOutSaveChanged
+            // 
+            this.btnGamTextOutSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnGamTextOutSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGamTextOutSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextOutSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnGamTextOutSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGamTextOutSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextOutSaveChanged.Location = new System.Drawing.Point(726, 157);
+            this.btnGamTextOutSaveChanged.Name = "btnGamTextOutSaveChanged";
+            this.btnGamTextOutSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnGamTextOutSaveChanged.TabIndex = 100;
+            this.btnGamTextOutSaveChanged.TabStop = false;
+            this.btnGamTextOutSaveChanged.Tag = "";
+            this.btnGamTextOutSaveChanged.UseVisualStyleBackColor = true;
+            this.btnGamTextOutSaveChanged.Click += new System.EventHandler(this.btnGamTextOutSaveChanged_Click);
+            // 
+            // flagTextOutIsEdited
+            // 
+            this.flagTextOutIsEdited.AutoSize = true;
+            this.flagTextOutIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagTextOutIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagTextOutIsEdited.Location = new System.Drawing.Point(3, 28);
+            this.flagTextOutIsEdited.Name = "flagTextOutIsEdited";
+            this.flagTextOutIsEdited.Size = new System.Drawing.Size(169, 24);
+            this.flagTextOutIsEdited.TabIndex = 99;
+            this.flagTextOutIsEdited.Text = "flagTextOutIsEdited";
+            this.flagTextOutIsEdited.UseVisualStyleBackColor = true;
+            this.flagTextOutIsEdited.Visible = false;
+            this.flagTextOutIsEdited.CheckedChanged += new System.EventHandler(this.flagTextOutIsEdited_CheckedChanged);
+            // 
+            // flagTextInIsEdited
+            // 
+            this.flagTextInIsEdited.AutoSize = true;
+            this.flagTextInIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagTextInIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagTextInIsEdited.Location = new System.Drawing.Point(3, 3);
+            this.flagTextInIsEdited.Name = "flagTextInIsEdited";
+            this.flagTextInIsEdited.Size = new System.Drawing.Size(157, 24);
+            this.flagTextInIsEdited.TabIndex = 98;
+            this.flagTextInIsEdited.Text = "flagTextInIsEdited";
+            this.flagTextInIsEdited.UseVisualStyleBackColor = true;
+            this.flagTextInIsEdited.Visible = false;
+            this.flagTextInIsEdited.CheckedChanged += new System.EventHandler(this.flagTextInIsEdited_CheckedChanged);
+            // 
+            // btnGamTextInSaveChanged
+            // 
+            this.btnGamTextInSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnGamTextInSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGamTextInSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextInSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnGamTextInSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGamTextInSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextInSaveChanged.Location = new System.Drawing.Point(310, 218);
+            this.btnGamTextInSaveChanged.Name = "btnGamTextInSaveChanged";
+            this.btnGamTextInSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnGamTextInSaveChanged.TabIndex = 97;
+            this.btnGamTextInSaveChanged.TabStop = false;
+            this.btnGamTextInSaveChanged.Tag = "";
+            this.btnGamTextInSaveChanged.UseVisualStyleBackColor = true;
+            this.btnGamTextInSaveChanged.Click += new System.EventHandler(this.btnGamTextInSaveChanged_Click);
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -1084,7 +1154,7 @@
             this.checkBoxGamEditTextOut.AutoSize = true;
             this.checkBoxGamEditTextOut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxGamEditTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxGamEditTextOut.Location = new System.Drawing.Point(750, 160);
+            this.checkBoxGamEditTextOut.Location = new System.Drawing.Point(764, 160);
             this.checkBoxGamEditTextOut.Name = "checkBoxGamEditTextOut";
             this.checkBoxGamEditTextOut.Size = new System.Drawing.Size(56, 24);
             this.checkBoxGamEditTextOut.TabIndex = 95;
@@ -1097,7 +1167,7 @@
             this.checkBoxGamEditTextIn.AutoSize = true;
             this.checkBoxGamEditTextIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxGamEditTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxGamEditTextIn.Location = new System.Drawing.Point(337, 223);
+            this.checkBoxGamEditTextIn.Location = new System.Drawing.Point(351, 223);
             this.checkBoxGamEditTextIn.Name = "checkBoxGamEditTextIn";
             this.checkBoxGamEditTextIn.Size = new System.Drawing.Size(56, 24);
             this.checkBoxGamEditTextIn.TabIndex = 94;
@@ -1223,7 +1293,7 @@
             // 
             // txtGamTextOut
             // 
-            this.txtGamTextOut.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtGamTextOut.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtGamTextOut.DetectUrls = false;
             this.txtGamTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtGamTextOut.Location = new System.Drawing.Point(425, 187);
@@ -1239,7 +1309,7 @@
             // 
             // txtGamTextIn
             // 
-            this.txtGamTextIn.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtGamTextIn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtGamTextIn.DetectUrls = false;
             this.txtGamTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtGamTextIn.Location = new System.Drawing.Point(12, 249);
@@ -1251,7 +1321,6 @@
             this.txtGamTextIn.TabIndex = 79;
             this.txtGamTextIn.TabStop = false;
             this.txtGamTextIn.Text = "";
-            this.txtGamTextIn.TextChanged += new System.EventHandler(this.txtGamTextIn_TextChanged);
             this.txtGamTextIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGamTextIn_KeyPress);
             // 
             // txtGamFileIn
@@ -1885,6 +1954,10 @@
         private System.Windows.Forms.CheckBox checkBoxGamEditTextOut;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ToolTip toolTipGamFileIn;
+        private System.Windows.Forms.Button btnGamTextInSaveChanged;
+        private System.Windows.Forms.CheckBox flagTextInIsEdited;
+        private System.Windows.Forms.CheckBox flagTextOutIsEdited;
+        private System.Windows.Forms.Button btnGamTextOutSaveChanged;
     }
 }
 

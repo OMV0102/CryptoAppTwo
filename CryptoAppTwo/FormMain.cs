@@ -1029,12 +1029,16 @@ namespace CryptoAppTwo
         {
             if (this.checkBoxGamEditTextIn.Checked == true)
             {
-                if (gamirovanie.TextInType == TypeDisplay.Symbol && gamirovanie.FileExtension != "txt")
-                    gamirovanie.TextInIsEdited = true;
+                //if (gamirovanie.TextInType == TypeDisplay.Symbol && gamirovanie.FileExtension != "txt")
+                //    this.flagTextInIsEdited.Checked = true;
                 this.txtGamTextIn.ReadOnly = false;
+                //this.txtGamTextIn.Cursor = Cursors.IBeam;
             }
             else
+            {
                 this.txtGamTextIn.ReadOnly = true;
+                //this.txtGamTextIn.Cursor = Cursors.Arrow;
+            }
         }
 
         // галочка ВКЛ ВЫКЛ редактирование вЫход текста
@@ -1042,12 +1046,16 @@ namespace CryptoAppTwo
         {
             if (this.checkBoxGamEditTextOut.Checked == true)
             {
-                if (gamirovanie.TextOutType == TypeDisplay.Symbol && gamirovanie.FileExtension != "txt")
-                    gamirovanie.TextOutIsEdited = true;
+                //if (gamirovanie.TextOutType == TypeDisplay.Symbol && gamirovanie.FileExtension != "txt")
+                //    gamirovanie.TextOutIsEdited = true;
                 this.txtGamTextOut.ReadOnly = false;
+                //this.txtGamTextOut.Cursor = Cursors.IBeam;
             }
             else
+            {
                 this.txtGamTextOut.ReadOnly = true;
+                //this.txtGamTextOut.Cursor = Cursors.Arrow;
+            }
         }
 
         // кнопка Bin вход текста
@@ -1064,7 +1072,7 @@ namespace CryptoAppTwo
             }
 
             TypeDisplay typeOld = gamirovanie.TextInType;
-            if (this.txtGamTextIn.Text.Length > 0 && gamirovanie.TextInIsEdited == true)
+            if (this.txtGamTextIn.Text.Length > 0 && this.flagTextInIsEdited.Checked == true)
             {
                 if (typeOld == TypeDisplay.Binary)
                     gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
@@ -1073,7 +1081,7 @@ namespace CryptoAppTwo
                 else if (typeOld == TypeDisplay.Symbol)
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
 
-                gamirovanie.TextInIsEdited = false;
+                this.flagTextInIsEdited.Checked = false;
             }
             this.txtGamTextIn.Text = Functions.ByteToBinary(gamirovanie.TextInByte);
 
@@ -1089,7 +1097,7 @@ namespace CryptoAppTwo
             this.checkBoxGamEditTextIn.Checked = false;
 
             TypeDisplay typeOld = gamirovanie.TextInType;
-            if (gamirovanie.TextInIsEdited == true)
+            if (this.flagTextInIsEdited.Checked == true)
             {
                 if (typeOld == TypeDisplay.Binary)
                     gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
@@ -1098,7 +1106,7 @@ namespace CryptoAppTwo
                 else if (typeOld == TypeDisplay.Symbol)
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
 
-                gamirovanie.TextInIsEdited = false;
+                this.flagTextInIsEdited.Checked = false;
             }
             this.txtGamTextIn.Text = Functions.ByteToSymbol(gamirovanie.TextInByte);
 
@@ -1115,7 +1123,7 @@ namespace CryptoAppTwo
             this.checkBoxGamEditTextIn.Checked = false;
 
             TypeDisplay typeOld = gamirovanie.TextInType;
-            if (gamirovanie.TextInIsEdited == true)
+            if (this.flagTextInIsEdited.Checked == true)
             {
                 if (typeOld == TypeDisplay.Binary)
                     gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
@@ -1124,7 +1132,7 @@ namespace CryptoAppTwo
                 else if (typeOld == TypeDisplay.Symbol)
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
 
-                gamirovanie.TextInIsEdited = false;
+                this.flagTextInIsEdited.Checked = false;
             }
             this.txtGamTextIn.Text = Functions.ByteToHex(gamirovanie.TextInByte);
 
@@ -1138,70 +1146,19 @@ namespace CryptoAppTwo
         // кнопка Bin вЫход текста // АААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void btnGamTextOutBinary_Click(object sender, EventArgs e)
         {
-            this.checkBoxGamEditTextOut.Checked = false;
-
-            TypeDisplay typeOld = gamirovanie.TextOutType;
-            if (gamirovanie.TextOutIsEdited == true)
-            {
-                if (typeOld == TypeDisplay.Binary)
-                    gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
-                else if (typeOld == TypeDisplay.Hex)
-                    gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
-                else if (typeOld == TypeDisplay.Symbol)
-                    gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
-            }
-
-            gamirovanie.TextOutType = TypeDisplay.Binary;
-            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
-            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
-            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
-            this.txtGamTextOut.Text = Functions.ByteToBinary(gamirovanie.TextOutByte);
+            
         }
 
         // кнопка Abs вЫход текста// АААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void btnGamTextOutSymbol_Click(object sender, EventArgs e)
         {
-            this.checkBoxGamEditTextOut.Checked = false;
-
-            TypeDisplay typeOld = gamirovanie.TextOutType;
-            if (gamirovanie.TextOutIsEdited == true)
-            {
-                if (typeOld == TypeDisplay.Binary)
-                    gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
-                else if (typeOld == TypeDisplay.Hex)
-                    gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
-                else if (typeOld == TypeDisplay.Symbol)
-                    gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
-            }
-
-            gamirovanie.TextOutType = TypeDisplay.Symbol;
-            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
-            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
-            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
-            this.txtGamTextOut.Text = Functions.ByteToSymbol(gamirovanie.TextOutByte);
+            
         }
 
         // кнопка Hex вЫход текста// АААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void btnGamTextOutHex_Click(object sender, EventArgs e)
         {
-            this.checkBoxGamEditTextOut.Checked = false;
-
-            TypeDisplay typeOld = gamirovanie.TextOutType;
-            if (gamirovanie.TextOutIsEdited == true)
-            {
-                if (typeOld == TypeDisplay.Binary)
-                    gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
-                else if (typeOld == TypeDisplay.Hex)
-                    gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
-                else if (typeOld == TypeDisplay.Symbol)
-                    gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
-            }
-
-            gamirovanie.TextOutType = TypeDisplay.Hex;
-            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
-            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
-            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
-            this.txtGamTextOut.Text = Functions.ByteToHex(gamirovanie.TextOutByte);
+            
         }
 
         // ввод текста ВХОД
@@ -1213,36 +1170,30 @@ namespace CryptoAppTwo
             if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
             {
                 e.Handled = false;
-                gamirovanie.TextInIsEdited = true;
+                this.flagTextInIsEdited.Checked = true;
             }
             else if (gamirovanie.TextInType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
             {
                 e.Handled = false;
-                gamirovanie.TextInIsEdited = true;
+                if(Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagTextInIsEdited.Checked = true;
             }
             else if (gamirovanie.TextInType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
             {
                 e.Handled = false;
-                gamirovanie.TextInIsEdited = true;
+                this.flagTextInIsEdited.Checked = true;
             }
             else if(gamirovanie.TextInType == TypeDisplay.Symbol)
             {
                 e.Handled = false;
-                gamirovanie.TextInIsEdited = true;
+                this.flagTextInIsEdited.Checked = true;
             }
             else
             {
                 e.Handled = true;
-                gamirovanie.TextInIsEdited = false;
             }
 
-        }
-
-        // изменение текста ВХОД
-        private void txtGamTextIn_TextChanged(object sender, EventArgs e)
-        {
-            if (gamirovanie.TextInType == TypeDisplay.Hex)
-                this.txtGamTextIn.Text = this.txtGamTextIn.Text.ToUpper();
         }
 
         // ввод текста ВЫХОД
@@ -1296,7 +1247,7 @@ namespace CryptoAppTwo
             // входные данные стираем
             //gamirovanie.TextInByte = new byte[0];
             //gamirovanie.TextInType = TypeDisplay.Symbol;
-            //gamirovanie.TextInIsEdited = false;
+            //this.flagTextInIsEdited.Checked = false;
             this.txtGamTextIn.Text = "";
             this.txtGamFileIn.Text = "";
             this.labelGamByteNumber.Text = "0";
@@ -1375,11 +1326,43 @@ namespace CryptoAppTwo
         // кнопка ВВОД КЛЮЧА
         private void btnGamEnterKey_Click(object sender, EventArgs e)
         {
-            FormGamEnterKey form = new FormGamEnterKey(comboBox_SimmAlg.SelectedItem.ToString());
-            form.Owner = this;
-            form.form1_btn_simm_entryKeyIV = this.btn_simm_entryKeyIV; // передали ссылку на управление кнопкой
+            FormGamEnterKey form = new FormGamEnterKey(ref this.btnGamEnterKey);
             form.ShowDialog(this);
         }
+
+        // флаг изменен ли ВХОД текст
+        private void flagTextInIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if(flagTextInIsEdited.Checked == true)
+            {
+                this.flagTextInIsEdited.Checked = true;
+                this.btnGamTextInSaveChanged.Visible = true;
+            }
+            else
+            {
+                this.flagTextInIsEdited.Checked = false;
+                this.btnGamTextInSaveChanged.Visible = false;
+            }
+        }
+
+        // флаг изменен ли вЫход текст
+        private void flagTextOutIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения ВХОД текста 
+        private void btnGamTextInSaveChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения вЫход текста 
+        private void btnGamTextOutSaveChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
 

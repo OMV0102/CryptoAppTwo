@@ -20,10 +20,10 @@ namespace CryptoAppTwo
             btnGamEnterKey = btn;
         }
 
-        public static AesCng aescng;
-        public static TripleDESCng tripledes;
-        public static string AlgName;
-        public Button btnGamEnterKey;
+        private static AesCng aescng;
+        private static TripleDESCng tripledes;
+        private static string AlgName;
+        private Button btnGamEnterKey;
 
 
         // при ЗАГРУЗКЕ ФОРМЫ для ввода ключа и IV
@@ -67,15 +67,15 @@ namespace CryptoAppTwo
 
             if (Global.Simm_EncryptOrDecrypt) // если загрузили для ШИФРОВАНИЯ
             {
-                this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key) и вектора инициализации (IV)";
+                this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key)";
                 // показать кнопки случайно генерации
                 this.btn_generate_key.Visible = true;
                 this.btn_generate_iv.Visible = true;
-                this.label_simm_entryKeyIV.Text += "\n> Стрелки - случайное заполнение ключа и вектора (IV).";
+                this.label_simm_entryKeyIV.Text += "\n> 🔄 - случайное заполнение ключа и вектора (IV).";
             }
             else  // если загрузили для РАСШИФРОВКИ
             {
-                this.Text = "РАСШИФРОВКА: Ввод ключа (Key) и вектора инициализации (IV)";
+                this.Text = "ДЕШИФРОВАНИЕ: Ввод ключа (Key)";
                 this.btn_generate_key.Visible = false;
                 this.btn_generate_iv.Visible = false;
             }
@@ -92,8 +92,8 @@ namespace CryptoAppTwo
                     Global.Simm_byte_iv = Functions.StringHexToByteArray(txt_iv.Text); // Запомнили IV
                     Global.Simm_KeyIV_isEntry = true;
 
-                    form1_btn_simm_entryKeyIV.Text = "Изменить ключ и IV (введенно)"; // Изменили название кнопки на основной форме
-                    form1_btn_simm_entryKeyIV.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
+                    //form1_btn_simm_entryKeyIV.Text = "Изменить ключ и IV (введенно)"; // Изменили название кнопки на основной форме
+                    //form1_btn_simm_entryKeyIV.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
 
                     this.Close();
                 }

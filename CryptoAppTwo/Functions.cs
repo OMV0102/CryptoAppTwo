@@ -25,6 +25,16 @@ namespace CryptoAppTwo
                 return false;
         }
 
+        // Проверка символа с a до f
+        public static bool checkSymbolaf(int numberChar)
+        {
+            //  строчные a-f
+            if (numberChar >= 97 && numberChar <= 102)
+                return true;
+            else
+                return false;
+        }
+
         // Проверка символа Binary или нет
         public static bool checkSymbolIsBinary(int numberChar)
         {
