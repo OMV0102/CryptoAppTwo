@@ -124,5 +124,14 @@
   <ItemGroup>
     <None Include="Resources\discet.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cansel_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cansel_remove2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cansel_remove21.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
