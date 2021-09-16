@@ -14,16 +14,16 @@ namespace CryptoAppTwo
 {
     public partial class FormGamEnterKey : Form
     {
-        public FormGamEnterKey(string Alg)
+        public FormGamEnterKey(ref Button btn)
         {
             InitializeComponent();
-            AlgName = Alg;
+            btnGamEnterKey = btn;
         }
 
         public static AesCng aescng;
         public static TripleDESCng tripledes;
         public static string AlgName;
-        public Button form1_btn_simm_entryKeyIV;
+        public Button btnGamEnterKey;
 
 
         // при ЗАГРУЗКЕ ФОРМЫ для ввода ключа и IV

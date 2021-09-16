@@ -1278,6 +1278,7 @@
             this.btnGamEnterKey.Tag = "";
             this.btnGamEnterKey.Text = "Ввести ключ (не введенн)";
             this.btnGamEnterKey.UseVisualStyleBackColor = false;
+            this.btnGamEnterKey.Click += new System.EventHandler(this.btnGamEnterKey_Click);
             // 
             // labelGamCaptionOut
             // 
@@ -1432,9 +1433,9 @@
             this.labelGamTextInCaption.AutoSize = true;
             this.labelGamTextInCaption.Location = new System.Drawing.Point(8, 223);
             this.labelGamTextInCaption.Name = "labelGamTextInCaption";
-            this.labelGamTextInCaption.Size = new System.Drawing.Size(295, 24);
+            this.labelGamTextInCaption.Size = new System.Drawing.Size(168, 24);
             this.labelGamTextInCaption.TabIndex = 80;
-            this.labelGamTextInCaption.Text = "Примерные считанные данные:";
+            this.labelGamTextInCaption.Text = "Входные данные:";
             // 
             // labelGamTextOutCaptionUnder
             // 

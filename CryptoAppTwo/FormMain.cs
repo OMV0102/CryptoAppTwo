@@ -999,7 +999,7 @@ namespace CryptoAppTwo
             gamirovanie.EncryptOrDecrypt = true;
             this.btnGamEncryptDecrypt.Text = "🡻 Шифровать 🡻";
             this.labelGamCaptionIn.Text = "Входные данные";
-            this.labelGamTextInCaption.Text = "Исходный текст:";
+            this.labelGamTextInCaption.Text = "Исходные данные:";
             this.labelGamCaptionOut.Text = "Зашифрованные данные:";
             this.labelGamTextOutCaption.Text = "Шифротекст:";
             this.labelGamTextOutCaptionUnder.Text = "(В файл шифротекст сохраниться в бинарном виде,\n с таким же расширением, что и исходный файл.)";
@@ -1370,6 +1370,15 @@ namespace CryptoAppTwo
                 }
             }
             ofd.Dispose();
+        }
+
+        // кнопка ВВОД КЛЮЧА
+        private void btnGamEnterKey_Click(object sender, EventArgs e)
+        {
+            FormGamEnterKey form = new FormGamEnterKey(comboBox_SimmAlg.SelectedItem.ToString());
+            form.Owner = this;
+            form.form1_btn_simm_entryKeyIV = this.btn_simm_entryKeyIV; // передали ссылку на управление кнопкой
+            form.ShowDialog(this);
         }
     }
 
