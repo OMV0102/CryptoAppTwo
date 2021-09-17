@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 
 namespace CryptoAppTwo
 {
@@ -15,7 +17,33 @@ namespace CryptoAppTwo
             return null;
         }
 
-        // Проверка символа Hex или нет
+        // Проверка соответствии формат при сохранении
+        public static bool checkStringIsBinarySequence(string strBinary)
+        {
+            //узнаем сколько блоков по 8 бит и тире вида [xxxxxxxx-]
+            int N = ((int)(strBinary.Length / 9)) * 9;
+            // проверка на количество элементов, должно быть целое число блоков по 9 символов + 8 битов в конце
+            if (N+8 != strBinary.Length) 
+                return false;
+
+            string temp1 = strBinary.Substring(0, strBinary.Length - 8);
+            string temp2 = strBinary.Substring((strBinary.Length - 8), strBinary.Length-1);
+            string strRegex1 = "";
+            string strRegex2 = @"[0\|1]{8}";
+            for (int i = 0; i < N; i++)
+            {
+                strRegex1 += @"[0\|1]{8}-";
+            }
+            bool result1 = Regex.IsMatch(temp1, strRegex1, RegexOptions.IgnoreCase);
+            bool result2 = Regex.IsMatch(temp2, strRegex2, RegexOptions.IgnoreCase);
+
+            if (result1 == true && result2 == true)
+                return true;
+            else
+                return false;
+        }
+
+        // Проверка символа Hex или нет при вводе с клавиатуры
         public static bool checkSymbolIsHex(int numberChar)
         {
             // цифры                                       заглавные A-F                                строчные a-f                            тире разделитель
@@ -25,7 +53,7 @@ namespace CryptoAppTwo
                 return false;
         }
 
-        // Проверка символа с a до f
+        // Проверка символа с a до f при вводе с клавиатуры
         public static bool checkSymbolaf(int numberChar)
         {
             //  строчные a-f
@@ -35,7 +63,7 @@ namespace CryptoAppTwo
                 return false;
         }
 
-        // Проверка символа Binary или нет
+        // Проверка символа Binary или нет при вводе с клавиатуры
         public static bool checkSymbolIsBinary(int numberChar)
         {
             // ноль                 единица              тире разделитель

@@ -1009,8 +1009,7 @@ namespace CryptoAppTwo
             this.labelGamTextOutCaptionUnder.Text = "(В файл шифротекст сохраниться в бинарном виде,\n с таким же расширением, что и исходный файл.)";
             this.btnGamSaveData.Text = "Сохранить шифротекст в файл";
             this.btnGamChoiceFileIn.Text = "Выбрать файл с данными";
-            
-            btn_simm_clear_Click(null, null); // Очистить всё при переключении
+            btnGamClear.PerformClick(); // Очистить всё при переключении
         }
 
         // кнопка режим Гамирование ДЕШИФРОВАТЬ
@@ -1025,7 +1024,7 @@ namespace CryptoAppTwo
             this.labelGamTextOutCaptionUnder.Text = "(В файл данные сохраняться в виде байт. Расширение файла\nбудет таким же, как и у файла с шифротекстом.)";
             this.btnGamSaveData.Text = "Сохранить данные в файл";
             this.btnGamChoiceFileIn.Text = "Выбрать файл с шифротекстом";
-            btn_simm_clear_Click(null, null); // Очистить всё при переключении
+            btnGamClear.PerformClick(); // Очистить всё при переключении
         }
 
         // галочка ВКЛ ВЫКЛ редактирование вход текста
@@ -1065,7 +1064,13 @@ namespace CryptoAppTwo
         // кнопка Bin вход текста
         private void btnGamTextInBinary_Click(object sender, EventArgs e)
         {
-            this.checkBoxGamEditTextIn.Checked = false;
+            if(gamirovanie.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Даные были изменены!/nСначала сохраните и ли отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
+            }
 
             if(gamirovanie.TextInByte.Length > 50000)
             {
@@ -1086,20 +1091,22 @@ namespace CryptoAppTwo
         // кнопка Abc вход текста
         private void btnGamTextInSymbol_Click(object sender, EventArgs e)
         {
-            this.checkBoxGamEditTextIn.Checked = false;
-
-            TypeDisplay typeOld = gamirovanie.TextInType;
-            if (this.flagTextInIsEdited.Checked == true)
+            if (gamirovanie.TextInIsEdited == true)
             {
-                if (typeOld == TypeDisplay.Binary)
-                    gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
-                else if (typeOld == TypeDisplay.Hex)
-                    gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
-                else if (typeOld == TypeDisplay.Symbol)
-                    gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
-
-                this.flagTextInIsEdited.Checked = false;
+                this.Enabled = false;
+                MessageBox.Show("Даные были изменены!/nСначала сохраните и ли отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
             }
+
+            if (gamirovanie.TextInByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
             this.txtGamTextIn.Text = Functions.ByteToSymbol(gamirovanie.TextInByte);
 
             gamirovanie.TextInType = TypeDisplay.Symbol;
@@ -1112,20 +1119,22 @@ namespace CryptoAppTwo
         // кнопка Hex вход текста
         private void btnGamTextInHex_Click(object sender, EventArgs e)
         {
-            this.checkBoxGamEditTextIn.Checked = false;
-
-            TypeDisplay typeOld = gamirovanie.TextInType;
-            if (this.flagTextInIsEdited.Checked == true)
+            if (gamirovanie.TextInIsEdited == true)
             {
-                if (typeOld == TypeDisplay.Binary)
-                    gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
-                else if (typeOld == TypeDisplay.Hex)
-                    gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
-                else if (typeOld == TypeDisplay.Symbol)
-                    gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
-
-                this.flagTextInIsEdited.Checked = false;
+                this.Enabled = false;
+                MessageBox.Show("Даные были изменены!/nСначала сохраните и ли отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
             }
+
+            if (gamirovanie.TextInByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
             this.txtGamTextIn.Text = Functions.ByteToHex(gamirovanie.TextInByte);
 
             gamirovanie.TextInType = TypeDisplay.Hex;
@@ -1259,12 +1268,16 @@ namespace CryptoAppTwo
                         {
                             this.txtGamTextIn.Text = Functions.ByteToBinary(gamirovanie.TextInByte);
                         }
-                        
+                        else if (gamirovanie.TextInType == TypeDisplay.Symbol)
+                        {
+                            this.txtGamTextIn.Text = Functions.ByteToSymbol(gamirovanie.TextInByte);
+                        }
+
                     }
                     else
                     {
                         this.Enabled = false;
-                        MessageBox.Show("Файла {" + ofd.FileName + "} не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Файла [" + ofd.FileName + "] не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Enabled = true;
                         return;
                     }
@@ -1292,13 +1305,13 @@ namespace CryptoAppTwo
         {
             if(flagTextInIsEdited.Checked == true)
             {
-                this.flagTextInIsEdited.Checked = true;
+                gamirovanie.TextInIsEdited = true;
                 this.btnGamTextInSaveChanged.Visible = true;
                 this.btnGamTextInCancelChanged.Visible = true;
             }
             else
             {
-                this.flagTextInIsEdited.Checked = false;
+                gamirovanie.TextInIsEdited = false;
                 this.btnGamTextInSaveChanged.Visible = false;
                 this.btnGamTextInCancelChanged.Visible = false;
             }
@@ -1315,21 +1328,38 @@ namespace CryptoAppTwo
         {
             if(gamirovanie.TextInIsEdited == true)
             {
-                if (this.flagTextInIsEdited.Checked == true)
+                if (gamirovanie.TextInType == TypeDisplay.Binary)
                 {
-                    if (gamirovanie.TextInType == TypeDisplay.Binary)
+                    if (Functions.checkStringIsBinarySequence(this.txtGamTextIn.Text) == true)
+                    {
                         gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
-                    else if (gamirovanie.TextInType == TypeDisplay.Hex)
-                        gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
-                    else if (gamirovanie.TextInType == TypeDisplay.Symbol)
-                        gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
-
-                    this.flagTextInIsEdited.Checked = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                else if (gamirovanie.TextInType == TypeDisplay.Hex)
+                {
+                    if (true == true)
+                    {
+                        gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (gamirovanie.TextInType == TypeDisplay.Symbol)
+                    gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
+
+                this.flagTextInIsEdited.Checked = false;
+
                 MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.btnGamTextInSaveChanged.Visible = false;
                 this.btnGamTextInCancelChanged.Visible = false;
             }
