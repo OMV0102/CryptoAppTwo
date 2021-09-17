@@ -99,8 +99,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabGam = new System.Windows.Forms.TabPage();
+            this.btnGamTextOutCancelChanged = new System.Windows.Forms.Button();
+            this.btnGamTextInCancelChanged = new System.Windows.Forms.Button();
+            this.btnGamTextOutSaveChanged = new System.Windows.Forms.Button();
             this.flagTextOutIsEdited = new System.Windows.Forms.CheckBox();
             this.flagTextInIsEdited = new System.Windows.Forms.CheckBox();
+            this.btnGamTextInSaveChanged = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.checkBoxGamEditTextOut = new System.Windows.Forms.CheckBox();
             this.checkBoxGamEditTextIn = new System.Windows.Forms.CheckBox();
@@ -157,10 +161,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
-            this.btnGamTextInCancelChanged = new System.Windows.Forms.Button();
-            this.btnGamTextOutSaveChanged = new System.Windows.Forms.Button();
-            this.btnGamTextInSaveChanged = new System.Windows.Forms.Button();
-            this.btnGamTextOutCancelChanged = new System.Windows.Forms.Button();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1083,6 +1083,56 @@
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гамирование";
             // 
+            // btnGamTextOutCancelChanged
+            // 
+            this.btnGamTextOutCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGamTextOutCancelChanged.BackgroundImage")));
+            this.btnGamTextOutCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGamTextOutCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextOutCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnGamTextOutCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGamTextOutCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextOutCancelChanged.Location = new System.Drawing.Point(685, 157);
+            this.btnGamTextOutCancelChanged.Name = "btnGamTextOutCancelChanged";
+            this.btnGamTextOutCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnGamTextOutCancelChanged.TabIndex = 102;
+            this.btnGamTextOutCancelChanged.TabStop = false;
+            this.btnGamTextOutCancelChanged.Tag = "";
+            this.btnGamTextOutCancelChanged.UseVisualStyleBackColor = true;
+            // 
+            // btnGamTextInCancelChanged
+            // 
+            this.btnGamTextInCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGamTextInCancelChanged.BackgroundImage")));
+            this.btnGamTextInCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGamTextInCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextInCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnGamTextInCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGamTextInCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextInCancelChanged.Location = new System.Drawing.Point(270, 217);
+            this.btnGamTextInCancelChanged.Name = "btnGamTextInCancelChanged";
+            this.btnGamTextInCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnGamTextInCancelChanged.TabIndex = 101;
+            this.btnGamTextInCancelChanged.TabStop = false;
+            this.btnGamTextInCancelChanged.Tag = "";
+            this.btnGamTextInCancelChanged.UseVisualStyleBackColor = true;
+            this.btnGamTextInCancelChanged.Click += new System.EventHandler(this.btnGamTextInCancelChanged_Click);
+            // 
+            // btnGamTextOutSaveChanged
+            // 
+            this.btnGamTextOutSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnGamTextOutSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGamTextOutSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextOutSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnGamTextOutSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGamTextOutSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextOutSaveChanged.Location = new System.Drawing.Point(726, 157);
+            this.btnGamTextOutSaveChanged.Name = "btnGamTextOutSaveChanged";
+            this.btnGamTextOutSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnGamTextOutSaveChanged.TabIndex = 100;
+            this.btnGamTextOutSaveChanged.TabStop = false;
+            this.btnGamTextOutSaveChanged.Tag = "";
+            this.btnGamTextOutSaveChanged.UseVisualStyleBackColor = true;
+            this.btnGamTextOutSaveChanged.Click += new System.EventHandler(this.btnGamTextOutSaveChanged_Click);
+            // 
             // flagTextOutIsEdited
             // 
             this.flagTextOutIsEdited.AutoSize = true;
@@ -1110,6 +1160,23 @@
             this.flagTextInIsEdited.UseVisualStyleBackColor = true;
             this.flagTextInIsEdited.Visible = false;
             this.flagTextInIsEdited.CheckedChanged += new System.EventHandler(this.flagTextInIsEdited_CheckedChanged);
+            // 
+            // btnGamTextInSaveChanged
+            // 
+            this.btnGamTextInSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnGamTextInSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGamTextInSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGamTextInSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnGamTextInSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGamTextInSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamTextInSaveChanged.Location = new System.Drawing.Point(310, 218);
+            this.btnGamTextInSaveChanged.Name = "btnGamTextInSaveChanged";
+            this.btnGamTextInSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnGamTextInSaveChanged.TabIndex = 97;
+            this.btnGamTextInSaveChanged.TabStop = false;
+            this.btnGamTextInSaveChanged.Tag = "";
+            this.btnGamTextInSaveChanged.UseVisualStyleBackColor = true;
+            this.btnGamTextInSaveChanged.Click += new System.EventHandler(this.btnGamTextInSaveChanged_Click);
             // 
             // label16
             // 
@@ -1407,14 +1474,14 @@
             // btnGamClear
             // 
             this.btnGamClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamClear.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamClear.Location = new System.Drawing.Point(287, 146);
+            this.btnGamClear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGamClear.Location = new System.Drawing.Point(270, 146);
             this.btnGamClear.Name = "btnGamClear";
-            this.btnGamClear.Size = new System.Drawing.Size(106, 35);
+            this.btnGamClear.Size = new System.Drawing.Size(123, 35);
             this.btnGamClear.TabIndex = 58;
             this.btnGamClear.TabStop = false;
             this.btnGamClear.Tag = "";
-            this.btnGamClear.Text = "Очистить";
+            this.btnGamClear.Text = "Очистить всё";
             this.btnGamClear.UseVisualStyleBackColor = true;
             this.btnGamClear.Click += new System.EventHandler(this.btnGamClear_Click);
             // 
@@ -1767,73 +1834,6 @@
             this.label11.Size = new System.Drawing.Size(129, 18);
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
-            // 
-            // btnGamTextInCancelChanged
-            // 
-            this.btnGamTextInCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGamTextInCancelChanged.BackgroundImage")));
-            this.btnGamTextInCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnGamTextInCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextInCancelChanged.FlatAppearance.BorderSize = 0;
-            this.btnGamTextInCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGamTextInCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextInCancelChanged.Location = new System.Drawing.Point(270, 217);
-            this.btnGamTextInCancelChanged.Name = "btnGamTextInCancelChanged";
-            this.btnGamTextInCancelChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnGamTextInCancelChanged.TabIndex = 101;
-            this.btnGamTextInCancelChanged.TabStop = false;
-            this.btnGamTextInCancelChanged.Tag = "";
-            this.btnGamTextInCancelChanged.UseVisualStyleBackColor = true;
-            this.btnGamTextInCancelChanged.Click += new System.EventHandler(this.btnGamTextInCancelChanged_Click);
-            // 
-            // btnGamTextOutSaveChanged
-            // 
-            this.btnGamTextOutSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
-            this.btnGamTextOutSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGamTextOutSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextOutSaveChanged.FlatAppearance.BorderSize = 0;
-            this.btnGamTextOutSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGamTextOutSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextOutSaveChanged.Location = new System.Drawing.Point(726, 157);
-            this.btnGamTextOutSaveChanged.Name = "btnGamTextOutSaveChanged";
-            this.btnGamTextOutSaveChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnGamTextOutSaveChanged.TabIndex = 100;
-            this.btnGamTextOutSaveChanged.TabStop = false;
-            this.btnGamTextOutSaveChanged.Tag = "";
-            this.btnGamTextOutSaveChanged.UseVisualStyleBackColor = true;
-            this.btnGamTextOutSaveChanged.Click += new System.EventHandler(this.btnGamTextOutSaveChanged_Click);
-            // 
-            // btnGamTextInSaveChanged
-            // 
-            this.btnGamTextInSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
-            this.btnGamTextInSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGamTextInSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextInSaveChanged.FlatAppearance.BorderSize = 0;
-            this.btnGamTextInSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGamTextInSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextInSaveChanged.Location = new System.Drawing.Point(310, 218);
-            this.btnGamTextInSaveChanged.Name = "btnGamTextInSaveChanged";
-            this.btnGamTextInSaveChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnGamTextInSaveChanged.TabIndex = 97;
-            this.btnGamTextInSaveChanged.TabStop = false;
-            this.btnGamTextInSaveChanged.Tag = "";
-            this.btnGamTextInSaveChanged.UseVisualStyleBackColor = true;
-            this.btnGamTextInSaveChanged.Click += new System.EventHandler(this.btnGamTextInSaveChanged_Click);
-            // 
-            // btnGamTextOutCancelChanged
-            // 
-            this.btnGamTextOutCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGamTextOutCancelChanged.BackgroundImage")));
-            this.btnGamTextOutCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnGamTextOutCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGamTextOutCancelChanged.FlatAppearance.BorderSize = 0;
-            this.btnGamTextOutCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGamTextOutCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGamTextOutCancelChanged.Location = new System.Drawing.Point(685, 157);
-            this.btnGamTextOutCancelChanged.Name = "btnGamTextOutCancelChanged";
-            this.btnGamTextOutCancelChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnGamTextOutCancelChanged.TabIndex = 102;
-            this.btnGamTextOutCancelChanged.TabStop = false;
-            this.btnGamTextOutCancelChanged.Tag = "";
-            this.btnGamTextOutCancelChanged.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 

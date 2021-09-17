@@ -17,22 +17,50 @@ namespace CryptoAppTwo
             return null;
         }
 
-        // Проверка соответствии формат при сохранении
+        // Проверка соответствии Binary формата при сохранении
         public static bool checkStringIsBinarySequence(string strBinary)
         {
+            int length = 8;
             //узнаем сколько блоков по 8 бит и тире вида [xxxxxxxx-]
-            int N = ((int)(strBinary.Length / 9)) * 9;
+            int N = (int)(strBinary.Length / (length+1));
             // проверка на количество элементов, должно быть целое число блоков по 9 символов + 8 битов в конце
-            if (N+8 != strBinary.Length) 
+            if ((length+1) *N+ length != strBinary.Length) 
                 return false;
 
-            string temp1 = strBinary.Substring(0, strBinary.Length - 8);
-            string temp2 = strBinary.Substring((strBinary.Length - 8), strBinary.Length-1);
+            string temp1 = strBinary.Substring(0, strBinary.Length - length);
+            string temp2 = strBinary.Substring((strBinary.Length - length), length);
             string strRegex1 = "";
             string strRegex2 = @"[0\|1]{8}";
             for (int i = 0; i < N; i++)
             {
                 strRegex1 += @"[0\|1]{8}-";
+            }
+            bool result1 = Regex.IsMatch(temp1, strRegex1, RegexOptions.IgnoreCase);
+            bool result2 = Regex.IsMatch(temp2, strRegex2, RegexOptions.IgnoreCase);
+
+            if (result1 == true && result2 == true)
+                return true;
+            else
+                return false;
+        }
+
+        // Проверка соответствии Hex формата при сохранении
+        public static bool checkStringIsHexSequence(string strBinary)
+        {
+            int length = 2;
+            //узнаем сколько блоков по 2 hex и тире вида [xx-]
+            int N = (int)(strBinary.Length / (length+1));
+            // проверка на количество элементов, должно быть целое число блоков по 3 символа + 2 hex в конце
+            if ((length+1) * N + length != strBinary.Length)
+                return false;
+
+            string temp1 = strBinary.Substring(0, strBinary.Length - length);
+            string temp2 = strBinary.Substring((strBinary.Length - length), length);
+            string strRegex1 = "";
+            string strRegex2 = @"[0-9,A-F]{2}";
+            for (int i = 0; i < N; i++)
+            {
+                strRegex1 += @"[0-9,A-F]{2}-";
             }
             bool result1 = Regex.IsMatch(temp1, strRegex1, RegexOptions.IgnoreCase);
             bool result2 = Regex.IsMatch(temp2, strRegex2, RegexOptions.IgnoreCase);

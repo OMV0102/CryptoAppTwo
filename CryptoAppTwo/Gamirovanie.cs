@@ -9,10 +9,10 @@ namespace CryptoAppTwo
     class Gamirovanie
     {
         public byte[] TextInByte = new byte[0]; // Входной массив байтов
-        public TypeDisplay TextInType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
+        public TypeDisplay TextInType = TypeDisplay.Hex; // 0 - symbol, 1 - Hex, 2 - binary
 
         public byte[] TextOutByte = new byte[0]; // ВЫходной массив байтов
-        public TypeDisplay TextOutType = TypeDisplay.Symbol; // 0 - symbol, 1 - Hex, 2 - binary
+        public TypeDisplay TextOutType = TypeDisplay.Hex; // 0 - symbol, 1 - Hex, 2 - binary
 
         public byte[] KeyByte = new byte[0]; // Ключ
         public TypeDisplay KeyType = TypeDisplay.Hex; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
