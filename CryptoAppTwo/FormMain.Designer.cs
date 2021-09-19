@@ -1383,7 +1383,7 @@
             this.btnGamEnterKey.TabIndex = 77;
             this.btnGamEnterKey.TabStop = false;
             this.btnGamEnterKey.Tag = "";
-            this.btnGamEnterKey.Text = "Ввести ключ (не введенн)";
+            this.btnGamEnterKey.Text = "Ввести ключ (отсутствует)";
             this.btnGamEnterKey.UseVisualStyleBackColor = false;
             this.btnGamEnterKey.Click += new System.EventHandler(this.btnGamEnterKey_Click);
             // 

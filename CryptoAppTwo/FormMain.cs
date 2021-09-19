@@ -1039,7 +1039,7 @@ namespace CryptoAppTwo
                 if (gamirovanie.TextInIsEdited == true)
                 {
                     this.Enabled = false;
-                    MessageBox.Show("Даные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Enabled = true;
                     this.checkBoxGamTextInEdit.Checked = true;
                 }
@@ -1111,10 +1111,10 @@ namespace CryptoAppTwo
                 return;
             }
 
-            if (gamirovanie.TextInByte.Length > 50000)
+            if (gamirovanie.FileExtension != "txt")
             {
                 this.Enabled = false;
-                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Отображение данных в тексовом виде доступно только для файлов с раширением .txt!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Enabled = true;
                 return;
             }
@@ -1139,14 +1139,6 @@ namespace CryptoAppTwo
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
                 this.btnGamTextInHex.Focus();
-                return;
-            }
-
-            if (gamirovanie.TextInByte.Length > 50000)
-            {
-                this.Enabled = false;
-                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Enabled = true;
                 return;
             }
 

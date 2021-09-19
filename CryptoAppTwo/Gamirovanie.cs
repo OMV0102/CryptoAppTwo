@@ -15,9 +15,9 @@ namespace CryptoAppTwo
         public TypeDisplay TextOutType = TypeDisplay.Hex; // 0 - symbol, 1 - Hex, 2 - binary
 
         public byte[] KeyByte = new byte[0]; // Ключ
-        public TypeDisplay KeyType = TypeDisplay.Hex; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
+        public TypeDisplay KeyType = TypeDisplay.Binary; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
         public bool KeyIsEntry = false; // Введен ли ключ или нет
-        public bool KeyIsGenerated = false; // Сгенерирован ли ключ автоматически или нет
+        public bool KeyIsCorrect = false; // Сгенерирован ли ключ автоматически или нет
 
         public bool EncryptOrDecrypt = true; // Режим либо шифруем либо ДЕшифруем
 
@@ -25,5 +25,6 @@ namespace CryptoAppTwo
 
         public bool TextInIsEdited = false;
         public bool TextOutIsEdited = false;
+        public bool KeyIsEdited = false;
     }
 }

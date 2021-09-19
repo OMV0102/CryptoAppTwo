@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelCaption.Text" xml:space="preserve">
-    <value>&gt; Ключом могут быть только 16-ричные цифры (0-9, A-F).
-&gt; Длина ключа должна быть обязательно равна NN знакам!
-
-&gt; В векторе могут быть только 16-ричные цифры (0-9, A-F).
-&gt; Длина должна быть обязательно равна NN знакам!
-
-&gt; 🔄 - случайное заполнение.</value>
-  </data>
   <metadata name="toolTip_LoadKeyIV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
