@@ -21,7 +21,7 @@ namespace CryptoAppTwo
 
         public bool EncryptOrDecrypt = true; // Режим либо шифруем либо ДЕшифруем
 
-        public string FileExtension = "";  // Расширение считанного файла
+        public string FileExtension = "txt";  // Расширение считанного файла
 
         public bool TextInIsEdited = false;
         public bool TextOutIsEdited = false;

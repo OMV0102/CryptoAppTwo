@@ -45,11 +45,11 @@ namespace CryptoAppTwo
             }
 
             // Подсказка у кнопки загрузки ключа
-            this.toolTip_LoadKeyIV.ToolTipTitle = this.btnKeyLoad.Text;
-            this.toolTip_LoadKeyIV.ToolTipIcon = ToolTipIcon.Info;
-            this.toolTip_LoadKeyIV.SetToolTip(this.btnKeyLoad, "В файле должно быть две строки в 16-ричном виде.\n1-ая строка: Ключ длинной 64 знака.\n2-ая строка: Вектор(IV) длиной 32 знакак.");
+            //this.toolTip_LoadKeyIV.ToolTipTitle = this.btnKeyLoad.Text;
+            //this.toolTip_LoadKeyIV.ToolTipIcon = ToolTipIcon.Info;
+            //this.toolTip_LoadKeyIV.SetToolTip(this.btnKeyLoad, "В файле должно быть две строки в 16-ричном виде.\n1-ая строка: Ключ длинной 64 знака.\n2-ая строка: Вектор(IV) длиной 32 знака.");
 
-            if (Global.Simm_EncryptOrDecrypt) // если загрузили для ШИФРОВАНИЯ
+            if (gamirovanie.EncryptOrDecrypt == true) // если загрузили для ШИФРОВАНИЯ
             {
                 this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key)";
                 // показать кнопки случайной генерации
@@ -149,6 +149,7 @@ namespace CryptoAppTwo
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Выбрать файл с ключом..."; // Заголовок окна
             ofd.InitialDirectory = Application.StartupPath; // Папка откуда запустили exe
+            ofd.Filter = "Keys(*.key)|*.key"; // расширения файла ключа
 
             if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
             {

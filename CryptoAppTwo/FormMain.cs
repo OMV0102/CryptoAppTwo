@@ -1000,7 +1000,6 @@ namespace CryptoAppTwo
         // кнопка режим Гамирование ШИФРОВАТЬ
         private void radioBtnGamEncrypt_CheckedChanged(object sender, EventArgs e)
         {
-            gamirovanie.EncryptOrDecrypt = true;
             this.btnGamEncryptDecrypt.Text = "🡻 Шифровать 🡻";
             this.labelGamCaptionIn.Text = "Входные данные";
             this.labelGamTextInCaption.Text = "Исходные данные:";
@@ -1010,12 +1009,12 @@ namespace CryptoAppTwo
             this.btnGamSaveData.Text = "Сохранить шифротекст в файл";
             this.btnGamChoiceFileIn.Text = "Выбрать файл с данными";
             btnGamClear.PerformClick(); // Очистить всё при переключении
+            gamirovanie.EncryptOrDecrypt = true;
         }
 
         // кнопка режим Гамирование ДЕШИФРОВАТЬ
         private void radioBtnGamDecrypt_CheckedChanged(object sender, EventArgs e)
         {
-            gamirovanie.EncryptOrDecrypt = false;
             this.btnGamEncryptDecrypt.Text = "🡻 Дешифровать 🡻";
             this.labelGamCaptionIn.Text = "Зашифрованные данные";
             this.labelGamCaptionOut.Text = "Дешифрованные данные";
@@ -1025,6 +1024,7 @@ namespace CryptoAppTwo
             this.btnGamSaveData.Text = "Сохранить данные в файл";
             this.btnGamChoiceFileIn.Text = "Выбрать файл с шифротекстом";
             btnGamClear.PerformClick(); // Очистить всё при переключении
+            gamirovanie.EncryptOrDecrypt = false;
         }
 
         // галочка ВКЛ ВЫКЛ редактирование вход текста
@@ -1114,7 +1114,7 @@ namespace CryptoAppTwo
             if (gamirovanie.FileExtension != "txt")
             {
                 this.Enabled = false;
-                MessageBox.Show("Отображение данных в тексовом виде доступно только для файлов с раширением .txt!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с раширением .txt!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Enabled = true;
                 return;
             }
@@ -1241,6 +1241,9 @@ namespace CryptoAppTwo
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Выбрать файл ..."; // Заголовок окна
             ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
+
+            if(gamirovanie.EncryptOrDecrypt == false)
+                ofd.Filter = "Keys(*.secret)|*.secret"; // расширение файла с шифротекстом
 
             if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
             {
