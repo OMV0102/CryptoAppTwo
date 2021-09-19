@@ -34,37 +34,37 @@ namespace CryptoAppTwo
             if (gamirovanie.KeyIsEntry == true)
             {
                 // ВЫВЕСТИ КЛЮЧ НА ФОРМУ
-                this.txt_key.Text = Functions.ByteToHex(gamirovanie.KeyByte);
+                this.txtKey.Text = Functions.ByteToHex(gamirovanie.KeyByte);
             }
 
             // Подсказка у кнопки загрузки ключа
-            this.toolTip_LoadKeyIV.ToolTipTitle = this.btn_loadKeyIV.Text;
+            this.toolTip_LoadKeyIV.ToolTipTitle = this.btnKeyLoad.Text;
             this.toolTip_LoadKeyIV.ToolTipIcon = ToolTipIcon.Info;
-            this.toolTip_LoadKeyIV.SetToolTip(this.btn_loadKeyIV, "В файле должно быть две строки в 16-ричном виде.\n1-ая строка: Ключ длинной 64 знака.\n2-ая строка: Вектор(IV) длиной 32 знакак.");
+            this.toolTip_LoadKeyIV.SetToolTip(this.btnKeyLoad, "В файле должно быть две строки в 16-ричном виде.\n1-ая строка: Ключ длинной 64 знака.\n2-ая строка: Вектор(IV) длиной 32 знакак.");
 
             // Инструкция сверху формы
-            this.label_simm_entryKeyIV.Text = "> Ключом могут быть только 16-ричные цифры (0-9, A-F).\n";
-            this.label_simm_entryKeyIV.Text += "> Длина ключа должна быть обязательно равна " + txt_key.MaxLength + " знакам!\n\n";
-            this.label_simm_entryKeyIV.Text += "> В векторе могут быть только 16-ричные цифры (0-9, A-F).\n";
-            this.label_simm_entryKeyIV.Text += "> Длина должна быть обязательно равна "+ txt_iv.MaxLength + " знакам!\n";
+            this.labelCaption.Text = "> Ключом могут быть только 16-ричные цифры (0-9, A-F).\n";
+            this.labelCaption.Text += "> Длина ключа должна быть обязательно равна " + txt_key.MaxLength + " знакам!\n\n";
+            this.labelCaption.Text += "> В векторе могут быть только 16-ричные цифры (0-9, A-F).\n";
+            this.labelCaption.Text += "> Длина должна быть обязательно равна "+ txt_iv.MaxLength + " знакам!\n";
             
 
             if (Global.Simm_EncryptOrDecrypt) // если загрузили для ШИФРОВАНИЯ
             {
                 this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key)";
                 // показать кнопки случайной генерации
-                this.btn_generate_key.Visible = true;
-                this.label_simm_entryKeyIV.Text += "\n> 🔄 - случайное заполнение ключа и вектора (IV).";
+                this.btnKeyGenerate.Visible = true;
+                this.labelCaption.Text += "\n> 🔄 - случайное заполнение ключа и вектора (IV).";
             }
             else  // если загрузили для РАСШИФРОВКИ
             {
                 this.Text = "ДЕШИФРОВАНИЕ: Ввод ключа (Key)";
-                this.btn_generate_key.Visible = false;
+                this.btnKeyGenerate.Visible = false;
             }
         }
 
         // кнопка ПОДТВЕРДИТЬ
-        private void btn_confirm_entry_Click(object sender, EventArgs e)
+        private void btnKeyConfirm_Click(object sender, EventArgs e)
         {
             if(txt_key.Text.Length == txt_key.MaxLength)
             {
@@ -91,39 +91,21 @@ namespace CryptoAppTwo
         }
 
         // Генерировать ключ
-        private void btn_generate_key_Click(object sender, EventArgs e)
+        private void btnKeyGenerate_Click(object sender, EventArgs e)
         {
-            if(AlgName == "AES")
+            if(gamirovanie.TextInByte.Length > 0)
             {
-                aescng.GenerateKey();
-                this.txt_key.Text = Functions.ByteArrayTOStringHex(aescng.Key);
+                gamirovanie.KeyByte = Functions.PRNGGenerateByteArray(gamirovanie.TextInByte.Length);
+                this.txt
             }
-
-            if (AlgName == "3DES")
+            else
             {
-                tripledes.GenerateKey();
-                this.txt_key.Text = Functions.ByteArrayTOStringHex(tripledes.Key);
-            }
-        }
 
-        // Генерировать вектор инициализации IV
-        private void btn_generate_iv_Click(object sender, EventArgs e)
-        {
-            if (AlgName == "AES")
-            {
-                aescng.GenerateIV();
-                this.txt_iv.Text = Functions.ByteArrayTOStringHex(aescng.IV);
-            }
-
-            if (AlgName == "3DES")
-            {
-                tripledes.GenerateIV();
-                this.txt_iv.Text = Functions.ByteArrayTOStringHex(tripledes.IV);
             }
         }
 
         // Ввод символа в поле ключа (только 16-ричные символы)
-        private void txt_key_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtKey_KeyPress(object sender, KeyPressEventArgs e)
         {
             if((e.KeyChar >= 48 && e.KeyChar <= 57) || (e.KeyChar >= 65 && e.KeyChar <= 70) || (e.KeyChar >= 97 && e.KeyChar <= 102) || e.KeyChar == 8 || e.KeyChar == 127)
             {
@@ -137,21 +119,8 @@ namespace CryptoAppTwo
             }
         }
 
-        // Ввод символа в поле iv (только 16-ричные символы)
-        private void txt_iv_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || (e.KeyChar >= 65 && e.KeyChar <= 70) || (e.KeyChar >= 97 && e.KeyChar <= 102) || e.KeyChar == 8 || e.KeyChar == 127)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
         // кнопка ЗАГРУЗИТЬ ключ и IV из файла
-        private void btn_loadKeyIV_Click(object sender, EventArgs e)
+        private void btnKeyLoad_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Выбрать файл с ключом и IV ..."; // Заголовок окна
@@ -199,19 +168,16 @@ namespace CryptoAppTwo
             ofd.Dispose();
         }
 
-        // При закрытии формы
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        // БИНАРНЫЙ формат
+        private void btnKeyBinary_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Освободили память от aes и 3des
-                aescng.Dispose();
-                tripledes.Dispose();
-            }
-            catch (Exception error)
-            {
 
-            }
+        }
+
+        // HEX формат
+        private void btnKeyHex_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

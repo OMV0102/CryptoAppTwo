@@ -171,6 +171,7 @@ namespace CryptoAppTwo
         }
 
         // ПРНГ для генерации ключа
+        // используется для генерации ключа в гамировании
         public static byte[] PRNGGenerateByteArray(int lentgh)
         {
             RNGCryptoServiceProvider rng = null;

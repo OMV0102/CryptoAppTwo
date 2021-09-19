@@ -106,8 +106,8 @@
             this.flagTextInIsEdited = new System.Windows.Forms.CheckBox();
             this.btnGamTextInSaveChanged = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.checkBoxGamEditTextOut = new System.Windows.Forms.CheckBox();
-            this.checkBoxGamEditTextIn = new System.Windows.Forms.CheckBox();
+            this.checkBoxGamTextOutEdit = new System.Windows.Forms.CheckBox();
+            this.checkBoxGamTextInEdit = new System.Windows.Forms.CheckBox();
             this.btnGamTextOutBinary = new System.Windows.Forms.Button();
             this.btnGamTextOutHex = new System.Windows.Forms.Button();
             this.btnGamTextOutSymbol = new System.Windows.Forms.Button();
@@ -1044,8 +1044,8 @@
             this.tabGam.Controls.Add(this.flagTextInIsEdited);
             this.tabGam.Controls.Add(this.btnGamTextInSaveChanged);
             this.tabGam.Controls.Add(this.label16);
-            this.tabGam.Controls.Add(this.checkBoxGamEditTextOut);
-            this.tabGam.Controls.Add(this.checkBoxGamEditTextIn);
+            this.tabGam.Controls.Add(this.checkBoxGamTextOutEdit);
+            this.tabGam.Controls.Add(this.checkBoxGamTextInEdit);
             this.tabGam.Controls.Add(this.btnGamTextOutBinary);
             this.tabGam.Controls.Add(this.btnGamTextOutHex);
             this.tabGam.Controls.Add(this.btnGamTextOutSymbol);
@@ -1187,31 +1187,31 @@
             this.label16.TabIndex = 96;
             this.label16.Text = "Вид отображения:";
             // 
-            // checkBoxGamEditTextOut
+            // checkBoxGamTextOutEdit
             // 
-            this.checkBoxGamEditTextOut.AutoSize = true;
-            this.checkBoxGamEditTextOut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxGamEditTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxGamEditTextOut.Location = new System.Drawing.Point(764, 160);
-            this.checkBoxGamEditTextOut.Name = "checkBoxGamEditTextOut";
-            this.checkBoxGamEditTextOut.Size = new System.Drawing.Size(56, 24);
-            this.checkBoxGamEditTextOut.TabIndex = 95;
-            this.checkBoxGamEditTextOut.Text = "Edit";
-            this.checkBoxGamEditTextOut.UseVisualStyleBackColor = true;
-            this.checkBoxGamEditTextOut.CheckedChanged += new System.EventHandler(this.checkBoxGamEditTextOut_CheckedChanged);
+            this.checkBoxGamTextOutEdit.AutoSize = true;
+            this.checkBoxGamTextOutEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxGamTextOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxGamTextOutEdit.Location = new System.Drawing.Point(764, 160);
+            this.checkBoxGamTextOutEdit.Name = "checkBoxGamTextOutEdit";
+            this.checkBoxGamTextOutEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxGamTextOutEdit.TabIndex = 95;
+            this.checkBoxGamTextOutEdit.Text = "Edit";
+            this.checkBoxGamTextOutEdit.UseVisualStyleBackColor = true;
+            this.checkBoxGamTextOutEdit.CheckedChanged += new System.EventHandler(this.checkBoxGamEditTextOut_CheckedChanged);
             // 
-            // checkBoxGamEditTextIn
+            // checkBoxGamTextInEdit
             // 
-            this.checkBoxGamEditTextIn.AutoSize = true;
-            this.checkBoxGamEditTextIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxGamEditTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxGamEditTextIn.Location = new System.Drawing.Point(351, 223);
-            this.checkBoxGamEditTextIn.Name = "checkBoxGamEditTextIn";
-            this.checkBoxGamEditTextIn.Size = new System.Drawing.Size(56, 24);
-            this.checkBoxGamEditTextIn.TabIndex = 94;
-            this.checkBoxGamEditTextIn.Text = "Edit";
-            this.checkBoxGamEditTextIn.UseVisualStyleBackColor = true;
-            this.checkBoxGamEditTextIn.CheckedChanged += new System.EventHandler(this.checkBoxGamEditTextIn_CheckedChanged);
+            this.checkBoxGamTextInEdit.AutoSize = true;
+            this.checkBoxGamTextInEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxGamTextInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxGamTextInEdit.Location = new System.Drawing.Point(351, 223);
+            this.checkBoxGamTextInEdit.Name = "checkBoxGamTextInEdit";
+            this.checkBoxGamTextInEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxGamTextInEdit.TabIndex = 94;
+            this.checkBoxGamTextInEdit.Text = "Edit";
+            this.checkBoxGamTextInEdit.UseVisualStyleBackColor = true;
+            this.checkBoxGamTextInEdit.CheckedChanged += new System.EventHandler(this.checkBoxGamEditTextIn_CheckedChanged);
             // 
             // btnGamTextOutBinary
             // 
@@ -1988,8 +1988,8 @@
         private System.Windows.Forms.Button btnGamTextOutBinary;
         private System.Windows.Forms.Button btnGamTextOutHex;
         private System.Windows.Forms.Button btnGamTextOutSymbol;
-        private System.Windows.Forms.CheckBox checkBoxGamEditTextIn;
-        private System.Windows.Forms.CheckBox checkBoxGamEditTextOut;
+        private System.Windows.Forms.CheckBox checkBoxGamTextInEdit;
+        private System.Windows.Forms.CheckBox checkBoxGamTextOutEdit;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ToolTip toolTipGamFileIn;
         private System.Windows.Forms.Button btnGamTextInSaveChanged;

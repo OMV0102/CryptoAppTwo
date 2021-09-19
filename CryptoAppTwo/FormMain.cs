@@ -51,8 +51,8 @@ namespace CryptoAppTwo
 
             gamirovanie = new Gamirovanie();
             this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
-            this.checkBoxGamEditTextIn.Checked = false;
-            this.checkBoxGamEditTextOut.Checked = false;
+            this.checkBoxGamTextInEdit.Checked = false;
+            this.checkBoxGamTextOutEdit.Checked = false;
             this.txtGamTextIn.ReadOnly = true;
             this.txtGamTextOut.ReadOnly = true;
             this.btnGamTextInSaveChanged.Visible = false;
@@ -1030,7 +1030,7 @@ namespace CryptoAppTwo
         // галочка ВКЛ ВЫКЛ редактирование вход текста
         private void checkBoxGamEditTextIn_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.checkBoxGamEditTextIn.Checked == true)
+            if (this.checkBoxGamTextInEdit.Checked == true)
             {
                     this.txtGamTextIn.ReadOnly = false;
             }
@@ -1041,7 +1041,7 @@ namespace CryptoAppTwo
                     this.Enabled = false;
                     MessageBox.Show("Даные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Enabled = true;
-                    this.checkBoxGamEditTextIn.Checked = true;
+                    this.checkBoxGamTextInEdit.Checked = true;
                 }
                 else
                 {
@@ -1053,7 +1053,7 @@ namespace CryptoAppTwo
         // галочка ВКЛ ВЫКЛ редактирование вЫход текста // ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void checkBoxGamEditTextOut_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.checkBoxGamEditTextOut.Checked == true)
+            if (this.checkBoxGamTextOutEdit.Checked == true)
             {
                 //if (gamirovanie.TextOutType == TypeDisplay.Symbol && gamirovanie.FileExtension != "txt")
                 //    gamirovanie.TextOutIsEdited = true;
@@ -1180,7 +1180,7 @@ namespace CryptoAppTwo
         // ввод текста ВХОД
         private void txtGamTextIn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (this.checkBoxGamEditTextIn.Checked == false)
+            if (this.checkBoxGamTextInEdit.Checked == false)
                 return;
 
             if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
@@ -1349,7 +1349,7 @@ namespace CryptoAppTwo
                     {
                         gamirovanie.TextInByte = Functions.BinaryToByte(this.txtGamTextIn.Text);
                         this.flagTextInIsEdited.Checked = false;
-                        this.checkBoxGamEditTextIn.Checked = false;
+                        this.checkBoxGamTextInEdit.Checked = false;
                     }
                     else
                     {
@@ -1365,7 +1365,7 @@ namespace CryptoAppTwo
                     {
                         gamirovanie.TextInByte = Functions.HexToByte(this.txtGamTextIn.Text);
                         this.flagTextInIsEdited.Checked = false;
-                        this.checkBoxGamEditTextIn.Checked = false;
+                        this.checkBoxGamTextInEdit.Checked = false;
                     }
                     else
                     {
@@ -1379,7 +1379,7 @@ namespace CryptoAppTwo
                 {
                     gamirovanie.TextInByte = Functions.SymbolToByte(this.txtGamTextIn.Text);
                     this.flagTextInIsEdited.Checked = false;
-                    this.checkBoxGamEditTextIn.Checked = false;
+                    this.checkBoxGamTextInEdit.Checked = false;
                 }
 
                 //вывести новое число байт
@@ -1392,7 +1392,7 @@ namespace CryptoAppTwo
                 MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.btnGamTextInSaveChanged.Visible = false;
                 this.btnGamTextInCancelChanged.Visible = false;
-                this.checkBoxGamEditTextIn.Checked = false;
+                this.checkBoxGamTextInEdit.Checked = false;
             }
         }
 
@@ -1413,7 +1413,7 @@ namespace CryptoAppTwo
                 this.txtGamTextIn.Text = Functions.ByteToSymbol(gamirovanie.TextInByte);
 
             this.flagTextInIsEdited.Checked = false;
-            this.checkBoxGamEditTextIn.Checked = false;
+            this.checkBoxGamTextInEdit.Checked = false;
         }
     }
 
