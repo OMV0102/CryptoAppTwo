@@ -27,7 +27,15 @@ namespace CryptoAppTwo
         // при ЗАГРУЗКЕ ФОРМЫ 
         private void FormGamEnterKey_Load(object sender, EventArgs e)
         {
+
             this.flagKeyIsEdited.Visible = false;
+            this.flagKeyIsEdited.Checked = false;
+            this.checkBoxKeyEdit.Checked = false;
+            this.txtKey.ReadOnly = true;
+            this.btnKeySaveChanged.Visible = false;
+            this.btnKeyCancelChanged.Visible = false;
+
+            this.txtKey.Text = "";
 
             // если раннее были введенны ключи то вывести их на форму
             if (gamirovanie.KeyIsEntry == true)
@@ -68,27 +76,21 @@ namespace CryptoAppTwo
             }
 
 
-            if(txt_key.Text.Length == txt_key.MaxLength)
+            if(txtKey.Text.Length == txtKey.MaxLength)
             {
-                if (txt_iv.Text.Length == txt_iv.MaxLength)
-                {
-                    Global.Simm_byte_key = Functions.StringHexToByteArray(txt_key.Text); // Запомнили ключ
-                    Global.Simm_byte_iv = Functions.StringHexToByteArray(txt_iv.Text); // Запомнили IV
-                    Global.Simm_KeyIV_isEntry = true;
 
-                    this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
-                    this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
+                Global.Simm_byte_key = Functions.StringHexToByteArray(txtKey.Text); // Запомнили ключ
+                Global.Simm_KeyIV_isEntry = true;
 
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Число символов в IV должно быть " + txt_iv.MaxLength.ToString() + "!\nОтредактируйте IV или сгенерируйте случайно.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                }
+                this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
+                this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
+
+                this.Close();
+
             }
             else
             {
-                MessageBox.Show("Число символов в ключе должно быть " + txt_key.MaxLength.ToString() + "!\nОтредактируйте ключ или сгенерируйте случайно.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Число символов в ключе должно быть " + txtKey.MaxLength.ToString() + "!\nОтредактируйте ключ или сгенерируйте случайно.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             }
         }
 
