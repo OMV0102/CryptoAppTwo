@@ -14,43 +14,27 @@ namespace CryptoAppTwo
 {
     public partial class FormGamEnterKey : Form
     {
-        public FormGamEnterKey(ref Button btn)
+        public FormGamEnterKey(ref Button btn, ref Gamirovanie gam)
         {
             InitializeComponent();
-            btnGamEnterKey = btn;
+            this.btnGamEnterKey = btn;
+            this.gamirovanie = gam;
         }
 
-        private static AesCng aescng;
-        private static TripleDESCng tripledes;
-        private static string AlgName;
         private Button btnGamEnterKey;
+        private Gamirovanie gamirovanie;
+
 
 
         // при ЗАГРУЗКЕ ФОРМЫ для ввода ключа и IV
-        private void Form2_Load(object sender, EventArgs e)
+        private void FormGamEnterKey_Load(object sender, EventArgs e)
         {
-            // Выделили память и установили длину ключей и IV
-            // в зависимости от алгоритма
-            aescng = new AesCng();
-            tripledes = new TripleDESCng();
-            if (AlgName == "AES")
-            {
-                this.txt_key.MaxLength = 64;
-                this.txt_iv.MaxLength = 32;
-
-            }
-
-            if (AlgName == "3DES")
-            {
-                this.txt_key.MaxLength = 48;
-                this.txt_iv.MaxLength = 16;
-            }
 
             // если раннее были введенны ключи то вывести их на форму
-            if (Global.Simm_KeyIV_isEntry)
+            if (gamirovanie.KeyIsEntry == true)
             {
-                this.txt_key.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_key);
-                this.txt_iv.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_iv);
+                // ВЫВЕСТИ КЛЮЧ НА ФОРМУ
+                this.txt_key.Text = Functions.ByteToHex(gamirovanie.KeyByte);
             }
 
             // Подсказка у кнопки загрузки ключа
@@ -68,16 +52,14 @@ namespace CryptoAppTwo
             if (Global.Simm_EncryptOrDecrypt) // если загрузили для ШИФРОВАНИЯ
             {
                 this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key)";
-                // показать кнопки случайно генерации
+                // показать кнопки случайной генерации
                 this.btn_generate_key.Visible = true;
-                this.btn_generate_iv.Visible = true;
                 this.label_simm_entryKeyIV.Text += "\n> 🔄 - случайное заполнение ключа и вектора (IV).";
             }
             else  // если загрузили для РАСШИФРОВКИ
             {
                 this.Text = "ДЕШИФРОВАНИЕ: Ввод ключа (Key)";
                 this.btn_generate_key.Visible = false;
-                this.btn_generate_iv.Visible = false;
             }
         }
 
@@ -92,8 +74,8 @@ namespace CryptoAppTwo
                     Global.Simm_byte_iv = Functions.StringHexToByteArray(txt_iv.Text); // Запомнили IV
                     Global.Simm_KeyIV_isEntry = true;
 
-                    //form1_btn_simm_entryKeyIV.Text = "Изменить ключ и IV (введенно)"; // Изменили название кнопки на основной форме
-                    //form1_btn_simm_entryKeyIV.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
+                    this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
+                    this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
 
                     this.Close();
                 }

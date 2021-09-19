@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-
+using System.Security.Cryptography;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CryptoAppTwo
 {
@@ -166,6 +168,29 @@ namespace CryptoAppTwo
             }
             strBin += Convert.ToString(byteArr[N - 1], 2).PadLeft(step, '0');
             return strBin;
+        }
+
+        // ПРНГ для генерации ключа
+        public static byte[] PRNGGenerateByteArray(int lentgh)
+        {
+            RNGCryptoServiceProvider rng = null;
+            byte[] result = null;
+            try
+            {
+                rng = new RNGCryptoServiceProvider(); // Выделили память под генератор случайных чисел; // объект класса генератора псевдослучайных чисел
+                result = new byte[lentgh];
+                rng.GetBytes(result);
+            }
+            catch (Exception e)
+            {
+                string path = Application.StartupPath + "\\" + "CryptoAppTwoErrorMessage_" + Guid.NewGuid().ToString() + ".txt";
+                File.WriteAllText(path, e.Message + "\n" + e.StackTrace);
+            }
+            finally
+            {
+                rng.Dispose();
+            }
+            return result;
         }
 
         //=============================================================

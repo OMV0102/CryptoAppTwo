@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSimmEnterKey));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGamEnterKey));
             this.label_simm_entryKeyIV = new System.Windows.Forms.Label();
             this.btn_confirm_entry = new System.Windows.Forms.Button();
             this.txt_key = new System.Windows.Forms.TextBox();
-            this.txt_iv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btn_generate_key = new System.Windows.Forms.Button();
-            this.btn_generate_iv = new System.Windows.Forms.Button();
             this.btn_loadKeyIV = new System.Windows.Forms.Button();
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
@@ -81,18 +78,6 @@
             this.txt_key.TabStop = false;
             this.txt_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_key_KeyPress);
             // 
-            // txt_iv
-            // 
-            this.txt_iv.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txt_iv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_iv.Location = new System.Drawing.Point(246, 197);
-            this.txt_iv.MaxLength = 32;
-            this.txt_iv.Name = "txt_iv";
-            this.txt_iv.Size = new System.Drawing.Size(490, 26);
-            this.txt_iv.TabIndex = 82;
-            this.txt_iv.TabStop = false;
-            this.txt_iv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_iv_KeyPress);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -104,19 +89,6 @@
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 84;
             this.label1.Text = "Ключ:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(24, 200);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 20);
-            this.label2.TabIndex = 85;
-            this.label2.Text = "Вектор инициализации (IV):";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btn_generate_key
             // 
@@ -131,32 +103,19 @@
             this.btn_generate_key.UseVisualStyleBackColor = true;
             this.btn_generate_key.Click += new System.EventHandler(this.btn_generate_key_Click);
             // 
-            // btn_generate_iv
-            // 
-            this.btn_generate_iv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_generate_iv.BackgroundImage")));
-            this.btn_generate_iv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_generate_iv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_generate_iv.Location = new System.Drawing.Point(743, 192);
-            this.btn_generate_iv.Name = "btn_generate_iv";
-            this.btn_generate_iv.Size = new System.Drawing.Size(35, 35);
-            this.btn_generate_iv.TabIndex = 87;
-            this.btn_generate_iv.TabStop = false;
-            this.btn_generate_iv.UseVisualStyleBackColor = true;
-            this.btn_generate_iv.Click += new System.EventHandler(this.btn_generate_iv_Click);
-            // 
             // btn_loadKeyIV
             // 
             this.btn_loadKeyIV.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_loadKeyIV.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.btn_loadKeyIV.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.btn_loadKeyIV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_loadKeyIV.Location = new System.Drawing.Point(858, 200);
+            this.btn_loadKeyIV.Location = new System.Drawing.Point(829, 219);
             this.btn_loadKeyIV.Margin = new System.Windows.Forms.Padding(6);
             this.btn_loadKeyIV.Name = "btn_loadKeyIV";
-            this.btn_loadKeyIV.Size = new System.Drawing.Size(173, 51);
+            this.btn_loadKeyIV.Size = new System.Drawing.Size(205, 40);
             this.btn_loadKeyIV.TabIndex = 88;
             this.btn_loadKeyIV.TabStop = false;
-            this.btn_loadKeyIV.Text = "Загрузить ключ и IV из файла";
+            this.btn_loadKeyIV.Text = "Загрузить ключ файла";
             this.btn_loadKeyIV.UseVisualStyleBackColor = true;
             this.btn_loadKeyIV.Click += new System.EventHandler(this.btn_loadKeyIV_Click);
             // 
@@ -167,28 +126,25 @@
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
             // 
-            // FormSimmEnterKey
+            // FormGamEnterKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 288);
             this.Controls.Add(this.btn_loadKeyIV);
-            this.Controls.Add(this.btn_generate_iv);
             this.Controls.Add(this.btn_generate_key);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_iv);
             this.Controls.Add(this.txt_key);
             this.Controls.Add(this.btn_confirm_entry);
             this.Controls.Add(this.label_simm_entryKeyIV);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "FormSimmEnterKey";
+            this.Name = "FormGamEnterKey";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key) и вектора инициализации (IV)";
+            this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += new System.EventHandler(this.FormGamEnterKey_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,11 +154,8 @@
         private System.Windows.Forms.Label label_simm_entryKeyIV;
         private System.Windows.Forms.Button btn_confirm_entry;
         private System.Windows.Forms.TextBox txt_key;
-        private System.Windows.Forms.TextBox txt_iv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_generate_key;
-        private System.Windows.Forms.Button btn_generate_iv;
         private System.Windows.Forms.Button btn_loadKeyIV;
         private System.Windows.Forms.ToolTip toolTip_LoadKeyIV;
     }

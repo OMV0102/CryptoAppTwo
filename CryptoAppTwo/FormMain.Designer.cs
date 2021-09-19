@@ -1850,7 +1850,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CryptoAppTwo";
-            this.Load += new System.EventHandler(this.Form_main_Load);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabAsimAlg.ResumeLayout(false);
             this.tabAsimAlg.PerformLayout();
             this.tabSimAlg.ResumeLayout(false);

@@ -23,7 +23,7 @@ namespace CryptoAppTwo
         }
 
         // при ЗАГРУЗКЕ ФОРМЫ
-        private void Form_main_Load(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
             this.tabControlMain.SelectedIndex = 0;
 
@@ -1311,7 +1311,7 @@ namespace CryptoAppTwo
         // кнопка ВВОД КЛЮЧА
         private void btnGamEnterKey_Click(object sender, EventArgs e)
         {
-            FormGamEnterKey form = new FormGamEnterKey(ref this.btnGamEnterKey);
+            FormGamEnterKey form = new FormGamEnterKey(ref this.btnGamEnterKey, ref gamirovanie);
             form.ShowDialog(this);
         }
 

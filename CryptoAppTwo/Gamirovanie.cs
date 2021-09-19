@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoAppTwo
 {
-    class Gamirovanie
+    public class Gamirovanie
     {
         public byte[] TextInByte = new byte[0]; // Входной массив байтов
         public TypeDisplay TextInType = TypeDisplay.Hex; // 0 - symbol, 1 - Hex, 2 - binary
@@ -17,6 +17,7 @@ namespace CryptoAppTwo
         public byte[] KeyByte = new byte[0]; // Ключ
         public TypeDisplay KeyType = TypeDisplay.Hex; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
         public bool KeyIsEntry = false; // Введен ли ключ или нет
+        public bool KeyIsGenerated = false; // Сгенерирован ли ключ автоматически или нет
 
         public bool EncryptOrDecrypt = true; // Режим либо шифруем либо ДЕшифруем
 
