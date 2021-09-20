@@ -143,10 +143,20 @@ namespace CryptoAppTwo
             }
             else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length > textInOut.Length)
             {
-                this.Enabled = false;
-                MessageBox.Show("Длина ключа больше длины сообщений!\nДлина ключа: " + gamirovanie.KeyByte.Length.ToString() + "\nДлина сообщения: " + gamirovanie.TextOutByte.Length.ToString()+"", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.Enabled = true;
-                return;
+                if (gamirovanie.EncryptOrDecrypt == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Длина ключа больше длины сообщений!\nДлина ключа: " + gamirovanie.KeyByte.Length.ToString() + "\nДлина сообщения: " + gamirovanie.TextOutByte.Length.ToString() + "", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+                else
+                {
+                    gamirovanie.KeyIsEntry = true;
+                    this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
+                    this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
+                    this.Close();
+                }
             }
         }
 
@@ -227,6 +237,10 @@ namespace CryptoAppTwo
                     {
                         gamirovanie.KeyByte = File.ReadAllBytes(ofd.FileName); // считали
                         this.btnKeyHex.PerformClick(); // вывели в Hex
+                        this.checkBoxKeyEdit.Checked = true;
+                        this.flagKeyIsEdited.Checked = true;
+                        this.btnKeySaveChanged_Click(null, null);
+                        //this.btnKeyHex.PerformClick(); // вывели в Hex
                     }
                     else
                     {

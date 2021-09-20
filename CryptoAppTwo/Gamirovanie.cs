@@ -26,5 +26,17 @@ namespace CryptoAppTwo
         public bool TextInIsEdited = false;
         public bool TextOutIsEdited = false;
         public bool KeyIsEdited = false;
+
+        public Gamirovanie() { }
+
+        public Gamirovanie(byte[] KeyByte, TypeDisplay KeyType, bool KeyIsEntry, bool KeyIsCorrect)
+        {
+            this.KeyByte = KeyByte;
+            this.KeyType = KeyType;
+            this.KeyIsEntry = KeyIsEntry;
+            this.KeyIsCorrect = KeyIsCorrect;
+        }
+
     }
+
 }

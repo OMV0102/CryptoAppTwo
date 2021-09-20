@@ -1224,6 +1224,26 @@ namespace CryptoAppTwo
             this.btnGamTextOutSymbol.PerformClick();
         }
 
+        private void clearAllWithoutKey()
+        {
+            gamirovanie = new Gamirovanie(gamirovanie.KeyByte, gamirovanie.KeyType, gamirovanie.KeyIsEntry, gamirovanie.KeyIsCorrect); // перезаписываем объект
+
+            //===================================
+            // входные данные стираем
+            this.txtGamTextIn.Text = "";
+            this.txtGamFileIn.Text = "";
+            this.labelGamByteNumber.Text = "0";
+            // ВЫходные данные стираем
+            this.txtGamTextOut.Text = "";
+            this.btnGamTextInSymbol.Enabled = true;
+
+            this.flagTextInIsEdited.Checked = false;
+            this.flagTextOutIsEdited.Checked = false;
+
+            this.btnGamTextInSymbol.PerformClick();
+            this.btnGamTextOutSymbol.PerformClick();
+        }
+
         // кнопка ВЫБРАТЬ ФАЙЛ
         private void btnGamChoiceFileIn_Click(object sender, EventArgs e)
         {
@@ -1241,7 +1261,8 @@ namespace CryptoAppTwo
                 {
                     if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
                     {
-                        // очистили 
+                        // очистили всё кроме ключа
+                        //this.clearAllWithoutKey();
                         this.btnGamClear.PerformClick();
                         // Считали байты из файла
                         gamirovanie.TextInByte = File.ReadAllBytes(ofd.FileName);
@@ -1400,19 +1421,16 @@ namespace CryptoAppTwo
             this.checkBoxGamTextInEdit.Checked = false;
         }
 
-        // СОХРАНИТЬ КЛЮЧ  //АААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        // СОХРАНИТЬ КЛЮЧ
         private void btnGamSaveKey_Click(object sender, EventArgs e)
         {
             try
             {
-                //Если выходные байты пусты 
-                if (Global.Simm_byte_out.Length == 0)
+                //Если ключа нет
+                if (gamirovanie.KeyByte.Length < 1 || gamirovanie.KeyIsEntry == false)
                 {
                     this.Enabled = false;
-                    if (Global.Simm_EncryptOrDecrypt == true)
-                        MessageBox.Show("Сначала зашифруйте данные!\nЗатем можете сохранить полученный шифр.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                        MessageBox.Show("Сначала расшифруйте шифр!\nЗатем можете сохранить полученные данные.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Невозможно сохранить ключ:\n\tКлюч не введен!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Enabled = true;
                     return;
                 }
@@ -1420,7 +1438,7 @@ namespace CryptoAppTwo
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Title = "Выберите папку и введите название файла (БЕЗ расширения) ...";
                 sfd.InitialDirectory = Application.StartupPath;
-                sfd.Filter = "Files(*" + Global.Simm_file_extension + ")|*" + Global.Simm_file_extension; // Сохранять только c расширением как и у входного файла
+                sfd.Filter = "Files(*.key)|*.key"; // Сохранять только c расширением key
                 sfd.AddExtension = true;  //Добавить расширение к имени если не указали
 
                 DialogResult res = sfd.ShowDialog();
@@ -1429,13 +1447,10 @@ namespace CryptoAppTwo
                     // получаем выбранный файл
                     string filename = sfd.FileName;
                     // сохраняем байты в файл
-                    System.IO.File.WriteAllBytes(filename, Global.Simm_byte_out);
+                    System.IO.File.WriteAllBytes(filename, gamirovanie.KeyByte);
 
                     this.Enabled = false;
-                    if (Global.Simm_EncryptOrDecrypt == true)
-                        MessageBox.Show("Шифр записан в файл ЗАПИСАН в файл:\n" + filename, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        MessageBox.Show("Расшифрованное сообщение записано в файл:\n" + filename, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("КЛЮЧ записан в файл:\n" + filename, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Enabled = true;
                 }
                 sfd.Dispose();
