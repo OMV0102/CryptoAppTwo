@@ -1436,6 +1436,7 @@
             this.btnGamSaveKey.Tag = "";
             this.btnGamSaveKey.Text = "Сохранить ключ в файл";
             this.btnGamSaveKey.UseVisualStyleBackColor = false;
+            this.btnGamSaveKey.Click += new System.EventHandler(this.btnGamSaveKey_Click);
             // 
             // btnGamEncryptDecrypt
             // 

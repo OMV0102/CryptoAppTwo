@@ -1053,18 +1053,7 @@ namespace CryptoAppTwo
         // галочка ВКЛ ВЫКЛ редактирование вЫход текста // ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
         private void checkBoxGamEditTextOut_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.checkBoxGamTextOutEdit.Checked == true)
-            {
-                //if (gamirovanie.TextOutType == TypeDisplay.Symbol && gamirovanie.FileExtension != "txt")
-                //    gamirovanie.TextOutIsEdited = true;
-                this.txtGamTextOut.ReadOnly = false;
-                //this.txtGamTextOut.Cursor = Cursors.IBeam;
-            }
-            else
-            {
-                this.txtGamTextOut.ReadOnly = true;
-                //this.txtGamTextOut.Cursor = Cursors.Arrow;
-            }
+
         }
 
         // кнопка Bin вход текста
@@ -1409,6 +1398,53 @@ namespace CryptoAppTwo
 
             this.flagTextInIsEdited.Checked = false;
             this.checkBoxGamTextInEdit.Checked = false;
+        }
+
+        // СОХРАНИТЬ КЛЮЧ  //АААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        private void btnGamSaveKey_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Если выходные байты пусты 
+                if (Global.Simm_byte_out.Length == 0)
+                {
+                    this.Enabled = false;
+                    if (Global.Simm_EncryptOrDecrypt == true)
+                        MessageBox.Show("Сначала зашифруйте данные!\nЗатем можете сохранить полученный шифр.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Сначала расшифруйте шифр!\nЗатем можете сохранить полученные данные.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*" + Global.Simm_file_extension + ")|*" + Global.Simm_file_extension; // Сохранять только c расширением как и у входного файла
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    System.IO.File.WriteAllBytes(filename, Global.Simm_byte_out);
+
+                    this.Enabled = false;
+                    if (Global.Simm_EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифр записан в файл ЗАПИСАН в файл:\n" + filename, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Расшифрованное сообщение записано в файл:\n" + filename, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 
