@@ -1248,6 +1248,12 @@ namespace CryptoAppTwo
         private void btnGamChoiceFileIn_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+
+            if(gamirovanie.EncryptOrDecrypt == true)
+            {
+
+            }
+
             ofd.Title = "Выбрать файл ..."; // Заголовок окна
             ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
 
