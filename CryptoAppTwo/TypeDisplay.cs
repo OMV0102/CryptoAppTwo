@@ -10,6 +10,7 @@ namespace CryptoAppTwo
     {
         Symbol = 0,
         Binary = 2,
-        Hex = 1
+        Hex = 1,
+        None = -1
     }
 }

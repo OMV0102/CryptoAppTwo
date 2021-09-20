@@ -33,10 +33,11 @@ namespace CryptoAppTwo
             string temp2 = strBinary.Substring((strBinary.Length - length), length);
             string strRegex1 = "";
             string strRegex2 = @"[0\|1]{8}";
-            for (int i = 0; i < N; i++)
-            {
-                strRegex1 += @"[0\|1]{8}-";
-            }
+            //for (int i = 0; i < N; i++) // deprecated
+            //{
+            //    strRegex1 += @"[0\|1]{8}-";
+            //}
+            strRegex1 += @"([0\|1]{8}-){" + N.ToString() + @"}";
             bool result1 = Regex.IsMatch(temp1, strRegex1, RegexOptions.IgnoreCase);
             bool result2 = Regex.IsMatch(temp2, strRegex2, RegexOptions.IgnoreCase);
 
@@ -60,10 +61,11 @@ namespace CryptoAppTwo
             string temp2 = strBinary.Substring((strBinary.Length - length), length);
             string strRegex1 = "";
             string strRegex2 = @"[0-9,A-F]{2}";
-            for (int i = 0; i < N; i++)
-            {
-                strRegex1 += @"[0-9,A-F]{2}-";
-            }
+            //for (int i = 0; i < N; i++) // deprecated
+            //{
+            //    strRegex1 += @"[0-9,A-F]{2}-";
+            //}
+            strRegex1 += @"([0-9,A-F]{2}-){" + N.ToString() + @"}";
             bool result1 = Regex.IsMatch(temp1, strRegex1, RegexOptions.IgnoreCase);
             bool result2 = Regex.IsMatch(temp2, strRegex2, RegexOptions.IgnoreCase);
 
@@ -192,6 +194,37 @@ namespace CryptoAppTwo
                 rng.Dispose();
             }
             return result;
+        }
+
+        public static byte[] DuplicateKeyToLength(byte[] key, int length)
+        {
+            byte[] result = null;
+            if(key.Length >= length || length < 1)
+            {
+                return key;
+            }
+            else
+            {
+                result = new byte[length];
+                int oldN = key.Length;
+                int index = key.Length;
+
+                //переписали существующие
+                for (int i = 0; i < oldN; i++)
+                {
+                    result[i] = key[i];
+                }
+
+                // дополнили
+                while (index < length)
+                {
+                    for(int i = 0; index < length && i < oldN; i++, index++)
+                    {
+                        result[index] = key[0];
+                    }
+                }
+                return result;
+            }
         }
 
         //=============================================================

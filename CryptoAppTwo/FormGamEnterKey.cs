@@ -42,6 +42,13 @@ namespace CryptoAppTwo
             {
                 // ВЫВЕСТИ КЛЮЧ НА ФОРМУ
                 this.txtKey.Text = Functions.ByteToHex(gamirovanie.KeyByte);
+                this.btnKeyConfirm.Enabled = true;
+            }
+            else
+            {
+                gamirovanie.KeyByte = new byte[0];
+                this.txtKey.Text = "";
+                this.btnKeyConfirm.Enabled = false;
             }
 
             // Подсказка у кнопки загрузки ключа
@@ -56,6 +63,7 @@ namespace CryptoAppTwo
                 this.btnKeyGenerate.Visible = true;
                 // скрыть кнопку загрузки ключа
                 this.btnKeyLoad.Visible = false;
+                this.checkBoxKeyEdit.Visible = false;
             }
             else  // если загрузили для РАСШИФРОВКИ
             {
@@ -64,43 +72,98 @@ namespace CryptoAppTwo
                 this.btnKeyGenerate.Visible = false;
                 // показать кнопку загрузки ключа
                 this.btnKeyLoad.Visible = true;
+                this.checkBoxKeyEdit.Visible = true;
             }
+
+            this.btnKeyBinary.PerformClick();
         }
 
         // кнопка ПОДТВЕРДИТЬ
         private void btnKeyConfirm_Click(object sender, EventArgs e)
         {
-            if(gamirovanie.KeyIsCorrect == true)
+            if(this.checkBoxKeyEdit.Checked == true)
             {
-
+                this.Enabled = false;
+                MessageBox.Show("Ключ сейчас в режиме редактирования!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (gamirovanie.KeyType == TypeDisplay.Binary)
+                    this.btnKeyBinary.Focus();
+                else if (gamirovanie.KeyType == TypeDisplay.Hex)
+                    this.btnKeyHex.Focus();
+                return;
             }
 
+            byte[] textInOut;
+            if (gamirovanie.EncryptOrDecrypt == true)
+                textInOut = gamirovanie.TextInByte;
+            else
+                textInOut = gamirovanie.TextOutByte;
 
-            if(txtKey.Text.Length == txtKey.MaxLength)
+            if (gamirovanie.KeyIsCorrect == false || gamirovanie.KeyByte.Length < 1)
             {
-
-                Global.Simm_byte_key = Functions.StringHexToByteArray(txtKey.Text); // Запомнили ключ
-                Global.Simm_KeyIV_isEntry = true;
-
+                this.Enabled = false;
+                MessageBox.Show("Формат ключа не корректный или ключ имеет нулевой размер!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = false;
+                return;
+            }
+            else if(gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length == textInOut.Length)
+            {
+                gamirovanie.KeyIsEntry = true;
                 this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
                 this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
-
                 this.Close();
-
+                return;
             }
-            else
+            else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length < textInOut.Length)
             {
-                MessageBox.Show("Число символов в ключе должно быть " + txtKey.MaxLength.ToString() + "!\nОтредактируйте ключ или сгенерируйте случайно.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                if(gamirovanie.EncryptOrDecrypt == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Длина ключа меньше длины сообщений!\nСгенерируйте новый ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = false;
+                    return;
+                }
+                else
+                {
+                    this.Enabled = false;
+                    DialogResult res = MessageBox.Show("Длина ключа меньше длины сообщений!\nДлина ключа: "+ gamirovanie.KeyByte.Length.ToString() +"\nДлина сообщения: " + gamirovanie.TextOutByte.Length.ToString() + "\n\nПродублировать ключ до длины сообщения?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    this.Enabled = false;
+
+                    if(res == DialogResult.OK)
+                    {
+                        gamirovanie.KeyByte = Functions.DuplicateKeyToLength(gamirovanie.KeyByte, gamirovanie.TextOutByte.Length);
+                        
+                        gamirovanie.KeyIsEntry = true;
+                        this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
+                        this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Green); // Цвет изменили
+                        this.Close();
+                    }
+                    else
+                        return;
+                }
+            }
+            else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length > textInOut.Length)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Длина ключа больше длины сообщений!\nДлина ключа: " + gamirovanie.KeyByte.Length.ToString() + "\nДлина сообщения: " + gamirovanie.TextOutByte.Length.ToString()+"", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
             }
         }
 
         // Генерировать ключ
         private void btnKeyGenerate_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            this.Enabled = false;
+
             if(gamirovanie.TextInByte.Length > 0)
             {
                 gamirovanie.KeyByte = Functions.PRNGGenerateByteArray(gamirovanie.TextInByte.Length);
-                this.btnKeyHex.PerformClick();
+                gamirovanie.KeyType = TypeDisplay.None;
+                gamirovanie.KeyIsCorrect = true;
+                this.btnKeyHex_Click(null, null);
+                this.btnKeyConfirm.Enabled = true;
+                //this.btnKeyConfirm_Click(null, null);
             }
             else
             {
@@ -110,11 +173,15 @@ namespace CryptoAppTwo
                 this.btnGamEnterKey.Text = "Ввести ключ (отсутствует)"; // Изменили название кнопки на основной форме
                 this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Black); // Цвет изменили
                 this.Enabled = true;
+                gamirovanie.KeyIsCorrect = false;
+                this.btnKeyConfirm.Enabled = false;
                 this.Close();
             }
+            this.Cursor = Cursors.Arrow;
+            this.Enabled = true;
         }
 
-        // Ввод символа в поле ключа (только 16-ричные символы)
+        // Ввод символа в поле ключа 
         private void txtKey_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (this.checkBoxKeyEdit.Checked == false)
@@ -187,7 +254,10 @@ namespace CryptoAppTwo
             {
                 this.Enabled = false;
                 MessageBox.Show("Ключ сейчас в режиме редактирования!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.btnKeyBinary.Focus();
+                if (gamirovanie.KeyType == TypeDisplay.Binary)
+                    this.btnKeyBinary.Focus();
+                else if (gamirovanie.KeyType == TypeDisplay.Hex)
+                    this.btnKeyHex.Focus();
                 return;
             }
 
@@ -227,7 +297,10 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Ключ сейчас в режиме редактирования!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnKeyHex.Focus();
+                if(gamirovanie.KeyType == TypeDisplay.Binary)
+                    this.btnKeyBinary.Focus();
+                else if (gamirovanie.KeyType == TypeDisplay.Hex)
+                    this.btnKeyHex.Focus();
                 return;
             }
 
@@ -244,6 +317,7 @@ namespace CryptoAppTwo
             if (this.checkBoxKeyEdit.Checked == true)
             {
                 this.txtKey.ReadOnly = false;
+                this.btnKeyConfirm.Enabled = false;
             }
             else
             {
@@ -253,10 +327,12 @@ namespace CryptoAppTwo
                     MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Enabled = true;
                     this.checkBoxKeyEdit.Checked = true;
+                    this.btnKeyConfirm.Enabled = false;
                 }
                 else
                 {
                     this.txtKey.ReadOnly = true;
+                    this.btnKeyConfirm.Enabled = true;
                 }
             }
         }
@@ -338,12 +414,14 @@ namespace CryptoAppTwo
                 gamirovanie.KeyIsEdited = true;
                 this.btnKeySaveChanged.Visible = true;
                 this.btnKeyCancelChanged.Visible = true;
+                this.btnKeyConfirm.Enabled = false;
             }
             else
             {
                 gamirovanie.KeyIsEdited = false;
                 this.btnKeySaveChanged.Visible = false;
                 this.btnKeyCancelChanged.Visible = false;
+                this.btnKeyConfirm.Enabled = true;
             }
         }
     }

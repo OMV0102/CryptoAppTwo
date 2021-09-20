@@ -171,6 +171,7 @@
             this.txtKey.TabIndex = 105;
             this.txtKey.TabStop = false;
             this.txtKey.Text = "";
+            this.txtKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKey_KeyPress);
             // 
             // btnKeyBinary
             // 
