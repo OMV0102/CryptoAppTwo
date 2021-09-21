@@ -92,12 +92,6 @@ namespace CryptoAppTwo
                 return;
             }
 
-            byte[] textInOut;
-            if (gamirovanie.EncryptOrDecrypt == true)
-                textInOut = gamirovanie.TextInByte;
-            else
-                textInOut = gamirovanie.TextOutByte;
-
             if (gamirovanie.KeyIsCorrect == false || gamirovanie.KeyByte.Length < 1)
             {
                 this.Enabled = false;
@@ -105,7 +99,7 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 return;
             }
-            else if(gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length == textInOut.Length)
+            else if(gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length == gamirovanie.TextInByte.Length)
             {
                 gamirovanie.KeyIsEntry = true;
                 this.btnGamEnterKey.Text = "Изменить ключ (введен)"; // Изменили название кнопки на основной форме
@@ -113,7 +107,7 @@ namespace CryptoAppTwo
                 this.Close();
                 return;
             }
-            else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length < textInOut.Length)
+            else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length < gamirovanie.TextInByte.Length)
             {
                 if(gamirovanie.EncryptOrDecrypt == true)
                 {
@@ -141,7 +135,7 @@ namespace CryptoAppTwo
                         return;
                 }
             }
-            else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length > textInOut.Length)
+            else if (gamirovanie.KeyIsCorrect == true && gamirovanie.KeyByte.Length > gamirovanie.TextInByte.Length)
             {
                 if (gamirovanie.EncryptOrDecrypt == true)
                 {

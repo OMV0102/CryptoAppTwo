@@ -16,7 +16,7 @@ namespace CryptoAppTwo
     public partial class FormMain : Form
     {
         private Gamirovanie gamirovanie = null;
-
+        
         public FormMain()
         {
             InitializeComponent();
@@ -1087,7 +1087,9 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnGamTextInBinary.Focus();
+                if(gamirovanie.TextInType == TypeDisplay.Binary) this.btnGamTextInBinary.Focus();
+                else if (gamirovanie.TextInType == TypeDisplay.Hex) this.btnGamTextInHex.Focus();
+                else if (gamirovanie.TextInType == TypeDisplay.Symbol) this.btnGamTextInSymbol.Focus();
                 return;
             }
 
@@ -1117,14 +1119,16 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnGamTextInSymbol.Focus();
+                if (gamirovanie.TextInType == TypeDisplay.Binary) this.btnGamTextInBinary.Focus();
+                else if (gamirovanie.TextInType == TypeDisplay.Hex) this.btnGamTextInHex.Focus();
+                else if (gamirovanie.TextInType == TypeDisplay.Symbol) this.btnGamTextInSymbol.Focus();
                 return;
             }
 
-            if (gamirovanie.FileExtension != "txt")
+            if (!(gamirovanie.FileExtension == "txt" && gamirovanie.EncryptOrDecrypt == true))
             {
                 this.Enabled = false;
-                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с раширением .txt!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с расширением .txt в режиме шифрования!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Enabled = true;
                 return;
             }
@@ -1137,7 +1141,7 @@ namespace CryptoAppTwo
             this.btnGamTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
             
         }
-
+        
         // кнопка Hex вход текста
         private void btnGamTextInHex_Click(object sender, EventArgs e)
         {
@@ -1148,7 +1152,9 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnGamTextInHex.Focus();
+                if (gamirovanie.TextInType == TypeDisplay.Binary) this.btnGamTextInBinary.Focus();
+                else if (gamirovanie.TextInType == TypeDisplay.Hex) this.btnGamTextInHex.Focus();
+                else if (gamirovanie.TextInType == TypeDisplay.Symbol) this.btnGamTextInSymbol.Focus();
                 return;
             }
 
@@ -1171,7 +1177,9 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnGamTextOutBinary.Focus();
+                if (gamirovanie.TextOutType == TypeDisplay.Binary) this.btnGamTextOutBinary.Focus();
+                else if (gamirovanie.TextOutType == TypeDisplay.Hex) this.btnGamTextOutHex.Focus();
+                else if (gamirovanie.TextOutType == TypeDisplay.Symbol) this.btnGamTextOutSymbol.Focus();
                 return;
             }
 
@@ -1201,14 +1209,16 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnGamTextOutSymbol.Focus();
+                if (gamirovanie.TextOutType == TypeDisplay.Binary) this.btnGamTextOutBinary.Focus();
+                else if (gamirovanie.TextOutType == TypeDisplay.Hex) this.btnGamTextOutHex.Focus();
+                else if (gamirovanie.TextOutType == TypeDisplay.Symbol) this.btnGamTextOutSymbol.Focus();
                 return;
             }
 
-            if (gamirovanie.FileExtension != "txt")
+            if (!(gamirovanie.FileExtension == "txt" && gamirovanie.EncryptOrDecrypt == false))
             {
                 this.Enabled = false;
-                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с раширением .txt!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с раcширением .txt! в режиме дешифрования", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Enabled = true;
                 return;
             }
@@ -1231,7 +1241,9 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
-                this.btnGamTextOutHex.Focus();
+                if (gamirovanie.TextOutType == TypeDisplay.Binary) this.btnGamTextOutBinary.Focus();
+                else if (gamirovanie.TextOutType == TypeDisplay.Hex) this.btnGamTextOutHex.Focus();
+                else if (gamirovanie.TextOutType == TypeDisplay.Symbol) this.btnGamTextOutSymbol.Focus();
                 return;
             }
 
@@ -1243,6 +1255,7 @@ namespace CryptoAppTwo
             this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
         }
 
+        List<char> list = new List<char>();
         // ввод текста ВХОД
         private void txtGamTextIn_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1266,7 +1279,8 @@ namespace CryptoAppTwo
                 e.Handled = false;
                 this.flagTextInIsEdited.Checked = true;
             }
-            else if(gamirovanie.TextInType == TypeDisplay.Symbol)
+            // русские буквы осуждаются
+            else if(gamirovanie.TextInType == TypeDisplay.Symbol && !(e.KeyChar >= 1072 && e.KeyChar <=1105))
             {
                 e.Handled = false;
                 this.flagTextInIsEdited.Checked = true;
@@ -1301,7 +1315,8 @@ namespace CryptoAppTwo
                 e.Handled = false;
                 this.flagTextOutIsEdited.Checked = true;
             }
-            else if (gamirovanie.TextOutType == TypeDisplay.Symbol)
+            //русские буквы тоже тут осуждаются
+            else if (gamirovanie.TextOutType == TypeDisplay.Symbol && !(e.KeyChar >= 1072 && e.KeyChar <= 1105))
             {
                 e.Handled = false;
                 this.flagTextOutIsEdited.Checked = true;
@@ -1315,8 +1330,9 @@ namespace CryptoAppTwo
         // кнопка ОЧИСТИТЬ Гамирование
         private void btnGamClear_Click(object sender, EventArgs e)
         {
+            bool rezhim = gamirovanie.EncryptOrDecrypt;
             gamirovanie = new Gamirovanie(); // перезаписываем объект
-
+            gamirovanie.EncryptOrDecrypt = rezhim;
             //========очистка ключа======
             // меняем кнопку ввод ключа на обычную
             this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
@@ -1333,14 +1349,23 @@ namespace CryptoAppTwo
             this.flagTextInIsEdited.Checked = false;
             this.flagTextOutIsEdited.Checked = false;
 
-            this.btnGamTextInSymbol.PerformClick();
-            this.btnGamTextOutSymbol.PerformClick();
+            if (gamirovanie.EncryptOrDecrypt == true)
+            {
+                this.btnGamTextInSymbol.PerformClick();
+                this.btnGamTextOutHex.PerformClick();
+            }
+            else
+            {
+                this.btnGamTextInHex.PerformClick();
+                this.btnGamTextOutSymbol.PerformClick();
+            }
         }
 
         private void clearAllWithoutKey()
         {
+            bool rezhim = gamirovanie.EncryptOrDecrypt;
             gamirovanie = new Gamirovanie(gamirovanie.KeyByte, gamirovanie.KeyType, gamirovanie.KeyIsEntry, gamirovanie.KeyIsCorrect); // перезаписываем объект
-
+            gamirovanie.EncryptOrDecrypt = rezhim;
             //===================================
             // входные данные стираем
             this.txtGamTextIn.Text = "";
@@ -1365,8 +1390,8 @@ namespace CryptoAppTwo
             ofd.Title = "Выбрать файл ..."; // Заголовок окна
             ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
 
-            if(gamirovanie.EncryptOrDecrypt == false)
-                ofd.Filter = "Keys(*.secret)|*.secret"; // расширение файла с шифротекстом
+            //if(gamirovanie.EncryptOrDecrypt == false)
+            //    ofd.Filter = "Keys(*.secret)|*.secret"; // расширение файла с шифротекстом
 
             if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
             {
@@ -1375,16 +1400,18 @@ namespace CryptoAppTwo
                 {
                     if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
                     {
-                        // очистили всё кроме ключа
-                        //this.clearAllWithoutKey();
+                        //if(gamirovanie.EncryptOrDecrypt == true) //закоментил фичу
                         this.btnGamClear.PerformClick();
+                        //else
+                        //    this.clearAllWithoutKey();// очистили всё кроме ключа
                         // Считали байты из файла
                         gamirovanie.TextInByte = File.ReadAllBytes(ofd.FileName);
                         this.labelGamByteNumber.Text = gamirovanie.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
                         this.txtGamFileIn.Text = ofd.FileName; // вывели путь к файлу в textbox
                         this.toolTipGamFileIn.SetToolTip(this.txtGamFileIn, this.txtGamFileIn.Text); // текст подсказки запомнили
                         gamirovanie.FileExtension = ofd.SafeFileName.Substring(ofd.SafeFileName.LastIndexOf('.'));  // Запомнили расширение считанного файла
-                        if(gamirovanie.FileExtension == "txt")
+                        if(gamirovanie.FileExtension.Length > 1) gamirovanie.FileExtension = gamirovanie.FileExtension.Substring(1);
+                        if(gamirovanie.FileExtension == "txt" && gamirovanie.EncryptOrDecrypt == true)
                         {
                             //this.btnGamTextInSymbol.Enabled = true;
                         }
@@ -1662,60 +1689,55 @@ namespace CryptoAppTwo
         // кнопка ШИФРОВАТЬ
         private void btnGamEncryptDecrypt_Click(object sender, EventArgs e)
         {
-            if (gamirovanie.TextInByte.Length > 0) // Если входные данные не пусты
-            {
-                if (gamirovanie.KeyIsEntry == true) // Если введен ключ и вектор
-                {
-                    try
-                    {
-                        // вызываем функцию шифрования и получаем байты выходные
-                        byte[] temp;
-                        string errMessage = "";
-                        bool result = Algorithms.GamirovanieAlgorithm(gamirovanie.TextInByte, gamirovanie.KeyByte, out temp, errMessage);
-
-                        if(result == false)
-                        {
-                            MessageBox.Show(errMessage, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        else
-                        {
-                            gamirovanie.TextOutByte = temp;
-                            gamirovanie.TextOutType = TypeDisplay.None;
-                            this.btnGamTextOutHex.PerformClick();
-                        }
-
-                        // Вывести выходные байты 
-                        if (gamirovanie.EncryptOrDecrypt == true) // Если шифруем
-                        {
-                            // вывели байты на форму виде 16-ричной строки
-                            this.txt_simm_text_out.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_out);
-                        }
-                        else // Если расшифровываем
-                        {
-                            // вывели байты на форму виде строки с кодировкой UTF8
-                            this.txt_simm_text_out.Text = Encoding.UTF8.GetString(Global.Simm_byte_out).Replace("\0", "0");
-                        }
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                else
-                {
-                    this.Enabled = false;
-                    MessageBox.Show("Сначала введите ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.Enabled = true;
-                    return;
-                }
-            }
-            else
+            if (gamirovanie.TextInByte.Length < 1)
             {
                 this.Enabled = false;
                 MessageBox.Show("Сначала укажите входные данные!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
+                return;
+            }
+
+            if (gamirovanie.KeyIsEntry == false)// Если введен ключ и вектор
+            {
+                this.Enabled = false;
+                MessageBox.Show("Сначала введите ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
+            }
+            try
+            {
+                // вызываем функцию шифрования и получаем байты выходные
+                byte[] temp;
+                string errMessage = "";
+                bool result = Algorithms.GamirovanieAlgorithm(gamirovanie.TextInByte, gamirovanie.KeyByte, out temp, out errMessage);
+
+                if(result == false)
+                {
+                    MessageBox.Show(errMessage, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    gamirovanie.TextOutByte = temp;
+                    gamirovanie.TextOutType = TypeDisplay.None;
+                    this.btnGamTextOutHex.PerformClick();
+                }
+
+                // Вывести выходные байты 
+                if (gamirovanie.EncryptOrDecrypt == true) // Если шифруем
+                {
+                    // вывели байты на форму виде 16-ричной строки
+                    this.txt_simm_text_out.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_out);
+                }
+                else // Если расшифровываем
+                {
+                    // вывели байты на форму виде строки с кодировкой UTF8
+                    this.txt_simm_text_out.Text = Encoding.UTF8.GetString(Global.Simm_byte_out).Replace("\0", "0");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

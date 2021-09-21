@@ -308,9 +308,10 @@ namespace CryptoAppTwo
 
         // функция для ГАМИРОВАНИЯ // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         // аргументы: вход. байты, байты ключа, Байты на выходе
-        public static bool GamirovanieAlgorithm(byte[] textIn, byte[] key, out byte[] textOut, string message)
+        public static bool GamirovanieAlgorithm(byte[] textIn, byte[] key, out byte[] textOut, out string message)
         {
             textOut = new byte[0];
+            message = "";
 
             if(textIn.Length < 1)
             {

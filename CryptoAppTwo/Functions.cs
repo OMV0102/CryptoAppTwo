@@ -125,7 +125,7 @@ namespace CryptoAppTwo
             return BitConverter.ToString(byteArr).ToUpper();
         }
 
-        // Symbol to Byte
+        // Symbol to Byte // НЕ РАБОТАЕТ для русских букв
         public static byte[] SymbolToByte(string str)
         {
             int N = str.Length;
