@@ -1010,6 +1010,8 @@ namespace CryptoAppTwo
             this.btnGamChoiceFileIn.Text = "Выбрать файл с данными";
             btnGamClear.PerformClick(); // Очистить всё при переключении
             gamirovanie.EncryptOrDecrypt = true;
+            //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
+            this.checkBoxGamTextOutEdit.Visible = false;
         }
 
         // кнопка режим Гамирование ДЕШИФРОВАТЬ
@@ -1025,6 +1027,8 @@ namespace CryptoAppTwo
             this.btnGamChoiceFileIn.Text = "Выбрать файл с шифротекстом";
             btnGamClear.PerformClick(); // Очистить всё при переключении
             gamirovanie.EncryptOrDecrypt = false;
+            //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
+            this.checkBoxGamTextOutEdit.Visible = false;
         }
 
         // галочка ВКЛ ВЫКЛ редактирование вход текста
@@ -1050,10 +1054,27 @@ namespace CryptoAppTwo
             }
         }
 
-        // галочка ВКЛ ВЫКЛ редактирование вЫход текста // ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        // галочка ВКЛ ВЫКЛ редактирование вЫход текста
         private void checkBoxGamEditTextOut_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (this.checkBoxGamTextOutEdit.Checked == true)
+            {
+                this.txtGamTextOut.ReadOnly = false;
+            }
+            else
+            {
+                if (gamirovanie.TextOutIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxGamTextOutEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtGamTextOut.ReadOnly = true;
+                }
+            }
         }
 
         // кнопка Bin вход текста
@@ -1193,10 +1214,38 @@ namespace CryptoAppTwo
 
         }
 
-        // ввод текста ВЫХОД // АААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        // ввод текста ВЫХОД
         private void txtGamTextOut_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (this.checkBoxGamTextOutEdit.Checked == false)
+                return;
 
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagTextOutIsEdited.Checked = true;
+            }
+            else if (gamirovanie.TextOutType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagTextOutIsEdited.Checked = true;
+            }
+            else if (gamirovanie.TextOutType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagTextOutIsEdited.Checked = true;
+            }
+            else if (gamirovanie.TextOutType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagTextOutIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
         // кнопка ОЧИСТИТЬ Гамирование
@@ -1346,7 +1395,18 @@ namespace CryptoAppTwo
         // флаг изменен ли вЫход текст
         private void flagTextOutIsEdited_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (flagTextOutIsEdited.Checked == true)
+            {
+                gamirovanie.TextOutIsEdited = true;
+                this.btnGamTextOutSaveChanged.Visible = true;
+                this.btnGamTextOutCancelChanged.Visible = true;
+            }
+            else
+            {
+                gamirovanie.TextOutIsEdited = false;
+                this.btnGamTextOutSaveChanged.Visible = false;
+                this.btnGamTextOutCancelChanged.Visible = false;
+            }
         }
 
         // кнопка ДИСКЕТА сохранить изменения ВХОД текста 
@@ -1410,7 +1470,65 @@ namespace CryptoAppTwo
         // кнопка ДИСКЕТА сохранить изменения вЫход текста 
         private void btnGamTextOutSaveChanged_Click(object sender, EventArgs e)
         {
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                DialogResult dr; 
+                if(gamirovanie.EncryptOrDecrypt == true)
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененный шифротекст?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                else
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененное сообщение после дешифрования?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                if (dr == DialogResult.OK)
+                {
+
+                    if (gamirovanie.TextOutType == TypeDisplay.Binary)
+                    {
+                        if (Functions.checkStringIsBinarySequence(this.txtGamTextOut.Text) == true)
+                        {
+                            gamirovanie.TextOutByte = Functions.BinaryToByte(this.txtGamTextOut.Text);
+                            this.flagTextOutIsEdited.Checked = false;
+                            this.checkBoxGamTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (gamirovanie.TextOutType == TypeDisplay.Hex)
+                    {
+                        if (Functions.checkStringIsHexSequence(this.txtGamTextOut.Text) == true)
+                        {
+                            gamirovanie.TextOutByte = Functions.HexToByte(this.txtGamTextOut.Text);
+                            this.flagTextOutIsEdited.Checked = false;
+                            this.checkBoxGamTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (gamirovanie.TextOutType == TypeDisplay.Symbol)
+                    {
+                        gamirovanie.TextOutByte = Functions.SymbolToByte(this.txtGamTextOut.Text);
+                        this.flagTextOutIsEdited.Checked = false;
+                        this.checkBoxGamTextOutEdit.Checked = false;
+                        //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.btnGamTextInSaveChanged.Visible = false;
+                        this.btnGamTextInCancelChanged.Visible = false;
+                        this.checkBoxGamTextInEdit.Checked = false;
+                    }
+                }
+            }
         }
 
         // кнопка ВЕДРО откатить изменения ВХОД текста 
@@ -1425,6 +1543,20 @@ namespace CryptoAppTwo
 
             this.flagTextInIsEdited.Checked = false;
             this.checkBoxGamTextInEdit.Checked = false;
+        }
+
+        // кнопка ВЕДРО откатить изменения ВЫХОД текста 
+        private void btnGamTextOutCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (gamirovanie.TextOutType == TypeDisplay.Binary)
+                this.txtGamTextOut.Text = Functions.ByteToBinary(gamirovanie.TextOutByte);
+            else if (gamirovanie.TextOutType == TypeDisplay.Hex)
+                this.txtGamTextOut.Text = Functions.ByteToHex(gamirovanie.TextOutByte);
+            else if (gamirovanie.TextOutType == TypeDisplay.Symbol)
+                this.txtGamTextOut.Text = Functions.ByteToSymbol(gamirovanie.TextOutByte);
+
+            this.flagTextOutIsEdited.Checked = false;
+            this.checkBoxGamTextOutEdit.Checked = false;
         }
 
         // СОХРАНИТЬ КЛЮЧ
@@ -1467,6 +1599,7 @@ namespace CryptoAppTwo
                 return;
             }
         }
+
     }
 
 

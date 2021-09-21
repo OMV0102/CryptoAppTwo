@@ -1098,6 +1098,7 @@
             this.btnGamTextOutCancelChanged.TabStop = false;
             this.btnGamTextOutCancelChanged.Tag = "";
             this.btnGamTextOutCancelChanged.UseVisualStyleBackColor = true;
+            this.btnGamTextOutCancelChanged.Click += new System.EventHandler(this.btnGamTextOutCancelChanged_Click);
             // 
             // btnGamTextInCancelChanged
             // 
