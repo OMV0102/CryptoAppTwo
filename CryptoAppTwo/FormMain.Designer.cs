@@ -1329,6 +1329,7 @@
             this.btnGamSaveData.Tag = "";
             this.btnGamSaveData.Text = "Сохранить шифротекст в файл";
             this.btnGamSaveData.UseVisualStyleBackColor = false;
+            this.btnGamSaveData.Click += new System.EventHandler(this.btnGamSaveData_Click);
             // 
             // txtGamTextOut
             // 

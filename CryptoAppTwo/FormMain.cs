@@ -1680,7 +1680,9 @@ namespace CryptoAppTwo
                         }
                         else
                         {
-
+                            gamirovanie.TextOutByte = temp;
+                            gamirovanie.TextOutType = TypeDisplay.None;
+                            this.btnGamTextOutHex.PerformClick();
                         }
 
                         // Вывести выходные байты 
@@ -1714,6 +1716,53 @@ namespace CryptoAppTwo
                 this.Enabled = false;
                 MessageBox.Show("Сначала укажите входные данные!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
+                return;
+            }
+        }
+
+        // СОХРАНИТЬ ВЫХОДНОЙ ТЕКСТ В ФАЙЛ
+        private void btnGamSaveData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Если выходные байты пусты 
+                if (gamirovanie.TextInByte.Length < 1)
+                {
+                    this.Enabled = false;
+                    if (gamirovanie.EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Исходный текст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*." + gamirovanie.FileExtension + ")|*." + gamirovanie.FileExtension; // Сохранять только c расширением как и у входного файла
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    System.IO.File.WriteAllBytes(filename, gamirovanie.TextOutByte);
+
+                    this.Enabled = false;
+                    if (Global.Simm_EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст записан в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Дешифрованное сообщение записано в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
