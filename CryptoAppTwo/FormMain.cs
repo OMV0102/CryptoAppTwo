@@ -1668,11 +1668,23 @@ namespace CryptoAppTwo
                 {
                     try
                     {
-                        // вызываем функцию шифрования и получаем байты шифра
-                        gamirovanie.TextOutByte = Algorithms.SimmAlg(Global.Simm_byte_in, Global.Simm_byte_key, Global.Simm_byte_iv, comboBox_SimmAlg.SelectedItem.ToString(), Global.Simm_EncryptOrDecrypt);
+                        // вызываем функцию шифрования и получаем байты выходные
+                        byte[] temp;
+                        string errMessage = "";
+                        bool result = Algorithms.GamirovanieAlgorithm(gamirovanie.TextInByte, gamirovanie.KeyByte, out temp, errMessage);
+
+                        if(result == false)
+                        {
+                            MessageBox.Show(errMessage, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+
+                        }
 
                         // Вывести выходные байты 
-                        if (Global.Simm_EncryptOrDecrypt == true) // Если шифруем
+                        if (gamirovanie.EncryptOrDecrypt == true) // Если шифруем
                         {
                             // вывели байты на форму виде 16-ричной строки
                             this.txt_simm_text_out.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_out);
@@ -1692,7 +1704,7 @@ namespace CryptoAppTwo
                 else
                 {
                     this.Enabled = false;
-                    MessageBox.Show("Сначала укажите ключ и IV!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Сначала введите ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Enabled = true;
                     return;
                 }
@@ -1700,7 +1712,7 @@ namespace CryptoAppTwo
             else
             {
                 this.Enabled = false;
-                MessageBox.Show("Сначала укажите входные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Сначала укажите входные данные!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
                 return;
             }

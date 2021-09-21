@@ -308,14 +308,36 @@ namespace CryptoAppTwo
 
         // функция для ГАМИРОВАНИЯ // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         // аргументы: вход. байты, байты ключа, Байты на выходе
-        public static bool GamirovanieAlgorithm(byte[] textIn, byte[] key, out byte[] textOut)
+        public static bool GamirovanieAlgorithm(byte[] textIn, byte[] key, out byte[] textOut, string message)
         {
-            bool result = false;
             textOut = new byte[0];
 
+            if(textIn.Length < 1)
+            {
+                message = "Сообщение имеет нулевую длину!";
+                return false;
+            }
 
+            if (key.Length < 1)
+            {
+                message = "Сообщение имеет нулевую длину!";
+                return false;
+            }
 
-            return result;
+            if (textIn.Length != key.Length)
+            {
+                message = "Количество входных байт и ключа не совпадает!";
+                return false;
+            }
+
+            textOut = new byte[textIn.Length];
+            int N = textOut.Length;
+            for(int i = 0; i < N; i++)
+            {
+                textOut[i] = (byte)(textIn[i] ^ key[i]);
+            }
+
+            return true;
         }
     }
 }
