@@ -1453,6 +1453,7 @@
             this.btnGamEncryptDecrypt.Tag = "";
             this.btnGamEncryptDecrypt.Text = "🡻 Шифровать 🡻";
             this.btnGamEncryptDecrypt.UseVisualStyleBackColor = false;
+            this.btnGamEncryptDecrypt.Click += new System.EventHandler(this.btnGamEncryptDecrypt_Click);
             // 
             // labelGamCaptionIn
             // 

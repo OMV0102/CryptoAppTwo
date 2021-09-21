@@ -1161,22 +1161,86 @@ namespace CryptoAppTwo
             
         }
 
-        // кнопка Bin вЫход текста // АААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        // кнопка Bin вЫход текста
         private void btnGamTextOutBinary_Click(object sender, EventArgs e)
         {
-            
+            if (gamirovanie.TextOutType == TypeDisplay.Binary) return;
+
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                this.btnGamTextOutBinary.Focus();
+                return;
+            }
+
+            if (gamirovanie.TextOutByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtGamTextOut.Text = Functions.ByteToBinary(gamirovanie.TextOutByte);
+
+            gamirovanie.TextOutType = TypeDisplay.Binary;
+            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
-        // кнопка Abs вЫход текста// АААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        // кнопка Abs вЫход текста 
         private void btnGamTextOutSymbol_Click(object sender, EventArgs e)
         {
-            
+            if (gamirovanie.TextOutType == TypeDisplay.Symbol) return;
+
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                this.btnGamTextOutSymbol.Focus();
+                return;
+            }
+
+            if (gamirovanie.FileExtension != "txt")
+            {
+                this.Enabled = false;
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с раширением .txt!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtGamTextOut.Text = Functions.ByteToSymbol(gamirovanie.TextOutByte);
+
+            gamirovanie.TextOutType = TypeDisplay.Symbol;
+            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
-        // кнопка Hex вЫход текста// АААААААААААААААААААААААААААААААААААААААААААААААААААААА
+        // кнопка Hex вЫход текста
         private void btnGamTextOutHex_Click(object sender, EventArgs e)
         {
-            
+            if (gamirovanie.TextOutType == TypeDisplay.Hex) return;
+
+            if (gamirovanie.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                this.btnGamTextOutHex.Focus();
+                return;
+            }
+
+            this.txtGamTextOut.Text = Functions.ByteToHex(gamirovanie.TextOutByte);
+
+            gamirovanie.TextOutType = TypeDisplay.Hex;
+            this.btnGamTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
         }
 
         // ввод текста ВХОД
@@ -1297,11 +1361,6 @@ namespace CryptoAppTwo
         private void btnGamChoiceFileIn_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-
-            if(gamirovanie.EncryptOrDecrypt == true)
-            {
-
-            }
 
             ofd.Title = "Выбрать файл ..."; // Заголовок окна
             ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
@@ -1600,6 +1659,52 @@ namespace CryptoAppTwo
             }
         }
 
+        // кнопка ШИФРОВАТЬ
+        private void btnGamEncryptDecrypt_Click(object sender, EventArgs e)
+        {
+            if (gamirovanie.TextInByte.Length > 0) // Если входные данные не пусты
+            {
+                if (gamirovanie.KeyIsEntry == true) // Если введен ключ и вектор
+                {
+                    try
+                    {
+                        // вызываем функцию шифрования и получаем байты шифра
+                        gamirovanie.TextOutByte = Algorithms.SimmAlg(Global.Simm_byte_in, Global.Simm_byte_key, Global.Simm_byte_iv, comboBox_SimmAlg.SelectedItem.ToString(), Global.Simm_EncryptOrDecrypt);
+
+                        // Вывести выходные байты 
+                        if (Global.Simm_EncryptOrDecrypt == true) // Если шифруем
+                        {
+                            // вывели байты на форму виде 16-ричной строки
+                            this.txt_simm_text_out.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_out);
+                        }
+                        else // Если расшифровываем
+                        {
+                            // вывели байты на форму виде строки с кодировкой UTF8
+                            this.txt_simm_text_out.Text = Encoding.UTF8.GetString(Global.Simm_byte_out).Replace("\0", "0");
+                        }
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Сначала укажите ключ и IV!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            else
+            {
+                this.Enabled = false;
+                MessageBox.Show("Сначала укажите входные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Enabled = true;
+                return;
+            }
+        }
     }
 
 

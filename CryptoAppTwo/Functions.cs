@@ -228,7 +228,7 @@ namespace CryptoAppTwo
         }
 
         //=============================================================
-        // функции для остальных методов (deprecated)
+        // функции для остальных алгоритмов (deprecated)
         // Переводит 16-ричную строку в байты
         public static byte[] StringHexToByteArray(string strHEX)
         {
