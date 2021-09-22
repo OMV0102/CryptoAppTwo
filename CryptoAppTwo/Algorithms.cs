@@ -306,7 +306,7 @@ namespace CryptoAppTwo
             return result_check;
         }
 
-        // функция для ГАМИРОВАНИЯ // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        // функция для ГАММИРОВАНИЯ
         // аргументы: вход. байты, байты ключа, Байты на выходе
         public static bool GamirovanieAlgorithm(byte[] textIn, byte[] key, out byte[] textOut, out string message)
         {
