@@ -197,6 +197,7 @@ namespace CryptoAppTwo
             return result;
         }
 
+        // Дублирование ключа до длины входного сообщения
         public static byte[] DuplicateKeyToLength(byte[] key, int length)
         {
             byte[] result = null;
