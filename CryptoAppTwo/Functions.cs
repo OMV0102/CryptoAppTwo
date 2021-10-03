@@ -131,8 +131,9 @@ namespace CryptoAppTwo
             int N = str.Length;
             byte[] bytes = new byte[N];
             if (bytes.Length > 0)
-                for (int i = 0; i < N; i++)
-                    bytes[i] = Convert.ToByte(str[i]);
+                bytes = Encoding.UTF8.GetBytes(str);
+                //for (int i = 0; i < N; i++)
+                //    bytes[i] = Convert.ToByte(str[i]);
 
             return bytes;
         }

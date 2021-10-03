@@ -1215,7 +1215,7 @@ namespace CryptoAppTwo
                 return;
             }
 
-            if (!(gamirovanie.FileExtension == "txt" && gamirovanie.EncryptOrDecrypt == false))
+            if (!(gamirovanie.FileExtension == "txt" /*&& gamirovanie.EncryptOrDecrypt == false*/))
             {
                 this.Enabled = false;
                 MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с раcширением .txt! в режиме дешифрования", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1280,7 +1280,12 @@ namespace CryptoAppTwo
                 this.flagTextInIsEdited.Checked = true;
             }
             // русские буквы осуждаются
-            else if(gamirovanie.TextInType == TypeDisplay.Symbol && !(e.KeyChar >= 1072 && e.KeyChar <=1105))
+            //else if(gamirovanie.TextInType == TypeDisplay.Symbol && !(e.KeyChar >= 1072 && e.KeyChar <=1105))
+            //{
+            //    e.Handled = false;
+            //    this.flagTextInIsEdited.Checked = true;
+            //}
+            else if (gamirovanie.TextInType == TypeDisplay.Symbol)
             {
                 e.Handled = false;
                 this.flagTextInIsEdited.Checked = true;
