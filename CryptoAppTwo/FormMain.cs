@@ -1724,7 +1724,7 @@ namespace CryptoAppTwo
             if (gamirovanie.KeyIsEntry == false)// Если введен ключ и вектор
             {
                 this.Enabled = false;
-                MessageBox.Show("Сначала введите ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Enabled = true;
                 return;
             }

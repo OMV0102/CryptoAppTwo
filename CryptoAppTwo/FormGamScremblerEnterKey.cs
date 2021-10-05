@@ -159,7 +159,7 @@ namespace CryptoAppTwo
             if(gamirovanie.TextInByte.Length > 0)
             {
                 // начальное состояние запомнили
-                int numberStart = (int) numericNumberStart.Value;
+                gamirovanie.scrembler.numberStart = (int) numericNumberStart.Value;
                 
                 // полином
                 /*int[] pol = 
@@ -177,8 +177,8 @@ namespace CryptoAppTwo
                     Convert.ToInt32(numericX0.Value), 
                 };*/
 
-                int[] pol =
-{
+                gamirovanie.scrembler.polynom = new int[11]
+                {
                     Convert.ToInt32(numericX0.Value),
                     Convert.ToInt32(numericX1.Value),
                     Convert.ToInt32(numericX2.Value),
@@ -191,20 +191,9 @@ namespace CryptoAppTwo
                     Convert.ToInt32(numericX9.Value),
                     Convert.ToInt32(numericX10.Value),
                 };
-                int size = pol.Length;
-                int index = size;
-                // ищем наибольший разряд
-                for (int i = size; i > 0; i--)
-                {
-                    if (pol[i - 1] == 1)
-                    {
-                        index = i;
-                        break;
-                    }
-                }
-                LFSR lf = new LFSR(pol, index);
 
-                //gamirovanie.KeyByte = Functions.PRNGGenerateByteArray(gamirovanie.TextInByte.Length);
+
+                gamirovanie.KeyByte = Scrembler.generatorLFSR(ref gamirovanie.scrembler);
                 gamirovanie.KeyType = TypeDisplay.None;
                 gamirovanie.KeyIsCorrect = true;
                 this.btnKeyHex.PerformClick();
