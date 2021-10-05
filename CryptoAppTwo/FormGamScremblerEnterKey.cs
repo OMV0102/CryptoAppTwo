@@ -193,10 +193,10 @@ namespace CryptoAppTwo
                 };
 
 
-                gamirovanie.KeyByte = Scrembler.generatorLFSR(ref gamirovanie.scrembler);
+                gamirovanie.KeyByte = Scrembler.generatorLFSR(ref gamirovanie.scrembler, gamirovanie.TextInByte.Length);
                 gamirovanie.KeyType = TypeDisplay.None;
                 gamirovanie.KeyIsCorrect = true;
-                this.btnKeyHex.PerformClick();
+                this.btnKeyHex_Click(null, null);
                 this.btnKeyConfirm.Enabled = true;
                 //this.btnKeyConfirm_Click(null, null);
             }

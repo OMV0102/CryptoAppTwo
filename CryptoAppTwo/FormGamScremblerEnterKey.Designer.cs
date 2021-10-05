@@ -69,9 +69,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.numericNumberStart = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelNumberStartBin = new System.Windows.Forms.Label();
-            this.labelNumberStartBin2 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.labelNumberStartBin2 = new System.Windows.Forms.Label();
+            this.labelNumberStartBin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericX10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX5)).BeginInit();
@@ -136,7 +136,7 @@
             this.btnKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.btnKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.btnKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnKeyLoad.Location = new System.Drawing.Point(40, 221);
+            this.btnKeyLoad.Location = new System.Drawing.Point(13, 218);
             this.btnKeyLoad.Margin = new System.Windows.Forms.Padding(6);
             this.btnKeyLoad.Name = "btnKeyLoad";
             this.btnKeyLoad.Size = new System.Drawing.Size(215, 44);
@@ -612,14 +612,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Начальное состояние:";
             // 
-            // labelNumberStartBin
+            // label15
             // 
-            this.labelNumberStartBin.AutoSize = true;
-            this.labelNumberStartBin.Location = new System.Drawing.Point(90, 29);
-            this.labelNumberStartBin.Name = "labelNumberStartBin";
-            this.labelNumberStartBin.Size = new System.Drawing.Size(138, 24);
-            this.labelNumberStartBin.TabIndex = 136;
-            this.labelNumberStartBin.Text = "= (0000000000)";
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(68, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(22, 16);
+            this.label15.TabIndex = 138;
+            this.label15.Text = "10";
             // 
             // labelNumberStartBin2
             // 
@@ -631,16 +633,14 @@
             this.labelNumberStartBin2.TabIndex = 137;
             this.labelNumberStartBin2.Text = "2";
             // 
-            // label15
+            // labelNumberStartBin
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(68, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(22, 16);
-            this.label15.TabIndex = 138;
-            this.label15.Text = "10";
+            this.labelNumberStartBin.AutoSize = true;
+            this.labelNumberStartBin.Location = new System.Drawing.Point(90, 29);
+            this.labelNumberStartBin.Name = "labelNumberStartBin";
+            this.labelNumberStartBin.Size = new System.Drawing.Size(138, 24);
+            this.labelNumberStartBin.TabIndex = 136;
+            this.labelNumberStartBin.Text = "= (0000000000)";
             // 
             // FormGamScremblerEnterKey
             // 
