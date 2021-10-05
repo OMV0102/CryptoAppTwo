@@ -51,14 +51,9 @@ namespace CryptoAppTwo
                 this.btnKeyConfirm.Enabled = false;
             }
 
-            // Подсказка у кнопки загрузки ключа
-            //this.toolTip_LoadKeyIV.ToolTipTitle = this.btnKeyLoad.Text;
-            //this.toolTip_LoadKeyIV.ToolTipIcon = ToolTipIcon.Info;
-            //this.toolTip_LoadKeyIV.SetToolTip(this.btnKeyLoad, "В файле должно быть две строки в 16-ричном виде.\n1-ая строка: Ключ длинной 64 знака.\n2-ая строка: Вектор(IV) длиной 32 знака.");
-
             if (gamirovanie.EncryptOrDecrypt == true) // если загрузили для ШИФРОВАНИЯ
             {
-                this.Text = "ШИФРОВАНИЕ: Ввод ключа (Key)";
+                this.Text = "Скремблер: Генерация ключа";
                 // показать кнопки случайной генерации
                 this.btnKeyGenerate.Visible = true;
                 // скрыть кнопку загрузки ключа
@@ -67,7 +62,7 @@ namespace CryptoAppTwo
             }
             else  // если загрузили для РАСШИФРОВКИ
             {
-                this.Text = "ДЕШИФРОВАНИЕ: Ввод ключа (Key)";
+                this.Text = "Скремблер: Ввод ключа";
                 // скрыть кнопки случайной генерации
                 this.btnKeyGenerate.Visible = false;
                 // показать кнопку загрузки ключа
@@ -76,6 +71,7 @@ namespace CryptoAppTwo
             }
 
             this.btnKeyBinary.PerformClick();
+            this.radioBtnScrembler1.PerformClick();
         }
 
         // кнопка ПОДТВЕРДИТЬ
@@ -162,10 +158,56 @@ namespace CryptoAppTwo
 
             if(gamirovanie.TextInByte.Length > 0)
             {
-                gamirovanie.KeyByte = Functions.PRNGGenerateByteArray(gamirovanie.TextInByte.Length);
+                // начальное состояние запомнили
+                int numberStart = (int) numericNumberStart.Value;
+                
+                // полином
+                /*int[] pol = 
+                {
+                    Convert.ToInt32(numericX10.Value), 
+                    Convert.ToInt32(numericX9.Value), 
+                    Convert.ToInt32(numericX8.Value), 
+                    Convert.ToInt32(numericX7.Value), 
+                    Convert.ToInt32(numericX6.Value), 
+                    Convert.ToInt32(numericX5.Value), 
+                    Convert.ToInt32(numericX4.Value), 
+                    Convert.ToInt32(numericX3.Value), 
+                    Convert.ToInt32(numericX2.Value), 
+                    Convert.ToInt32(numericX1.Value), 
+                    Convert.ToInt32(numericX0.Value), 
+                };*/
+
+                int[] pol =
+{
+                    Convert.ToInt32(numericX0.Value),
+                    Convert.ToInt32(numericX1.Value),
+                    Convert.ToInt32(numericX2.Value),
+                    Convert.ToInt32(numericX3.Value),
+                    Convert.ToInt32(numericX4.Value),
+                    Convert.ToInt32(numericX5.Value),
+                    Convert.ToInt32(numericX6.Value),
+                    Convert.ToInt32(numericX7.Value),
+                    Convert.ToInt32(numericX8.Value),
+                    Convert.ToInt32(numericX9.Value),
+                    Convert.ToInt32(numericX10.Value),
+                };
+                int size = pol.Length;
+                int index = size;
+                // ищем наибольший разряд
+                for (int i = size; i > 0; i--)
+                {
+                    if (pol[i - 1] == 1)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                LFSR lf = new LFSR(pol, index);
+
+                //gamirovanie.KeyByte = Functions.PRNGGenerateByteArray(gamirovanie.TextInByte.Length);
                 gamirovanie.KeyType = TypeDisplay.None;
                 gamirovanie.KeyIsCorrect = true;
-                this.btnKeyHex_Click(null, null);
+                this.btnKeyHex.PerformClick();
                 this.btnKeyConfirm.Enabled = true;
                 //this.btnKeyConfirm_Click(null, null);
             }
@@ -431,6 +473,49 @@ namespace CryptoAppTwo
                 this.btnKeyCancelChanged.Visible = false;
                 this.btnKeyConfirm.Enabled = true;
             }
+        }
+
+        // ВВОД скремблера 1 по варианту
+        private void radioBtnScrembler1_Click(object sender, EventArgs e)
+        {
+            this.numericX10.Value = 1;
+            this.numericX9.Value = 0;
+            this.numericX8.Value = 0;
+            this.numericX7.Value = 0;
+            this.numericX6.Value = 0;
+            this.numericX5.Value = 1;
+            this.numericX4.Value = 1;
+            this.numericX3.Value = 0;
+            this.numericX2.Value = 1;
+            this.numericX1.Value = 0;
+            this.numericX0.Value = 1;
+        }
+
+        // ВВОД скремблера 2 по варианту
+        private void radioBtnScrembler2_Click(object sender, EventArgs e)
+        {
+            this.numericX10.Value = 1;
+            this.numericX9.Value = 0;
+            this.numericX8.Value = 0;
+            this.numericX7.Value = 1;
+            this.numericX6.Value = 0;
+            this.numericX5.Value = 0;
+            this.numericX4.Value = 0;
+            this.numericX3.Value = 0;
+            this.numericX2.Value = 0;
+            this.numericX1.Value = 0;
+            this.numericX0.Value = 1;
+        }
+
+        // изменение начального значения
+        private void numericNumberStart_ValueChanged(object sender, EventArgs e)
+        {
+            int num = (int) this.numericNumberStart.Value;
+            string bin = Convert.ToString(num, 2).PadLeft(10, '0');
+            labelNumberStartBin.Text = "= (" + bin + ")";
+            Point point = labelNumberStartBin2.Location;
+            point.X = labelNumberStartBin.Location.X + labelNumberStartBin.Size.Width;
+            labelNumberStartBin2.Location = point;
         }
     }
 }

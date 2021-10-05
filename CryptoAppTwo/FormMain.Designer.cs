@@ -99,6 +99,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabGam = new System.Windows.Forms.TabPage();
+            this.comboBoxGamAlgorithm = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.btnGamTextOutCancelChanged = new System.Windows.Forms.Button();
             this.btnGamTextInCancelChanged = new System.Windows.Forms.Button();
             this.btnGamTextOutSaveChanged = new System.Windows.Forms.Button();
@@ -161,8 +163,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxGamAlgorithm = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1087,6 +1087,33 @@
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гамирование/Скремблирование";
             // 
+            // comboBoxGamAlgorithm
+            // 
+            this.comboBoxGamAlgorithm.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxGamAlgorithm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxGamAlgorithm.DisplayMember = "0";
+            this.comboBoxGamAlgorithm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGamAlgorithm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxGamAlgorithm.Items.AddRange(new object[] {
+            "Гамирование",
+            "Скремблирование"});
+            this.comboBoxGamAlgorithm.Location = new System.Drawing.Point(124, 13);
+            this.comboBoxGamAlgorithm.MaxDropDownItems = 10;
+            this.comboBoxGamAlgorithm.Name = "comboBoxGamAlgorithm";
+            this.comboBoxGamAlgorithm.Size = new System.Drawing.Size(211, 32);
+            this.comboBoxGamAlgorithm.TabIndex = 103;
+            this.comboBoxGamAlgorithm.TabStop = false;
+            this.comboBoxGamAlgorithm.SelectedIndexChanged += new System.EventHandler(this.comboBoxGamAlgorithm_SelectedIndexChanged);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(41, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(75, 24);
+            this.label26.TabIndex = 104;
+            this.label26.Text = "Метод:";
+            // 
             // btnGamTextOutCancelChanged
             // 
             this.btnGamTextOutCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGamTextOutCancelChanged.BackgroundImage")));
@@ -1842,33 +1869,6 @@
             this.label11.Size = new System.Drawing.Size(129, 18);
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
-            // 
-            // comboBoxGamAlgorithm
-            // 
-            this.comboBoxGamAlgorithm.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxGamAlgorithm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxGamAlgorithm.DisplayMember = "0";
-            this.comboBoxGamAlgorithm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGamAlgorithm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxGamAlgorithm.Items.AddRange(new object[] {
-            "Гамирование",
-            "Скремблирование"});
-            this.comboBoxGamAlgorithm.Location = new System.Drawing.Point(124, 13);
-            this.comboBoxGamAlgorithm.MaxDropDownItems = 10;
-            this.comboBoxGamAlgorithm.Name = "comboBoxGamAlgorithm";
-            this.comboBoxGamAlgorithm.Size = new System.Drawing.Size(211, 32);
-            this.comboBoxGamAlgorithm.TabIndex = 103;
-            this.comboBoxGamAlgorithm.TabStop = false;
-            this.comboBoxGamAlgorithm.SelectedIndexChanged += new System.EventHandler(this.comboBoxGamAlgorithm_SelectedIndexChanged);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(41, 16);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(75, 24);
-            this.label26.TabIndex = 104;
-            this.label26.Text = "Метод:";
             // 
             // FormMain
             // 

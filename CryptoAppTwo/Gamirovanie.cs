@@ -29,7 +29,12 @@ namespace CryptoAppTwo
         public bool TextOutIsEdited = false;
         public bool KeyIsEdited = false;
 
-        public Gamirovanie() { }
+        public Scrembler scrembler = null;
+
+        public Gamirovanie() 
+        {
+            scrembler = new Scrembler();
+        }
 
         public Gamirovanie(byte[] KeyByte, TypeDisplay KeyType, bool KeyIsEntry, bool KeyIsCorrect)
         {
@@ -37,6 +42,8 @@ namespace CryptoAppTwo
             this.KeyType = KeyType;
             this.KeyIsEntry = KeyIsEntry;
             this.KeyIsCorrect = KeyIsCorrect;
+
+            scrembler = new Scrembler();
         }
 
 

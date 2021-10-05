@@ -65,7 +65,7 @@ namespace CryptoAppTwo
             #endregion
         }
 
-        #region Функции обработчкики от других вкладок
+        #region Функции обработчики от других вкладок
 
         //=============================Хэширование========================================
 
@@ -1345,7 +1345,11 @@ namespace CryptoAppTwo
             gamirovanie.EncryptOrDecrypt = rezhim;
             //========очистка ключа======
             // меняем кнопку ввод ключа на обычную
-            this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
+            if(gamirovanie.GamirovanieOrScrembler == true)
+                this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
+            else
+                //this.btnGamEnterKey.Text = "Настроить скремблер";
+                this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
             this.btnGamEnterKey.ForeColor = Color.FromKnownColor(KnownColor.Black);
             //===================================
             // входные данные стираем
@@ -1359,7 +1363,7 @@ namespace CryptoAppTwo
             this.flagTextInIsEdited.Checked = false;
             this.flagTextOutIsEdited.Checked = false;
 
-            this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
+            //this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
 
             if (gamirovanie.EncryptOrDecrypt == true)
             {
@@ -1469,8 +1473,16 @@ namespace CryptoAppTwo
         // кнопка ВВОД КЛЮЧА
         private void btnGamEnterKey_Click(object sender, EventArgs e)
         {
-            FormGamEnterKey form = new FormGamEnterKey(ref this.btnGamEnterKey, ref gamirovanie);
-            form.ShowDialog(this);
+            if (comboBoxGamAlgorithm.SelectedIndex == 0)
+            {
+                FormGamEnterKey form = new FormGamEnterKey(ref this.btnGamEnterKey, ref gamirovanie);
+                form.ShowDialog(this);
+            }
+            else if (comboBoxGamAlgorithm.SelectedIndex == 1)
+            {
+                FormGamScremblerEnterKey form = new FormGamScremblerEnterKey(ref this.btnGamEnterKey, ref gamirovanie);
+                form.ShowDialog(this);
+            }
         }
 
         // флаг изменен ли ВХОД текст
@@ -1805,14 +1817,16 @@ namespace CryptoAppTwo
         private void comboBoxGamAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnGamClear.PerformClick(); // ОЧИСТИТЬ
-
-            if(this.comboBoxGamAlgorithm.SelectedIndex == 0) // если Гамирование
+            if (this.comboBoxGamAlgorithm.SelectedIndex == 0) // если Гамирование
             {
-                
+                this.gamirovanie.GamirovanieOrScrembler = true;
+                this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
             }
             else if (this.comboBoxGamAlgorithm.SelectedIndex == 1) // если Скремблирование
             {
-                
+                this.gamirovanie.GamirovanieOrScrembler = false;
+                //this.btnGamEnterKey.Text = "Настроить скремблер";
+                this.btnGamEnterKey.Text = "Ввести ключ (отсутствуют)";
             }
         }
         
