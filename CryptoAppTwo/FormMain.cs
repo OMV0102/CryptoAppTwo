@@ -27,7 +27,7 @@ namespace CryptoAppTwo
         {
             this.tabControlMain.SelectedIndex = 0;
 
-            #region Дефолтные установки других алгоритмов
+            #region Дефолтные установки других вкладок
             this.tabHesh.Parent = null;
             this.tabSimAlg.Parent = null;
             this.tabAsimAlg.Parent = null;
@@ -49,6 +49,7 @@ namespace CryptoAppTwo
             this.btn_eds_clear_Click(null, null); // Очистить всё на ЭЦП при запуске
             #endregion
 
+            #region Дефолтные установки для гамирования/скремблирования
             gamirovanie = new Gamirovanie();
             this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
             this.checkBoxGamTextInEdit.Checked = false;
@@ -59,10 +60,12 @@ namespace CryptoAppTwo
             this.btnGamTextOutSaveChanged.Visible = false;
             this.btnGamTextInCancelChanged.Visible = false;
             this.btnGamTextOutCancelChanged.Visible = false;
+            this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
             this.btnGamClear.PerformClick(); // жмем кнопку очистить для Гамирования
+            #endregion
         }
 
-        #region Функции обработчкики от других методов
+        #region Функции обработчкики от других вкладок
 
         //=============================Хэширование========================================
 
@@ -997,6 +1000,8 @@ namespace CryptoAppTwo
         //=======================================================================
         #endregion
 
+        #region Функции обработки вкладки гамирования/скремблирования
+
         // кнопка режим Гамирование ШИФРОВАТЬ
         private void radioBtnGamEncrypt_CheckedChanged(object sender, EventArgs e)
         {
@@ -1353,6 +1358,8 @@ namespace CryptoAppTwo
 
             this.flagTextInIsEdited.Checked = false;
             this.flagTextOutIsEdited.Checked = false;
+
+            this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
 
             if (gamirovanie.EncryptOrDecrypt == true)
             {
@@ -1714,7 +1721,7 @@ namespace CryptoAppTwo
                 // вызываем функцию шифрования и получаем байты выходные
                 byte[] temp;
                 string errMessage = "";
-                bool result = Algorithms.GamirovanieAlgorithm(gamirovanie.TextInByte, gamirovanie.KeyByte, out temp, out errMessage);
+                bool result = Gamirovanie.GamirovanieXOR(gamirovanie.TextInByte, gamirovanie.KeyByte, out temp, out errMessage);
 
                 if(result == false)
                 {
@@ -1793,6 +1800,27 @@ namespace CryptoAppTwo
                 return;
             }
         }
+
+        // СМЕНА АЛГОРИТМА
+        private void comboBoxGamAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.btnGamClear.PerformClick(); // ОЧИСТИТЬ
+
+            if(this.comboBoxGamAlgorithm.SelectedIndex == 0) // если Гамирование
+            {
+                
+            }
+            else if (this.comboBoxGamAlgorithm.SelectedIndex == 1) // если Скремблирование
+            {
+                
+            }
+        }
+        
+        
+        
+        
+        
+        #endregion
     }
 
 

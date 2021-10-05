@@ -53,6 +53,12 @@
     <Compile Include="FormGamEnterKey.designer.cs">
       <DependentUpon>FormGamEnterKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGamScremblerEnterKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGamScremblerEnterKey.designer.cs">
+      <DependentUpon>FormGamScremblerEnterKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="FormAsimmEnterKey.cs">
       <SubType>Form</SubType>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormGamEnterKey.resx">
       <DependentUpon>FormGamEnterKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGamScremblerEnterKey.resx">
+      <DependentUpon>FormGamScremblerEnterKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
