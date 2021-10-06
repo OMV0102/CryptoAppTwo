@@ -43,6 +43,10 @@ namespace CryptoAppTwo
                 // ВЫВЕСТИ КЛЮЧ НА ФОРМУ
                 this.txtKey.Text = Functions.ByteToHex(gamirovanie.KeyByte);
                 this.btnKeyConfirm.Enabled = true;
+                // выводим число начальное состояние
+                this.numericNumberStart.Value = gamirovanie.scrembler.numberStart;
+                // выводим значения полинома
+
             }
             else
             {
@@ -160,9 +164,10 @@ namespace CryptoAppTwo
             {
                 // начальное состояние запомнили
                 gamirovanie.scrembler.numberStart = (int) numericNumberStart.Value;
-                
+
                 // полином
-                /*int[] pol = 
+                // от старшего разряда до младшего
+                /*gamirovanie.scrembler.polynom = new int[11]
                 {
                     Convert.ToInt32(numericX10.Value), 
                     Convert.ToInt32(numericX9.Value), 
@@ -177,6 +182,7 @@ namespace CryptoAppTwo
                     Convert.ToInt32(numericX0.Value), 
                 };*/
 
+                //от младшего разряда до старшего
                 gamirovanie.scrembler.polynom = new int[11]
                 {
                     Convert.ToInt32(numericX0.Value),
@@ -505,6 +511,45 @@ namespace CryptoAppTwo
             Point point = labelNumberStartBin2.Location;
             point.X = labelNumberStartBin.Location.X + labelNumberStartBin.Size.Width;
             labelNumberStartBin2.Location = point;
+        }
+
+        // кнопка ПОКАЗАТЬ СТАТИСТИКУ
+        private void btnShowStatistics_Click(object sender, EventArgs e)
+        {
+            if(gamirovanie.KeyIsCorrect == true)
+            {
+                string seq = Functions.ByteToBinary(gamirovanie.KeyByte).Replace("-", "");//generation klu4 bolsho' dlini
+
+                int periodScrembler = Scrembler.periodScrembler(seq);//period scramblera
+                int PeriodSequence = Scrembler.findPeriod(seq);
+                double S = Scrembler.checkCriteryHiSquare(seq);//proverka kriteri'a ravnomernosti hi2
+                double rezultBalance = 0;
+                bool balance = Scrembler.balance(seq, ref rezultBalance);
+                // int cikl = lf.cikli4nost(seq);
+                double korr = Scrembler.korr(seq);
+                double Steor = 3.842; // значение статистики при α = 0.05 степени свободы 1
+                string result = "Статистика Хи2 (n = 1; α = 0.05): " + Steor.ToString() + Environment.NewLine;
+
+                if (S <= 3.842)
+                    result += "Статистика Хи2 посчитанная: " + String.Format("{0:0.###}", S) + " <= " + Steor.ToString() + " (допустимо)" + Environment.NewLine;
+                else
+                    result += result = "Статистика Хи2 посчитанная: " + String.Format("{0:0.###}", S) + " > " + Steor.ToString() + " (не допустимо)" + Environment.NewLine; ;
+                result += "Сбалансированность: " + rezultBalance.ToString() + " ("+ balance.ToString() + ")" + Environment.NewLine;
+                result += "Корреляция: " + String.Format("{0:0.###}", korr) + Environment.NewLine;
+                result += "Период скремблера: " + periodScrembler.ToString() + Environment.NewLine;
+                result += "Период: " + PeriodSequence.ToString();
+
+                this.Enabled = false;
+                MessageBox.Show(result, "Статистика", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+            }
+            else
+            {
+                this.Enabled = false;
+                MessageBox.Show("Последовательность не сгенерирована!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                return;
+            }
         }
     }
 }

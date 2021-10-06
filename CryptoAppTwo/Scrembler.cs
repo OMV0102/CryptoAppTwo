@@ -10,6 +10,8 @@ namespace CryptoAppTwo
     {
         public int numberStart = 0;
         public int[] polynom = null;
+        public int greatestDegreePolynom = 1;
+        public int maxSizePolynom = 11;
 
 
         public Scrembler()
@@ -22,20 +24,28 @@ namespace CryptoAppTwo
         {
             byte[] key = new byte[0];
             int size = scrembler.polynom.Length; // количество бит (размер полинома)
-            int index = size;
+            int greatestDegreePolynom = size;
             // ищем наибольший разряд
-            for (int i = size; i > 0; i--)
+            for (int i = size; i > 0; i--) // этот фор если от младшего до старшего записаны
             {
                 if (scrembler.polynom[i - 1] == 1)
                 {
-                    index = i;
+                    greatestDegreePolynom = i;
                     break;
                 }
             }
+            /*for (int i = 0; i < size; i++) // этот фор поиска если от старшего до младшего записаны
+            {
+                if (scrembler.polynom[i] == 1)
+                {
+                    greatestDegreePolynom = i;
+                    break;
+                }
+            }*/
 
             string binNumberStart = Convert.ToString(scrembler.numberStart, 2).PadLeft(size, '0');
             List<int> listNumberStart = new List<int>();
-            foreach(char c in binNumberStart)
+            foreach (char c in binNumberStart)
             {
                 listNumberStart.Add(Int32.Parse(c.ToString()));
             }
@@ -73,6 +83,120 @@ namespace CryptoAppTwo
             } while (period < requiredQuantity);
 
             return nums.ToString();
+        }
+
+        // критерий Хи2
+        public static double checkCriteryHiSquare(string seq)
+        {
+            int n = seq.Length;
+            int z = 0, o = 0;
+            for (int i = 0; i < n; i++)
+                if (seq[i] == '0')
+                    z++;
+                else
+                    o++;
+            double s = 2.0D * ((double)(n));
+            s *= Math.Pow(((double)z) / ((double)n) - 0.5, 2.0) + Math.Pow(((double)o) / ((double)n) - 0.5, 2.0);
+            return s;
+        }
+
+        // период скремблера
+        public static int periodScrembler(string seq)
+        {
+            string toCheck = seq.Substring(seq.Length - 16);
+            int per = 1;
+            for (int i = seq.Length - 17; i >= 0; i--)
+            {
+                string x = seq.Substring(i, 16);
+                if (x == toCheck)
+                    break;
+                per++;
+            }
+            return per;
+        }
+
+        // поиск периода последовательности
+        public static int findPeriod(string sequence)
+        {
+            int begin = 0, periodLength = 1;
+            int beginStart = -1;
+            int oldPeriod = periodLength;
+
+            //do
+            {
+                beginStart++;
+                oldPeriod = periodLength;
+                do
+                {
+                    if (sequence[begin] == sequence[periodLength + begin])
+                    {
+                        begin++;
+                    }
+                    else
+                    {
+                        begin = beginStart;
+                        periodLength++;
+                    }
+                } while (begin + periodLength != sequence.Length);
+            }
+            //while (beginStart + periodLength != sequence.Length/* && periodLength > oldPeriod*/);
+
+            return periodLength;
+        }
+
+        // сбалансированность
+        public static bool balance(string seq, ref double rez_sb)
+        {
+            bool flag = true;
+            int interval = 1000;
+            int index = 0;
+            int n = seq.Length;
+
+
+            // Разбиваем ее на интервалы по 1000 символов
+            for (int j = 0; flag && index < n; j++)
+            {
+                int z = 0, o = 0;
+
+                for (int i = j * interval; flag && i < interval * (j + 1) && i < seq.Length; i++)
+                {
+                    index++;
+                    // Для этого интервала считаем количества нулей и единиц
+                    if (seq[i] == '0')
+                        z++;
+                    else
+                        o++;
+                }
+                // Если количество равно, то последовательность считается сбалансированной
+                rez_sb = (double)Math.Abs(z - o) / interval;
+                if (rez_sb > 0.05)
+                    flag = false;
+            }
+            return flag;
+        }
+
+        // корреляция
+        public static double korr(string seq)
+        {
+            bool flag = true;
+            int pl = 0;
+            int mi = 0;
+            int n = seq.Length;
+            int sdvig = (int)(n * 0.05); // ограничение последовательности, шаг для проверки
+            for (int i = sdvig; i < n - sdvig; i++)
+            {
+                if (seq[i] == seq[i + sdvig])
+                    // одинаковые элементы
+                    pl++;
+                else
+                    // разные элементы
+                    mi++;
+            }
+
+            if ((double)Math.Abs(pl - mi) / (n - sdvig - sdvig) > 0.05)
+                flag = false;
+
+            return (double)Math.Abs(pl - mi) / (n - sdvig - sdvig);
         }
     }
 }

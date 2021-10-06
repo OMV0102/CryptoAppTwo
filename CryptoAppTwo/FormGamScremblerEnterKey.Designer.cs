@@ -51,8 +51,12 @@
             this.numericX8 = new System.Windows.Forms.NumericUpDown();
             this.numericX1 = new System.Windows.Forms.NumericUpDown();
             this.numericX0 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBoxScrembler = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numericNumberStart = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.labelNumberStartBin2 = new System.Windows.Forms.Label();
+            this.labelNumberStartBin = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.radioBtnScrembler2 = new System.Windows.Forms.RadioButton();
             this.radioBtnScrembler1 = new System.Windows.Forms.RadioButton();
@@ -67,11 +71,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericNumberStart = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.labelNumberStartBin2 = new System.Windows.Forms.Label();
-            this.labelNumberStartBin = new System.Windows.Forms.Label();
+            this.btnShowStatistics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericX10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX5)).BeginInit();
@@ -84,8 +84,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX0)).BeginInit();
             this.groupBoxScrembler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericNumberStart)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericNumberStart)).BeginInit();
             this.SuspendLayout();
             // 
             // btnKeyConfirm
@@ -94,7 +94,7 @@
             this.btnKeyConfirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.btnKeyConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.btnKeyConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKeyConfirm.Location = new System.Drawing.Point(236, 221);
+            this.btnKeyConfirm.Location = new System.Drawing.Point(239, 365);
             this.btnKeyConfirm.Margin = new System.Windows.Forms.Padding(6);
             this.btnKeyConfirm.Name = "btnKeyConfirm";
             this.btnKeyConfirm.Size = new System.Drawing.Size(215, 42);
@@ -109,7 +109,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(10, 87);
+            this.label1.Location = new System.Drawing.Point(13, 231);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 25);
@@ -120,7 +120,7 @@
             // 
             this.btnKeyGenerate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnKeyGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKeyGenerate.Location = new System.Drawing.Point(12, 218);
+            this.btnKeyGenerate.Location = new System.Drawing.Point(15, 362);
             this.btnKeyGenerate.Name = "btnKeyGenerate";
             this.btnKeyGenerate.Size = new System.Drawing.Size(215, 44);
             this.btnKeyGenerate.TabIndex = 86;
@@ -136,7 +136,7 @@
             this.btnKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.btnKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.btnKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnKeyLoad.Location = new System.Drawing.Point(13, 218);
+            this.btnKeyLoad.Location = new System.Drawing.Point(16, 362);
             this.btnKeyLoad.Margin = new System.Windows.Forms.Padding(6);
             this.btnKeyLoad.Name = "btnKeyLoad";
             this.btnKeyLoad.Size = new System.Drawing.Size(215, 44);
@@ -154,7 +154,7 @@
             this.btnKeyCancelChanged.FlatAppearance.BorderSize = 0;
             this.btnKeyCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKeyCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnKeyCancelChanged.Location = new System.Drawing.Point(310, 84);
+            this.btnKeyCancelChanged.Location = new System.Drawing.Point(313, 228);
             this.btnKeyCancelChanged.Name = "btnKeyCancelChanged";
             this.btnKeyCancelChanged.Size = new System.Drawing.Size(35, 30);
             this.btnKeyCancelChanged.TabIndex = 104;
@@ -171,7 +171,7 @@
             this.btnKeySaveChanged.FlatAppearance.BorderSize = 0;
             this.btnKeySaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKeySaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnKeySaveChanged.Location = new System.Drawing.Point(350, 85);
+            this.btnKeySaveChanged.Location = new System.Drawing.Point(353, 229);
             this.btnKeySaveChanged.Name = "btnKeySaveChanged";
             this.btnKeySaveChanged.Size = new System.Drawing.Size(35, 30);
             this.btnKeySaveChanged.TabIndex = 103;
@@ -185,7 +185,7 @@
             this.checkBoxKeyEdit.AutoSize = true;
             this.checkBoxKeyEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxKeyEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxKeyEdit.Location = new System.Drawing.Point(391, 90);
+            this.checkBoxKeyEdit.Location = new System.Drawing.Point(394, 234);
             this.checkBoxKeyEdit.Name = "checkBoxKeyEdit";
             this.checkBoxKeyEdit.Size = new System.Drawing.Size(56, 24);
             this.checkBoxKeyEdit.TabIndex = 102;
@@ -199,7 +199,7 @@
             this.txtKey.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtKey.DetectUrls = false;
             this.txtKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtKey.Location = new System.Drawing.Point(12, 118);
+            this.txtKey.Location = new System.Drawing.Point(15, 262);
             this.txtKey.Name = "txtKey";
             this.txtKey.ReadOnly = true;
             this.txtKey.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -214,7 +214,7 @@
             // 
             this.btnKeyBinary.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKeyBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnKeyBinary.Location = new System.Drawing.Point(158, 82);
+            this.btnKeyBinary.Location = new System.Drawing.Point(161, 226);
             this.btnKeyBinary.Name = "btnKeyBinary";
             this.btnKeyBinary.Size = new System.Drawing.Size(50, 30);
             this.btnKeyBinary.TabIndex = 108;
@@ -228,7 +228,7 @@
             // 
             this.btnKeyHex.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKeyHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnKeyHex.Location = new System.Drawing.Point(214, 82);
+            this.btnKeyHex.Location = new System.Drawing.Point(217, 226);
             this.btnKeyHex.Name = "btnKeyHex";
             this.btnKeyHex.Size = new System.Drawing.Size(50, 30);
             this.btnKeyHex.TabIndex = 107;
@@ -243,7 +243,7 @@
             this.flagKeyIsEdited.AutoSize = true;
             this.flagKeyIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flagKeyIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flagKeyIsEdited.Location = new System.Drawing.Point(13, 69);
+            this.flagKeyIsEdited.Location = new System.Drawing.Point(16, 213);
             this.flagKeyIsEdited.Name = "flagKeyIsEdited";
             this.flagKeyIsEdited.Size = new System.Drawing.Size(139, 24);
             this.flagKeyIsEdited.TabIndex = 109;
@@ -406,17 +406,10 @@
             this.numericX0.TabStop = false;
             this.numericX0.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(116, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 24);
-            this.label2.TabIndex = 121;
-            this.label2.Text = "Скремблер";
-            // 
             // groupBoxScrembler
             // 
+            this.groupBoxScrembler.Controls.Add(this.btnShowStatistics);
+            this.groupBoxScrembler.Controls.Add(this.groupBox1);
             this.groupBoxScrembler.Controls.Add(this.label14);
             this.groupBoxScrembler.Controls.Add(this.radioBtnScrembler2);
             this.groupBoxScrembler.Controls.Add(this.radioBtnScrembler1);
@@ -442,12 +435,81 @@
             this.groupBoxScrembler.Controls.Add(this.numericX7);
             this.groupBoxScrembler.Controls.Add(this.numericX4);
             this.groupBoxScrembler.Controls.Add(this.numericX3);
-            this.groupBoxScrembler.Location = new System.Drawing.Point(15, 272);
+            this.groupBoxScrembler.Location = new System.Drawing.Point(12, 12);
             this.groupBoxScrembler.Name = "groupBoxScrembler";
-            this.groupBoxScrembler.Size = new System.Drawing.Size(447, 172);
+            this.groupBoxScrembler.Size = new System.Drawing.Size(447, 206);
             this.groupBoxScrembler.TabIndex = 122;
             this.groupBoxScrembler.TabStop = false;
             this.groupBoxScrembler.Text = "Ввод скремблера:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numericNumberStart);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.labelNumberStartBin2);
+            this.groupBox1.Controls.Add(this.labelNumberStartBin);
+            this.groupBox1.Location = new System.Drawing.Point(190, 98);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(250, 66);
+            this.groupBox1.TabIndex = 135;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Начальное состояние:";
+            // 
+            // numericNumberStart
+            // 
+            this.numericNumberStart.Location = new System.Drawing.Point(6, 28);
+            this.numericNumberStart.Maximum = new decimal(new int[] {
+            1023,
+            0,
+            0,
+            0});
+            this.numericNumberStart.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericNumberStart.Name = "numericNumberStart";
+            this.numericNumberStart.Size = new System.Drawing.Size(64, 29);
+            this.numericNumberStart.TabIndex = 135;
+            this.numericNumberStart.TabStop = false;
+            this.numericNumberStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericNumberStart.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.numericNumberStart.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericNumberStart.ValueChanged += new System.EventHandler(this.numericNumberStart_ValueChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(68, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(22, 16);
+            this.label15.TabIndex = 138;
+            this.label15.Text = "10";
+            // 
+            // labelNumberStartBin2
+            // 
+            this.labelNumberStartBin2.AutoSize = true;
+            this.labelNumberStartBin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNumberStartBin2.Location = new System.Drawing.Point(222, 42);
+            this.labelNumberStartBin2.Name = "labelNumberStartBin2";
+            this.labelNumberStartBin2.Size = new System.Drawing.Size(15, 16);
+            this.labelNumberStartBin2.TabIndex = 137;
+            this.labelNumberStartBin2.Text = "2";
+            // 
+            // labelNumberStartBin
+            // 
+            this.labelNumberStartBin.AutoSize = true;
+            this.labelNumberStartBin.Location = new System.Drawing.Point(90, 29);
+            this.labelNumberStartBin.Name = "labelNumberStartBin";
+            this.labelNumberStartBin.Size = new System.Drawing.Size(138, 24);
+            this.labelNumberStartBin.TabIndex = 136;
+            this.labelNumberStartBin.Text = "= (0000000000)";
             // 
             // label14
             // 
@@ -583,73 +645,28 @@
             this.label3.TabIndex = 121;
             this.label3.Text = "x10";
             // 
-            // numericNumberStart
+            // btnShowStatistics
             // 
-            this.numericNumberStart.Location = new System.Drawing.Point(6, 28);
-            this.numericNumberStart.Maximum = new decimal(new int[] {
-            1023,
-            0,
-            0,
-            0});
-            this.numericNumberStart.Name = "numericNumberStart";
-            this.numericNumberStart.Size = new System.Drawing.Size(64, 29);
-            this.numericNumberStart.TabIndex = 135;
-            this.numericNumberStart.TabStop = false;
-            this.numericNumberStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericNumberStart.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            this.numericNumberStart.ValueChanged += new System.EventHandler(this.numericNumberStart_ValueChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.numericNumberStart);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.labelNumberStartBin2);
-            this.groupBox1.Controls.Add(this.labelNumberStartBin);
-            this.groupBox1.Location = new System.Drawing.Point(351, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 66);
-            this.groupBox1.TabIndex = 135;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Начальное состояние:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(68, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(22, 16);
-            this.label15.TabIndex = 138;
-            this.label15.Text = "10";
-            // 
-            // labelNumberStartBin2
-            // 
-            this.labelNumberStartBin2.AutoSize = true;
-            this.labelNumberStartBin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNumberStartBin2.Location = new System.Drawing.Point(222, 42);
-            this.labelNumberStartBin2.Name = "labelNumberStartBin2";
-            this.labelNumberStartBin2.Size = new System.Drawing.Size(15, 16);
-            this.labelNumberStartBin2.TabIndex = 137;
-            this.labelNumberStartBin2.Text = "2";
-            // 
-            // labelNumberStartBin
-            // 
-            this.labelNumberStartBin.AutoSize = true;
-            this.labelNumberStartBin.Location = new System.Drawing.Point(90, 29);
-            this.labelNumberStartBin.Name = "labelNumberStartBin";
-            this.labelNumberStartBin.Size = new System.Drawing.Size(138, 24);
-            this.labelNumberStartBin.TabIndex = 136;
-            this.labelNumberStartBin.Text = "= (0000000000)";
+            this.btnShowStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnShowStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnShowStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnShowStatistics.Location = new System.Drawing.Point(9, 170);
+            this.btnShowStatistics.Margin = new System.Windows.Forms.Padding(6);
+            this.btnShowStatistics.Name = "btnShowStatistics";
+            this.btnShowStatistics.Size = new System.Drawing.Size(430, 30);
+            this.btnShowStatistics.TabIndex = 123;
+            this.btnShowStatistics.TabStop = false;
+            this.btnShowStatistics.Text = "Показать статистику";
+            this.btnShowStatistics.UseVisualStyleBackColor = true;
+            this.btnShowStatistics.Click += new System.EventHandler(this.btnShowStatistics_Click);
             // 
             // FormGamScremblerEnterKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 524);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(474, 417);
             this.Controls.Add(this.groupBoxScrembler);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.flagKeyIsEdited);
             this.Controls.Add(this.btnKeyBinary);
             this.Controls.Add(this.btnKeyHex);
@@ -681,9 +698,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericX0)).EndInit();
             this.groupBoxScrembler.ResumeLayout(false);
             this.groupBoxScrembler.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericNumberStart)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericNumberStart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -712,7 +729,6 @@
         private System.Windows.Forms.NumericUpDown numericX8;
         private System.Windows.Forms.NumericUpDown numericX1;
         private System.Windows.Forms.NumericUpDown numericX0;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxScrembler;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.RadioButton radioBtnScrembler2;
@@ -733,5 +749,6 @@
         private System.Windows.Forms.Label labelNumberStartBin;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label labelNumberStartBin2;
+        private System.Windows.Forms.Button btnShowStatistics;
     }
 }
