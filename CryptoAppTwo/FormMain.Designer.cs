@@ -1085,7 +1085,7 @@
             this.tabGam.Padding = new System.Windows.Forms.Padding(4);
             this.tabGam.Size = new System.Drawing.Size(833, 429);
             this.tabGam.TabIndex = 6;
-            this.tabGam.Text = "Гамирование/Скремблирование";
+            this.tabGam.Text = "Гаммирование/Скремблирование";
             // 
             // comboBoxGamAlgorithm
             // 
@@ -1095,7 +1095,7 @@
             this.comboBoxGamAlgorithm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGamAlgorithm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxGamAlgorithm.Items.AddRange(new object[] {
-            "Гамирование",
+            "Гаммирование",
             "Скремблирование"});
             this.comboBoxGamAlgorithm.Location = new System.Drawing.Point(124, 13);
             this.comboBoxGamAlgorithm.MaxDropDownItems = 10;

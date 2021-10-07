@@ -167,9 +167,9 @@ namespace CryptoAppTwo
 
                 // полином
                 // от старшего разряда до младшего
-                /*gamirovanie.scrembler.polynom = new int[11]
+                gamirovanie.scrembler.polynom = new int[10]
                 {
-                    Convert.ToInt32(numericX10.Value), 
+                    //Convert.ToInt32(numericX10.Value), 
                     Convert.ToInt32(numericX9.Value), 
                     Convert.ToInt32(numericX8.Value), 
                     Convert.ToInt32(numericX7.Value), 
@@ -180,10 +180,10 @@ namespace CryptoAppTwo
                     Convert.ToInt32(numericX2.Value), 
                     Convert.ToInt32(numericX1.Value), 
                     Convert.ToInt32(numericX0.Value), 
-                };*/
+                };
 
                 //от младшего разряда до старшего
-                gamirovanie.scrembler.polynom = new int[11]
+                /*gamirovanie.scrembler.polynom = new int[10]
                 {
                     Convert.ToInt32(numericX0.Value),
                     Convert.ToInt32(numericX1.Value),
@@ -195,8 +195,8 @@ namespace CryptoAppTwo
                     Convert.ToInt32(numericX7.Value),
                     Convert.ToInt32(numericX8.Value),
                     Convert.ToInt32(numericX9.Value),
-                    Convert.ToInt32(numericX10.Value),
-                };
+                    //Convert.ToInt32(numericX10.Value),
+                };*/
 
 
                 gamirovanie.KeyByte = Scrembler.generatorLFSR(ref gamirovanie.scrembler, gamirovanie.TextInByte.Length);

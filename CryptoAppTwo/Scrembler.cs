@@ -11,12 +11,12 @@ namespace CryptoAppTwo
         public int numberStart = 0;
         public int[] polynom = null;
         public int greatestDegreePolynom = 1;
-        public int maxSizePolynom = 11;
+        public int maxSizePolynom = 10;
 
 
         public Scrembler()
         {
-            polynom = new int[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            polynom = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             numberStart = 0;
         }
 
@@ -26,22 +26,22 @@ namespace CryptoAppTwo
             int size = scrembler.polynom.Length; // количество бит (размер полинома)
             int greatestDegreePolynom = size;
             // ищем наибольший разряд
-            for (int i = size; i > 0; i--) // этот фор если от младшего до старшего записаны
+            /*for (int i = size; i > 0; i--) // этот фор если от младшего до старшего записаны слева направо
             {
                 if (scrembler.polynom[i - 1] == 1)
                 {
                     greatestDegreePolynom = i;
                     break;
                 }
-            }
-            /*for (int i = 0; i < size; i++) // этот фор поиска если от старшего до младшего записаны
+            }*/
+            for (int i = 0; i < size; i++) // этот фор поиска если от старшего до младшего записаны слева направо
             {
                 if (scrembler.polynom[i] == 1)
                 {
                     greatestDegreePolynom = i;
                     break;
                 }
-            }*/
+            }
 
             string binNumberStart = Convert.ToString(scrembler.numberStart, 2).PadLeft(size, '0');
             List<int> listNumberStart = new List<int>();
