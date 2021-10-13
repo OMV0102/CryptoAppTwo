@@ -52,6 +52,7 @@
             this.numericX1 = new System.Windows.Forms.NumericUpDown();
             this.numericX0 = new System.Windows.Forms.NumericUpDown();
             this.groupBoxScrembler = new System.Windows.Forms.GroupBox();
+            this.btnShowStatistics = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericNumberStart = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
@@ -71,7 +72,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnShowStatistics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericX10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX5)).BeginInit();
@@ -203,7 +203,6 @@
             this.txtKey.Name = "txtKey";
             this.txtKey.ReadOnly = true;
             this.txtKey.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtKey.ShortcutsEnabled = false;
             this.txtKey.Size = new System.Drawing.Size(435, 92);
             this.txtKey.TabIndex = 105;
             this.txtKey.TabStop = false;
@@ -442,6 +441,22 @@
             this.groupBoxScrembler.TabStop = false;
             this.groupBoxScrembler.Text = "Ввод скремблера:";
             // 
+            // btnShowStatistics
+            // 
+            this.btnShowStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnShowStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnShowStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnShowStatistics.Location = new System.Drawing.Point(9, 170);
+            this.btnShowStatistics.Margin = new System.Windows.Forms.Padding(6);
+            this.btnShowStatistics.Name = "btnShowStatistics";
+            this.btnShowStatistics.Size = new System.Drawing.Size(430, 30);
+            this.btnShowStatistics.TabIndex = 123;
+            this.btnShowStatistics.TabStop = false;
+            this.btnShowStatistics.Text = "Показать статистику";
+            this.btnShowStatistics.UseVisualStyleBackColor = true;
+            this.btnShowStatistics.Click += new System.EventHandler(this.btnShowStatistics_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.numericNumberStart);
@@ -509,7 +524,7 @@
             this.labelNumberStartBin.Name = "labelNumberStartBin";
             this.labelNumberStartBin.Size = new System.Drawing.Size(138, 24);
             this.labelNumberStartBin.TabIndex = 136;
-            this.labelNumberStartBin.Text = "= (0000000000)";
+            this.labelNumberStartBin.Text = "= (0000000001)";
             // 
             // label14
             // 
@@ -644,22 +659,6 @@
             this.label3.Size = new System.Drawing.Size(40, 24);
             this.label3.TabIndex = 121;
             this.label3.Text = "x10";
-            // 
-            // btnShowStatistics
-            // 
-            this.btnShowStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnShowStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.btnShowStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
-            this.btnShowStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnShowStatistics.Location = new System.Drawing.Point(9, 170);
-            this.btnShowStatistics.Margin = new System.Windows.Forms.Padding(6);
-            this.btnShowStatistics.Name = "btnShowStatistics";
-            this.btnShowStatistics.Size = new System.Drawing.Size(430, 30);
-            this.btnShowStatistics.TabIndex = 123;
-            this.btnShowStatistics.TabStop = false;
-            this.btnShowStatistics.Text = "Показать статистику";
-            this.btnShowStatistics.UseVisualStyleBackColor = true;
-            this.btnShowStatistics.Click += new System.EventHandler(this.btnShowStatistics_Click);
             // 
             // FormGamScremblerEnterKey
             // 

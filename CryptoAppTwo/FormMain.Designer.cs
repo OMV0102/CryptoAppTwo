@@ -258,7 +258,6 @@
             this.txt_Asim_text_in.Name = "txt_Asim_text_in";
             this.txt_Asim_text_in.ReadOnly = true;
             this.txt_Asim_text_in.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txt_Asim_text_in.ShortcutsEnabled = false;
             this.txt_Asim_text_in.Size = new System.Drawing.Size(381, 84);
             this.txt_Asim_text_in.TabIndex = 79;
             this.txt_Asim_text_in.TabStop = false;
@@ -548,7 +547,6 @@
             this.txt_simm_text_out.Name = "txt_simm_text_out";
             this.txt_simm_text_out.ReadOnly = true;
             this.txt_simm_text_out.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txt_simm_text_out.ShortcutsEnabled = false;
             this.txt_simm_text_out.Size = new System.Drawing.Size(381, 84);
             this.txt_simm_text_out.TabIndex = 82;
             this.txt_simm_text_out.TabStop = false;
@@ -563,7 +561,6 @@
             this.txt_simm_text_in.Name = "txt_simm_text_in";
             this.txt_simm_text_in.ReadOnly = true;
             this.txt_simm_text_in.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txt_simm_text_in.ShortcutsEnabled = false;
             this.txt_simm_text_in.Size = new System.Drawing.Size(381, 84);
             this.txt_simm_text_in.TabIndex = 79;
             this.txt_simm_text_in.TabStop = false;
@@ -1371,7 +1368,6 @@
             this.txtGamTextOut.Name = "txtGamTextOut";
             this.txtGamTextOut.ReadOnly = true;
             this.txtGamTextOut.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtGamTextOut.ShortcutsEnabled = false;
             this.txtGamTextOut.Size = new System.Drawing.Size(395, 84);
             this.txtGamTextOut.TabIndex = 82;
             this.txtGamTextOut.TabStop = false;
@@ -1387,7 +1383,6 @@
             this.txtGamTextIn.Name = "txtGamTextIn";
             this.txtGamTextIn.ReadOnly = true;
             this.txtGamTextIn.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtGamTextIn.ShortcutsEnabled = false;
             this.txtGamTextIn.Size = new System.Drawing.Size(395, 92);
             this.txtGamTextIn.TabIndex = 79;
             this.txtGamTextIn.TabStop = false;

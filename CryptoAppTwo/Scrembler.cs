@@ -24,26 +24,26 @@ namespace CryptoAppTwo
         {
             byte[] key = new byte[0];
             int size = scrembler.polynom.Length; // количество бит (размер полинома)
-            int greatestDegreePolynom = size;
+            scrembler.greatestDegreePolynom = size-1;
             // ищем наибольший разряд
-            /*for (int i = size; i > 0; i--) // этот фор если от младшего до старшего записаны слева направо
+            for (int i = size; i > 0; i--) // этот фор если от младшего до старшего записаны слева направо
             {
                 if (scrembler.polynom[i - 1] == 1)
                 {
-                    greatestDegreePolynom = i;
-                    break;
-                }
-            }*/
-            for (int i = 0; i < size; i++) // этот фор поиска если от старшего до младшего записаны слева направо
-            {
-                if (scrembler.polynom[i] == 1)
-                {
-                    greatestDegreePolynom = i;
+                    scrembler.greatestDegreePolynom = i;
                     break;
                 }
             }
+            /*for (int i = 0; i < size; i++) // этот фор поиска если от старшего до младшего записаны слева направо
+            {
+                if (scrembler.polynom[i] == 1)
+                {
+                    greatestDegreePolynom = size-i;
+                    break;
+                }
+            }*/
 
-            string binNumberStart = Convert.ToString(scrembler.numberStart, 2).PadLeft(size, '0');
+            string binNumberStart = Convert.ToString(scrembler.numberStart, 2).PadLeft(scrembler.greatestDegreePolynom, '0');
             List<int> listNumberStart = new List<int>();
             foreach (char c in binNumberStart)
             {
@@ -54,24 +54,25 @@ namespace CryptoAppTwo
             listPolynom.AddRange(scrembler.polynom.AsEnumerable<int>());
 
             int requiredQuantity = sizeTextInByte * 8;// кол-во бит необходимых сгенерировать
-            string sequenceBit = Scrembler.RegenNum(requiredQuantity, listPolynom, listNumberStart);
+            string sequenceBit = Scrembler.RegenNum(requiredQuantity, listPolynom, listNumberStart, scrembler.greatestDegreePolynom);
             key = Functions.BinaryToByte(sequenceBit);
 
             return key;
         }
 
-        public static string RegenNum(int requiredQuantity, List<int> listPolynom, List<int> binNumberStart)
+        public static string RegenNum(int requiredQuantity, List<int> listPolynom, List<int> binNumberStart, int greatestDegreePolynom)
         {
             StringBuilder nums = new StringBuilder();
             int bit = 0;
 
             int period = 0;
             int sizePolynom = listPolynom.Count;
+            
             do
             {
                 // Ищем измененный новый бит
                 bit = 0;
-                for (int i = 0; i < sizePolynom; i++)
+                for (int i = 0; i < greatestDegreePolynom; i++)
                     // Сложение по модулю 2 двух веторов - двоичных чисел
                     bit = bit ^ ((listPolynom[i] == 1 && binNumberStart[i] == 1) ? 1 : 0);
 
@@ -101,7 +102,7 @@ namespace CryptoAppTwo
         }
 
         // период скремблера
-        public static int periodScrembler(string seq)
+        public static int findPeriod0(string seq)
         {
             string toCheck = seq.Substring(seq.Length - 16);
             int per = 1;
@@ -116,7 +117,7 @@ namespace CryptoAppTwo
         }
 
         // поиск периода последовательности
-        public static int findPeriod(string sequence)
+        public static int findPeriod1(string sequence)
         {
             int begin = 0, periodLength = 1;
             int beginStart = -1;
@@ -140,6 +141,33 @@ namespace CryptoAppTwo
                 } while (begin + periodLength != sequence.Length);
             }
             //while (beginStart + periodLength != sequence.Length/* && periodLength > oldPeriod*/);
+
+            return periodLength;
+        }
+
+        public static int findPeriod2(string sequence)
+        {
+            string sequenceReverse = "";
+            for(int i = sequence.Length-1; i > 0; i--)
+            {
+                sequenceReverse += sequence[i];
+            }
+            sequence = sequenceReverse;
+
+            int begin = 0, periodLength = 1;
+            int beginStart = -1;
+            int oldPeriod = periodLength;
+
+            for(int i = 0; i < sequence.Length-5; i++)
+            {
+                for (int j = i+3; j < sequence.Length - 2; j++)
+                {
+                    if (sequence[i] == sequence[j] && sequence[i+2] == sequence[j+2])
+                    {
+                        periodLength = j - i;
+                    }
+                }
+            }
 
             return periodLength;
         }
