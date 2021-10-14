@@ -1721,7 +1721,7 @@ namespace CryptoAppTwo
                 return;
             }
 
-            if (gamirovanie.KeyIsEntry == false)// Если введен ключ и вектор
+            if (gamirovanie.KeyIsEntry == false)// Если введен ключ
             {
                 this.Enabled = false;
                 MessageBox.Show("Введите ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1745,18 +1745,6 @@ namespace CryptoAppTwo
                     gamirovanie.TextOutByte = temp;
                     gamirovanie.TextOutType = TypeDisplay.None;
                     this.btnGamTextOutHex.PerformClick();
-                }
-
-                // Вывести выходные байты 
-                if (gamirovanie.EncryptOrDecrypt == true) // Если шифруем
-                {
-                    // вывели байты на форму виде 16-ричной строки
-                    this.txt_simm_text_out.Text = Functions.ByteArrayTOStringHex(Global.Simm_byte_out);
-                }
-                else // Если расшифровываем
-                {
-                    // вывели байты на форму виде строки с кодировкой UTF8
-                    this.txt_simm_text_out.Text = Encoding.UTF8.GetString(Global.Simm_byte_out).Replace("\0", "0");
                 }
             }
             catch (Exception error)

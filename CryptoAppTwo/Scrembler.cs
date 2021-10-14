@@ -8,16 +8,16 @@ namespace CryptoAppTwo
 {
     public class Scrembler
     {
-        public int numberStart = 0;
+        public int numberStart = 1;
         public int[] polynom = null;
         public int greatestDegreePolynom = 1;
-        public int maxSizePolynom = 10;
+        //public int maxSizePolynom = 10;
 
 
         public Scrembler()
         {
-            polynom = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            numberStart = 0;
+            polynom = new int[9] { 0, 0, 0, 0, 0, 1, 0, 0, 1 };
+            numberStart = 1;
         }
 
         public static byte[] generatorLFSR(ref Scrembler scrembler, int sizeTextInByte)
@@ -44,6 +44,14 @@ namespace CryptoAppTwo
             }*/
 
             string binNumberStart = Convert.ToString(scrembler.numberStart, 2).PadLeft(scrembler.greatestDegreePolynom, '0');
+            //перевернуть биты начального значения (чтобы были от младшего до старшего)
+            string sequenceReverse = "";
+            for (int i = binNumberStart.Length - 1; i >= 0; i--)
+            {
+                sequenceReverse += binNumberStart[i];
+            }
+            binNumberStart = sequenceReverse;
+            //биты из строки в биты списка целых
             List<int> listNumberStart = new List<int>();
             foreach (char c in binNumberStart)
             {

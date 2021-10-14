@@ -370,7 +370,7 @@ namespace CryptoAppTwo
                 {
                     if (Functions.checkStringIsBinarySequence(this.txtKey.Text) == true)
                     {
-                        gamirovanie.TextInByte = Functions.BinaryToByte(this.txtKey.Text);
+                        gamirovanie.KeyByte = Functions.BinaryToByte(this.txtKey.Text);
                         this.flagKeyIsEdited.Checked = false;
                         this.checkBoxKeyEdit.Checked = false;
                         gamirovanie.KeyIsCorrect = true;
@@ -388,7 +388,7 @@ namespace CryptoAppTwo
                 {
                     if (Functions.checkStringIsHexSequence(this.txtKey.Text) == true)
                     {
-                        gamirovanie.TextInByte = Functions.HexToByte(this.txtKey.Text);
+                        gamirovanie.KeyByte = Functions.HexToByte(this.txtKey.Text);
                         this.flagKeyIsEdited.Checked = false;
                         this.checkBoxKeyEdit.Checked = false;
                         gamirovanie.KeyIsCorrect = true;

@@ -407,7 +407,7 @@ namespace CryptoAppTwo
                 {
                     if (Functions.checkStringIsBinarySequence(this.txtKey.Text) == true)
                     {
-                        gamirovanie.TextInByte = Functions.BinaryToByte(this.txtKey.Text);
+                        gamirovanie.KeyByte = Functions.BinaryToByte(this.txtKey.Text);
                         this.flagKeyIsEdited.Checked = false;
                         this.checkBoxKeyEdit.Checked = false;
                         gamirovanie.KeyIsCorrect = true;
@@ -425,7 +425,7 @@ namespace CryptoAppTwo
                 {
                     if (Functions.checkStringIsHexSequence(this.txtKey.Text) == true)
                     {
-                        gamirovanie.TextInByte = Functions.HexToByte(this.txtKey.Text);
+                        gamirovanie.KeyByte = Functions.HexToByte(this.txtKey.Text);
                         this.flagKeyIsEdited.Checked = false;
                         this.checkBoxKeyEdit.Checked = false;
                         gamirovanie.KeyIsCorrect = true;
@@ -518,11 +518,13 @@ namespace CryptoAppTwo
         {
             if(gamirovanie.KeyIsCorrect == true)
             {
-                string seq = Functions.ByteToBinary(gamirovanie.KeyByte).Replace("-", "");//generation klu4 bolsho' dlini
+                string seq = "";
+                seq = Functions.ByteToBinary(gamirovanie.KeyByte).Replace("-", "");//generation klu4 bolsho' dlini
+                //seq = Functions.ByteToBinary(Scrembler.generatorLFSR(ref gamirovanie.scrembler, 500));
 
-                int period0 = Scrembler.findPeriod0(seq);//period scramblera
+                //int period0 = Scrembler.findPeriod0(seq);//period scramblera
                 int period1 = Scrembler.findPeriod1(seq);
-                int period2 = Scrembler.findPeriod2(seq);
+                //int period2 = Scrembler.findPeriod2(seq);
                 double S = Scrembler.checkCriteryHiSquare(seq);//proverka kriteri'a ravnomernosti hi2
                 double rezultBalance = 0;
                 bool balance = Scrembler.balance(seq, ref rezultBalance);
@@ -535,11 +537,11 @@ namespace CryptoAppTwo
                     result += "Статистика Хи2 посчитанная: " + String.Format("{0:0.###}", S) + " <= " + Steor.ToString() + " (допустимо)" + Environment.NewLine;
                 else
                     result += result = "Статистика Хи2 посчитанная: " + String.Format("{0:0.###}", S) + " > " + Steor.ToString() + " (не допустимо)" + Environment.NewLine; ;
-                result += "Сбалансированность: " + rezultBalance.ToString() + " ("+ balance.ToString() + ")" + Environment.NewLine;
+                result += "Сбалансированность: " + rezultBalance.ToString()/* + " ("+ balance.ToString() + ")"*/ + Environment.NewLine;
                 result += "Корреляция: " + String.Format("{0:0.###}", korr) + Environment.NewLine;
-                result += "Период 0: " + period0.ToString() + Environment.NewLine;
-                result += "Период 1: " + period1.ToString() + Environment.NewLine;
-                result += "Период 1: " + period2.ToString() + Environment.NewLine;
+                //result += "Период: " + period0.ToString() + Environment.NewLine;
+                result += "Период: " + period1.ToString() + Environment.NewLine;
+                //result += "Период: " + period2.ToString() + Environment.NewLine;
 
                 this.Enabled = false;
                 MessageBox.Show(result, "Статистика", MessageBoxButtons.OK, MessageBoxIcon.Information);
