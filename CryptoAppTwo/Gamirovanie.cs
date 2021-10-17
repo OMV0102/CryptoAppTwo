@@ -81,41 +81,6 @@ namespace CryptoAppTwo
 
             return true;
         }
-
-        // функция Скремблирования
-        // аргументы: вход. байты, байты ключа, Байты на выходе
-        public static bool Scremblirovanie(byte[] textIn, byte[] key, out byte[] textOut, out string message)
-        {
-            textOut = new byte[0];
-            message = "";
-
-            if (textIn.Length < 1)
-            {
-                message = "Входные байты имеют нулевую длину!";
-                return false;
-            }
-
-            if (key.Length < 1)
-            {
-                message = "Ключ имеет нулевую длину!";
-                return false;
-            }
-
-            if (textIn.Length != key.Length)
-            {
-                message = "Количество входных байт и ключа не совпадает!";
-                return false;
-            }
-
-            textOut = new byte[textIn.Length];
-            int N = textOut.Length;
-            for (int i = 0; i < N; i++)
-            {
-                textOut[i] = (byte)(textIn[i] ^ key[i]);
-            }
-
-            return true;
-        }
     }
 
 }
