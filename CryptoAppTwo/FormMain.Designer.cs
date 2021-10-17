@@ -163,12 +163,53 @@
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
+            this.tabFiestel = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label40 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabGam.SuspendLayout();
             this.tabEds.SuspendLayout();
+            this.tabFiestel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip_hesh_file
@@ -1017,6 +1058,7 @@
             // tabControlMain
             // 
             this.tabControlMain.Controls.Add(this.tabGam);
+            this.tabControlMain.Controls.Add(this.tabFiestel);
             this.tabControlMain.Controls.Add(this.tabHesh);
             this.tabControlMain.Controls.Add(this.tabSimAlg);
             this.tabControlMain.Controls.Add(this.tabAsimAlg);
@@ -1865,6 +1907,531 @@
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
             // 
+            // tabFiestel
+            // 
+            this.tabFiestel.BackColor = System.Drawing.Color.LightGray;
+            this.tabFiestel.Controls.Add(this.comboBox1);
+            this.tabFiestel.Controls.Add(this.label29);
+            this.tabFiestel.Controls.Add(this.button1);
+            this.tabFiestel.Controls.Add(this.button2);
+            this.tabFiestel.Controls.Add(this.button3);
+            this.tabFiestel.Controls.Add(this.checkBox1);
+            this.tabFiestel.Controls.Add(this.checkBox2);
+            this.tabFiestel.Controls.Add(this.button4);
+            this.tabFiestel.Controls.Add(this.label32);
+            this.tabFiestel.Controls.Add(this.checkBox3);
+            this.tabFiestel.Controls.Add(this.checkBox4);
+            this.tabFiestel.Controls.Add(this.button5);
+            this.tabFiestel.Controls.Add(this.button6);
+            this.tabFiestel.Controls.Add(this.button7);
+            this.tabFiestel.Controls.Add(this.button8);
+            this.tabFiestel.Controls.Add(this.button9);
+            this.tabFiestel.Controls.Add(this.button10);
+            this.tabFiestel.Controls.Add(this.label35);
+            this.tabFiestel.Controls.Add(this.label36);
+            this.tabFiestel.Controls.Add(this.button11);
+            this.tabFiestel.Controls.Add(this.richTextBox1);
+            this.tabFiestel.Controls.Add(this.richTextBox2);
+            this.tabFiestel.Controls.Add(this.textBox1);
+            this.tabFiestel.Controls.Add(this.button12);
+            this.tabFiestel.Controls.Add(this.label37);
+            this.tabFiestel.Controls.Add(this.radioButton1);
+            this.tabFiestel.Controls.Add(this.radioButton2);
+            this.tabFiestel.Controls.Add(this.button13);
+            this.tabFiestel.Controls.Add(this.button14);
+            this.tabFiestel.Controls.Add(this.label38);
+            this.tabFiestel.Controls.Add(this.label39);
+            this.tabFiestel.Controls.Add(this.button15);
+            this.tabFiestel.Controls.Add(this.label40);
+            this.tabFiestel.Controls.Add(this.button16);
+            this.tabFiestel.Controls.Add(this.label41);
+            this.tabFiestel.Controls.Add(this.label42);
+            this.tabFiestel.Controls.Add(this.label43);
+            this.tabFiestel.Controls.Add(this.label44);
+            this.tabFiestel.Controls.Add(this.label45);
+            this.tabFiestel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabFiestel.Location = new System.Drawing.Point(4, 33);
+            this.tabFiestel.Margin = new System.Windows.Forms.Padding(4);
+            this.tabFiestel.Name = "tabFiestel";
+            this.tabFiestel.Padding = new System.Windows.Forms.Padding(4);
+            this.tabFiestel.Size = new System.Drawing.Size(833, 429);
+            this.tabFiestel.TabIndex = 7;
+            this.tabFiestel.Text = "Сеть Фейстеля";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DisplayMember = "0";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Гаммирование",
+            "Скремблирование"});
+            this.comboBox1.Location = new System.Drawing.Point(124, 13);
+            this.comboBox1.MaxDropDownItems = 10;
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(211, 32);
+            this.comboBox1.TabIndex = 103;
+            this.comboBox1.TabStop = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(41, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(75, 24);
+            this.label29.TabIndex = 104;
+            this.label29.Text = "Метод:";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(685, 157);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 30);
+            this.button1.TabIndex = 102;
+            this.button1.TabStop = false;
+            this.button1.Tag = "";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(270, 217);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(35, 30);
+            this.button2.TabIndex = 101;
+            this.button2.TabStop = false;
+            this.button2.Tag = "";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(726, 157);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(35, 30);
+            this.button3.TabIndex = 100;
+            this.button3.TabStop = false;
+            this.button3.Tag = "";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(3, 28);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(106, 24);
+            this.checkBox1.TabIndex = 99;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox2.Location = new System.Drawing.Point(3, 3);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(106, 24);
+            this.checkBox2.TabIndex = 98;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(310, 218);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(35, 30);
+            this.button4.TabIndex = 97;
+            this.button4.TabStop = false;
+            this.button4.Tag = "";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(425, 274);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(176, 24);
+            this.label32.TabIndex = 96;
+            this.label32.Text = "Вид отображения:";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox3.Location = new System.Drawing.Point(764, 160);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(56, 24);
+            this.checkBox3.TabIndex = 95;
+            this.checkBox3.Text = "Edit";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox4.Location = new System.Drawing.Point(351, 223);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(56, 24);
+            this.checkBox4.TabIndex = 94;
+            this.checkBox4.Text = "Edit";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(607, 274);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(50, 30);
+            this.button5.TabIndex = 93;
+            this.button5.TabStop = false;
+            this.button5.Tag = "";
+            this.button5.Text = "Bin";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(750, 274);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(50, 30);
+            this.button6.TabIndex = 92;
+            this.button6.TabStop = false;
+            this.button6.Tag = "";
+            this.button6.Text = "Hex";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Location = new System.Drawing.Point(676, 274);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(50, 30);
+            this.button7.TabIndex = 91;
+            this.button7.TabStop = false;
+            this.button7.Tag = "";
+            this.button7.Text = "Abc";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(190, 347);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(50, 30);
+            this.button8.TabIndex = 90;
+            this.button8.TabStop = false;
+            this.button8.Tag = "";
+            this.button8.Text = "Bin";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(321, 347);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(50, 30);
+            this.button9.TabIndex = 89;
+            this.button9.TabStop = false;
+            this.button9.Tag = "";
+            this.button9.Text = "Hex";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(255, 347);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(50, 30);
+            this.button10.TabIndex = 88;
+            this.button10.TabStop = false;
+            this.button10.Tag = "";
+            this.button10.Text = "Abc";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(8, 350);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(176, 24);
+            this.label35.TabIndex = 87;
+            this.label35.Text = "Вид отображения:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(425, 160);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(238, 24);
+            this.label36.TabIndex = 85;
+            this.label36.Text = "Зашифрованных данные:";
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.LightGray;
+            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button11.Location = new System.Drawing.Point(490, 344);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(271, 38);
+            this.button11.TabIndex = 84;
+            this.button11.TabStop = false;
+            this.button11.Tag = "";
+            this.button11.Text = "Сохранить шифротекст в файл";
+            this.button11.UseVisualStyleBackColor = false;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.richTextBox1.DetectUrls = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox1.Location = new System.Drawing.Point(425, 187);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.Size = new System.Drawing.Size(395, 84);
+            this.richTextBox1.TabIndex = 82;
+            this.richTextBox1.TabStop = false;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.richTextBox2.DetectUrls = false;
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox2.Location = new System.Drawing.Point(12, 249);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox2.Size = new System.Drawing.Size(395, 92);
+            this.richTextBox2.TabIndex = 79;
+            this.richTextBox2.TabStop = false;
+            this.richTextBox2.Text = "";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(12, 111);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(381, 26);
+            this.textBox1.TabIndex = 72;
+            this.textBox1.TabStop = false;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Transparent;
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button12.Location = new System.Drawing.Point(45, 380);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(308, 43);
+            this.button12.TabIndex = 77;
+            this.button12.TabStop = false;
+            this.button12.Tag = "";
+            this.button12.Text = "Ввести ключ (отсутствует)";
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label37.Location = new System.Drawing.Point(478, 64);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(261, 25);
+            this.label37.TabIndex = 75;
+            this.label37.Text = "Обработанные данные";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton1.Location = new System.Drawing.Point(618, 13);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(199, 29);
+            this.radioButton1.TabIndex = 71;
+            this.radioButton1.Text = "Дешифрование";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton2.Location = new System.Drawing.Point(442, 13);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(170, 29);
+            this.radioButton2.TabIndex = 70;
+            this.radioButton2.Text = "Шифрование";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.LightGray;
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Location = new System.Drawing.Point(490, 385);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(271, 38);
+            this.button13.TabIndex = 68;
+            this.button13.TabStop = false;
+            this.button13.Tag = "";
+            this.button13.Text = "Сохранить ключ в файл";
+            this.button13.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Microsoft PhagsPa", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(464, 100);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(297, 51);
+            this.button14.TabIndex = 67;
+            this.button14.TabStop = false;
+            this.button14.Tag = "";
+            this.button14.Text = "🡻 Шифровать 🡻";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label38.Location = new System.Drawing.Point(68, 64);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(195, 25);
+            this.label38.TabIndex = 61;
+            this.label38.Text = "Входные данные";
+            // 
+            // label39
+            // 
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Location = new System.Drawing.Point(230, 193);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(163, 30);
+            this.label39.TabIndex = 60;
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // button15
+            // 
+            this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button15.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button15.Location = new System.Drawing.Point(270, 146);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(123, 35);
+            this.button15.TabIndex = 58;
+            this.button15.TabStop = false;
+            this.button15.Tag = "";
+            this.button15.Text = "Очистить всё";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(8, 196);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(224, 24);
+            this.label40.TabIndex = 57;
+            this.label40.Text = "Кол-во считанных байт:";
+            // 
+            // button16
+            // 
+            this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button16.Location = new System.Drawing.Point(12, 146);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(251, 35);
+            this.button16.TabIndex = 56;
+            this.button16.TabStop = false;
+            this.button16.Tag = "";
+            this.button16.Text = "Выбрать файл с данными";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(358, 16);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(76, 24);
+            this.label41.TabIndex = 74;
+            this.label41.Text = "Режим:";
+            // 
+            // label42
+            // 
+            this.label42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label42.Enabled = false;
+            this.label42.Location = new System.Drawing.Point(-4, 55);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(841, 2);
+            this.label42.TabIndex = 73;
+            // 
+            // label43
+            // 
+            this.label43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label43.Enabled = false;
+            this.label43.Location = new System.Drawing.Point(417, 56);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(2, 370);
+            this.label43.TabIndex = 76;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(8, 223);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(168, 24);
+            this.label44.TabIndex = 80;
+            this.label44.Text = "Входные данные:";
+            // 
+            // label45
+            // 
+            this.label45.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label45.Location = new System.Drawing.Point(426, 305);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(400, 35);
+            this.label45.TabIndex = 86;
+            this.label45.Text = "(В файл шифр сохраниться в виде бинарных данных)";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -1892,6 +2459,8 @@
             this.tabGam.PerformLayout();
             this.tabEds.ResumeLayout(false);
             this.tabEds.PerformLayout();
+            this.tabFiestel.ResumeLayout(false);
+            this.tabFiestel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2030,6 +2599,46 @@
         private System.Windows.Forms.Button btnGamTextOutCancelChanged;
         private System.Windows.Forms.ComboBox comboBoxGamAlgorithm;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TabPage tabFiestel;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label45;
     }
 }
 
