@@ -27,12 +27,12 @@ namespace CryptoAppTwo
         {
             this.tabControlMain.SelectedIndex = 0;
 
-            #region Дефолтные установки других вкладок
             this.tabHesh.Parent = null;
             this.tabSimAlg.Parent = null;
             this.tabAsimAlg.Parent = null;
             this.tabEds.Parent = null;
 
+            #region Дефолтные установки других вкладок (tabHesh, tabSimAlg, tabAsimAlg, tabEds)
             this.checkBox_autoHesh.Checked = false; // автохэширование выкл по дефолту
             this.btn_clear_Hesh_byte_in_Click(null, null); // очистили входные поля (кнопка очистить)
             this.comboBox_HeshAlg.SelectedIndex = 0; // выбираем по умолчанию первый алгоритм хэширования
