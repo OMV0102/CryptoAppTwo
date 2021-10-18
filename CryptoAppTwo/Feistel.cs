@@ -8,6 +8,21 @@ namespace CryptoAppTwo
 {
     public class Feistel
     {
+        public enum KeyMethodGenerate: int // перечисление методы генерации ключа
+        {
+            Cycle = 0,
+            Scrambler = 1,
+            None = -1,
+        }
+
+        public enum FunctionMethodGenerate : int
+        {
+            Cyclic = 0,
+            Scrambler = 1,
+            None = -1,
+        }
+
+
         //str - исходная строка, key - ключ (не менее 8 символов)
         public static string Encrypt(string str, string key)
         {
