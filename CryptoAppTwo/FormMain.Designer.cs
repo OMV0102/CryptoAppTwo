@@ -138,7 +138,24 @@
             this.label34 = new System.Windows.Forms.Label();
             this.labelGamTextInCaption = new System.Windows.Forms.Label();
             this.labelGamTextOutCaptionUnder = new System.Windows.Forms.Label();
-            this.tabFiestel = new System.Windows.Forms.TabPage();
+            this.tabGpn = new System.Windows.Forms.TabPage();
+            this.numericFstRight = new System.Windows.Forms.NumericUpDown();
+            this.numericFstLeft = new System.Windows.Forms.NumericUpDown();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.tabFst = new System.Windows.Forms.TabPage();
+            this.labelFstRightBorder = new System.Windows.Forms.Label();
             this.comboBoxFstAlgorithm = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.btnFstTextOutCancelChanged = new System.Windows.Forms.Button();
@@ -204,14 +221,18 @@
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
-            this.labelFstRightBorder = new System.Windows.Forms.Label();
+            this.groupBox = new System.Windows.Forms.GroupBox();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabGam.SuspendLayout();
-            this.tabFiestel.SuspendLayout();
+            this.tabGpn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFstRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFstLeft)).BeginInit();
+            this.tabFst.SuspendLayout();
             this.tabEds.SuspendLayout();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip_hesh_file
@@ -1060,7 +1081,8 @@
             // tabControlMain
             // 
             this.tabControlMain.Controls.Add(this.tabGam);
-            this.tabControlMain.Controls.Add(this.tabFiestel);
+            this.tabControlMain.Controls.Add(this.tabGpn);
+            this.tabControlMain.Controls.Add(this.tabFst);
             this.tabControlMain.Controls.Add(this.tabHesh);
             this.tabControlMain.Controls.Add(this.tabSimAlg);
             this.tabControlMain.Controls.Add(this.tabAsimAlg);
@@ -1628,57 +1650,290 @@
             this.labelGamTextOutCaptionUnder.TabIndex = 86;
             this.labelGamTextOutCaptionUnder.Text = "(В файл шифр сохраниться в виде бинарных данных)";
             // 
-            // tabFiestel
+            // tabGpn
             // 
-            this.tabFiestel.BackColor = System.Drawing.Color.LightGray;
-            this.tabFiestel.Controls.Add(this.labelFstRightBorder);
-            this.tabFiestel.Controls.Add(this.comboBoxFstAlgorithm);
-            this.tabFiestel.Controls.Add(this.label29);
-            this.tabFiestel.Controls.Add(this.btnFstTextOutCancelChanged);
-            this.tabFiestel.Controls.Add(this.btnFstTextInCancelChanged);
-            this.tabFiestel.Controls.Add(this.btnFstTextOutSaveChanged);
-            this.tabFiestel.Controls.Add(this.flagFstTextOutIsEdited);
-            this.tabFiestel.Controls.Add(this.flagFstTextInIsEdited);
-            this.tabFiestel.Controls.Add(this.btnFstTextInSaveChanged);
-            this.tabFiestel.Controls.Add(this.label32);
-            this.tabFiestel.Controls.Add(this.checkBoxFstTextOutEdit);
-            this.tabFiestel.Controls.Add(this.checkBoxFstTextInEdit);
-            this.tabFiestel.Controls.Add(this.btnFstTextOutBinary);
-            this.tabFiestel.Controls.Add(this.btnFstTextOutHex);
-            this.tabFiestel.Controls.Add(this.btnFstTextOutSymbol);
-            this.tabFiestel.Controls.Add(this.btnFstTextInBinary);
-            this.tabFiestel.Controls.Add(this.btnFstTextInHex);
-            this.tabFiestel.Controls.Add(this.btnFstTextInSymbol);
-            this.tabFiestel.Controls.Add(this.label35);
-            this.tabFiestel.Controls.Add(this.label36);
-            this.tabFiestel.Controls.Add(this.btnFstSaveData);
-            this.tabFiestel.Controls.Add(this.txtFstTextOut);
-            this.tabFiestel.Controls.Add(this.txtFstTextIn);
-            this.tabFiestel.Controls.Add(this.txtFstFileIn);
-            this.tabFiestel.Controls.Add(this.btnFstEnterKey);
-            this.tabFiestel.Controls.Add(this.label37);
-            this.tabFiestel.Controls.Add(this.radioBtnFstDecrypt);
-            this.tabFiestel.Controls.Add(this.radioBtnFstEncrypt);
-            this.tabFiestel.Controls.Add(this.btnFstSaveKey);
-            this.tabFiestel.Controls.Add(this.btnFstEncryptDecrypt);
-            this.tabFiestel.Controls.Add(this.label38);
-            this.tabFiestel.Controls.Add(this.labelFstByteNumber);
-            this.tabFiestel.Controls.Add(this.btnFstClear);
-            this.tabFiestel.Controls.Add(this.label40);
-            this.tabFiestel.Controls.Add(this.btnFstChoiceFileIn);
-            this.tabFiestel.Controls.Add(this.label41);
-            this.tabFiestel.Controls.Add(this.label42);
-            this.tabFiestel.Controls.Add(this.label43);
-            this.tabFiestel.Controls.Add(this.label44);
-            this.tabFiestel.Controls.Add(this.labelFstTextOutCaptionUnder);
-            this.tabFiestel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tabFiestel.Location = new System.Drawing.Point(4, 33);
-            this.tabFiestel.Margin = new System.Windows.Forms.Padding(4);
-            this.tabFiestel.Name = "tabFiestel";
-            this.tabFiestel.Padding = new System.Windows.Forms.Padding(4);
-            this.tabFiestel.Size = new System.Drawing.Size(833, 429);
-            this.tabFiestel.TabIndex = 7;
-            this.tabFiestel.Text = "Сеть Фейстеля";
+            this.tabGpn.BackColor = System.Drawing.Color.LightGray;
+            this.tabGpn.Controls.Add(this.groupBox);
+            this.tabGpn.Controls.Add(this.textBox1);
+            this.tabGpn.Controls.Add(this.label39);
+            this.tabGpn.Controls.Add(this.label45);
+            this.tabGpn.Controls.Add(this.label46);
+            this.tabGpn.Controls.Add(this.button1);
+            this.tabGpn.Controls.Add(this.button2);
+            this.tabGpn.Controls.Add(this.button3);
+            this.tabGpn.Controls.Add(this.button4);
+            this.tabGpn.Controls.Add(this.checkBox1);
+            this.tabGpn.Controls.Add(this.label47);
+            this.tabGpn.Controls.Add(this.button5);
+            this.tabGpn.Controls.Add(this.comboBox1);
+            this.tabGpn.Controls.Add(this.label48);
+            this.tabGpn.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabGpn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabGpn.Location = new System.Drawing.Point(4, 33);
+            this.tabGpn.Margin = new System.Windows.Forms.Padding(4);
+            this.tabGpn.Name = "tabGpn";
+            this.tabGpn.Padding = new System.Windows.Forms.Padding(4);
+            this.tabGpn.Size = new System.Drawing.Size(833, 429);
+            this.tabGpn.TabIndex = 8;
+            this.tabGpn.Text = "Простые числа";
+            // 
+            // numericFstRight
+            // 
+            this.numericFstRight.Location = new System.Drawing.Point(37, 94);
+            this.numericFstRight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericFstRight.Name = "numericFstRight";
+            this.numericFstRight.Size = new System.Drawing.Size(398, 29);
+            this.numericFstRight.TabIndex = 101;
+            this.numericFstRight.TabStop = false;
+            this.numericFstRight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericFstRight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericFstLeft
+            // 
+            this.numericFstLeft.Location = new System.Drawing.Point(37, 46);
+            this.numericFstLeft.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericFstLeft.Name = "numericFstLeft";
+            this.numericFstLeft.Size = new System.Drawing.Size(398, 29);
+            this.numericFstLeft.TabIndex = 100;
+            this.numericFstLeft.TabStop = false;
+            this.numericFstLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericFstLeft.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // textBox1
+            // 
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox1.Location = new System.Drawing.Point(186, 102);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ShortcutsEnabled = false;
+            this.textBox1.Size = new System.Drawing.Size(626, 29);
+            this.textBox1.TabIndex = 99;
+            this.textBox1.TabStop = false;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label39.Location = new System.Drawing.Point(3, 4);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(359, 31);
+            this.label39.TabIndex = 54;
+            this.label39.Text = "Генератор простых чисел";
+            // 
+            // label45
+            // 
+            this.label45.BackColor = System.Drawing.Color.White;
+            this.label45.Location = new System.Drawing.Point(52, 314);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(647, 48);
+            this.label45.TabIndex = 53;
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label46
+            // 
+            this.label46.BackColor = System.Drawing.Color.Transparent;
+            this.label46.Location = new System.Drawing.Point(289, 133);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(170, 30);
+            this.label46.TabIndex = 52;
+            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(581, 369);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(231, 38);
+            this.button1.TabIndex = 50;
+            this.button1.TabStop = false;
+            this.button1.Tag = "";
+            this.button1.Text = "Сохранить хэш в файл";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Microsoft PhagsPa", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(298, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(240, 63);
+            this.button2.TabIndex = 49;
+            this.button2.TabStop = false;
+            this.button2.Tag = "";
+            this.button2.Text = "⇓  Хэшировать  ⇓";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.Control;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button3.Location = new System.Drawing.Point(700, 313);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 50);
+            this.button3.TabIndex = 47;
+            this.button3.TabStop = false;
+            this.button3.Tag = "";
+            this.button3.Text = "Скопировать в буффер";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(504, 131);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(106, 35);
+            this.button4.TabIndex = 46;
+            this.button4.TabStop = false;
+            this.button4.Tag = "";
+            this.button4.Text = "Очистить";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(565, 241);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(256, 57);
+            this.checkBox1.TabIndex = 45;
+            this.checkBox1.TabStop = false;
+            this.checkBox1.Text = "Авто-хэширование после выбора алгоритма";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(18, 134);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(270, 24);
+            this.label47.TabIndex = 44;
+            this.label47.Text = "Количество считанных байт:";
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(654, 83);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(163, 33);
+            this.button5.TabIndex = 41;
+            this.button5.TabStop = false;
+            this.button5.Tag = "";
+            this.button5.Text = "Выбрать файл";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DisplayMember = "0";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "MD5",
+            "RIPEMD160",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512"});
+            this.comboBox1.Location = new System.Drawing.Point(56, 262);
+            this.comboBox1.MaxDropDownItems = 10;
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(211, 32);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.TabStop = false;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(52, 235);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(228, 24);
+            this.label48.TabIndex = 1;
+            this.label48.Text = "Алгоритм хэширования:";
+            // 
+            // tabFst
+            // 
+            this.tabFst.BackColor = System.Drawing.Color.LightGray;
+            this.tabFst.Controls.Add(this.labelFstRightBorder);
+            this.tabFst.Controls.Add(this.comboBoxFstAlgorithm);
+            this.tabFst.Controls.Add(this.label29);
+            this.tabFst.Controls.Add(this.btnFstTextOutCancelChanged);
+            this.tabFst.Controls.Add(this.btnFstTextInCancelChanged);
+            this.tabFst.Controls.Add(this.btnFstTextOutSaveChanged);
+            this.tabFst.Controls.Add(this.flagFstTextOutIsEdited);
+            this.tabFst.Controls.Add(this.flagFstTextInIsEdited);
+            this.tabFst.Controls.Add(this.btnFstTextInSaveChanged);
+            this.tabFst.Controls.Add(this.label32);
+            this.tabFst.Controls.Add(this.checkBoxFstTextOutEdit);
+            this.tabFst.Controls.Add(this.checkBoxFstTextInEdit);
+            this.tabFst.Controls.Add(this.btnFstTextOutBinary);
+            this.tabFst.Controls.Add(this.btnFstTextOutHex);
+            this.tabFst.Controls.Add(this.btnFstTextOutSymbol);
+            this.tabFst.Controls.Add(this.btnFstTextInBinary);
+            this.tabFst.Controls.Add(this.btnFstTextInHex);
+            this.tabFst.Controls.Add(this.btnFstTextInSymbol);
+            this.tabFst.Controls.Add(this.label35);
+            this.tabFst.Controls.Add(this.label36);
+            this.tabFst.Controls.Add(this.btnFstSaveData);
+            this.tabFst.Controls.Add(this.txtFstTextOut);
+            this.tabFst.Controls.Add(this.txtFstTextIn);
+            this.tabFst.Controls.Add(this.txtFstFileIn);
+            this.tabFst.Controls.Add(this.btnFstEnterKey);
+            this.tabFst.Controls.Add(this.label37);
+            this.tabFst.Controls.Add(this.radioBtnFstDecrypt);
+            this.tabFst.Controls.Add(this.radioBtnFstEncrypt);
+            this.tabFst.Controls.Add(this.btnFstSaveKey);
+            this.tabFst.Controls.Add(this.btnFstEncryptDecrypt);
+            this.tabFst.Controls.Add(this.label38);
+            this.tabFst.Controls.Add(this.labelFstByteNumber);
+            this.tabFst.Controls.Add(this.btnFstClear);
+            this.tabFst.Controls.Add(this.label40);
+            this.tabFst.Controls.Add(this.btnFstChoiceFileIn);
+            this.tabFst.Controls.Add(this.label41);
+            this.tabFst.Controls.Add(this.label42);
+            this.tabFst.Controls.Add(this.label43);
+            this.tabFst.Controls.Add(this.label44);
+            this.tabFst.Controls.Add(this.labelFstTextOutCaptionUnder);
+            this.tabFst.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabFst.Location = new System.Drawing.Point(4, 33);
+            this.tabFst.Margin = new System.Windows.Forms.Padding(4);
+            this.tabFst.Name = "tabFst";
+            this.tabFst.Padding = new System.Windows.Forms.Padding(4);
+            this.tabFst.Size = new System.Drawing.Size(833, 429);
+            this.tabFst.TabIndex = 7;
+            this.tabFst.Text = "Сеть Фейстеля";
+            // 
+            // labelFstRightBorder
+            // 
+            this.labelFstRightBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelFstRightBorder.Enabled = false;
+            this.labelFstRightBorder.Location = new System.Drawing.Point(835, 2);
+            this.labelFstRightBorder.Name = "labelFstRightBorder";
+            this.labelFstRightBorder.Size = new System.Drawing.Size(2, 424);
+            this.labelFstRightBorder.TabIndex = 105;
             // 
             // comboBoxFstAlgorithm
             // 
@@ -2436,14 +2691,16 @@
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
             // 
-            // labelFstRightBorder
+            // groupBox
             // 
-            this.labelFstRightBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelFstRightBorder.Enabled = false;
-            this.labelFstRightBorder.Location = new System.Drawing.Point(835, 2);
-            this.labelFstRightBorder.Name = "labelFstRightBorder";
-            this.labelFstRightBorder.Size = new System.Drawing.Size(2, 424);
-            this.labelFstRightBorder.TabIndex = 105;
+            this.groupBox.Controls.Add(this.numericFstLeft);
+            this.groupBox.Controls.Add(this.numericFstRight);
+            this.groupBox.Location = new System.Drawing.Point(9, 38);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(461, 223);
+            this.groupBox.TabIndex = 102;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "groupBox1";
             // 
             // FormMain
             // 
@@ -2470,10 +2727,15 @@
             this.tabControlMain.ResumeLayout(false);
             this.tabGam.ResumeLayout(false);
             this.tabGam.PerformLayout();
-            this.tabFiestel.ResumeLayout(false);
-            this.tabFiestel.PerformLayout();
+            this.tabGpn.ResumeLayout(false);
+            this.tabGpn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFstRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFstLeft)).EndInit();
+            this.tabFst.ResumeLayout(false);
+            this.tabFst.PerformLayout();
             this.tabEds.ResumeLayout(false);
             this.tabEds.PerformLayout();
+            this.groupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2612,7 +2874,7 @@
         private System.Windows.Forms.Button btnGamTextOutCancelChanged;
         private System.Windows.Forms.ComboBox comboBoxGamAlgorithm;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TabPage tabFiestel;
+        private System.Windows.Forms.TabPage tabFst;
         private System.Windows.Forms.ComboBox comboBoxFstAlgorithm;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button btnFstTextOutCancelChanged;
@@ -2654,6 +2916,23 @@
         private System.Windows.Forms.Label labelFstTextOutCaptionUnder;
         private System.Windows.Forms.ToolTip toolTipFstFileIn;
         private System.Windows.Forms.Label labelFstRightBorder;
+        private System.Windows.Forms.TabPage tabGpn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.NumericUpDown numericFstLeft;
+        private System.Windows.Forms.NumericUpDown numericFstRight;
+        private System.Windows.Forms.GroupBox groupBox;
     }
 }
 

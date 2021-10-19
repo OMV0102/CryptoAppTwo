@@ -197,7 +197,7 @@ namespace CryptoAppTwo
                 for (int i = j * interval; flag && i < interval * (j + 1) && i < seq.Length; i++)
                 {
                     index++;
-                    // Для этого интервала считаем количества нулей и единиц
+                    // Для  интервала считаем количества 0 и 1
                     if (seq[i] == '0')
                         z++;
                     else

@@ -74,6 +74,20 @@ namespace CryptoAppTwo
                 this.checkBoxKeyEdit.Visible = true;
             }
 
+            // запрет редактирования numeric
+            // закоментирован (был сделан, потому что возникло исключение если взять скремблер меньше 10 степени)
+            //numericX0.Enabled = false;
+            //numericX1.Enabled = false;
+            //numericX2.Enabled = false;
+            //numericX3.Enabled = false;
+            //numericX4.Enabled = false;
+            //numericX5.Enabled = false;
+            //numericX6.Enabled = false;
+            //numericX7.Enabled = false;
+            //numericX8.Enabled = false;
+            //numericX9.Enabled = false;
+            //numericX10.Enabled = false;
+
             this.btnKeyBinary.PerformClick();
             this.radioBtnScrembler1.PerformClick();
         }
@@ -537,7 +551,8 @@ namespace CryptoAppTwo
                     result += "Статистика Хи2 посчитанная: " + String.Format("{0:0.###}", S) + " <= " + Steor.ToString() + " (допустимо)" + Environment.NewLine;
                 else
                     result += result = "Статистика Хи2 посчитанная: " + String.Format("{0:0.###}", S) + " > " + Steor.ToString() + " (не допустимо)" + Environment.NewLine; ;
-                result += "Сбалансированность: " + rezultBalance.ToString()/* + " ("+ balance.ToString() + ")"*/ + Environment.NewLine;
+                if(balance==true) result += "Сбалансированность: " + rezultBalance.ToString() + " ("+ "Допустимо" + ")" + Environment.NewLine;
+                else result += "Сбалансированность: " + rezultBalance.ToString() + " ("+ "Не допустимо" + ")" + Environment.NewLine;
                 result += "Корреляция: " + String.Format("{0:0.###}", korr) + Environment.NewLine;
                 //result += "Период: " + period0.ToString() + Environment.NewLine;
                 result += "Период: " + period1.ToString() + Environment.NewLine;

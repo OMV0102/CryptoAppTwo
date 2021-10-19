@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using System.IO;
 using System.Security.Cryptography;
 using System.Collections;
+using System.Numerics;
 
 namespace CryptoAppTwo
 {
     public partial class FormMain : Form
     {
         private Gamirovanie gamirovanie = null;
+        
+        private List<PrimeNumber> PrimeNumberList = null;
         
         public FormMain()
         {
@@ -25,8 +28,12 @@ namespace CryptoAppTwo
         // при ЗАГРУЗКЕ ФОРМЫ
         private void FormMain_Load(object sender, EventArgs e)
         {
-            this.tabControlMain.SelectedIndex = 1;
+            this.tabControlMain.SelectedIndex = 0;
 
+            // скрыть лишние вкладки на форме
+            //this.tabGam.Parent = null;
+            tabGpn.Parent = null;
+            this.tabFst.Parent = null;
             this.tabHesh.Parent = null;
             this.tabSimAlg.Parent = null;
             this.tabAsimAlg.Parent = null;
@@ -65,25 +72,34 @@ namespace CryptoAppTwo
             #endregion
 
             #region Дефолтные установки для СЕТИ ФЕЙСТЕЛЯ
-            gamirovanie = new Gamirovanie();
-            this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
-            this.checkBoxGamTextInEdit.Checked = false;
-            this.checkBoxGamTextOutEdit.Checked = false;
-            this.txtGamTextIn.ReadOnly = true;
-            this.txtGamTextOut.ReadOnly = true;
-            this.btnGamTextInSaveChanged.Visible = false;
-            this.btnGamTextOutSaveChanged.Visible = false;
-            this.btnGamTextInCancelChanged.Visible = false;
-            this.btnGamTextOutCancelChanged.Visible = false;
-            this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
-            this.btnGamClear.PerformClick(); // жмем кнопку очистить для Гамирования
+            //gamirovanie = new Gamirovanie();
+            //this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
+            //this.checkBoxGamTextInEdit.Checked = false;
+            //this.checkBoxGamTextOutEdit.Checked = false;
+            //this.txtGamTextIn.ReadOnly = true;
+            //this.txtGamTextOut.ReadOnly = true;
+            //this.btnGamTextInSaveChanged.Visible = false;
+            //this.btnGamTextOutSaveChanged.Visible = false;
+            //this.btnGamTextInCancelChanged.Visible = false;
+            //this.btnGamTextOutCancelChanged.Visible = false;
+            //this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
+            //this.btnGamClear.PerformClick(); // жмем кнопку очистить для Гамирования
+            #endregion
+
+            #region Дефолтные установки для генерации ПРОСТЫХ ЧИСЕЛ
+            PrimeNumberList = new List<PrimeNumber>();
+            this.numericFstLeft.Minimum = 1;
+            this.numericFstLeft.Maximum = new Decimal(1208925819614629174706176.0);
+            this.numericFstRight.Minimum = 1;
+            this.numericFstRight.Maximum = new Decimal(1208925819614629174706176.0);
             #endregion
         }
 
         // Смена вкладки сверху
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(this.tabControlMain.SelectedIndex == 1)
+            // если вкладка с сетью Фейстеля то увеличить ширину справа
+            if(this.tabControlMain.SelectedTab.Name == "tabFst")
             {
                 this.Width = 1500;
                 this.CenterToScreen();
