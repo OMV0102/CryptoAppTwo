@@ -10,7 +10,7 @@ namespace CryptoAppTwo
     {
         public int numberStart = 1;
         public int[] polynom = null;
-        public int greatestDegreePolynom = 1;
+        private int greatestDegreePolynom = 1;
         //public int maxSizePolynom = 10;
 
 
@@ -20,7 +20,7 @@ namespace CryptoAppTwo
             numberStart = 1;
         }
 
-        public static byte[] generatorLFSR(ref Scrembler scrembler, int sizeTextInByte)
+        public static byte[] generatorLFSR(ref Scrembler scrembler, int requiredCountByte)
         {
             byte[] key = new byte[0];
             int size = scrembler.polynom.Length; // количество бит (размер полинома)
@@ -61,7 +61,7 @@ namespace CryptoAppTwo
             List<int> listPolynom = new List<int>();
             listPolynom.AddRange(scrembler.polynom.AsEnumerable<int>());
 
-            int requiredQuantity = sizeTextInByte * 8;// кол-во бит необходимых сгенерировать
+            int requiredQuantity = requiredCountByte * 8;// кол-во бит необходимых сгенерировать
             string sequenceBit = Scrembler.RegenNum(requiredQuantity, listPolynom, listNumberStart, scrembler.greatestDegreePolynom);
             key = Functions.BinaryToByte(sequenceBit);
 

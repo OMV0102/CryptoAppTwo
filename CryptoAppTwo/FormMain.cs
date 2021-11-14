@@ -17,6 +17,7 @@ namespace CryptoAppTwo
     public partial class FormMain : Form
     {
         private Gamirovanie gamirovanie = null;
+        private Feistel feistel = null;
         
         private List<PrimeNumber> PrimeNumberList = null;
         
@@ -25,6 +26,7 @@ namespace CryptoAppTwo
             InitializeComponent();
         }
 
+        #region Обработчики самой формы
         // при ЗАГРУЗКЕ ФОРМЫ
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -32,8 +34,8 @@ namespace CryptoAppTwo
 
             // скрыть лишние вкладки на форме
             //this.tabGam.Parent = null;
-            tabGpn.Parent = null;
-            this.tabFst.Parent = null;
+            this.tabGpn.Parent = null;
+            //this.tabFst.Parent = null;
             this.tabHesh.Parent = null;
             this.tabSimAlg.Parent = null;
             this.tabAsimAlg.Parent = null;
@@ -72,26 +74,18 @@ namespace CryptoAppTwo
             #endregion
 
             #region Дефолтные установки для СЕТИ ФЕЙСТЕЛЯ
-            //gamirovanie = new Gamirovanie();
-            //this.radioBtnGamEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
-            //this.checkBoxGamTextInEdit.Checked = false;
-            //this.checkBoxGamTextOutEdit.Checked = false;
-            //this.txtGamTextIn.ReadOnly = true;
-            //this.txtGamTextOut.ReadOnly = true;
-            //this.btnGamTextInSaveChanged.Visible = false;
-            //this.btnGamTextOutSaveChanged.Visible = false;
-            //this.btnGamTextInCancelChanged.Visible = false;
-            //this.btnGamTextOutCancelChanged.Visible = false;
-            //this.comboBoxGamAlgorithm.SelectedIndex = 0; // метод гамирования выбрать
-            //this.btnGamClear.PerformClick(); // жмем кнопку очистить для Гамирования
+            feistel = new Feistel();
+            this.radioBtnFstEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
+            this.comboBoxFstSubkey.SelectedIndex = 0; // метод гамирования выбрать
+            this.btnFstClear.PerformClick(); // жмем кнопку очистить для Гамирования
             #endregion
 
             #region Дефолтные установки для генерации ПРОСТЫХ ЧИСЕЛ
             PrimeNumberList = new List<PrimeNumber>();
-            this.numericFstLeft.Minimum = 1;
-            this.numericFstLeft.Maximum = new Decimal(1208925819614629174706176.0);
-            this.numericFstRight.Minimum = 1;
-            this.numericFstRight.Maximum = new Decimal(1208925819614629174706176.0);
+            this.numericGpnLeft.Minimum = 1;
+            this.numericGpnLeft.Maximum = new Decimal(1208925819614629174706176.0);
+            this.numericGpnRight.Minimum = 1;
+            this.numericGpnRight.Maximum = new Decimal(1208925819614629174706176.0);
             #endregion
         }
 
@@ -103,15 +97,14 @@ namespace CryptoAppTwo
             {
                 this.Width = 1500;
                 this.CenterToScreen();
-                //this.labelFstTextOutCaptionUnder.Visible = true;
             }
             else
             {
                 this.Width = 857;
                 this.CenterToScreen();
-                //this.labelFstTextOutCaptionUnder.Visible = false;
             }
         }
+        #endregion
 
         #region Функции обработчики от других вкладок
 
@@ -1054,8 +1047,8 @@ namespace CryptoAppTwo
         private void radioBtnGamEncrypt_CheckedChanged(object sender, EventArgs e)
         {
             this.btnGamEncryptDecrypt.Text = "🡻 Шифровать 🡻";
-            this.labelGamCaptionIn.Text = "Входные данные";
-            this.labelGamTextInCaption.Text = "Исходные данные:";
+            this.labelGamCaptionIn.Text = "Сообщение";
+            this.labelGamTextInCaption.Text = "Сообщение:";
             this.labelGamCaptionOut.Text = "Зашифрованные данные:";
             this.labelGamTextOutCaption.Text = "Шифротекст:";
             this.labelGamTextOutCaptionUnder.Text = "█ В файл шифротекст сохраниться в бинарном виде,\n█ с таким же расширением, что и исходный файл.";
@@ -1308,7 +1301,6 @@ namespace CryptoAppTwo
             this.btnGamTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
         }
 
-        List<char> list = new List<char>();
         // ввод текста ВХОД
         private void txtGamTextIn_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1872,7 +1864,1066 @@ namespace CryptoAppTwo
 
         #endregion
 
+        #region Функции обработчики Сеть Фейстеля
+
+        // радио батон ШИФРОВАНИЕ
+        private void radioBtnFstEncrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            btnFstEncryptDecrypt.Text = "Шифровать";
+            labelFstCaptionIn.Text = "Сообщение";
+            labelFstCaptionOut.Text = "Шифротекст";
+            btnFstSaveData.Text = "Сохранить шифротекст";
+            btnFstClear.PerformClick(); // Очистить всё при переключении
+            feistel.EncryptOrDecrypt = true;
+            //btnFstKeyGenerate.Visible = true;
+            //btnFstKeyLoad.Visible = false;
+            //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
+            checkBoxFstTextOutEdit.Visible = false;
+        }
+
+        // радио батон ДЕШИФРОВАНИЕ
+        private void radioBtnFstDecrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            this.btnFstEncryptDecrypt.Text = "Дешифровать";
+            this.labelFstCaptionIn.Text = "Шифротекст";
+            this.labelFstCaptionOut.Text = "Сообщение";
+            this.btnFstSaveData.Text = "Сохранить сообщение";
+            btnFstClear.PerformClick(); // Очистить всё при переключении
+            gamirovanie.EncryptOrDecrypt = true;
+            //btnFstKeyGenerate.Visible = false;
+            //btnFstKeyLoad.Visible = true;
+            //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
+            this.checkBoxFstTextOutEdit.Visible = false;
+        }
+
+        // кнопка ОЧИСТИТЬ всё
+        private void btnFstClear_Click(object sender, EventArgs e)
+        {
+            bool rezhim = feistel.EncryptOrDecrypt;
+            feistel = new Feistel(); // перезаписываем объект
+            feistel.EncryptOrDecrypt = rezhim;
+            //===================================
+            // входные данные стираем
+            this.txtFstTextIn.Text = "";
+            this.labelFstByteNumber.Text = "0";
+            // ВЫходные данные стираем
+            this.txtFstTextOut.Text = "";
+            this.btnFstTextInSymbol.Enabled = true;
+            //флаги
+            this.flagFstTextInIsEdited.Checked = false;
+            this.flagFstTextOutIsEdited.Checked = false;
+            this.flagFstKeyIsEdited.Checked = false;
+            // параметры
+            this.comboBoxFstFunc.SelectedIndex = 0;
+            this.comboBoxFstSubkey.SelectedIndex = 0;
+
+            //кнопки редактирования
+            this.btnFstTextInSaveChanged.Visible = false;
+            this.btnFstTextOutSaveChanged.Visible = false;
+            this.btnFstTextInCancelChanged.Visible = false;
+            this.btnFstTextOutCancelChanged.Visible = false;
+            this.btnFstKeySaveChanged.Visible = false;
+            this.btnFstKeyCancelChanged.Visible = false;
+            checkBoxFstTextInEdit.Checked = false;
+            checkBoxFstTextOutEdit.Checked = false;
+            checkBoxFstKeyEdit.Checked = false;
+
+
+            if (feistel.EncryptOrDecrypt == true)
+            {
+                this.btnFstTextInSymbol.PerformClick();
+                this.btnFstKeyHex.PerformClick();
+                this.btnFstTextOutHex.PerformClick();
+            }
+            else
+            {
+                this.btnFstTextInHex.PerformClick();
+                this.btnFstKeyHex.PerformClick();
+                this.btnFstTextOutSymbol.PerformClick();
+            }
+        }
+
+        // Вид получения подключа
+        private void comboBoxFstSubkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxFstSubkey.SelectedItem.ToString() == "Циклически")
+                feistel.SubKeyMode = Feistel.KeyMethodGenerate.Cycle;
+            else if(comboBoxFstSubkey.SelectedItem.ToString() == "Скремблер")
+                feistel.SubKeyMode = Feistel.KeyMethodGenerate.Scrambler;
+            else
+                feistel.SubKeyMode = Feistel.KeyMethodGenerate.None;
+        }
+
+        // Вид образующей функции
+        private void comboBoxFstFunc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxFstFunc.SelectedItem.ToString() == "Единичная")
+                feistel.FuncMode = Feistel.FunctionMethodGenerate.Single;
+            else if (comboBoxFstFunc.SelectedItem.ToString() == "XOR")
+                feistel.FuncMode = Feistel.FunctionMethodGenerate.Xor;
+            else
+                feistel.FuncMode = Feistel.FunctionMethodGenerate.None;
+        }
+
+        // функция обновления графика
+        private void ChartRefresh()
+        {
+            ChartFstText.Series[0].Points.Clear();
+            ChartFstKey.Series[0].Points.Clear();
+
+            for (int i = 0; i < 16; i++)
+            {
+                ChartFstText.Series[0].Points.AddXY(i + 1, feistel.ChartListBitsText[i]);
+                ChartFstKey.Series[0].Points.AddXY(i + 1, feistel.ChartListBitsKey[i]);
+            }
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование вход текста
+        private void checkBoxFstTextInEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxFstTextInEdit.Checked == true)
+            {
+                this.txtFstTextIn.ReadOnly = false;
+            }
+            else
+            {
+                if (feistel.TextInIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxFstTextInEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtFstTextIn.ReadOnly = true;
+                }
+            }
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование ключа
+        private void checkBoxFstKeyEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxFstKeyEdit.Checked == true)
+            {
+                this.txtFstKey.ReadOnly = false;
+            }
+            else
+            {
+                if (feistel.KeyIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxFstKeyEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtFstTextIn.ReadOnly = true;
+                }
+            }
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование вЫход текста
+        private void checkBoxFstTextOutEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxFstTextOutEdit.Checked == true)
+            {
+                this.txtFstTextOut.ReadOnly = false;
+            }
+            else
+            {
+                if (feistel.TextOutIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxFstTextOutEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtFstTextOut.ReadOnly = true;
+                }
+            }
+        }
+
+        // кнопка Bin вход текста
+        private void btnFstTextInBinary_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextInType == TypeDisplay.Binary) return;
+
+            if (feistel.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.TextInType == TypeDisplay.Binary) this.btnFstTextInBinary.Focus();
+                else if (feistel.TextInType == TypeDisplay.Hex) this.btnFstTextInHex.Focus();
+                else if (feistel.TextInType == TypeDisplay.Symbol) this.btnFstTextInSymbol.Focus();
+                return;
+            }
+
+            if (feistel.TextInByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtFstTextIn.Text = Functions.ByteToBinary(feistel.TextInByte);
+
+            feistel.TextInType = TypeDisplay.Binary;
+            this.btnFstTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnFstTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Symb вход текста
+        private void btnFstTextInSymbol_Click(object sender, EventArgs e)
+        {
+
+            if (feistel.TextInType == TypeDisplay.Symbol) return;
+
+            if (feistel.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.TextInType == TypeDisplay.Binary) this.btnFstTextInBinary.Focus();
+                else if (feistel.TextInType == TypeDisplay.Hex) this.btnFstTextInHex.Focus();
+                else if (feistel.TextInType == TypeDisplay.Symbol) this.btnFstTextInSymbol.Focus();
+                return;
+            }
+
+            if (!(feistel.FileExtension == "txt" && feistel.EncryptOrDecrypt == true))
+            {
+                this.Enabled = false;
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с расширением .txt в режиме шифрования!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtFstTextIn.Text = Functions.ByteToSymbol(feistel.TextInByte);
+
+            feistel.TextInType = TypeDisplay.Symbol;
+            this.btnFstTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnFstTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Hex вход текста
+        private void btnFstTextInHex_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextInType == TypeDisplay.Hex) return;
+
+            if (feistel.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.TextInType == TypeDisplay.Binary) this.btnFstTextInBinary.Focus();
+                else if (feistel.TextInType == TypeDisplay.Hex) this.btnFstTextInHex.Focus();
+                else if (feistel.TextInType == TypeDisplay.Symbol) this.btnFstTextInSymbol.Focus();
+                return;
+            }
+
+            this.txtFstTextIn.Text = Functions.ByteToHex(feistel.TextInByte);
+
+            feistel.TextInType = TypeDisplay.Hex;
+            this.btnFstTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+        }
+
+        // кнопка Bin  ключ
+        private void btnFstKeyBinary_Click(object sender, EventArgs e)
+        {
+            if (feistel.KeyType == TypeDisplay.Binary) return;
+
+            if (feistel.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.KeyType == TypeDisplay.Binary) this.btnFstKeyBinary.Focus();
+                else if (feistel.KeyType == TypeDisplay.Symbol) this.btnFstKeySymbol.Focus();
+                else if (feistel.KeyType == TypeDisplay.Hex) this.btnFstKeyHex.Focus();
+                return;
+            }
+
+            if (feistel.KeyByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (feistel.KeyType == TypeDisplay.Binary) this.btnFstKeyBinary.Focus();
+                else if (feistel.KeyType == TypeDisplay.Symbol) this.btnFstKeySymbol.Focus();
+                else if (feistel.KeyType == TypeDisplay.Hex) this.btnFstKeyHex.Focus();
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtFstKey.Text = Functions.ByteToBinary(feistel.KeyByte);
+
+            feistel.KeyType = TypeDisplay.Binary;
+            this.btnFstKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnFstKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Symb  ключ
+        private void btnFstKeySymbol_Click(object sender, EventArgs e)
+        {
+            if (feistel.KeyType == TypeDisplay.Symbol) return;
+
+            if (feistel.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.KeyType == TypeDisplay.Binary) this.btnFstKeyBinary.Focus();
+                else if (feistel.KeyType == TypeDisplay.Hex) this.btnFstKeyHex.Focus();
+                else if (feistel.KeyType == TypeDisplay.Symbol) this.btnFstKeySymbol.Focus();
+                return;
+            }
+
+            this.txtFstKey.Text = Functions.ByteToSymbol(feistel.KeyByte);
+
+            feistel.KeyType = TypeDisplay.Symbol;
+            this.btnFstKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnFstKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Hex ключ
+        private void btnFstKeyHex_Click(object sender, EventArgs e)
+        {
+            if (feistel.KeyType == TypeDisplay.Hex) return;
+
+            if (feistel.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.KeyType == TypeDisplay.Binary) this.btnFstKeyBinary.Focus();
+                else if (feistel.KeyType == TypeDisplay.Symbol) this.btnFstKeySymbol.Focus();
+                else if (feistel.KeyType == TypeDisplay.Hex) this.btnFstKeyHex.Focus();
+                return;
+            }
+
+            this.txtFstKey.Text = Functions.ByteToHex(feistel.KeyByte);
+
+            feistel.KeyType = TypeDisplay.Hex;
+            this.btnFstKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+        }
+
+        // кнопка Bin вЫход текста
+        private void btnFstTextOutBinary_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextOutType == TypeDisplay.Binary) return;
+
+            if (feistel.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.TextOutType == TypeDisplay.Binary) this.btnFstTextOutBinary.Focus();
+                else if (feistel.TextOutType == TypeDisplay.Hex) this.btnFstTextOutHex.Focus();
+                else if (feistel.TextOutType == TypeDisplay.Symbol) this.btnFstTextOutSymbol.Focus();
+                return;
+            }
+
+            if (feistel.TextOutByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtFstTextOut.Text = Functions.ByteToBinary(feistel.TextOutByte);
+
+            feistel.TextOutType = TypeDisplay.Binary;
+            this.btnFstTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnFstTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Symb вЫход текста
+        private void btnFstTextOutSymbol_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextOutType == TypeDisplay.Symbol) return;
+
+            if (feistel.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.TextOutType == TypeDisplay.Binary) this.btnFstTextOutBinary.Focus();
+                else if (feistel.TextOutType == TypeDisplay.Hex) this.btnFstTextOutHex.Focus();
+                else if (feistel.TextOutType == TypeDisplay.Symbol) this.btnFstTextOutSymbol.Focus();
+                return;
+            }
+
+            this.txtFstTextOut.Text = Functions.ByteToSymbol(feistel.TextOutByte);
+
+            feistel.TextOutType = TypeDisplay.Symbol;
+            this.btnFstTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnFstTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Hex вЫход текста
+        private void btnFstTextOutHex_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextOutType == TypeDisplay.Hex) return;
+
+            if (feistel.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (feistel.TextOutType == TypeDisplay.Binary) this.btnFstTextOutBinary.Focus();
+                else if (feistel.TextOutType == TypeDisplay.Hex) this.btnFstTextOutHex.Focus();
+                else if (feistel.TextOutType == TypeDisplay.Symbol) this.btnFstTextOutSymbol.Focus();
+                return;
+            }
+
+            this.txtFstTextOut.Text = Functions.ByteToHex(feistel.TextOutByte);
+
+            feistel.TextOutType = TypeDisplay.Hex;
+            this.btnFstTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnFstTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+        }
+
+        // кнопка ВЕДРО откатить изменения ВХОД текста 
+        private void btnFstTextInCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextInType == TypeDisplay.Binary)
+                this.txtFstTextIn.Text = Functions.ByteToBinary(feistel.TextInByte);
+            else if (feistel.TextInType == TypeDisplay.Hex)
+                this.txtFstTextIn.Text = Functions.ByteToHex(feistel.TextInByte);
+            else if (feistel.TextInType == TypeDisplay.Symbol)
+                this.txtFstTextIn.Text = Functions.ByteToSymbol(feistel.TextInByte);
+
+            this.flagFstTextInIsEdited.Checked = false;
+            this.checkBoxFstTextInEdit.Checked = false;
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения ВХОД текста 
+        private void btnFstTextInSaveChanged_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextInIsEdited == true)
+            {
+                if (feistel.TextInType == TypeDisplay.Binary)
+                {
+                    if (Functions.checkStringIsBinarySequence(this.txtFstTextIn.Text) == true)
+                    {
+                        feistel.TextInByte = Functions.BinaryToByte(this.txtFstTextIn.Text);
+                        this.flagFstTextInIsEdited.Checked = false;
+                        this.checkBoxFstTextInEdit.Checked = false;
+                        numericFstChart.Maximum = feistel.TextInByte.Length * 8-1;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (feistel.TextInType == TypeDisplay.Hex)
+                {
+                    if (Functions.checkStringIsHexSequence(this.txtFstTextIn.Text) == true)
+                    {
+                        feistel.TextInByte = Functions.HexToByte(this.txtFstTextIn.Text);
+                        this.flagFstTextInIsEdited.Checked = false;
+                        this.checkBoxFstTextInEdit.Checked = false;
+                        numericFstChart.Maximum = feistel.TextInByte.Length * 8-1;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (feistel.TextInType == TypeDisplay.Symbol)
+                {
+                    feistel.TextInByte = Functions.SymbolToByte(this.txtFstTextIn.Text);
+                    this.flagFstTextInIsEdited.Checked = false;
+                    this.checkBoxFstTextInEdit.Checked = false;
+                    numericFstChart.Maximum = feistel.TextInByte.Length * 8-1;
+                }
+
+                //вывести новое число байт
+                this.labelFstByteNumber.Text = feistel.TextInByte.Length.ToString();
+
+                //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnFstTextInSaveChanged.Visible = false;
+                this.btnFstTextInCancelChanged.Visible = false;
+                this.checkBoxFstTextInEdit.Checked = false;
+            }
+        }
+
+        // кнопка ВЕДРО откатить изменения КЛЮЧА 
+        private void btnFstKeyCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (feistel.KeyType == TypeDisplay.Binary)
+                this.txtFstKey.Text = Functions.ByteToBinary(feistel.KeyByte);
+            else if (feistel.KeyType == TypeDisplay.Hex)
+                this.txtFstKey.Text = Functions.ByteToHex(feistel.KeyByte);
+            else if (feistel.KeyType == TypeDisplay.Symbol)
+                this.txtFstKey.Text = Functions.ByteToSymbol(feistel.KeyByte);
+
+            this.flagFstKeyIsEdited.Checked = false;
+            this.checkBoxFstKeyEdit.Checked = false;
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения КЛЮЧА 
+        private void btnFstKeySaveChanged_Click(object sender, EventArgs e)
+        {
+            if (feistel.KeyIsEdited == true)
+            {
+                if (feistel.KeyType == TypeDisplay.Binary)
+                {
+                    if (Functions.checkStringIsBinarySequence(this.txtFstKey.Text) == true)
+                    {
+                        feistel.KeyByte = Functions.BinaryToByte(this.txtFstKey.Text);
+                        this.flagFstKeyIsEdited.Checked = false;
+                        this.checkBoxFstKeyEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененный ключ не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (feistel.KeyType == TypeDisplay.Hex)
+                {
+                    if (Functions.checkStringIsHexSequence(this.txtFstKey.Text) == true)
+                    {
+                        feistel.KeyByte = Functions.HexToByte(this.txtFstKey.Text);
+                        this.flagFstKeyIsEdited.Checked = false;
+                        this.checkBoxFstKeyEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененный ключ не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (feistel.KeyType == TypeDisplay.Symbol)
+                {
+                    feistel.KeyByte = Functions.SymbolToByte(this.txtFstKey.Text);
+                    this.flagFstKeyIsEdited.Checked = false;
+                    this.checkBoxFstKeyEdit.Checked = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnFstKeySaveChanged.Visible = false;
+                this.btnFstKeyCancelChanged.Visible = false;
+                this.checkBoxFstKeyEdit.Checked = false;
+            }
+        }
+
+        // кнопка ВЕДРО откатить изменения ВЫХОД текста 
+        private void btnFstTextOutCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextOutType == TypeDisplay.Binary)
+                this.txtFstTextOut.Text = Functions.ByteToBinary(feistel.TextOutByte);
+            else if (feistel.TextOutType == TypeDisplay.Hex)
+                this.txtFstTextOut.Text = Functions.ByteToHex(feistel.TextOutByte);
+            else if (feistel.TextOutType == TypeDisplay.Symbol)
+                this.txtFstTextOut.Text = Functions.ByteToSymbol(feistel.TextOutByte);
+
+            this.flagFstTextOutIsEdited.Checked = false;
+            this.checkBoxFstTextOutEdit.Checked = false;
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения вЫход текста 
+        private void btnFstTextOutSaveChanged_Click(object sender, EventArgs e)
+        {
+            if (feistel.TextOutIsEdited == true)
+            {
+                DialogResult dr;
+                if (feistel.EncryptOrDecrypt == true)
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененный шифротекст?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                else
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененное сообщение после дешифрования?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.OK)
+                {
+
+                    if (feistel.TextOutType == TypeDisplay.Binary)
+                    {
+                        if (Functions.checkStringIsBinarySequence(this.txtFstTextOut.Text) == true)
+                        {
+                            feistel.TextOutByte = Functions.BinaryToByte(this.txtFstTextOut.Text);
+                            this.flagFstTextOutIsEdited.Checked = false;
+                            this.checkBoxFstTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (feistel.TextOutType == TypeDisplay.Hex)
+                    {
+                        if (Functions.checkStringIsHexSequence(this.txtFstTextOut.Text) == true)
+                        {
+                            feistel.TextOutByte = Functions.HexToByte(this.txtFstTextOut.Text);
+                            this.flagFstTextOutIsEdited.Checked = false;
+                            this.checkBoxFstTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (feistel.TextOutType == TypeDisplay.Symbol)
+                    {
+                        feistel.TextOutByte = Functions.SymbolToByte(this.txtFstTextOut.Text);
+                        this.flagFstTextOutIsEdited.Checked = false;
+                        this.checkBoxFstTextOutEdit.Checked = false;
+                        //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.btnFstTextInSaveChanged.Visible = false;
+                        this.btnFstTextInCancelChanged.Visible = false;
+                        this.checkBoxFstTextInEdit.Checked = false;
+                    }
+                }
+            }
+        }
+
+        // ввод текста ВХОД
+        private void txtFstTextIn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxFstTextInEdit.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagFstTextInIsEdited.Checked = true;
+            }
+            else if (feistel.TextInType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagFstTextInIsEdited.Checked = true;
+            }
+            else if (feistel.TextInType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagFstTextInIsEdited.Checked = true;
+            }
+            // русские буквы осуждаются (UPD: уже нет, мы толерантны ко всем)
+            //else if(feistel.TextInType == TypeDisplay.Symbol/*&& !(e.KeyChar >= 1072 && e.KeyChar <=1105)*/)
+            //{
+            //    e.Handled = false;
+            //    this.flagTextInIsEdited.Checked = true;
+            //}
+            else if (feistel.TextInType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagFstTextInIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        // ввод текста КЛЮЧ
+        private void txtFstKey_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxFstKeyEdit.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagFstKeyIsEdited.Checked = true;
+            }
+            else if (feistel.KeyType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagFstKeyIsEdited.Checked = true;
+            }
+            else if (feistel.KeyType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagFstKeyIsEdited.Checked = true;
+            }
+            // русские буквы осуждаются (UPD: уже нет, мы толерантны ко всем)
+            //else if(feistel.KeyType == TypeDisplay.Symbol/* && !(e.KeyChar >= 1072 && e.KeyChar <=1105)*/)
+            //{
+            //    e.Handled = false;
+            //    this.flagKeyIsEdited.Checked = true;
+            //}
+            else if (feistel.KeyType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagFstKeyIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        // ввод текста ВЫХОД
+        private void txtFstTextOut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxFstTextOutEdit.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagFstTextOutIsEdited.Checked = true;
+            }
+            else if (feistel.TextOutType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagFstTextOutIsEdited.Checked = true;
+            }
+            else if (feistel.TextOutType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagFstTextOutIsEdited.Checked = true;
+            }
+            //русские буквы тоже тут осуждаются (UPD: уже тоже нет, мы толерантны ко всем)
+            //else if (feistel.TextOutType == TypeDisplay.Symbol /*&& !(e.KeyChar >= 1072 && e.KeyChar <= 1105)/*)
+            //{
+            //    e.Handled = false;
+            //    this.flagFstTextOutIsEdited.Checked = true;
+            //}
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        // кнопка ВХОД ИЗ ФАЙЛА
+        private void btnFstChoiceFileIn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Title = "Выберите файл ..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        //if(feistel.EncryptOrDecrypt == true) //закоментил фичу
+                        //    this.btnFstClear.PerformClick();
+                        //else
+                        //    this.clearAllWithoutKey();// очистили всё кроме ключа
+                        // Считали байты из файла
+                        feistel.TextInByte = File.ReadAllBytes(ofd.FileName);
+                        this.labelFstByteNumber.Text = feistel.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
+                        feistel.FileExtension = ofd.SafeFileName.Substring(ofd.SafeFileName.LastIndexOf('.'));  // Запомнили расширение считанного файла
+                        if (feistel.FileExtension.Length > 1) feistel.FileExtension = feistel.FileExtension.Substring(1);
+                        numericFstChart.Maximum = feistel.TextInByte.Length * 8-1;
+                        feistel.TextInType = TypeDisplay.None;
+                        if (feistel.FileExtension == "txt" && feistel.EncryptOrDecrypt == true) // если тект и шифрование
+                        {
+                            this.btnFstTextInSymbol.PerformClick();
+                        }
+                        else 
+                        {
+                            this.btnFstTextInHex.PerformClick();
+                        }
+                        // вывели на форму считанное в кодировке UTF8
+                        //if (feistel.TextInType == TypeDisplay.Hex)
+                        //{
+                        //    this.txtFstTextIn.Text = Functions.ByteToHex(feistel.TextInByte);
+                        //}
+                        //else if (feistel.TextInType == TypeDisplay.Binary)
+                        //{
+                        //    this.txtFstTextIn.Text = Functions.ByteToBinary(feistel.TextInByte);
+                        //}
+                        //else if (feistel.TextInType == TypeDisplay.Symbol)
+                        //{
+                        //    this.txtFstTextIn.Text = Functions.ByteToSymbol(feistel.TextInByte);
+                        //}
+
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Файла [" + ofd.FileName + "] не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
+        }
+
+        // флаг изменен ли ВХОД текст
+        private void flagFstTextInIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagFstTextInIsEdited.Checked == true)
+            {
+                feistel.TextInIsEdited = true;
+                this.btnFstTextInSaveChanged.Visible = true;
+                this.btnFstTextInCancelChanged.Visible = true;
+            }
+            else
+            {
+                feistel.TextInIsEdited = false;
+                this.btnFstTextInSaveChanged.Visible = false;
+                this.btnFstTextInCancelChanged.Visible = false;
+            }
+        }
+
+        // флаг изменен ли вЫход текст
+        private void flagFstTextOutIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagFstTextOutIsEdited.Checked == true)
+            {
+                feistel.TextOutIsEdited = true;
+                this.btnFstTextOutSaveChanged.Visible = true;
+                this.btnFstTextOutCancelChanged.Visible = true;
+            }
+            else
+            {
+                feistel.TextOutIsEdited = false;
+                this.btnFstTextOutSaveChanged.Visible = false;
+                this.btnFstTextOutCancelChanged.Visible = false;
+            }
+        }
+
+        // флаг изменен ли КЛЮЧ
+        private void flagFstKeyIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagFstKeyIsEdited.Checked == true)
+            {
+                feistel.KeyIsEdited = true;
+                this.btnFstKeySaveChanged.Visible = true;
+                this.btnFstKeyCancelChanged.Visible = true;
+            }
+            else
+            {
+                feistel.KeyIsEdited = false;
+                this.btnFstKeySaveChanged.Visible = false;
+                this.btnFstKeyCancelChanged.Visible = false;
+            }
+        }
+
+        //кнопка КЛЮЧ ИЗ ФАЙЛА
+        private void btnFstKeyLoad_Click(object sender, EventArgs e)
+        {
+            if (checkBoxFstKeyEdit.Checked == true)
+                btnFstKeyCancelChanged.PerformClick();
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Выберите файл с ключом..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // Папка откуда запустили exe
+            ofd.Filter = "Keys(*.key)|*.key"; // расширения файла ключа
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        feistel.KeyByte = File.ReadAllBytes(ofd.FileName); // считали
+                        feistel.KeyType = TypeDisplay.None;
+                        this.btnFstKeyHex.PerformClick(); // вывели в Hex
+                    }
+                    else
+                    {
+                        MessageBox.Show("Файла {" + ofd.FileName + "} не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
+        }
+
+        // кнопка СГЕНЕРИРОВАТЬ КЛЮЧ
+        private void btnFstKeyGenerate_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (feistel.TextInByte.Length > 0)
+            {
+                feistel.KeyByte = Functions.PRNGGenerateByteArray(feistel.TextInByte.Length);
+                feistel.KeyType = TypeDisplay.None;
+                btnFstKeyHex.PerformClick(); // не работает хз
+                btnFstKeyHex_Click(null, null); // вручную вызвал
+            }
+            else
+            {
+                if(feistel.EncryptOrDecrypt == true)
+                    MessageBox.Show("Сообщение имеет нулевой размер!\nГенерация ключа невозможна.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Шифротекст имеет нулевой размер!\nГенерация ключа невозможна.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            this.Cursor = Cursors.Arrow;
+        }
+
+        // кнопка СОХРАНИТЬ КЛЮЧ
+        private void btnFstSaveKey_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Если ключа нет
+                if (feistel.KeyByte.Length < 1 || feistel.KeyIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Невозможно сохранить ключ:\n\tКлюч не введен или не сохранен!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла ключа (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*.key)|*.key"; // Сохранять только c расширением key
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    File.WriteAllBytes(filename, feistel.KeyByte);
+
+                    this.Enabled = false;
+                    MessageBox.Show("КЛЮЧ записан в файл:\n" + filename, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        // кнопка СОХРАНИТЬ ВЫХОД
+        private void btnFstSaveData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Если выходные байты пусты 
+                if (feistel.TextInByte.Length < 1)
+                {
+                    this.Enabled = false;
+                    if (feistel.EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Исходный текст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*." + feistel.FileExtension + ")|*." + feistel.FileExtension; // Сохранять только c расширением как и у входного файла
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    File.WriteAllBytes(filename, feistel.TextOutByte);
+
+                    this.Enabled = false;
+                    if (Global.Simm_EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст записан в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Дешифрованное сообщение записано в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        // кнопка действия ШИФРОВАТЬ/ДЕШИФРОВАТЬ
+        private void btnFstEncryptDecrypt_Click(object sender, EventArgs e)
+        {
+            if(feistel.EncryptOrDecrypt == true)
+            {
+                feistel.TextOutByte = feistel.Encrypt(feistel.TextInByte, feistel.KeyByte).ToArray();
+                feistel.TextOutType = TypeDisplay.None;
+                btnFstTextOutHex_Click(null, null);
+            }
+            else
+            {
+                feistel.TextOutByte = feistel.Decrypt(feistel.TextInByte, feistel.KeyByte).ToArray();
+                feistel.TextOutType = TypeDisplay.None;
+                btnFstTextOutHex_Click(null, null);
+            }
+        }
+
+        // ИЗМЕНЕННЫЙ БИТ
+        private void numericFstChart_ValueChanged(object sender, EventArgs e)
+        {
+            feistel.ChartBitsChanging = Convert.ToInt32(numericFstChart.Value);
+        }
+        #endregion
     }
-
-
 }
