@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolTip_hesh_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_simm_file = new System.Windows.Forms.ToolTip(this.components);
@@ -104,46 +104,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabGam = new System.Windows.Forms.TabPage();
-            this.comboBoxGamAlgorithm = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.btnGamTextOutCancelChanged = new System.Windows.Forms.Button();
-            this.btnGamTextInCancelChanged = new System.Windows.Forms.Button();
-            this.btnGamTextOutSaveChanged = new System.Windows.Forms.Button();
-            this.flagGamTextOutIsEdited = new System.Windows.Forms.CheckBox();
-            this.flagGamTextInIsEdited = new System.Windows.Forms.CheckBox();
-            this.btnGamTextInSaveChanged = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.checkBoxGamTextOutEdit = new System.Windows.Forms.CheckBox();
-            this.checkBoxGamTextInEdit = new System.Windows.Forms.CheckBox();
-            this.btnGamTextOutBinary = new System.Windows.Forms.Button();
-            this.btnGamTextOutHex = new System.Windows.Forms.Button();
-            this.btnGamTextOutSymbol = new System.Windows.Forms.Button();
-            this.btnGamTextInBinary = new System.Windows.Forms.Button();
-            this.btnGamTextInHex = new System.Windows.Forms.Button();
-            this.btnGamTextInSymbol = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.labelGamTextOutCaption = new System.Windows.Forms.Label();
-            this.btnGamSaveData = new System.Windows.Forms.Button();
-            this.txtGamTextOut = new System.Windows.Forms.RichTextBox();
-            this.txtGamTextIn = new System.Windows.Forms.RichTextBox();
-            this.txtGamFileIn = new System.Windows.Forms.TextBox();
-            this.btnGamEnterKey = new System.Windows.Forms.Button();
-            this.labelGamCaptionOut = new System.Windows.Forms.Label();
-            this.radioBtnGamDecrypt = new System.Windows.Forms.RadioButton();
-            this.radioBtnGamEncrypt = new System.Windows.Forms.RadioButton();
-            this.btnGamSaveKey = new System.Windows.Forms.Button();
-            this.btnGamEncryptDecrypt = new System.Windows.Forms.Button();
-            this.labelGamCaptionIn = new System.Windows.Forms.Label();
-            this.labelGamByteNumber = new System.Windows.Forms.Label();
-            this.btnGamClear = new System.Windows.Forms.Button();
-            this.label30 = new System.Windows.Forms.Label();
-            this.btnGamChoiceFileIn = new System.Windows.Forms.Button();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.labelGamTextInCaption = new System.Windows.Forms.Label();
-            this.labelGamTextOutCaptionUnder = new System.Windows.Forms.Label();
             this.tabFst = new System.Windows.Forms.TabPage();
             this.btnFstKeySymbol = new System.Windows.Forms.Button();
             this.ChartFstKey = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -197,6 +157,46 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.labelFstByteNumber = new System.Windows.Forms.Label();
+            this.tabGam = new System.Windows.Forms.TabPage();
+            this.comboBoxGamAlgorithm = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btnGamTextOutCancelChanged = new System.Windows.Forms.Button();
+            this.btnGamTextInCancelChanged = new System.Windows.Forms.Button();
+            this.btnGamTextOutSaveChanged = new System.Windows.Forms.Button();
+            this.flagGamTextOutIsEdited = new System.Windows.Forms.CheckBox();
+            this.flagGamTextInIsEdited = new System.Windows.Forms.CheckBox();
+            this.btnGamTextInSaveChanged = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.checkBoxGamTextOutEdit = new System.Windows.Forms.CheckBox();
+            this.checkBoxGamTextInEdit = new System.Windows.Forms.CheckBox();
+            this.btnGamTextOutBinary = new System.Windows.Forms.Button();
+            this.btnGamTextOutHex = new System.Windows.Forms.Button();
+            this.btnGamTextOutSymbol = new System.Windows.Forms.Button();
+            this.btnGamTextInBinary = new System.Windows.Forms.Button();
+            this.btnGamTextInHex = new System.Windows.Forms.Button();
+            this.btnGamTextInSymbol = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.labelGamTextOutCaption = new System.Windows.Forms.Label();
+            this.btnGamSaveData = new System.Windows.Forms.Button();
+            this.txtGamTextOut = new System.Windows.Forms.RichTextBox();
+            this.txtGamTextIn = new System.Windows.Forms.RichTextBox();
+            this.txtGamFileIn = new System.Windows.Forms.TextBox();
+            this.btnGamEnterKey = new System.Windows.Forms.Button();
+            this.labelGamCaptionOut = new System.Windows.Forms.Label();
+            this.radioBtnGamDecrypt = new System.Windows.Forms.RadioButton();
+            this.radioBtnGamEncrypt = new System.Windows.Forms.RadioButton();
+            this.btnGamSaveKey = new System.Windows.Forms.Button();
+            this.btnGamEncryptDecrypt = new System.Windows.Forms.Button();
+            this.labelGamCaptionIn = new System.Windows.Forms.Label();
+            this.labelGamByteNumber = new System.Windows.Forms.Label();
+            this.btnGamClear = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btnGamChoiceFileIn = new System.Windows.Forms.Button();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.labelGamTextInCaption = new System.Windows.Forms.Label();
+            this.labelGamTextOutCaptionUnder = new System.Windows.Forms.Label();
             this.tabGpn = new System.Windows.Forms.TabPage();
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.numericGpnLeft = new System.Windows.Forms.NumericUpDown();
@@ -241,15 +241,16 @@
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
+            this.btnFstSecret = new System.Windows.Forms.Button();
             this.tabAsimAlg.SuspendLayout();
             this.tabSimAlg.SuspendLayout();
             this.tabHesh.SuspendLayout();
             this.tabControlMain.SuspendLayout();
-            this.tabGam.SuspendLayout();
             this.tabFst.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChartFstKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFstChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartFstText)).BeginInit();
+            this.tabGam.SuspendLayout();
             this.tabGpn.SuspendLayout();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericGpnLeft)).BeginInit();
@@ -1122,6 +1123,781 @@
             this.tabControlMain.TabStop = false;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
+            // tabFst
+            // 
+            this.tabFst.BackColor = System.Drawing.Color.LightGray;
+            this.tabFst.Controls.Add(this.btnFstSecret);
+            this.tabFst.Controls.Add(this.btnFstKeySymbol);
+            this.tabFst.Controls.Add(this.ChartFstKey);
+            this.tabFst.Controls.Add(this.btnFstClear);
+            this.tabFst.Controls.Add(this.label37);
+            this.tabFst.Controls.Add(this.numericFstChart);
+            this.tabFst.Controls.Add(this.ChartFstText);
+            this.tabFst.Controls.Add(this.comboBoxFstFunc);
+            this.tabFst.Controls.Add(this.label36);
+            this.tabFst.Controls.Add(this.labelFstRightBorder);
+            this.tabFst.Controls.Add(this.btnFstEncryptDecrypt);
+            this.tabFst.Controls.Add(this.labelFstKeyCaption);
+            this.tabFst.Controls.Add(this.flagFstKeyIsEdited);
+            this.tabFst.Controls.Add(this.btnFstKeyLoad);
+            this.tabFst.Controls.Add(this.btnFstKeyGenerate);
+            this.tabFst.Controls.Add(this.btnFstKeyBinary);
+            this.tabFst.Controls.Add(this.btnFstKeyHex);
+            this.tabFst.Controls.Add(this.txtFstKey);
+            this.tabFst.Controls.Add(this.btnFstKeyCancelChanged);
+            this.tabFst.Controls.Add(this.btnFstKeySaveChanged);
+            this.tabFst.Controls.Add(this.checkBoxFstKeyEdit);
+            this.tabFst.Controls.Add(this.btnFstChoiceFileIn);
+            this.tabFst.Controls.Add(this.comboBoxFstSubkey);
+            this.tabFst.Controls.Add(this.label29);
+            this.tabFst.Controls.Add(this.btnFstTextOutCancelChanged);
+            this.tabFst.Controls.Add(this.btnFstTextInCancelChanged);
+            this.tabFst.Controls.Add(this.btnFstTextOutSaveChanged);
+            this.tabFst.Controls.Add(this.flagFstTextOutIsEdited);
+            this.tabFst.Controls.Add(this.flagFstTextInIsEdited);
+            this.tabFst.Controls.Add(this.btnFstTextInSaveChanged);
+            this.tabFst.Controls.Add(this.label32);
+            this.tabFst.Controls.Add(this.checkBoxFstTextOutEdit);
+            this.tabFst.Controls.Add(this.checkBoxFstTextInEdit);
+            this.tabFst.Controls.Add(this.btnFstTextOutBinary);
+            this.tabFst.Controls.Add(this.btnFstTextOutHex);
+            this.tabFst.Controls.Add(this.btnFstTextOutSymbol);
+            this.tabFst.Controls.Add(this.btnFstTextInBinary);
+            this.tabFst.Controls.Add(this.btnFstTextInHex);
+            this.tabFst.Controls.Add(this.btnFstTextInSymbol);
+            this.tabFst.Controls.Add(this.label35);
+            this.tabFst.Controls.Add(this.btnFstSaveData);
+            this.tabFst.Controls.Add(this.txtFstTextOut);
+            this.tabFst.Controls.Add(this.txtFstTextIn);
+            this.tabFst.Controls.Add(this.labelFstCaptionOut);
+            this.tabFst.Controls.Add(this.radioBtnFstDecrypt);
+            this.tabFst.Controls.Add(this.radioBtnFstEncrypt);
+            this.tabFst.Controls.Add(this.btnFstSaveKey);
+            this.tabFst.Controls.Add(this.labelFstCaptionIn);
+            this.tabFst.Controls.Add(this.label40);
+            this.tabFst.Controls.Add(this.label41);
+            this.tabFst.Controls.Add(this.label42);
+            this.tabFst.Controls.Add(this.label43);
+            this.tabFst.Controls.Add(this.labelFstByteNumber);
+            this.tabFst.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabFst.Location = new System.Drawing.Point(4, 33);
+            this.tabFst.Margin = new System.Windows.Forms.Padding(4);
+            this.tabFst.Name = "tabFst";
+            this.tabFst.Padding = new System.Windows.Forms.Padding(4);
+            this.tabFst.Size = new System.Drawing.Size(1476, 429);
+            this.tabFst.TabIndex = 7;
+            this.tabFst.Text = "Сеть Фейстеля";
+            // 
+            // btnFstKeySymbol
+            // 
+            this.btnFstKeySymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeySymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeySymbol.Location = new System.Drawing.Point(145, 212);
+            this.btnFstKeySymbol.Name = "btnFstKeySymbol";
+            this.btnFstKeySymbol.Size = new System.Drawing.Size(58, 30);
+            this.btnFstKeySymbol.TabIndex = 130;
+            this.btnFstKeySymbol.TabStop = false;
+            this.btnFstKeySymbol.Tag = "";
+            this.btnFstKeySymbol.Text = "Symb";
+            this.btnFstKeySymbol.UseVisualStyleBackColor = true;
+            this.btnFstKeySymbol.Click += new System.EventHandler(this.btnFstKeySymbol_Click);
+            // 
+            // ChartFstKey
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.ChartFstKey.ChartAreas.Add(chartArea1);
+            this.ChartFstKey.Location = new System.Drawing.Point(866, 231);
+            this.ChartFstKey.Name = "ChartFstKey";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.LabelBorderWidth = 4;
+            series1.Name = "Series1";
+            this.ChartFstKey.Series.Add(series1);
+            this.ChartFstKey.Size = new System.Drawing.Size(583, 195);
+            this.ChartFstKey.TabIndex = 129;
+            this.ChartFstKey.TabStop = false;
+            this.ChartFstKey.Text = "chart2";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title1.Name = "Title1";
+            title1.Text = "Кол-во изменных бит КЛЮЧА за раунд";
+            this.ChartFstKey.Titles.Add(title1);
+            // 
+            // btnFstClear
+            // 
+            this.btnFstClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstClear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstClear.Location = new System.Drawing.Point(698, 112);
+            this.btnFstClear.Name = "btnFstClear";
+            this.btnFstClear.Size = new System.Drawing.Size(123, 35);
+            this.btnFstClear.TabIndex = 58;
+            this.btnFstClear.TabStop = false;
+            this.btnFstClear.Tag = "";
+            this.btnFstClear.Text = "Очистить всё";
+            this.btnFstClear.UseVisualStyleBackColor = true;
+            this.btnFstClear.Click += new System.EventHandler(this.btnFstClear_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(1160, 4);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(167, 24);
+            this.label37.TabIndex = 128;
+            this.label37.Text = "Измененный бит:";
+            this.label37.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.label37_MouseDoubleClick);
+            // 
+            // numericFstChart
+            // 
+            this.numericFstChart.Location = new System.Drawing.Point(1333, 2);
+            this.numericFstChart.Name = "numericFstChart";
+            this.numericFstChart.Size = new System.Drawing.Size(116, 29);
+            this.numericFstChart.TabIndex = 127;
+            this.numericFstChart.TabStop = false;
+            this.numericFstChart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericFstChart.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericFstChart.ValueChanged += new System.EventHandler(this.numericFstChart_ValueChanged);
+            // 
+            // ChartFstText
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.ChartFstText.ChartAreas.Add(chartArea2);
+            this.ChartFstText.Location = new System.Drawing.Point(866, 35);
+            this.ChartFstText.Name = "ChartFstText";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.LabelBorderWidth = 2;
+            series2.Name = "Series1";
+            this.ChartFstText.Series.Add(series2);
+            this.ChartFstText.Size = new System.Drawing.Size(583, 195);
+            this.ChartFstText.TabIndex = 126;
+            this.ChartFstText.TabStop = false;
+            this.ChartFstText.Text = "chart2";
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title2.Name = "Title1";
+            title2.Text = "Кол-во изменных бит ТЕКСТА за раунд";
+            this.ChartFstText.Titles.Add(title2);
+            // 
+            // comboBoxFstFunc
+            // 
+            this.comboBoxFstFunc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxFstFunc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxFstFunc.DisplayMember = "0";
+            this.comboBoxFstFunc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFstFunc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxFstFunc.Items.AddRange(new object[] {
+            "Единичная",
+            "XOR"});
+            this.comboBoxFstFunc.Location = new System.Drawing.Point(498, 163);
+            this.comboBoxFstFunc.MaxDropDownItems = 10;
+            this.comboBoxFstFunc.Name = "comboBoxFstFunc";
+            this.comboBoxFstFunc.Size = new System.Drawing.Size(170, 32);
+            this.comboBoxFstFunc.TabIndex = 124;
+            this.comboBoxFstFunc.TabStop = false;
+            this.comboBoxFstFunc.SelectedIndexChanged += new System.EventHandler(this.comboBoxFstFunc_SelectedIndexChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(425, 136);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(247, 24);
+            this.label36.TabIndex = 123;
+            this.label36.Text = "Вид образующей функции:";
+            // 
+            // labelFstRightBorder
+            // 
+            this.labelFstRightBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelFstRightBorder.Enabled = false;
+            this.labelFstRightBorder.Location = new System.Drawing.Point(835, 2);
+            this.labelFstRightBorder.Name = "labelFstRightBorder";
+            this.labelFstRightBorder.Size = new System.Drawing.Size(2, 424);
+            this.labelFstRightBorder.TabIndex = 105;
+            // 
+            // btnFstEncryptDecrypt
+            // 
+            this.btnFstEncryptDecrypt.BackColor = System.Drawing.Color.Azure;
+            this.btnFstEncryptDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstEncryptDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstEncryptDecrypt.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFstEncryptDecrypt.Location = new System.Drawing.Point(239, 363);
+            this.btnFstEncryptDecrypt.Name = "btnFstEncryptDecrypt";
+            this.btnFstEncryptDecrypt.Size = new System.Drawing.Size(163, 42);
+            this.btnFstEncryptDecrypt.TabIndex = 122;
+            this.btnFstEncryptDecrypt.TabStop = false;
+            this.btnFstEncryptDecrypt.Tag = "";
+            this.btnFstEncryptDecrypt.Text = "Дешифровать";
+            this.btnFstEncryptDecrypt.UseVisualStyleBackColor = false;
+            this.btnFstEncryptDecrypt.Click += new System.EventHandler(this.btnFstEncryptDecrypt_Click);
+            // 
+            // labelFstKeyCaption
+            // 
+            this.labelFstKeyCaption.AutoSize = true;
+            this.labelFstKeyCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFstKeyCaption.Location = new System.Drawing.Point(7, 217);
+            this.labelFstKeyCaption.Name = "labelFstKeyCaption";
+            this.labelFstKeyCaption.Size = new System.Drawing.Size(69, 25);
+            this.labelFstKeyCaption.TabIndex = 121;
+            this.labelFstKeyCaption.Text = "Ключ";
+            // 
+            // flagFstKeyIsEdited
+            // 
+            this.flagFstKeyIsEdited.AutoSize = true;
+            this.flagFstKeyIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagFstKeyIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagFstKeyIsEdited.Location = new System.Drawing.Point(698, 68);
+            this.flagFstKeyIsEdited.Name = "flagFstKeyIsEdited";
+            this.flagFstKeyIsEdited.Size = new System.Drawing.Size(139, 24);
+            this.flagFstKeyIsEdited.TabIndex = 120;
+            this.flagFstKeyIsEdited.Text = "flagKeyIsEdited";
+            this.flagFstKeyIsEdited.UseVisualStyleBackColor = true;
+            this.flagFstKeyIsEdited.Visible = false;
+            this.flagFstKeyIsEdited.CheckedChanged += new System.EventHandler(this.flagFstKeyIsEdited_CheckedChanged);
+            // 
+            // btnFstKeyLoad
+            // 
+            this.btnFstKeyLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnFstKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnFstKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeyLoad.Location = new System.Drawing.Point(13, 387);
+            this.btnFstKeyLoad.Margin = new System.Windows.Forms.Padding(6);
+            this.btnFstKeyLoad.Name = "btnFstKeyLoad";
+            this.btnFstKeyLoad.Size = new System.Drawing.Size(136, 35);
+            this.btnFstKeyLoad.TabIndex = 113;
+            this.btnFstKeyLoad.TabStop = false;
+            this.btnFstKeyLoad.Text = "Ключ из файла";
+            this.btnFstKeyLoad.UseVisualStyleBackColor = true;
+            this.btnFstKeyLoad.Click += new System.EventHandler(this.btnFstKeyLoad_Click);
+            // 
+            // btnFstKeyGenerate
+            // 
+            this.btnFstKeyGenerate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFstKeyGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeyGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeyGenerate.Location = new System.Drawing.Point(13, 349);
+            this.btnFstKeyGenerate.Name = "btnFstKeyGenerate";
+            this.btnFstKeyGenerate.Size = new System.Drawing.Size(134, 35);
+            this.btnFstKeyGenerate.TabIndex = 112;
+            this.btnFstKeyGenerate.TabStop = false;
+            this.btnFstKeyGenerate.Text = "Сгенерировать";
+            this.btnFstKeyGenerate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFstKeyGenerate.UseVisualStyleBackColor = true;
+            this.btnFstKeyGenerate.Click += new System.EventHandler(this.btnFstKeyGenerate_Click);
+            // 
+            // btnFstKeyBinary
+            // 
+            this.btnFstKeyBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeyBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeyBinary.Location = new System.Drawing.Point(82, 212);
+            this.btnFstKeyBinary.Name = "btnFstKeyBinary";
+            this.btnFstKeyBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnFstKeyBinary.TabIndex = 119;
+            this.btnFstKeyBinary.TabStop = false;
+            this.btnFstKeyBinary.Tag = "";
+            this.btnFstKeyBinary.Text = "Bin";
+            this.btnFstKeyBinary.UseVisualStyleBackColor = true;
+            this.btnFstKeyBinary.Click += new System.EventHandler(this.btnFstKeyBinary_Click);
+            // 
+            // btnFstKeyHex
+            // 
+            this.btnFstKeyHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeyHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeyHex.Location = new System.Drawing.Point(209, 212);
+            this.btnFstKeyHex.Name = "btnFstKeyHex";
+            this.btnFstKeyHex.Size = new System.Drawing.Size(50, 30);
+            this.btnFstKeyHex.TabIndex = 118;
+            this.btnFstKeyHex.TabStop = false;
+            this.btnFstKeyHex.Tag = "";
+            this.btnFstKeyHex.Text = "Hex";
+            this.btnFstKeyHex.UseVisualStyleBackColor = true;
+            this.btnFstKeyHex.Click += new System.EventHandler(this.btnFstKeyHex_Click);
+            // 
+            // txtFstKey
+            // 
+            this.txtFstKey.BackColor = System.Drawing.SystemColors.Control;
+            this.txtFstKey.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFstKey.DetectUrls = false;
+            this.txtFstKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtFstKey.Location = new System.Drawing.Point(7, 248);
+            this.txtFstKey.Name = "txtFstKey";
+            this.txtFstKey.ReadOnly = true;
+            this.txtFstKey.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtFstKey.Size = new System.Drawing.Size(395, 92);
+            this.txtFstKey.TabIndex = 117;
+            this.txtFstKey.TabStop = false;
+            this.txtFstKey.Text = "";
+            this.txtFstKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFstKey_KeyPress);
+            // 
+            // btnFstKeyCancelChanged
+            // 
+            this.btnFstKeyCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFstKeyCancelChanged.BackgroundImage")));
+            this.btnFstKeyCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFstKeyCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeyCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnFstKeyCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstKeyCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeyCancelChanged.Location = new System.Drawing.Point(265, 212);
+            this.btnFstKeyCancelChanged.Name = "btnFstKeyCancelChanged";
+            this.btnFstKeyCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnFstKeyCancelChanged.TabIndex = 116;
+            this.btnFstKeyCancelChanged.TabStop = false;
+            this.btnFstKeyCancelChanged.Tag = "";
+            this.btnFstKeyCancelChanged.UseVisualStyleBackColor = true;
+            this.btnFstKeyCancelChanged.Click += new System.EventHandler(this.btnFstKeyCancelChanged_Click);
+            // 
+            // btnFstKeySaveChanged
+            // 
+            this.btnFstKeySaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnFstKeySaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFstKeySaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstKeySaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnFstKeySaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstKeySaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstKeySaveChanged.Location = new System.Drawing.Point(305, 215);
+            this.btnFstKeySaveChanged.Name = "btnFstKeySaveChanged";
+            this.btnFstKeySaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnFstKeySaveChanged.TabIndex = 115;
+            this.btnFstKeySaveChanged.TabStop = false;
+            this.btnFstKeySaveChanged.Tag = "";
+            this.btnFstKeySaveChanged.UseVisualStyleBackColor = true;
+            this.btnFstKeySaveChanged.Click += new System.EventHandler(this.btnFstKeySaveChanged_Click);
+            // 
+            // checkBoxFstKeyEdit
+            // 
+            this.checkBoxFstKeyEdit.AutoSize = true;
+            this.checkBoxFstKeyEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxFstKeyEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxFstKeyEdit.Location = new System.Drawing.Point(346, 220);
+            this.checkBoxFstKeyEdit.Name = "checkBoxFstKeyEdit";
+            this.checkBoxFstKeyEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxFstKeyEdit.TabIndex = 114;
+            this.checkBoxFstKeyEdit.Text = "Edit";
+            this.checkBoxFstKeyEdit.UseVisualStyleBackColor = true;
+            this.checkBoxFstKeyEdit.CheckedChanged += new System.EventHandler(this.checkBoxFstKeyEdit_CheckedChanged);
+            // 
+            // btnFstChoiceFileIn
+            // 
+            this.btnFstChoiceFileIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstChoiceFileIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstChoiceFileIn.Location = new System.Drawing.Point(311, 130);
+            this.btnFstChoiceFileIn.Name = "btnFstChoiceFileIn";
+            this.btnFstChoiceFileIn.Size = new System.Drawing.Size(91, 30);
+            this.btnFstChoiceFileIn.TabIndex = 56;
+            this.btnFstChoiceFileIn.TabStop = false;
+            this.btnFstChoiceFileIn.Tag = "";
+            this.btnFstChoiceFileIn.Text = "из файла";
+            this.btnFstChoiceFileIn.UseVisualStyleBackColor = true;
+            this.btnFstChoiceFileIn.Click += new System.EventHandler(this.btnFstChoiceFileIn_Click);
+            // 
+            // comboBoxFstSubkey
+            // 
+            this.comboBoxFstSubkey.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxFstSubkey.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxFstSubkey.DisplayMember = "0";
+            this.comboBoxFstSubkey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFstSubkey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxFstSubkey.Items.AddRange(new object[] {
+            "Циклически",
+            "Скремблер"});
+            this.comboBoxFstSubkey.Location = new System.Drawing.Point(498, 98);
+            this.comboBoxFstSubkey.MaxDropDownItems = 10;
+            this.comboBoxFstSubkey.Name = "comboBoxFstSubkey";
+            this.comboBoxFstSubkey.Size = new System.Drawing.Size(170, 32);
+            this.comboBoxFstSubkey.TabIndex = 103;
+            this.comboBoxFstSubkey.TabStop = false;
+            this.comboBoxFstSubkey.SelectedIndexChanged += new System.EventHandler(this.comboBoxFstSubkey_SelectedIndexChanged);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(425, 68);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(242, 24);
+            this.label29.TabIndex = 104;
+            this.label29.Text = "Вид получение подключа:";
+            // 
+            // btnFstTextOutCancelChanged
+            // 
+            this.btnFstTextOutCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFstTextOutCancelChanged.BackgroundImage")));
+            this.btnFstTextOutCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFstTextOutCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextOutCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnFstTextOutCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstTextOutCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextOutCancelChanged.Location = new System.Drawing.Point(690, 233);
+            this.btnFstTextOutCancelChanged.Name = "btnFstTextOutCancelChanged";
+            this.btnFstTextOutCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnFstTextOutCancelChanged.TabIndex = 102;
+            this.btnFstTextOutCancelChanged.TabStop = false;
+            this.btnFstTextOutCancelChanged.Tag = "";
+            this.btnFstTextOutCancelChanged.UseVisualStyleBackColor = true;
+            this.btnFstTextOutCancelChanged.Click += new System.EventHandler(this.btnFstTextOutCancelChanged_Click);
+            // 
+            // btnFstTextInCancelChanged
+            // 
+            this.btnFstTextInCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFstTextInCancelChanged.BackgroundImage")));
+            this.btnFstTextInCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFstTextInCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextInCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnFstTextInCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstTextInCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextInCancelChanged.Location = new System.Drawing.Point(265, 6);
+            this.btnFstTextInCancelChanged.Name = "btnFstTextInCancelChanged";
+            this.btnFstTextInCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnFstTextInCancelChanged.TabIndex = 101;
+            this.btnFstTextInCancelChanged.TabStop = false;
+            this.btnFstTextInCancelChanged.Tag = "";
+            this.btnFstTextInCancelChanged.UseVisualStyleBackColor = true;
+            this.btnFstTextInCancelChanged.Click += new System.EventHandler(this.btnFstTextInCancelChanged_Click);
+            // 
+            // btnFstTextOutSaveChanged
+            // 
+            this.btnFstTextOutSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnFstTextOutSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFstTextOutSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextOutSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnFstTextOutSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstTextOutSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextOutSaveChanged.Location = new System.Drawing.Point(731, 233);
+            this.btnFstTextOutSaveChanged.Name = "btnFstTextOutSaveChanged";
+            this.btnFstTextOutSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnFstTextOutSaveChanged.TabIndex = 100;
+            this.btnFstTextOutSaveChanged.TabStop = false;
+            this.btnFstTextOutSaveChanged.Tag = "";
+            this.btnFstTextOutSaveChanged.UseVisualStyleBackColor = true;
+            this.btnFstTextOutSaveChanged.Click += new System.EventHandler(this.btnFstTextOutSaveChanged_Click);
+            // 
+            // flagFstTextOutIsEdited
+            // 
+            this.flagFstTextOutIsEdited.AutoSize = true;
+            this.flagFstTextOutIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagFstTextOutIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagFstTextOutIsEdited.Location = new System.Drawing.Point(703, 38);
+            this.flagFstTextOutIsEdited.Name = "flagFstTextOutIsEdited";
+            this.flagFstTextOutIsEdited.Size = new System.Drawing.Size(192, 24);
+            this.flagFstTextOutIsEdited.TabIndex = 99;
+            this.flagFstTextOutIsEdited.Text = "flagFstTextOutIsEdited";
+            this.flagFstTextOutIsEdited.UseVisualStyleBackColor = true;
+            this.flagFstTextOutIsEdited.Visible = false;
+            this.flagFstTextOutIsEdited.CheckedChanged += new System.EventHandler(this.flagFstTextOutIsEdited_CheckedChanged);
+            // 
+            // flagFstTextInIsEdited
+            // 
+            this.flagFstTextInIsEdited.AutoSize = true;
+            this.flagFstTextInIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagFstTextInIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagFstTextInIsEdited.Location = new System.Drawing.Point(685, 5);
+            this.flagFstTextInIsEdited.Name = "flagFstTextInIsEdited";
+            this.flagFstTextInIsEdited.Size = new System.Drawing.Size(180, 24);
+            this.flagFstTextInIsEdited.TabIndex = 98;
+            this.flagFstTextInIsEdited.Text = "flagFstTextInIsEdited";
+            this.flagFstTextInIsEdited.UseVisualStyleBackColor = true;
+            this.flagFstTextInIsEdited.Visible = false;
+            this.flagFstTextInIsEdited.CheckedChanged += new System.EventHandler(this.flagFstTextInIsEdited_CheckedChanged);
+            // 
+            // btnFstTextInSaveChanged
+            // 
+            this.btnFstTextInSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnFstTextInSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFstTextInSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextInSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnFstTextInSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFstTextInSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextInSaveChanged.Location = new System.Drawing.Point(305, 7);
+            this.btnFstTextInSaveChanged.Name = "btnFstTextInSaveChanged";
+            this.btnFstTextInSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnFstTextInSaveChanged.TabIndex = 97;
+            this.btnFstTextInSaveChanged.TabStop = false;
+            this.btnFstTextInSaveChanged.Tag = "";
+            this.btnFstTextInSaveChanged.UseVisualStyleBackColor = true;
+            this.btnFstTextInSaveChanged.Click += new System.EventHandler(this.btnFstTextInSaveChanged_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(430, 350);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(176, 24);
+            this.label32.TabIndex = 96;
+            this.label32.Text = "Вид отображения:";
+            // 
+            // checkBoxFstTextOutEdit
+            // 
+            this.checkBoxFstTextOutEdit.AutoSize = true;
+            this.checkBoxFstTextOutEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxFstTextOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxFstTextOutEdit.Location = new System.Drawing.Point(769, 236);
+            this.checkBoxFstTextOutEdit.Name = "checkBoxFstTextOutEdit";
+            this.checkBoxFstTextOutEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxFstTextOutEdit.TabIndex = 95;
+            this.checkBoxFstTextOutEdit.Text = "Edit";
+            this.checkBoxFstTextOutEdit.UseVisualStyleBackColor = true;
+            this.checkBoxFstTextOutEdit.CheckedChanged += new System.EventHandler(this.checkBoxFstTextOutEdit_CheckedChanged);
+            // 
+            // checkBoxFstTextInEdit
+            // 
+            this.checkBoxFstTextInEdit.AutoSize = true;
+            this.checkBoxFstTextInEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxFstTextInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxFstTextInEdit.Location = new System.Drawing.Point(346, 12);
+            this.checkBoxFstTextInEdit.Name = "checkBoxFstTextInEdit";
+            this.checkBoxFstTextInEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxFstTextInEdit.TabIndex = 94;
+            this.checkBoxFstTextInEdit.Text = "Edit";
+            this.checkBoxFstTextInEdit.UseVisualStyleBackColor = true;
+            this.checkBoxFstTextInEdit.CheckedChanged += new System.EventHandler(this.checkBoxFstTextInEdit_CheckedChanged);
+            // 
+            // btnFstTextOutBinary
+            // 
+            this.btnFstTextOutBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextOutBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextOutBinary.Location = new System.Drawing.Point(612, 350);
+            this.btnFstTextOutBinary.Name = "btnFstTextOutBinary";
+            this.btnFstTextOutBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnFstTextOutBinary.TabIndex = 93;
+            this.btnFstTextOutBinary.TabStop = false;
+            this.btnFstTextOutBinary.Tag = "";
+            this.btnFstTextOutBinary.Text = "Bin";
+            this.btnFstTextOutBinary.UseVisualStyleBackColor = true;
+            this.btnFstTextOutBinary.Click += new System.EventHandler(this.btnFstTextOutBinary_Click);
+            // 
+            // btnFstTextOutHex
+            // 
+            this.btnFstTextOutHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextOutHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextOutHex.Location = new System.Drawing.Point(755, 350);
+            this.btnFstTextOutHex.Name = "btnFstTextOutHex";
+            this.btnFstTextOutHex.Size = new System.Drawing.Size(50, 30);
+            this.btnFstTextOutHex.TabIndex = 92;
+            this.btnFstTextOutHex.TabStop = false;
+            this.btnFstTextOutHex.Tag = "";
+            this.btnFstTextOutHex.Text = "Hex";
+            this.btnFstTextOutHex.UseVisualStyleBackColor = true;
+            this.btnFstTextOutHex.Click += new System.EventHandler(this.btnFstTextOutHex_Click);
+            // 
+            // btnFstTextOutSymbol
+            // 
+            this.btnFstTextOutSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextOutSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextOutSymbol.Location = new System.Drawing.Point(673, 350);
+            this.btnFstTextOutSymbol.Name = "btnFstTextOutSymbol";
+            this.btnFstTextOutSymbol.Size = new System.Drawing.Size(62, 30);
+            this.btnFstTextOutSymbol.TabIndex = 91;
+            this.btnFstTextOutSymbol.TabStop = false;
+            this.btnFstTextOutSymbol.Tag = "";
+            this.btnFstTextOutSymbol.Text = "Symb";
+            this.btnFstTextOutSymbol.UseVisualStyleBackColor = true;
+            this.btnFstTextOutSymbol.Click += new System.EventHandler(this.btnFstTextOutSymbol_Click);
+            // 
+            // btnFstTextInBinary
+            // 
+            this.btnFstTextInBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextInBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextInBinary.Location = new System.Drawing.Point(189, 160);
+            this.btnFstTextInBinary.Name = "btnFstTextInBinary";
+            this.btnFstTextInBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnFstTextInBinary.TabIndex = 90;
+            this.btnFstTextInBinary.TabStop = false;
+            this.btnFstTextInBinary.Tag = "";
+            this.btnFstTextInBinary.Text = "Bin";
+            this.btnFstTextInBinary.UseVisualStyleBackColor = true;
+            this.btnFstTextInBinary.Click += new System.EventHandler(this.btnFstTextInBinary_Click);
+            // 
+            // btnFstTextInHex
+            // 
+            this.btnFstTextInHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextInHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextInHex.Location = new System.Drawing.Point(320, 160);
+            this.btnFstTextInHex.Name = "btnFstTextInHex";
+            this.btnFstTextInHex.Size = new System.Drawing.Size(50, 30);
+            this.btnFstTextInHex.TabIndex = 89;
+            this.btnFstTextInHex.TabStop = false;
+            this.btnFstTextInHex.Tag = "";
+            this.btnFstTextInHex.Text = "Hex";
+            this.btnFstTextInHex.UseVisualStyleBackColor = true;
+            this.btnFstTextInHex.Click += new System.EventHandler(this.btnFstTextInHex_Click);
+            // 
+            // btnFstTextInSymbol
+            // 
+            this.btnFstTextInSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstTextInSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstTextInSymbol.Location = new System.Drawing.Point(246, 160);
+            this.btnFstTextInSymbol.Name = "btnFstTextInSymbol";
+            this.btnFstTextInSymbol.Size = new System.Drawing.Size(58, 30);
+            this.btnFstTextInSymbol.TabIndex = 88;
+            this.btnFstTextInSymbol.TabStop = false;
+            this.btnFstTextInSymbol.Tag = "";
+            this.btnFstTextInSymbol.Text = "Symb";
+            this.btnFstTextInSymbol.UseVisualStyleBackColor = true;
+            this.btnFstTextInSymbol.Click += new System.EventHandler(this.btnFstTextInSymbol_Click);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(7, 160);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(176, 24);
+            this.label35.TabIndex = 87;
+            this.label35.Text = "Вид отображения:";
+            // 
+            // btnFstSaveData
+            // 
+            this.btnFstSaveData.BackColor = System.Drawing.Color.LightGray;
+            this.btnFstSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstSaveData.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstSaveData.Location = new System.Drawing.Point(613, 386);
+            this.btnFstSaveData.Name = "btnFstSaveData";
+            this.btnFstSaveData.Size = new System.Drawing.Size(192, 33);
+            this.btnFstSaveData.TabIndex = 84;
+            this.btnFstSaveData.TabStop = false;
+            this.btnFstSaveData.Tag = "";
+            this.btnFstSaveData.Text = "Сохранить шифротекст\r\n";
+            this.btnFstSaveData.UseVisualStyleBackColor = false;
+            this.btnFstSaveData.Click += new System.EventHandler(this.btnFstSaveData_Click);
+            // 
+            // txtFstTextOut
+            // 
+            this.txtFstTextOut.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFstTextOut.DetectUrls = false;
+            this.txtFstTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtFstTextOut.Location = new System.Drawing.Point(430, 263);
+            this.txtFstTextOut.Name = "txtFstTextOut";
+            this.txtFstTextOut.ReadOnly = true;
+            this.txtFstTextOut.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtFstTextOut.Size = new System.Drawing.Size(395, 84);
+            this.txtFstTextOut.TabIndex = 82;
+            this.txtFstTextOut.TabStop = false;
+            this.txtFstTextOut.Text = "";
+            this.txtFstTextOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFstTextOut_KeyPress);
+            // 
+            // txtFstTextIn
+            // 
+            this.txtFstTextIn.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFstTextIn.DetectUrls = false;
+            this.txtFstTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtFstTextIn.Location = new System.Drawing.Point(7, 38);
+            this.txtFstTextIn.Name = "txtFstTextIn";
+            this.txtFstTextIn.ReadOnly = true;
+            this.txtFstTextIn.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtFstTextIn.Size = new System.Drawing.Size(395, 92);
+            this.txtFstTextIn.TabIndex = 79;
+            this.txtFstTextIn.TabStop = false;
+            this.txtFstTextIn.Text = "";
+            this.txtFstTextIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFstTextIn_KeyPress);
+            // 
+            // labelFstCaptionOut
+            // 
+            this.labelFstCaptionOut.AutoSize = true;
+            this.labelFstCaptionOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFstCaptionOut.Location = new System.Drawing.Point(425, 233);
+            this.labelFstCaptionOut.Name = "labelFstCaptionOut";
+            this.labelFstCaptionOut.Size = new System.Drawing.Size(147, 25);
+            this.labelFstCaptionOut.TabIndex = 75;
+            this.labelFstCaptionOut.Text = "Шифротекст";
+            // 
+            // radioBtnFstDecrypt
+            // 
+            this.radioBtnFstDecrypt.AutoSize = true;
+            this.radioBtnFstDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioBtnFstDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnFstDecrypt.Location = new System.Drawing.Point(498, 35);
+            this.radioBtnFstDecrypt.Name = "radioBtnFstDecrypt";
+            this.radioBtnFstDecrypt.Size = new System.Drawing.Size(199, 29);
+            this.radioBtnFstDecrypt.TabIndex = 71;
+            this.radioBtnFstDecrypt.Text = "Дешифрование";
+            this.radioBtnFstDecrypt.UseVisualStyleBackColor = true;
+            this.radioBtnFstDecrypt.CheckedChanged += new System.EventHandler(this.radioBtnFstDecrypt_CheckedChanged);
+            // 
+            // radioBtnFstEncrypt
+            // 
+            this.radioBtnFstEncrypt.AutoSize = true;
+            this.radioBtnFstEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioBtnFstEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnFstEncrypt.Location = new System.Drawing.Point(498, 7);
+            this.radioBtnFstEncrypt.Name = "radioBtnFstEncrypt";
+            this.radioBtnFstEncrypt.Size = new System.Drawing.Size(170, 29);
+            this.radioBtnFstEncrypt.TabIndex = 70;
+            this.radioBtnFstEncrypt.Text = "Шифрование";
+            this.radioBtnFstEncrypt.UseVisualStyleBackColor = true;
+            this.radioBtnFstEncrypt.CheckedChanged += new System.EventHandler(this.radioBtnFstEncrypt_CheckedChanged);
+            // 
+            // btnFstSaveKey
+            // 
+            this.btnFstSaveKey.BackColor = System.Drawing.Color.LightGray;
+            this.btnFstSaveKey.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstSaveKey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstSaveKey.Location = new System.Drawing.Point(434, 386);
+            this.btnFstSaveKey.Name = "btnFstSaveKey";
+            this.btnFstSaveKey.Size = new System.Drawing.Size(143, 33);
+            this.btnFstSaveKey.TabIndex = 68;
+            this.btnFstSaveKey.TabStop = false;
+            this.btnFstSaveKey.Tag = "";
+            this.btnFstSaveKey.Text = "Сохранить ключ";
+            this.btnFstSaveKey.UseVisualStyleBackColor = false;
+            this.btnFstSaveKey.Click += new System.EventHandler(this.btnFstSaveKey_Click);
+            // 
+            // labelFstCaptionIn
+            // 
+            this.labelFstCaptionIn.AutoSize = true;
+            this.labelFstCaptionIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFstCaptionIn.Location = new System.Drawing.Point(8, 4);
+            this.labelFstCaptionIn.Name = "labelFstCaptionIn";
+            this.labelFstCaptionIn.Size = new System.Drawing.Size(137, 25);
+            this.labelFstCaptionIn.TabIndex = 61;
+            this.labelFstCaptionIn.Text = "Сообщение";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(7, 133);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(123, 24);
+            this.label40.TabIndex = 57;
+            this.label40.Text = "Кол-во байт:";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(425, 10);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(76, 24);
+            this.label41.TabIndex = 74;
+            this.label41.Text = "Режим:";
+            // 
+            // label42
+            // 
+            this.label42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label42.Enabled = false;
+            this.label42.Location = new System.Drawing.Point(3, 205);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(415, 2);
+            this.label42.TabIndex = 73;
+            // 
+            // label43
+            // 
+            this.label43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label43.Enabled = false;
+            this.label43.Location = new System.Drawing.Point(417, 2);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(2, 424);
+            this.label43.TabIndex = 76;
+            // 
+            // labelFstByteNumber
+            // 
+            this.labelFstByteNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelFstByteNumber.Location = new System.Drawing.Point(136, 130);
+            this.labelFstByteNumber.Name = "labelFstByteNumber";
+            this.labelFstByteNumber.Size = new System.Drawing.Size(128, 30);
+            this.labelFstByteNumber.TabIndex = 60;
+            this.labelFstByteNumber.Text = "0";
+            this.labelFstByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tabGam
             // 
             this.tabGam.BackColor = System.Drawing.Color.LightGray;
@@ -1673,778 +2449,6 @@
             this.labelGamTextOutCaptionUnder.TabIndex = 86;
             this.labelGamTextOutCaptionUnder.Text = "(В файл шифр сохраниться в виде бинарных данных)";
             // 
-            // tabFst
-            // 
-            this.tabFst.BackColor = System.Drawing.Color.LightGray;
-            this.tabFst.Controls.Add(this.btnFstKeySymbol);
-            this.tabFst.Controls.Add(this.ChartFstKey);
-            this.tabFst.Controls.Add(this.btnFstClear);
-            this.tabFst.Controls.Add(this.label37);
-            this.tabFst.Controls.Add(this.numericFstChart);
-            this.tabFst.Controls.Add(this.ChartFstText);
-            this.tabFst.Controls.Add(this.comboBoxFstFunc);
-            this.tabFst.Controls.Add(this.label36);
-            this.tabFst.Controls.Add(this.labelFstRightBorder);
-            this.tabFst.Controls.Add(this.btnFstEncryptDecrypt);
-            this.tabFst.Controls.Add(this.labelFstKeyCaption);
-            this.tabFst.Controls.Add(this.flagFstKeyIsEdited);
-            this.tabFst.Controls.Add(this.btnFstKeyLoad);
-            this.tabFst.Controls.Add(this.btnFstKeyGenerate);
-            this.tabFst.Controls.Add(this.btnFstKeyBinary);
-            this.tabFst.Controls.Add(this.btnFstKeyHex);
-            this.tabFst.Controls.Add(this.txtFstKey);
-            this.tabFst.Controls.Add(this.btnFstKeyCancelChanged);
-            this.tabFst.Controls.Add(this.btnFstKeySaveChanged);
-            this.tabFst.Controls.Add(this.checkBoxFstKeyEdit);
-            this.tabFst.Controls.Add(this.btnFstChoiceFileIn);
-            this.tabFst.Controls.Add(this.comboBoxFstSubkey);
-            this.tabFst.Controls.Add(this.label29);
-            this.tabFst.Controls.Add(this.btnFstTextOutCancelChanged);
-            this.tabFst.Controls.Add(this.btnFstTextInCancelChanged);
-            this.tabFst.Controls.Add(this.btnFstTextOutSaveChanged);
-            this.tabFst.Controls.Add(this.flagFstTextOutIsEdited);
-            this.tabFst.Controls.Add(this.flagFstTextInIsEdited);
-            this.tabFst.Controls.Add(this.btnFstTextInSaveChanged);
-            this.tabFst.Controls.Add(this.label32);
-            this.tabFst.Controls.Add(this.checkBoxFstTextOutEdit);
-            this.tabFst.Controls.Add(this.checkBoxFstTextInEdit);
-            this.tabFst.Controls.Add(this.btnFstTextOutBinary);
-            this.tabFst.Controls.Add(this.btnFstTextOutHex);
-            this.tabFst.Controls.Add(this.btnFstTextOutSymbol);
-            this.tabFst.Controls.Add(this.btnFstTextInBinary);
-            this.tabFst.Controls.Add(this.btnFstTextInHex);
-            this.tabFst.Controls.Add(this.btnFstTextInSymbol);
-            this.tabFst.Controls.Add(this.label35);
-            this.tabFst.Controls.Add(this.btnFstSaveData);
-            this.tabFst.Controls.Add(this.txtFstTextOut);
-            this.tabFst.Controls.Add(this.txtFstTextIn);
-            this.tabFst.Controls.Add(this.labelFstCaptionOut);
-            this.tabFst.Controls.Add(this.radioBtnFstDecrypt);
-            this.tabFst.Controls.Add(this.radioBtnFstEncrypt);
-            this.tabFst.Controls.Add(this.btnFstSaveKey);
-            this.tabFst.Controls.Add(this.labelFstCaptionIn);
-            this.tabFst.Controls.Add(this.label40);
-            this.tabFst.Controls.Add(this.label41);
-            this.tabFst.Controls.Add(this.label42);
-            this.tabFst.Controls.Add(this.label43);
-            this.tabFst.Controls.Add(this.labelFstByteNumber);
-            this.tabFst.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tabFst.Location = new System.Drawing.Point(4, 33);
-            this.tabFst.Margin = new System.Windows.Forms.Padding(4);
-            this.tabFst.Name = "tabFst";
-            this.tabFst.Padding = new System.Windows.Forms.Padding(4);
-            this.tabFst.Size = new System.Drawing.Size(1476, 429);
-            this.tabFst.TabIndex = 7;
-            this.tabFst.Text = "Сеть Фейстеля";
-            // 
-            // btnFstKeySymbol
-            // 
-            this.btnFstKeySymbol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeySymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeySymbol.Location = new System.Drawing.Point(145, 212);
-            this.btnFstKeySymbol.Name = "btnFstKeySymbol";
-            this.btnFstKeySymbol.Size = new System.Drawing.Size(58, 30);
-            this.btnFstKeySymbol.TabIndex = 130;
-            this.btnFstKeySymbol.TabStop = false;
-            this.btnFstKeySymbol.Tag = "";
-            this.btnFstKeySymbol.Text = "Symb";
-            this.btnFstKeySymbol.UseVisualStyleBackColor = true;
-            this.btnFstKeySymbol.Click += new System.EventHandler(this.btnFstKeySymbol_Click);
-            // 
-            // ChartFstKey
-            // 
-            chartArea11.Name = "ChartArea1";
-            this.ChartFstKey.ChartAreas.Add(chartArea11);
-            this.ChartFstKey.Location = new System.Drawing.Point(866, 231);
-            this.ChartFstKey.Name = "ChartFstKey";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.LabelBorderWidth = 2;
-            series11.Name = "Series1";
-            this.ChartFstKey.Series.Add(series11);
-            this.ChartFstKey.Size = new System.Drawing.Size(583, 195);
-            this.ChartFstKey.TabIndex = 129;
-            this.ChartFstKey.TabStop = false;
-            this.ChartFstKey.Text = "chart2";
-            title11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title11.Name = "Title1";
-            title11.Text = "Кол-во изменных бит КЛЮЧА за раунд";
-            this.ChartFstKey.Titles.Add(title11);
-            // 
-            // btnFstClear
-            // 
-            this.btnFstClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstClear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstClear.Location = new System.Drawing.Point(698, 112);
-            this.btnFstClear.Name = "btnFstClear";
-            this.btnFstClear.Size = new System.Drawing.Size(123, 35);
-            this.btnFstClear.TabIndex = 58;
-            this.btnFstClear.TabStop = false;
-            this.btnFstClear.Tag = "";
-            this.btnFstClear.Text = "Очистить всё";
-            this.btnFstClear.UseVisualStyleBackColor = true;
-            this.btnFstClear.Click += new System.EventHandler(this.btnFstClear_Click);
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(1160, 4);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(167, 24);
-            this.label37.TabIndex = 128;
-            this.label37.Text = "Измененный бит:";
-            // 
-            // numericFstChart
-            // 
-            this.numericFstChart.Location = new System.Drawing.Point(1333, 2);
-            this.numericFstChart.Name = "numericFstChart";
-            this.numericFstChart.Size = new System.Drawing.Size(116, 29);
-            this.numericFstChart.TabIndex = 127;
-            this.numericFstChart.TabStop = false;
-            this.numericFstChart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericFstChart.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericFstChart.ValueChanged += new System.EventHandler(this.numericFstChart_ValueChanged);
-            // 
-            // ChartFstText
-            // 
-            chartArea12.Name = "ChartArea1";
-            this.ChartFstText.ChartAreas.Add(chartArea12);
-            this.ChartFstText.Location = new System.Drawing.Point(866, 35);
-            this.ChartFstText.Name = "ChartFstText";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.LabelBorderWidth = 2;
-            series12.Name = "Series1";
-            this.ChartFstText.Series.Add(series12);
-            this.ChartFstText.Size = new System.Drawing.Size(583, 195);
-            this.ChartFstText.TabIndex = 126;
-            this.ChartFstText.TabStop = false;
-            this.ChartFstText.Text = "chart2";
-            title12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title12.Name = "Title1";
-            title12.Text = "Кол-во изменных бит ТЕКСТА за раунд";
-            this.ChartFstText.Titles.Add(title12);
-            // 
-            // comboBoxFstFunc
-            // 
-            this.comboBoxFstFunc.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxFstFunc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxFstFunc.DisplayMember = "0";
-            this.comboBoxFstFunc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFstFunc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxFstFunc.Items.AddRange(new object[] {
-            "Единичная",
-            "XOR"});
-            this.comboBoxFstFunc.Location = new System.Drawing.Point(498, 163);
-            this.comboBoxFstFunc.MaxDropDownItems = 10;
-            this.comboBoxFstFunc.Name = "comboBoxFstFunc";
-            this.comboBoxFstFunc.Size = new System.Drawing.Size(170, 32);
-            this.comboBoxFstFunc.TabIndex = 124;
-            this.comboBoxFstFunc.TabStop = false;
-            this.comboBoxFstFunc.SelectedIndexChanged += new System.EventHandler(this.comboBoxFstFunc_SelectedIndexChanged);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(425, 136);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(247, 24);
-            this.label36.TabIndex = 123;
-            this.label36.Text = "Вид образующей функции:";
-            // 
-            // labelFstRightBorder
-            // 
-            this.labelFstRightBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelFstRightBorder.Enabled = false;
-            this.labelFstRightBorder.Location = new System.Drawing.Point(835, 2);
-            this.labelFstRightBorder.Name = "labelFstRightBorder";
-            this.labelFstRightBorder.Size = new System.Drawing.Size(2, 424);
-            this.labelFstRightBorder.TabIndex = 105;
-            // 
-            // btnFstEncryptDecrypt
-            // 
-            this.btnFstEncryptDecrypt.BackColor = System.Drawing.Color.Azure;
-            this.btnFstEncryptDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstEncryptDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstEncryptDecrypt.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFstEncryptDecrypt.Location = new System.Drawing.Point(239, 363);
-            this.btnFstEncryptDecrypt.Name = "btnFstEncryptDecrypt";
-            this.btnFstEncryptDecrypt.Size = new System.Drawing.Size(163, 42);
-            this.btnFstEncryptDecrypt.TabIndex = 122;
-            this.btnFstEncryptDecrypt.TabStop = false;
-            this.btnFstEncryptDecrypt.Tag = "";
-            this.btnFstEncryptDecrypt.Text = "Дешифровать";
-            this.btnFstEncryptDecrypt.UseVisualStyleBackColor = false;
-            this.btnFstEncryptDecrypt.Click += new System.EventHandler(this.btnFstEncryptDecrypt_Click);
-            // 
-            // labelFstKeyCaption
-            // 
-            this.labelFstKeyCaption.AutoSize = true;
-            this.labelFstKeyCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFstKeyCaption.Location = new System.Drawing.Point(7, 217);
-            this.labelFstKeyCaption.Name = "labelFstKeyCaption";
-            this.labelFstKeyCaption.Size = new System.Drawing.Size(69, 25);
-            this.labelFstKeyCaption.TabIndex = 121;
-            this.labelFstKeyCaption.Text = "Ключ";
-            // 
-            // flagFstKeyIsEdited
-            // 
-            this.flagFstKeyIsEdited.AutoSize = true;
-            this.flagFstKeyIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.flagFstKeyIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flagFstKeyIsEdited.Location = new System.Drawing.Point(698, 68);
-            this.flagFstKeyIsEdited.Name = "flagFstKeyIsEdited";
-            this.flagFstKeyIsEdited.Size = new System.Drawing.Size(139, 24);
-            this.flagFstKeyIsEdited.TabIndex = 120;
-            this.flagFstKeyIsEdited.Text = "flagKeyIsEdited";
-            this.flagFstKeyIsEdited.UseVisualStyleBackColor = true;
-            this.flagFstKeyIsEdited.Visible = false;
-            this.flagFstKeyIsEdited.CheckedChanged += new System.EventHandler(this.flagFstKeyIsEdited_CheckedChanged);
-            // 
-            // btnFstKeyLoad
-            // 
-            this.btnFstKeyLoad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.btnFstKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
-            this.btnFstKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeyLoad.Location = new System.Drawing.Point(13, 387);
-            this.btnFstKeyLoad.Margin = new System.Windows.Forms.Padding(6);
-            this.btnFstKeyLoad.Name = "btnFstKeyLoad";
-            this.btnFstKeyLoad.Size = new System.Drawing.Size(136, 35);
-            this.btnFstKeyLoad.TabIndex = 113;
-            this.btnFstKeyLoad.TabStop = false;
-            this.btnFstKeyLoad.Text = "Ключ из файла";
-            this.btnFstKeyLoad.UseVisualStyleBackColor = true;
-            this.btnFstKeyLoad.Click += new System.EventHandler(this.btnFstKeyLoad_Click);
-            // 
-            // btnFstKeyGenerate
-            // 
-            this.btnFstKeyGenerate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnFstKeyGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeyGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeyGenerate.Location = new System.Drawing.Point(13, 349);
-            this.btnFstKeyGenerate.Name = "btnFstKeyGenerate";
-            this.btnFstKeyGenerate.Size = new System.Drawing.Size(134, 35);
-            this.btnFstKeyGenerate.TabIndex = 112;
-            this.btnFstKeyGenerate.TabStop = false;
-            this.btnFstKeyGenerate.Text = "Сгенерировать";
-            this.btnFstKeyGenerate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFstKeyGenerate.UseVisualStyleBackColor = true;
-            this.btnFstKeyGenerate.Click += new System.EventHandler(this.btnFstKeyGenerate_Click);
-            // 
-            // btnFstKeyBinary
-            // 
-            this.btnFstKeyBinary.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeyBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeyBinary.Location = new System.Drawing.Point(82, 212);
-            this.btnFstKeyBinary.Name = "btnFstKeyBinary";
-            this.btnFstKeyBinary.Size = new System.Drawing.Size(50, 30);
-            this.btnFstKeyBinary.TabIndex = 119;
-            this.btnFstKeyBinary.TabStop = false;
-            this.btnFstKeyBinary.Tag = "";
-            this.btnFstKeyBinary.Text = "Bin";
-            this.btnFstKeyBinary.UseVisualStyleBackColor = true;
-            this.btnFstKeyBinary.Click += new System.EventHandler(this.btnFstKeyBinary_Click);
-            // 
-            // btnFstKeyHex
-            // 
-            this.btnFstKeyHex.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeyHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeyHex.Location = new System.Drawing.Point(209, 212);
-            this.btnFstKeyHex.Name = "btnFstKeyHex";
-            this.btnFstKeyHex.Size = new System.Drawing.Size(50, 30);
-            this.btnFstKeyHex.TabIndex = 118;
-            this.btnFstKeyHex.TabStop = false;
-            this.btnFstKeyHex.Tag = "";
-            this.btnFstKeyHex.Text = "Hex";
-            this.btnFstKeyHex.UseVisualStyleBackColor = true;
-            this.btnFstKeyHex.Click += new System.EventHandler(this.btnFstKeyHex_Click);
-            // 
-            // txtFstKey
-            // 
-            this.txtFstKey.BackColor = System.Drawing.SystemColors.Control;
-            this.txtFstKey.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFstKey.DetectUrls = false;
-            this.txtFstKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtFstKey.Location = new System.Drawing.Point(7, 248);
-            this.txtFstKey.Name = "txtFstKey";
-            this.txtFstKey.ReadOnly = true;
-            this.txtFstKey.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtFstKey.ShortcutsEnabled = false;
-            this.txtFstKey.Size = new System.Drawing.Size(395, 92);
-            this.txtFstKey.TabIndex = 117;
-            this.txtFstKey.TabStop = false;
-            this.txtFstKey.Text = "";
-            this.txtFstKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFstKey_KeyPress);
-            // 
-            // btnFstKeyCancelChanged
-            // 
-            this.btnFstKeyCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFstKeyCancelChanged.BackgroundImage")));
-            this.btnFstKeyCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFstKeyCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeyCancelChanged.FlatAppearance.BorderSize = 0;
-            this.btnFstKeyCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstKeyCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeyCancelChanged.Location = new System.Drawing.Point(265, 212);
-            this.btnFstKeyCancelChanged.Name = "btnFstKeyCancelChanged";
-            this.btnFstKeyCancelChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnFstKeyCancelChanged.TabIndex = 116;
-            this.btnFstKeyCancelChanged.TabStop = false;
-            this.btnFstKeyCancelChanged.Tag = "";
-            this.btnFstKeyCancelChanged.UseVisualStyleBackColor = true;
-            this.btnFstKeyCancelChanged.Click += new System.EventHandler(this.btnFstKeyCancelChanged_Click);
-            // 
-            // btnFstKeySaveChanged
-            // 
-            this.btnFstKeySaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
-            this.btnFstKeySaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFstKeySaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstKeySaveChanged.FlatAppearance.BorderSize = 0;
-            this.btnFstKeySaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstKeySaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstKeySaveChanged.Location = new System.Drawing.Point(305, 215);
-            this.btnFstKeySaveChanged.Name = "btnFstKeySaveChanged";
-            this.btnFstKeySaveChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnFstKeySaveChanged.TabIndex = 115;
-            this.btnFstKeySaveChanged.TabStop = false;
-            this.btnFstKeySaveChanged.Tag = "";
-            this.btnFstKeySaveChanged.UseVisualStyleBackColor = true;
-            this.btnFstKeySaveChanged.Click += new System.EventHandler(this.btnFstKeySaveChanged_Click);
-            // 
-            // checkBoxFstKeyEdit
-            // 
-            this.checkBoxFstKeyEdit.AutoSize = true;
-            this.checkBoxFstKeyEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxFstKeyEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxFstKeyEdit.Location = new System.Drawing.Point(346, 220);
-            this.checkBoxFstKeyEdit.Name = "checkBoxFstKeyEdit";
-            this.checkBoxFstKeyEdit.Size = new System.Drawing.Size(56, 24);
-            this.checkBoxFstKeyEdit.TabIndex = 114;
-            this.checkBoxFstKeyEdit.Text = "Edit";
-            this.checkBoxFstKeyEdit.UseVisualStyleBackColor = true;
-            this.checkBoxFstKeyEdit.CheckedChanged += new System.EventHandler(this.checkBoxFstKeyEdit_CheckedChanged);
-            // 
-            // btnFstChoiceFileIn
-            // 
-            this.btnFstChoiceFileIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstChoiceFileIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstChoiceFileIn.Location = new System.Drawing.Point(311, 130);
-            this.btnFstChoiceFileIn.Name = "btnFstChoiceFileIn";
-            this.btnFstChoiceFileIn.Size = new System.Drawing.Size(91, 30);
-            this.btnFstChoiceFileIn.TabIndex = 56;
-            this.btnFstChoiceFileIn.TabStop = false;
-            this.btnFstChoiceFileIn.Tag = "";
-            this.btnFstChoiceFileIn.Text = "из файла";
-            this.btnFstChoiceFileIn.UseVisualStyleBackColor = true;
-            this.btnFstChoiceFileIn.Click += new System.EventHandler(this.btnFstChoiceFileIn_Click);
-            // 
-            // comboBoxFstSubkey
-            // 
-            this.comboBoxFstSubkey.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxFstSubkey.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxFstSubkey.DisplayMember = "0";
-            this.comboBoxFstSubkey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFstSubkey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxFstSubkey.Items.AddRange(new object[] {
-            "Циклически",
-            "Скремблер"});
-            this.comboBoxFstSubkey.Location = new System.Drawing.Point(498, 98);
-            this.comboBoxFstSubkey.MaxDropDownItems = 10;
-            this.comboBoxFstSubkey.Name = "comboBoxFstSubkey";
-            this.comboBoxFstSubkey.Size = new System.Drawing.Size(170, 32);
-            this.comboBoxFstSubkey.TabIndex = 103;
-            this.comboBoxFstSubkey.TabStop = false;
-            this.comboBoxFstSubkey.SelectedIndexChanged += new System.EventHandler(this.comboBoxFstSubkey_SelectedIndexChanged);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(425, 68);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(242, 24);
-            this.label29.TabIndex = 104;
-            this.label29.Text = "Вид получение подключа:";
-            // 
-            // btnFstTextOutCancelChanged
-            // 
-            this.btnFstTextOutCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFstTextOutCancelChanged.BackgroundImage")));
-            this.btnFstTextOutCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFstTextOutCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextOutCancelChanged.FlatAppearance.BorderSize = 0;
-            this.btnFstTextOutCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstTextOutCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextOutCancelChanged.Location = new System.Drawing.Point(690, 233);
-            this.btnFstTextOutCancelChanged.Name = "btnFstTextOutCancelChanged";
-            this.btnFstTextOutCancelChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnFstTextOutCancelChanged.TabIndex = 102;
-            this.btnFstTextOutCancelChanged.TabStop = false;
-            this.btnFstTextOutCancelChanged.Tag = "";
-            this.btnFstTextOutCancelChanged.UseVisualStyleBackColor = true;
-            this.btnFstTextOutCancelChanged.Click += new System.EventHandler(this.btnFstTextOutCancelChanged_Click);
-            // 
-            // btnFstTextInCancelChanged
-            // 
-            this.btnFstTextInCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFstTextInCancelChanged.BackgroundImage")));
-            this.btnFstTextInCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFstTextInCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextInCancelChanged.FlatAppearance.BorderSize = 0;
-            this.btnFstTextInCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstTextInCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextInCancelChanged.Location = new System.Drawing.Point(265, 6);
-            this.btnFstTextInCancelChanged.Name = "btnFstTextInCancelChanged";
-            this.btnFstTextInCancelChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnFstTextInCancelChanged.TabIndex = 101;
-            this.btnFstTextInCancelChanged.TabStop = false;
-            this.btnFstTextInCancelChanged.Tag = "";
-            this.btnFstTextInCancelChanged.UseVisualStyleBackColor = true;
-            this.btnFstTextInCancelChanged.Click += new System.EventHandler(this.btnFstTextInCancelChanged_Click);
-            // 
-            // btnFstTextOutSaveChanged
-            // 
-            this.btnFstTextOutSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
-            this.btnFstTextOutSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFstTextOutSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextOutSaveChanged.FlatAppearance.BorderSize = 0;
-            this.btnFstTextOutSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstTextOutSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextOutSaveChanged.Location = new System.Drawing.Point(731, 233);
-            this.btnFstTextOutSaveChanged.Name = "btnFstTextOutSaveChanged";
-            this.btnFstTextOutSaveChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnFstTextOutSaveChanged.TabIndex = 100;
-            this.btnFstTextOutSaveChanged.TabStop = false;
-            this.btnFstTextOutSaveChanged.Tag = "";
-            this.btnFstTextOutSaveChanged.UseVisualStyleBackColor = true;
-            this.btnFstTextOutSaveChanged.Click += new System.EventHandler(this.btnFstTextOutSaveChanged_Click);
-            // 
-            // flagFstTextOutIsEdited
-            // 
-            this.flagFstTextOutIsEdited.AutoSize = true;
-            this.flagFstTextOutIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.flagFstTextOutIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flagFstTextOutIsEdited.Location = new System.Drawing.Point(703, 38);
-            this.flagFstTextOutIsEdited.Name = "flagFstTextOutIsEdited";
-            this.flagFstTextOutIsEdited.Size = new System.Drawing.Size(192, 24);
-            this.flagFstTextOutIsEdited.TabIndex = 99;
-            this.flagFstTextOutIsEdited.Text = "flagFstTextOutIsEdited";
-            this.flagFstTextOutIsEdited.UseVisualStyleBackColor = true;
-            this.flagFstTextOutIsEdited.Visible = false;
-            this.flagFstTextOutIsEdited.CheckedChanged += new System.EventHandler(this.flagFstTextOutIsEdited_CheckedChanged);
-            // 
-            // flagFstTextInIsEdited
-            // 
-            this.flagFstTextInIsEdited.AutoSize = true;
-            this.flagFstTextInIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.flagFstTextInIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flagFstTextInIsEdited.Location = new System.Drawing.Point(685, 5);
-            this.flagFstTextInIsEdited.Name = "flagFstTextInIsEdited";
-            this.flagFstTextInIsEdited.Size = new System.Drawing.Size(180, 24);
-            this.flagFstTextInIsEdited.TabIndex = 98;
-            this.flagFstTextInIsEdited.Text = "flagFstTextInIsEdited";
-            this.flagFstTextInIsEdited.UseVisualStyleBackColor = true;
-            this.flagFstTextInIsEdited.Visible = false;
-            this.flagFstTextInIsEdited.CheckedChanged += new System.EventHandler(this.flagFstTextInIsEdited_CheckedChanged);
-            // 
-            // btnFstTextInSaveChanged
-            // 
-            this.btnFstTextInSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
-            this.btnFstTextInSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFstTextInSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextInSaveChanged.FlatAppearance.BorderSize = 0;
-            this.btnFstTextInSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFstTextInSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextInSaveChanged.Location = new System.Drawing.Point(305, 7);
-            this.btnFstTextInSaveChanged.Name = "btnFstTextInSaveChanged";
-            this.btnFstTextInSaveChanged.Size = new System.Drawing.Size(35, 30);
-            this.btnFstTextInSaveChanged.TabIndex = 97;
-            this.btnFstTextInSaveChanged.TabStop = false;
-            this.btnFstTextInSaveChanged.Tag = "";
-            this.btnFstTextInSaveChanged.UseVisualStyleBackColor = true;
-            this.btnFstTextInSaveChanged.Click += new System.EventHandler(this.btnFstTextInSaveChanged_Click);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(430, 350);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(176, 24);
-            this.label32.TabIndex = 96;
-            this.label32.Text = "Вид отображения:";
-            // 
-            // checkBoxFstTextOutEdit
-            // 
-            this.checkBoxFstTextOutEdit.AutoSize = true;
-            this.checkBoxFstTextOutEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxFstTextOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxFstTextOutEdit.Location = new System.Drawing.Point(769, 236);
-            this.checkBoxFstTextOutEdit.Name = "checkBoxFstTextOutEdit";
-            this.checkBoxFstTextOutEdit.Size = new System.Drawing.Size(56, 24);
-            this.checkBoxFstTextOutEdit.TabIndex = 95;
-            this.checkBoxFstTextOutEdit.Text = "Edit";
-            this.checkBoxFstTextOutEdit.UseVisualStyleBackColor = true;
-            this.checkBoxFstTextOutEdit.CheckedChanged += new System.EventHandler(this.checkBoxFstTextOutEdit_CheckedChanged);
-            // 
-            // checkBoxFstTextInEdit
-            // 
-            this.checkBoxFstTextInEdit.AutoSize = true;
-            this.checkBoxFstTextInEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxFstTextInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxFstTextInEdit.Location = new System.Drawing.Point(346, 12);
-            this.checkBoxFstTextInEdit.Name = "checkBoxFstTextInEdit";
-            this.checkBoxFstTextInEdit.Size = new System.Drawing.Size(56, 24);
-            this.checkBoxFstTextInEdit.TabIndex = 94;
-            this.checkBoxFstTextInEdit.Text = "Edit";
-            this.checkBoxFstTextInEdit.UseVisualStyleBackColor = true;
-            this.checkBoxFstTextInEdit.CheckedChanged += new System.EventHandler(this.checkBoxFstTextInEdit_CheckedChanged);
-            // 
-            // btnFstTextOutBinary
-            // 
-            this.btnFstTextOutBinary.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextOutBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextOutBinary.Location = new System.Drawing.Point(612, 350);
-            this.btnFstTextOutBinary.Name = "btnFstTextOutBinary";
-            this.btnFstTextOutBinary.Size = new System.Drawing.Size(50, 30);
-            this.btnFstTextOutBinary.TabIndex = 93;
-            this.btnFstTextOutBinary.TabStop = false;
-            this.btnFstTextOutBinary.Tag = "";
-            this.btnFstTextOutBinary.Text = "Bin";
-            this.btnFstTextOutBinary.UseVisualStyleBackColor = true;
-            this.btnFstTextOutBinary.Click += new System.EventHandler(this.btnFstTextOutBinary_Click);
-            // 
-            // btnFstTextOutHex
-            // 
-            this.btnFstTextOutHex.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextOutHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextOutHex.Location = new System.Drawing.Point(755, 350);
-            this.btnFstTextOutHex.Name = "btnFstTextOutHex";
-            this.btnFstTextOutHex.Size = new System.Drawing.Size(50, 30);
-            this.btnFstTextOutHex.TabIndex = 92;
-            this.btnFstTextOutHex.TabStop = false;
-            this.btnFstTextOutHex.Tag = "";
-            this.btnFstTextOutHex.Text = "Hex";
-            this.btnFstTextOutHex.UseVisualStyleBackColor = true;
-            this.btnFstTextOutHex.Click += new System.EventHandler(this.btnFstTextOutHex_Click);
-            // 
-            // btnFstTextOutSymbol
-            // 
-            this.btnFstTextOutSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextOutSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextOutSymbol.Location = new System.Drawing.Point(673, 350);
-            this.btnFstTextOutSymbol.Name = "btnFstTextOutSymbol";
-            this.btnFstTextOutSymbol.Size = new System.Drawing.Size(62, 30);
-            this.btnFstTextOutSymbol.TabIndex = 91;
-            this.btnFstTextOutSymbol.TabStop = false;
-            this.btnFstTextOutSymbol.Tag = "";
-            this.btnFstTextOutSymbol.Text = "Symb";
-            this.btnFstTextOutSymbol.UseVisualStyleBackColor = true;
-            this.btnFstTextOutSymbol.Click += new System.EventHandler(this.btnFstTextOutSymbol_Click);
-            // 
-            // btnFstTextInBinary
-            // 
-            this.btnFstTextInBinary.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextInBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextInBinary.Location = new System.Drawing.Point(189, 160);
-            this.btnFstTextInBinary.Name = "btnFstTextInBinary";
-            this.btnFstTextInBinary.Size = new System.Drawing.Size(50, 30);
-            this.btnFstTextInBinary.TabIndex = 90;
-            this.btnFstTextInBinary.TabStop = false;
-            this.btnFstTextInBinary.Tag = "";
-            this.btnFstTextInBinary.Text = "Bin";
-            this.btnFstTextInBinary.UseVisualStyleBackColor = true;
-            this.btnFstTextInBinary.Click += new System.EventHandler(this.btnFstTextInBinary_Click);
-            // 
-            // btnFstTextInHex
-            // 
-            this.btnFstTextInHex.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextInHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextInHex.Location = new System.Drawing.Point(320, 160);
-            this.btnFstTextInHex.Name = "btnFstTextInHex";
-            this.btnFstTextInHex.Size = new System.Drawing.Size(50, 30);
-            this.btnFstTextInHex.TabIndex = 89;
-            this.btnFstTextInHex.TabStop = false;
-            this.btnFstTextInHex.Tag = "";
-            this.btnFstTextInHex.Text = "Hex";
-            this.btnFstTextInHex.UseVisualStyleBackColor = true;
-            this.btnFstTextInHex.Click += new System.EventHandler(this.btnFstTextInHex_Click);
-            // 
-            // btnFstTextInSymbol
-            // 
-            this.btnFstTextInSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstTextInSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstTextInSymbol.Location = new System.Drawing.Point(246, 160);
-            this.btnFstTextInSymbol.Name = "btnFstTextInSymbol";
-            this.btnFstTextInSymbol.Size = new System.Drawing.Size(58, 30);
-            this.btnFstTextInSymbol.TabIndex = 88;
-            this.btnFstTextInSymbol.TabStop = false;
-            this.btnFstTextInSymbol.Tag = "";
-            this.btnFstTextInSymbol.Text = "Symb";
-            this.btnFstTextInSymbol.UseVisualStyleBackColor = true;
-            this.btnFstTextInSymbol.Click += new System.EventHandler(this.btnFstTextInSymbol_Click);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(7, 160);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(176, 24);
-            this.label35.TabIndex = 87;
-            this.label35.Text = "Вид отображения:";
-            // 
-            // btnFstSaveData
-            // 
-            this.btnFstSaveData.BackColor = System.Drawing.Color.LightGray;
-            this.btnFstSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstSaveData.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstSaveData.Location = new System.Drawing.Point(613, 386);
-            this.btnFstSaveData.Name = "btnFstSaveData";
-            this.btnFstSaveData.Size = new System.Drawing.Size(192, 33);
-            this.btnFstSaveData.TabIndex = 84;
-            this.btnFstSaveData.TabStop = false;
-            this.btnFstSaveData.Tag = "";
-            this.btnFstSaveData.Text = "Сохранить шифротекст\r\n";
-            this.btnFstSaveData.UseVisualStyleBackColor = false;
-            this.btnFstSaveData.Click += new System.EventHandler(this.btnFstSaveData_Click);
-            // 
-            // txtFstTextOut
-            // 
-            this.txtFstTextOut.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFstTextOut.DetectUrls = false;
-            this.txtFstTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtFstTextOut.Location = new System.Drawing.Point(430, 263);
-            this.txtFstTextOut.Name = "txtFstTextOut";
-            this.txtFstTextOut.ReadOnly = true;
-            this.txtFstTextOut.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtFstTextOut.Size = new System.Drawing.Size(395, 84);
-            this.txtFstTextOut.TabIndex = 82;
-            this.txtFstTextOut.TabStop = false;
-            this.txtFstTextOut.Text = "";
-            this.txtFstTextOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFstTextOut_KeyPress);
-            // 
-            // txtFstTextIn
-            // 
-            this.txtFstTextIn.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFstTextIn.DetectUrls = false;
-            this.txtFstTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtFstTextIn.Location = new System.Drawing.Point(7, 38);
-            this.txtFstTextIn.Name = "txtFstTextIn";
-            this.txtFstTextIn.ReadOnly = true;
-            this.txtFstTextIn.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtFstTextIn.Size = new System.Drawing.Size(395, 92);
-            this.txtFstTextIn.TabIndex = 79;
-            this.txtFstTextIn.TabStop = false;
-            this.txtFstTextIn.Text = "";
-            this.txtFstTextIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFstTextIn_KeyPress);
-            // 
-            // labelFstCaptionOut
-            // 
-            this.labelFstCaptionOut.AutoSize = true;
-            this.labelFstCaptionOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFstCaptionOut.Location = new System.Drawing.Point(425, 233);
-            this.labelFstCaptionOut.Name = "labelFstCaptionOut";
-            this.labelFstCaptionOut.Size = new System.Drawing.Size(147, 25);
-            this.labelFstCaptionOut.TabIndex = 75;
-            this.labelFstCaptionOut.Text = "Шифротекст";
-            // 
-            // radioBtnFstDecrypt
-            // 
-            this.radioBtnFstDecrypt.AutoSize = true;
-            this.radioBtnFstDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioBtnFstDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioBtnFstDecrypt.Location = new System.Drawing.Point(498, 35);
-            this.radioBtnFstDecrypt.Name = "radioBtnFstDecrypt";
-            this.radioBtnFstDecrypt.Size = new System.Drawing.Size(199, 29);
-            this.radioBtnFstDecrypt.TabIndex = 71;
-            this.radioBtnFstDecrypt.Text = "Дешифрование";
-            this.radioBtnFstDecrypt.UseVisualStyleBackColor = true;
-            this.radioBtnFstDecrypt.CheckedChanged += new System.EventHandler(this.radioBtnFstDecrypt_CheckedChanged);
-            // 
-            // radioBtnFstEncrypt
-            // 
-            this.radioBtnFstEncrypt.AutoSize = true;
-            this.radioBtnFstEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioBtnFstEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioBtnFstEncrypt.Location = new System.Drawing.Point(498, 7);
-            this.radioBtnFstEncrypt.Name = "radioBtnFstEncrypt";
-            this.radioBtnFstEncrypt.Size = new System.Drawing.Size(170, 29);
-            this.radioBtnFstEncrypt.TabIndex = 70;
-            this.radioBtnFstEncrypt.Text = "Шифрование";
-            this.radioBtnFstEncrypt.UseVisualStyleBackColor = true;
-            this.radioBtnFstEncrypt.CheckedChanged += new System.EventHandler(this.radioBtnFstEncrypt_CheckedChanged);
-            // 
-            // btnFstSaveKey
-            // 
-            this.btnFstSaveKey.BackColor = System.Drawing.Color.LightGray;
-            this.btnFstSaveKey.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstSaveKey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstSaveKey.Location = new System.Drawing.Point(434, 386);
-            this.btnFstSaveKey.Name = "btnFstSaveKey";
-            this.btnFstSaveKey.Size = new System.Drawing.Size(143, 33);
-            this.btnFstSaveKey.TabIndex = 68;
-            this.btnFstSaveKey.TabStop = false;
-            this.btnFstSaveKey.Tag = "";
-            this.btnFstSaveKey.Text = "Сохранить ключ";
-            this.btnFstSaveKey.UseVisualStyleBackColor = false;
-            this.btnFstSaveKey.Click += new System.EventHandler(this.btnFstSaveKey_Click);
-            // 
-            // labelFstCaptionIn
-            // 
-            this.labelFstCaptionIn.AutoSize = true;
-            this.labelFstCaptionIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFstCaptionIn.Location = new System.Drawing.Point(8, 4);
-            this.labelFstCaptionIn.Name = "labelFstCaptionIn";
-            this.labelFstCaptionIn.Size = new System.Drawing.Size(137, 25);
-            this.labelFstCaptionIn.TabIndex = 61;
-            this.labelFstCaptionIn.Text = "Сообщение";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(7, 133);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(123, 24);
-            this.label40.TabIndex = 57;
-            this.label40.Text = "Кол-во байт:";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(425, 10);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(76, 24);
-            this.label41.TabIndex = 74;
-            this.label41.Text = "Режим:";
-            // 
-            // label42
-            // 
-            this.label42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label42.Enabled = false;
-            this.label42.Location = new System.Drawing.Point(3, 205);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(415, 2);
-            this.label42.TabIndex = 73;
-            // 
-            // label43
-            // 
-            this.label43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label43.Enabled = false;
-            this.label43.Location = new System.Drawing.Point(417, 2);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(2, 424);
-            this.label43.TabIndex = 76;
-            // 
-            // labelFstByteNumber
-            // 
-            this.labelFstByteNumber.BackColor = System.Drawing.Color.Transparent;
-            this.labelFstByteNumber.Location = new System.Drawing.Point(136, 130);
-            this.labelFstByteNumber.Name = "labelFstByteNumber";
-            this.labelFstByteNumber.Size = new System.Drawing.Size(128, 30);
-            this.labelFstByteNumber.TabIndex = 60;
-            this.labelFstByteNumber.Text = "0";
-            this.labelFstByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // tabGpn
             // 
             this.tabGpn.BackColor = System.Drawing.Color.LightGray;
@@ -2969,6 +2973,22 @@
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
             // 
+            // btnFstSecret
+            // 
+            this.btnFstSecret.BackColor = System.Drawing.Color.LightGray;
+            this.btnFstSecret.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstSecret.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstSecret.Location = new System.Drawing.Point(990, 3);
+            this.btnFstSecret.Name = "btnFstSecret";
+            this.btnFstSecret.Size = new System.Drawing.Size(108, 24);
+            this.btnFstSecret.TabIndex = 131;
+            this.btnFstSecret.TabStop = false;
+            this.btnFstSecret.Tag = "";
+            this.btnFstSecret.Text = "btnFstSecret";
+            this.btnFstSecret.UseVisualStyleBackColor = false;
+            this.btnFstSecret.Visible = false;
+            this.btnFstSecret.Click += new System.EventHandler(this.btnFstSecret_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -2992,13 +3012,13 @@
             this.tabHesh.ResumeLayout(false);
             this.tabHesh.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
-            this.tabGam.ResumeLayout(false);
-            this.tabGam.PerformLayout();
             this.tabFst.ResumeLayout(false);
             this.tabFst.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChartFstKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFstChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartFstText)).EndInit();
+            this.tabGam.ResumeLayout(false);
+            this.tabGam.PerformLayout();
             this.tabGpn.ResumeLayout(false);
             this.tabGpn.PerformLayout();
             this.groupBox.ResumeLayout(false);
@@ -3216,6 +3236,7 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.DataVisualization.Charting.Chart ChartFstKey;
         private System.Windows.Forms.Button btnFstKeySymbol;
+        private System.Windows.Forms.Button btnFstSecret;
     }
 }
 

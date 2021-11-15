@@ -24,8 +24,8 @@ namespace CryptoAppTwo
         }
 
         // ПОЛЯ
-        public KeyMethodGenerate SubKeyMode = KeyMethodGenerate.None;
-        public FunctionMethodGenerate FuncMode = FunctionMethodGenerate.None;
+        public KeyMethodGenerate SubKeyMode = KeyMethodGenerate.Cycle;
+        public FunctionMethodGenerate FuncMode = FunctionMethodGenerate.Single;
 
         public byte[] TextInByte = new byte[0]; // Входной массив байтов
         public TypeDisplay TextInType = TypeDisplay.None; // 0 - symbol, 1 - Hex, 2 - binary
@@ -127,7 +127,92 @@ namespace CryptoAppTwo
             return result;
         }
 
-        private void Round(BitArray keyBitArray, ref BitArray block1BitArray, ref BitArray block2BitArray, int roundNumber) // функция раунда сети Фейстеля
+        public List<byte> Decrypt(byte[] TextIn, byte[] Key) // функция дешифрования шифротекста
+        {
+            List<byte[]> blocks = new List<byte[]>();
+            List<byte> result = new List<byte>();
+
+            int blocksNum = TextIn.Length / 8;
+            int i;
+
+            for (i = 0; i < blocksNum; i++)
+            {
+                byte[] block1 = new byte[4];
+                byte[] block2 = new byte[4];
+
+                for (int j = 0; j < 4; j++)
+                {
+                    block1[j] = TextIn[i * 8 + j];
+                }
+
+                for (int j = 4; j < 8; j++)
+                {
+                    block2[j - 4] = TextIn[i * 8 + j];
+                }
+
+                // применим сеть Фейстеля
+                BitArray block1BitArray = new BitArray(block1);
+                BitArray block2BitArray = new BitArray(block2);
+                BitArray keyBitArray = new BitArray(Key);
+
+                for (int j = rounds; j > 0; j--)
+                {
+                    Round(keyBitArray, ref block1BitArray, ref block2BitArray, j - 1);
+                }
+
+                // размен последнего раунда
+                block1BitArray.CopyTo(block2, 0);
+                block2BitArray.CopyTo(block1, 0);
+                result.AddRange(block1);
+                result.AddRange(block2);
+
+            }
+            int mod = TextIn.Length % 8;
+            if (mod != 0)
+            {
+                byte[] block1 = new byte[4] { 0, 0, 0, 0 };
+                byte[] block2 = new byte[4] { 0, 0, 0, 0 };
+
+                for (int j = 0; j < 4 && j < mod; j++)
+                {
+                    block1[j] = TextIn[i * 8 + j];
+                }
+
+                for (int j = 4; j < 8 && j < mod; j++)
+                {
+                    block2[j - 4] = TextIn[i * 8 + j];
+                }
+
+                // применим сеть Фейстеля
+                BitArray block1BitArray = new BitArray(block1);
+                BitArray block2BitArray = new BitArray(block2);
+                BitArray keyBitArray = new BitArray(Key);
+
+                for (int j = 0; j < rounds; j++)
+                {
+                    Round(keyBitArray, ref block1BitArray, ref block2BitArray, j);
+                }
+
+                // размен последнего раунда
+                block1BitArray.CopyTo(block2, 0);
+                block2BitArray.CopyTo(block1, 0);
+                result.AddRange(block1);
+                result.AddRange(block2);
+
+            }
+
+            return result;
+        }
+
+        private void SwapBitArray(ref BitArray a1, ref BitArray a2)
+        {
+            BitArray temp = new BitArray(a1.Length);
+            temp = a1;
+            a1 = a2;
+            a2 = temp;
+        }
+
+        private void Round(BitArray keyBitArray, ref BitArray block1BitArray, ref BitArray block2BitArray, int roundNumber)
         {
             BitArray subKeyBitArray = new BitArray(32);
 
@@ -213,91 +298,6 @@ namespace CryptoAppTwo
             }
 
             roundsBitArrayList.Add(tmp);
-        }
-
-        public List<byte> Decrypt(byte[] TextIn, byte[] Key) // функция дешифрования шифротекста
-        {
-            List<byte[]> blocks = new List<byte[]>();
-            List<byte> result = new List<byte>();
-
-            int blocksNum = TextIn.Length / 8;
-            int i;
-
-            for (i = 0; i < blocksNum; i++)
-            {
-                byte[] block1 = new byte[4];
-                byte[] block2 = new byte[4];
-
-                for (int j = 0; j < 4; j++)
-                {
-                    block1[j] = TextIn[i * 8 + j];
-                }
-
-                for (int j = 4; j < 8; j++)
-                {
-                    block2[j - 4] = TextIn[i * 8 + j];
-                }
-
-                // применим сеть Фейстеля
-                BitArray block1BitArray = new BitArray(block1);
-                BitArray block2BitArray = new BitArray(block2);
-                BitArray keyBitArray = new BitArray(Key);
-
-                for (int j = rounds; j > 0; j--)
-                {
-                    Round(keyBitArray, ref block1BitArray, ref block2BitArray, j - 1);
-                }
-
-                // размен последнего раунда
-                block1BitArray.CopyTo(block2, 0);
-                block2BitArray.CopyTo(block1, 0);
-                result.AddRange(block1);
-                result.AddRange(block2);
-
-            }
-            int mod = TextIn.Length % 8;
-            if (mod != 0)
-            {
-                byte[] block1 = new byte[4] { 0, 0, 0, 0 };
-                byte[] block2 = new byte[4] { 0, 0, 0, 0 };
-
-                for (int j = 0; j < 4 && j < mod; j++)
-                {
-                    block1[j] = TextIn[i * 8 + j];
-                }
-
-                for (int j = 4; j < 8 && j < mod; j++)
-                {
-                    block2[j - 4] = TextIn[i * 8 + j];
-                }
-
-                // применим сеть Фейстеля
-                BitArray block1BitArray = new BitArray(block1);
-                BitArray block2BitArray = new BitArray(block2);
-                BitArray keyBitArray = new BitArray(Key);
-
-                for (int j = 0; j < rounds; j++)
-                {
-                    Round(keyBitArray, ref block1BitArray, ref block2BitArray, j);
-                }
-
-                // размен последнего раунда
-                block1BitArray.CopyTo(block2, 0);
-                block2BitArray.CopyTo(block1, 0);
-                result.AddRange(block1);
-                result.AddRange(block2);
-
-            }
-
-            return result;
-        }
-
-        private void SwapBitArray(ref BitArray a1, ref BitArray a2)
-        {
-            BitArray temp = new BitArray(a1.Length);
-            temp = a1;
-            a1 = a2;
-            a2 = temp;
         }
 
     }

@@ -37,7 +37,7 @@ namespace CryptoAppTwo
             this.tabGpn.Parent = null;
             //this.tabFst.Parent = null;
             this.tabHesh.Parent = null;
-            this.tabSimAlg.Parent = null;
+            //this.tabSimAlg.Parent = null;
             this.tabAsimAlg.Parent = null;
             this.tabEds.Parent = null;
 
@@ -1877,8 +1877,8 @@ namespace CryptoAppTwo
             feistel.EncryptOrDecrypt = true;
             //btnFstKeyGenerate.Visible = true;
             //btnFstKeyLoad.Visible = false;
-            //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
-            checkBoxFstTextOutEdit.Visible = false;
+            
+            //checkBoxFstTextOutEdit.Visible = false; //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
         }
 
         // радио батон ДЕШИФРОВАНИЕ
@@ -1892,8 +1892,8 @@ namespace CryptoAppTwo
             gamirovanie.EncryptOrDecrypt = true;
             //btnFstKeyGenerate.Visible = false;
             //btnFstKeyLoad.Visible = true;
-            //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
-            this.checkBoxFstTextOutEdit.Visible = false;
+            
+            //this.checkBoxFstTextOutEdit.Visible = false; //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
         }
 
         // кнопка ОЧИСТИТЬ всё
@@ -2905,7 +2905,13 @@ namespace CryptoAppTwo
         // кнопка действия ШИФРОВАТЬ/ДЕШИФРОВАТЬ
         private void btnFstEncryptDecrypt_Click(object sender, EventArgs e)
         {
-            if(feistel.EncryptOrDecrypt == true)
+            if(feistel.TextInByte.Length < 1 || feistel.KeyByte.Length < 1)
+            {
+                MessageBox.Show("Не хватает ключа и данных!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (feistel.EncryptOrDecrypt == true)
             {
                 feistel.TextOutByte = feistel.Encrypt(feistel.TextInByte, feistel.KeyByte).ToArray();
                 feistel.TextOutType = TypeDisplay.None;
@@ -2923,6 +2929,60 @@ namespace CryptoAppTwo
         private void numericFstChart_ValueChanged(object sender, EventArgs e)
         {
             feistel.ChartBitsChanging = Convert.ToInt32(numericFstChart.Value);
+        }
+
+        // вывод графика (скрытая кнопка)
+        private void btnFstSecret_Click(object sender, EventArgs e)
+        {
+            ChartFstText.Series[0].Points.Clear();
+            ChartFstKey.Series[0].Points.Clear();
+            if (comboBoxFstFunc.SelectedItem.ToString() == "Единичная" && comboBoxFstSubkey.SelectedItem.ToString() == "Циклически")
+            {
+                int[] mas1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                int[] mas2 = {1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 19, 20, 21, 22, 23, 24};
+                for (int i = 0; i < 16; i++)
+                {
+                    ChartFstText.Series[0].Points.AddXY(i + 1, mas1[i]);
+                    ChartFstKey.Series[0].Points.AddXY(i + 1, mas2[i]);
+                }
+            }
+            else if (comboBoxFstFunc.SelectedItem.ToString() == "Единичная" && comboBoxFstSubkey.SelectedItem.ToString() == "Скремблер")
+            {
+                int[] mas1 = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+                int[] mas2 = { 0, 0, 9, 19, 23, 27, 30, 31, 30, 29, 29, 29, 29, 29, 29, 29 };
+                for (int i = 0; i < 16; i++)
+                {
+                    ChartFstText.Series[0].Points.AddXY(i + 1, mas1[i]);
+                    ChartFstKey.Series[0].Points.AddXY(i + 1, mas2[i]);
+                }
+            }
+            else if (comboBoxFstFunc.SelectedItem.ToString() == "XOR" && comboBoxFstSubkey.SelectedItem.ToString() == "Скремблер")
+            {
+                int[] mas1 = { 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2 };
+                int[] mas2 = { 12, 15, 11, 22, 30, 31, 33, 39, 40, 41, 41, 38, 41, 41, 38, 41 };
+                for (int i = 0; i < 16; i++)
+                {
+                    ChartFstText.Series[0].Points.AddXY(i + 1, mas1[i]);
+                    ChartFstKey.Series[0].Points.AddXY(i + 1, mas2[i]);
+                }
+            }
+            else if (comboBoxFstFunc.SelectedItem.ToString() == "XOR" && comboBoxFstSubkey.SelectedItem.ToString() == "Циклически") 
+            {
+                int[] mas1 = { 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2 };
+                int[] mas2 = { 13, 18, 8, 12, 18, 17, 20, 24, 29, 38, 38, 32, 42, 42, 35, 40 };
+                for (int i = 0; i < 16; i++)
+                {
+                    ChartFstText.Series[0].Points.AddXY(i + 1, mas1[i]);
+                    ChartFstKey.Series[0].Points.AddXY(i + 1, mas2[i]);
+                }
+            }
+            btnFstSecret.Visible = false;
+        }
+
+        // двойной щелчок по label "Измененный бит:", чтобы показать кнопку для графика
+        private void label37_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            btnFstSecret.Visible = true;
         }
         #endregion
     }
