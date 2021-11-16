@@ -45,7 +45,7 @@ namespace CryptoAppTwo
         public List<int> ChartListBitsText = new List<int>(); // для графика 1
         public List<int> ChartListBitsKey = new List<int>(); // для графика 1
         //================================================================================================
-        // приватные для функций
+        // приватные поля для функций
         private const int rounds = 16;
         private List<BitArray> roundsBitArrayList = new List<BitArray>(rounds);
         //==============================

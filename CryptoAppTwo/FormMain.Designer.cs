@@ -62,7 +62,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label_Asim_underText_out = new System.Windows.Forms.Label();
-            this.tabSimAlg = new System.Windows.Forms.TabPage();
+            this.tabSim = new System.Windows.Forms.TabPage();
             this.label_simm_onText_out = new System.Windows.Forms.Label();
             this.btn_simm_saveData = new System.Windows.Forms.Button();
             this.txt_simm_text_out = new System.Windows.Forms.RichTextBox();
@@ -105,6 +105,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabFst = new System.Windows.Forms.TabPage();
+            this.btnFstSecret = new System.Windows.Forms.Button();
             this.btnFstKeySymbol = new System.Windows.Forms.Button();
             this.ChartFstKey = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnFstClear = new System.Windows.Forms.Button();
@@ -241,9 +242,8 @@
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
-            this.btnFstSecret = new System.Windows.Forms.Button();
             this.tabAsimAlg.SuspendLayout();
-            this.tabSimAlg.SuspendLayout();
+            this.tabSim.SuspendLayout();
             this.tabHesh.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabFst.SuspendLayout();
@@ -293,7 +293,7 @@
             this.tabAsimAlg.Margin = new System.Windows.Forms.Padding(4);
             this.tabAsimAlg.Name = "tabAsimAlg";
             this.tabAsimAlg.Padding = new System.Windows.Forms.Padding(4);
-            this.tabAsimAlg.Size = new System.Drawing.Size(1476, 429);
+            this.tabAsimAlg.Size = new System.Drawing.Size(833, 429);
             this.tabAsimAlg.TabIndex = 4;
             this.tabAsimAlg.Text = "Асимметричные алгоритмы (RSA)";
             // 
@@ -565,41 +565,41 @@
             this.label_Asim_underText_out.TabIndex = 86;
             this.label_Asim_underText_out.Text = "(В файл шифр сохраниться в виде бинарных данных)";
             // 
-            // tabSimAlg
+            // tabSim
             // 
-            this.tabSimAlg.BackColor = System.Drawing.Color.LightGray;
-            this.tabSimAlg.Controls.Add(this.label_simm_onText_out);
-            this.tabSimAlg.Controls.Add(this.btn_simm_saveData);
-            this.tabSimAlg.Controls.Add(this.txt_simm_text_out);
-            this.tabSimAlg.Controls.Add(this.txt_simm_text_in);
-            this.tabSimAlg.Controls.Add(this.txt_simm_file_in);
-            this.tabSimAlg.Controls.Add(this.btn_simm_entryKeyIV);
-            this.tabSimAlg.Controls.Add(this.label_simm_caption2);
-            this.tabSimAlg.Controls.Add(this.comboBox_SimmAlg);
-            this.tabSimAlg.Controls.Add(this.radioBtn_SimmAlg2);
-            this.tabSimAlg.Controls.Add(this.radioBtn_SimmAlg1);
-            this.tabSimAlg.Controls.Add(this.btn_simm_saveKeyIV);
-            this.tabSimAlg.Controls.Add(this.btn_SimmEncrypt);
-            this.tabSimAlg.Controls.Add(this.label_simm_caption1);
-            this.tabSimAlg.Controls.Add(this.txt_simm_byte_in_num);
-            this.tabSimAlg.Controls.Add(this.btn_simm_clear);
-            this.tabSimAlg.Controls.Add(this.label9);
-            this.tabSimAlg.Controls.Add(this.btn_choice_fileinSimm);
-            this.tabSimAlg.Controls.Add(this.label10);
-            this.tabSimAlg.Controls.Add(this.label12);
-            this.tabSimAlg.Controls.Add(this.label8);
-            this.tabSimAlg.Controls.Add(this.label14);
-            this.tabSimAlg.Controls.Add(this.label7);
-            this.tabSimAlg.Controls.Add(this.label6);
-            this.tabSimAlg.Controls.Add(this.label_simm_underText_out);
-            this.tabSimAlg.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tabSimAlg.Location = new System.Drawing.Point(4, 33);
-            this.tabSimAlg.Margin = new System.Windows.Forms.Padding(4);
-            this.tabSimAlg.Name = "tabSimAlg";
-            this.tabSimAlg.Padding = new System.Windows.Forms.Padding(4);
-            this.tabSimAlg.Size = new System.Drawing.Size(1476, 429);
-            this.tabSimAlg.TabIndex = 1;
-            this.tabSimAlg.Text = "Симметричные алгоритмы";
+            this.tabSim.BackColor = System.Drawing.Color.LightGray;
+            this.tabSim.Controls.Add(this.label_simm_onText_out);
+            this.tabSim.Controls.Add(this.btn_simm_saveData);
+            this.tabSim.Controls.Add(this.txt_simm_text_out);
+            this.tabSim.Controls.Add(this.txt_simm_text_in);
+            this.tabSim.Controls.Add(this.txt_simm_file_in);
+            this.tabSim.Controls.Add(this.btn_simm_entryKeyIV);
+            this.tabSim.Controls.Add(this.label_simm_caption2);
+            this.tabSim.Controls.Add(this.comboBox_SimmAlg);
+            this.tabSim.Controls.Add(this.radioBtn_SimmAlg2);
+            this.tabSim.Controls.Add(this.radioBtn_SimmAlg1);
+            this.tabSim.Controls.Add(this.btn_simm_saveKeyIV);
+            this.tabSim.Controls.Add(this.btn_SimmEncrypt);
+            this.tabSim.Controls.Add(this.label_simm_caption1);
+            this.tabSim.Controls.Add(this.txt_simm_byte_in_num);
+            this.tabSim.Controls.Add(this.btn_simm_clear);
+            this.tabSim.Controls.Add(this.label9);
+            this.tabSim.Controls.Add(this.btn_choice_fileinSimm);
+            this.tabSim.Controls.Add(this.label10);
+            this.tabSim.Controls.Add(this.label12);
+            this.tabSim.Controls.Add(this.label8);
+            this.tabSim.Controls.Add(this.label14);
+            this.tabSim.Controls.Add(this.label7);
+            this.tabSim.Controls.Add(this.label6);
+            this.tabSim.Controls.Add(this.label_simm_underText_out);
+            this.tabSim.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabSim.Location = new System.Drawing.Point(4, 33);
+            this.tabSim.Margin = new System.Windows.Forms.Padding(4);
+            this.tabSim.Name = "tabSim";
+            this.tabSim.Padding = new System.Windows.Forms.Padding(4);
+            this.tabSim.Size = new System.Drawing.Size(833, 429);
+            this.tabSim.TabIndex = 1;
+            this.tabSim.Text = "Симметричные алгоритмы";
             // 
             // label_simm_onText_out
             // 
@@ -908,7 +908,7 @@
             this.tabHesh.Margin = new System.Windows.Forms.Padding(4);
             this.tabHesh.Name = "tabHesh";
             this.tabHesh.Padding = new System.Windows.Forms.Padding(4);
-            this.tabHesh.Size = new System.Drawing.Size(1476, 429);
+            this.tabHesh.Size = new System.Drawing.Size(833, 429);
             this.tabHesh.TabIndex = 0;
             this.tabHesh.Text = "Хэширование";
             // 
@@ -1107,7 +1107,7 @@
             this.tabControlMain.Controls.Add(this.tabGam);
             this.tabControlMain.Controls.Add(this.tabGpn);
             this.tabControlMain.Controls.Add(this.tabHesh);
-            this.tabControlMain.Controls.Add(this.tabSimAlg);
+            this.tabControlMain.Controls.Add(this.tabSim);
             this.tabControlMain.Controls.Add(this.tabAsimAlg);
             this.tabControlMain.Controls.Add(this.tabEds);
             this.tabControlMain.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1118,7 +1118,7 @@
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(4);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1484, 466);
+            this.tabControlMain.Size = new System.Drawing.Size(841, 466);
             this.tabControlMain.TabIndex = 1;
             this.tabControlMain.TabStop = false;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
@@ -1184,9 +1184,25 @@
             this.tabFst.Margin = new System.Windows.Forms.Padding(4);
             this.tabFst.Name = "tabFst";
             this.tabFst.Padding = new System.Windows.Forms.Padding(4);
-            this.tabFst.Size = new System.Drawing.Size(1476, 429);
+            this.tabFst.Size = new System.Drawing.Size(833, 429);
             this.tabFst.TabIndex = 7;
             this.tabFst.Text = "Сеть Фейстеля";
+            // 
+            // btnFstSecret
+            // 
+            this.btnFstSecret.BackColor = System.Drawing.Color.LightGray;
+            this.btnFstSecret.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFstSecret.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFstSecret.Location = new System.Drawing.Point(990, 3);
+            this.btnFstSecret.Name = "btnFstSecret";
+            this.btnFstSecret.Size = new System.Drawing.Size(108, 24);
+            this.btnFstSecret.TabIndex = 131;
+            this.btnFstSecret.TabStop = false;
+            this.btnFstSecret.Tag = "";
+            this.btnFstSecret.Text = "btnFstSecret";
+            this.btnFstSecret.UseVisualStyleBackColor = false;
+            this.btnFstSecret.Visible = false;
+            this.btnFstSecret.Click += new System.EventHandler(this.btnFstSecret_Click);
             // 
             // btnFstKeySymbol
             // 
@@ -1945,7 +1961,7 @@
             this.tabGam.Margin = new System.Windows.Forms.Padding(4);
             this.tabGam.Name = "tabGam";
             this.tabGam.Padding = new System.Windows.Forms.Padding(4);
-            this.tabGam.Size = new System.Drawing.Size(1476, 429);
+            this.tabGam.Size = new System.Drawing.Size(833, 429);
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гаммирование/Скремблирование";
             // 
@@ -2472,7 +2488,7 @@
             this.tabGpn.Margin = new System.Windows.Forms.Padding(4);
             this.tabGpn.Name = "tabGpn";
             this.tabGpn.Padding = new System.Windows.Forms.Padding(4);
-            this.tabGpn.Size = new System.Drawing.Size(1476, 429);
+            this.tabGpn.Size = new System.Drawing.Size(833, 429);
             this.tabGpn.TabIndex = 8;
             this.tabGpn.Text = "Простые числа";
             // 
@@ -2714,7 +2730,7 @@
             this.tabEds.Margin = new System.Windows.Forms.Padding(4);
             this.tabEds.Name = "tabEds";
             this.tabEds.Padding = new System.Windows.Forms.Padding(4);
-            this.tabEds.Size = new System.Drawing.Size(1476, 429);
+            this.tabEds.Size = new System.Drawing.Size(833, 429);
             this.tabEds.TabIndex = 5;
             this.tabEds.Text = "ЭЦП (RSA)";
             // 
@@ -2973,28 +2989,12 @@
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
             // 
-            // btnFstSecret
-            // 
-            this.btnFstSecret.BackColor = System.Drawing.Color.LightGray;
-            this.btnFstSecret.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFstSecret.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFstSecret.Location = new System.Drawing.Point(990, 3);
-            this.btnFstSecret.Name = "btnFstSecret";
-            this.btnFstSecret.Size = new System.Drawing.Size(108, 24);
-            this.btnFstSecret.TabIndex = 131;
-            this.btnFstSecret.TabStop = false;
-            this.btnFstSecret.Tag = "";
-            this.btnFstSecret.Text = "btnFstSecret";
-            this.btnFstSecret.UseVisualStyleBackColor = false;
-            this.btnFstSecret.Visible = false;
-            this.btnFstSecret.Click += new System.EventHandler(this.btnFstSecret_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1484, 466);
+            this.ClientSize = new System.Drawing.Size(841, 466);
             this.Controls.Add(this.tabControlMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -3004,11 +3004,12 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CryptoAppTwo";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabAsimAlg.ResumeLayout(false);
             this.tabAsimAlg.PerformLayout();
-            this.tabSimAlg.ResumeLayout(false);
-            this.tabSimAlg.PerformLayout();
+            this.tabSim.ResumeLayout(false);
+            this.tabSim.PerformLayout();
             this.tabHesh.ResumeLayout(false);
             this.tabHesh.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
@@ -3057,7 +3058,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label_Asim_underText_out;
-        private System.Windows.Forms.TabPage tabSimAlg;
+        private System.Windows.Forms.TabPage tabSim;
         private System.Windows.Forms.Label label_simm_onText_out;
         private System.Windows.Forms.Button btn_simm_saveData;
         private System.Windows.Forms.RichTextBox txt_simm_text_out;

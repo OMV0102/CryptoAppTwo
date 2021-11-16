@@ -30,14 +30,16 @@ namespace CryptoAppTwo
         // при ЗАГРУЗКЕ ФОРМЫ
         private void FormMain_Load(object sender, EventArgs e)
         {
+            this.tabControlMain.SelectedIndex = 1;
             this.tabControlMain.SelectedIndex = 0;
 
             // скрыть лишние вкладки на форме
-            //this.tabGam.Parent = null;
+            // закоменчено, значит включено
+            this.tabGam.Parent = null;
             this.tabGpn.Parent = null;
             //this.tabFst.Parent = null;
             this.tabHesh.Parent = null;
-            //this.tabSimAlg.Parent = null;
+            //this.tabSim.Parent = null;
             this.tabAsimAlg.Parent = null;
             this.tabEds.Parent = null;
 
@@ -1889,7 +1891,7 @@ namespace CryptoAppTwo
             this.labelFstCaptionOut.Text = "Сообщение";
             this.btnFstSaveData.Text = "Сохранить сообщение";
             btnFstClear.PerformClick(); // Очистить всё при переключении
-            gamirovanie.EncryptOrDecrypt = true;
+            feistel.EncryptOrDecrypt = false;
             //btnFstKeyGenerate.Visible = false;
             //btnFstKeyLoad.Visible = true;
             
@@ -1902,6 +1904,10 @@ namespace CryptoAppTwo
             bool rezhim = feistel.EncryptOrDecrypt;
             feistel = new Feistel(); // перезаписываем объект
             feistel.EncryptOrDecrypt = rezhim;
+            if (rezhim == true)
+                radioBtnFstEncrypt_CheckedChanged(null, null);
+            else
+                radioBtnFstDecrypt_CheckedChanged(null, null);
             //===================================
             // входные данные стираем
             this.txtFstTextIn.Text = "";
@@ -2914,12 +2920,15 @@ namespace CryptoAppTwo
             if (feistel.EncryptOrDecrypt == true)
             {
                 feistel.TextOutByte = feistel.Encrypt(feistel.TextInByte, feistel.KeyByte).ToArray();
+                File.WriteAllBytes(Application.StartupPath + "\\temp.txt", feistel.TextInByte);
                 feistel.TextOutType = TypeDisplay.None;
                 btnFstTextOutHex_Click(null, null);
+                btnFstSecret_Click(null, null);
             }
             else
             {
                 feistel.TextOutByte = feistel.Decrypt(feistel.TextInByte, feistel.KeyByte).ToArray();
+                //feistel.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
                 feistel.TextOutType = TypeDisplay.None;
                 btnFstTextOutHex_Click(null, null);
             }
@@ -2978,7 +2987,7 @@ namespace CryptoAppTwo
             }
             btnFstSecret.Visible = false;
         }
-
+        
         // двойной щелчок по label "Измененный бит:", чтобы показать кнопку для графика
         private void label37_MouseDoubleClick(object sender, MouseEventArgs e)
         {
