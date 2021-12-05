@@ -18,6 +18,7 @@ namespace CryptoAppTwo
     {
         private Gamirovanie gamirovanie = null;
         private Feistel feistel = null;
+        private AesClass aes = null;
         
         private List<PrimeNumber> PrimeNumberList = null;
         
@@ -2997,179 +2998,1059 @@ namespace CryptoAppTwo
 
         //#region Функции обработчики AES
 
+        // радио батон ШИФРОВАНИЕ
         private void radioBtnAesEncrypt_CheckedChanged(object sender, EventArgs e)
         {
+            btnAesEncryptDecrypt.Text = "Шифровать";
+            labelAesCaptionIn.Text = "Сообщение";
+            labelAesCaptionOut.Text = "Шифротекст";
+            btnAesSaveData.Text = "Сохранить шифротекст";
+            btnAesClear.PerformClick(); // Очистить всё при переключении
+            aes.EncryptOrDecrypt = true;
+            //btnAesKeyGenerate.Visible = true;
+            //btnAesKeyLoad.Visible = false;
 
+            //checkBoxAesTextOutEdit.Visible = false; //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
         }
 
+        // радио батон ДЕШИФРОВАНИЕ
         private void radioBtnAesDecrypt_CheckedChanged(object sender, EventArgs e)
         {
+            this.btnAesEncryptDecrypt.Text = "Дешифровать";
+            this.labelAesCaptionIn.Text = "Шифротекст";
+            this.labelAesCaptionOut.Text = "Сообщение";
+            this.btnAesSaveData.Text = "Сохранить сообщение";
+            btnAesClear.PerformClick(); // Очистить всё при переключении
+            aes.EncryptOrDecrypt = false;
+            //btnAesKeyGenerate.Visible = false;
+            //btnAesKeyLoad.Visible = true;
 
+            //this.checkBoxAesTextOutEdit.Visible = false; //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
         }
 
+        // кнопка ОЧИСТИТЬ всё
         private void btnAesClear_Click(object sender, EventArgs e)
         {
+            bool rezhim = aes.EncryptOrDecrypt;
+            aes = new AesClass(); // перезаписываем объект
+            aes.EncryptOrDecrypt = rezhim;
+            if (rezhim == true)
+                radioBtnAesEncrypt_CheckedChanged(null, null);
+            else
+                radioBtnAesDecrypt_CheckedChanged(null, null);
+            //===================================
+            // входные данные стираем
+            this.txtAesTextIn.Text = "";
+            this.labelAesByteNumber.Text = "0";
+            // ВЫходные данные стираем
+            this.txtAesTextOut.Text = "";
+            this.btnAesTextInSymbol.Enabled = true;
+            //флаги
+            this.flagAesTextInIsEdited.Checked = false;
+            this.flagAesTextOutIsEdited.Checked = false;
+            this.flagAesKeyIsEdited.Checked = false;
+            // параметры
+            this.comboBoxAesFunc.SelectedIndex = 0;
+            this.comboBoxAesSubkey.SelectedIndex = 0;
 
+            //кнопки редактирования
+            this.btnAesTextInSaveChanged.Visible = false;
+            this.btnAesTextOutSaveChanged.Visible = false;
+            this.btnAesTextInCancelChanged.Visible = false;
+            this.btnAesTextOutCancelChanged.Visible = false;
+            this.btnAesKeySaveChanged.Visible = false;
+            this.btnAesKeyCancelChanged.Visible = false;
+            checkBoxAesTextInEdit.Checked = false;
+            checkBoxAesTextOutEdit.Checked = false;
+            checkBoxAesKeyEdit.Checked = false;
+
+
+            if (aes.EncryptOrDecrypt == true)
+            {
+                this.btnAesTextInSymbol.PerformClick();
+                this.btnAesKeyHex.PerformClick();
+                this.btnAesTextOutHex.PerformClick();
+            }
+            else
+            {
+                this.btnAesTextInHex.PerformClick();
+                this.btnAesKeyHex.PerformClick();
+                this.btnAesTextOutSymbol.PerformClick();
+            }
         }
 
+        // Вид получения подключа
         private void comboBoxAesSubkey_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxAesSubkey.SelectedItem.ToString() == "Циклически")
+                aes.SubKeyMode = AesClass.KeyMethodGenerate.Cycle;
+            else if (comboBoxAesSubkey.SelectedItem.ToString() == "Скремблер")
+                aes.SubKeyMode = AesClass.KeyMethodGenerate.Scrambler;
+            else
+                aes.SubKeyMode = AesClass.KeyMethodGenerate.None;
         }
 
+        // Вид образующей функции
         private void comboBoxAesFunc_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxAesFunc.SelectedItem.ToString() == "Единичная")
+                aes.FuncMode = AesClass.FunctionMethodGenerate.Single;
+            else if (comboBoxAesFunc.SelectedItem.ToString() == "XOR")
+                aes.FuncMode = AesClass.FunctionMethodGenerate.Xor;
+            else
+                aes.FuncMode = AesClass.FunctionMethodGenerate.None;
         }
 
-        private void checkBoxAestTextInEdit_CheckedChanged(object sender, EventArgs e)
+        // галочка ВКЛ ВЫКЛ редактирование вход текста
+        private void checkBoxAesTextInEdit_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (this.checkBoxAesTextInEdit.Checked == true)
+            {
+                this.txtAesTextIn.ReadOnly = false;
+            }
+            else
+            {
+                if (aes.TextInIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxAesTextInEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtAesTextIn.ReadOnly = true;
+                }
+            }
         }
 
+        // галочка ВКЛ ВЫКЛ редактирование ключа
         private void checkBoxAesKeyEdit_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (this.checkBoxAesKeyEdit.Checked == true)
+            {
+                this.txtAesKey.ReadOnly = false;
+            }
+            else
+            {
+                if (aes.KeyIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxAesKeyEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtAesTextIn.ReadOnly = true;
+                }
+            }
         }
 
+        // галочка ВКЛ ВЫКЛ редактирование вЫход текста
         private void checkBoxAesTextOutEdit_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (this.checkBoxAesTextOutEdit.Checked == true)
+            {
+                this.txtAesTextOut.ReadOnly = false;
+            }
+            else
+            {
+                if (aes.TextOutIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxAesTextOutEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtAesTextOut.ReadOnly = true;
+                }
+            }
         }
 
+        // кнопка Bin вход текста
         private void btnAesTextInBinary_Click(object sender, EventArgs e)
         {
+            if (aes.TextInType == TypeDisplay.Binary) return;
 
+            if (aes.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.TextInType == TypeDisplay.Binary) this.btnAesTextInBinary.Focus();
+                else if (aes.TextInType == TypeDisplay.Hex) this.btnAesTextInHex.Focus();
+                else if (aes.TextInType == TypeDisplay.Symbol) this.btnAesTextInSymbol.Focus();
+                return;
+            }
+
+            if (aes.TextInByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtAesTextIn.Text = Functions.ByteToBinary(aes.TextInByte);
+
+            aes.TextInType = TypeDisplay.Binary;
+            this.btnAesTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnAesTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
+        // кнопка Symb вход текста
         private void btnAesTextInSymbol_Click(object sender, EventArgs e)
         {
 
+            if (aes.TextInType == TypeDisplay.Symbol) return;
+
+            if (aes.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.TextInType == TypeDisplay.Binary) this.btnAesTextInBinary.Focus();
+                else if (aes.TextInType == TypeDisplay.Hex) this.btnAesTextInHex.Focus();
+                else if (aes.TextInType == TypeDisplay.Symbol) this.btnAesTextInSymbol.Focus();
+                return;
+            }
+
+            if (!(aes.FileExtension == "txt" && aes.EncryptOrDecrypt == true))
+            {
+                this.Enabled = false;
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с расширением .txt в режиме шифрования!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtAesTextIn.Text = Functions.ByteToSymbol(aes.TextInByte);
+
+            aes.TextInType = TypeDisplay.Symbol;
+            this.btnAesTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnAesTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
+        // кнопка Hex вход текста
         private void btnAesTextInHex_Click(object sender, EventArgs e)
         {
+            if (aes.TextInType == TypeDisplay.Hex) return;
 
+            if (aes.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.TextInType == TypeDisplay.Binary) this.btnAesTextInBinary.Focus();
+                else if (aes.TextInType == TypeDisplay.Hex) this.btnAesTextInHex.Focus();
+                else if (aes.TextInType == TypeDisplay.Symbol) this.btnAesTextInSymbol.Focus();
+                return;
+            }
+
+            this.txtAesTextIn.Text = Functions.ByteToHex(aes.TextInByte);
+
+            aes.TextInType = TypeDisplay.Hex;
+            this.btnAesTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
         }
 
+        // кнопка Bin  ключ
         private void btnAesKeyBinary_Click(object sender, EventArgs e)
         {
+            if (aes.KeyType == TypeDisplay.Binary) return;
 
+            if (aes.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.KeyType == TypeDisplay.Binary) this.btnAesKeyBinary.Focus();
+                else if (aes.KeyType == TypeDisplay.Symbol) this.btnAesKeySymbol.Focus();
+                else if (aes.KeyType == TypeDisplay.Hex) this.btnAesKeyHex.Focus();
+                return;
+            }
+
+            if (aes.KeyByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (aes.KeyType == TypeDisplay.Binary) this.btnAesKeyBinary.Focus();
+                else if (aes.KeyType == TypeDisplay.Symbol) this.btnAesKeySymbol.Focus();
+                else if (aes.KeyType == TypeDisplay.Hex) this.btnAesKeyHex.Focus();
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtAesKey.Text = Functions.ByteToBinary(aes.KeyByte);
+
+            aes.KeyType = TypeDisplay.Binary;
+            this.btnAesKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnAesKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
+        // кнопка Symb  ключ
         private void btnAesKeySymbol_Click(object sender, EventArgs e)
         {
+            if (aes.KeyType == TypeDisplay.Symbol) return;
 
+            if (aes.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.KeyType == TypeDisplay.Binary) this.btnAesKeyBinary.Focus();
+                else if (aes.KeyType == TypeDisplay.Hex) this.btnAesKeyHex.Focus();
+                else if (aes.KeyType == TypeDisplay.Symbol) this.btnAesKeySymbol.Focus();
+                return;
+            }
+
+            this.txtAesKey.Text = Functions.ByteToSymbol(aes.KeyByte);
+
+            aes.KeyType = TypeDisplay.Symbol;
+            this.btnAesKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnAesKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
+        // кнопка Hex ключ
         private void btnAesKeyHex_Click(object sender, EventArgs e)
         {
+            if (aes.KeyType == TypeDisplay.Hex) return;
 
+            if (aes.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.KeyType == TypeDisplay.Binary) this.btnAesKeyBinary.Focus();
+                else if (aes.KeyType == TypeDisplay.Symbol) this.btnAesKeySymbol.Focus();
+                else if (aes.KeyType == TypeDisplay.Hex) this.btnAesKeyHex.Focus();
+                return;
+            }
+
+            this.txtAesKey.Text = Functions.ByteToHex(aes.KeyByte);
+
+            aes.KeyType = TypeDisplay.Hex;
+            this.btnAesKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
         }
 
+        // кнопка Bin вЫход текста
         private void btnAesTextOutBinary_Click(object sender, EventArgs e)
         {
+            if (aes.TextOutType == TypeDisplay.Binary) return;
 
+            if (aes.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.TextOutType == TypeDisplay.Binary) this.btnAesTextOutBinary.Focus();
+                else if (aes.TextOutType == TypeDisplay.Hex) this.btnAesTextOutHex.Focus();
+                else if (aes.TextOutType == TypeDisplay.Symbol) this.btnAesTextOutSymbol.Focus();
+                return;
+            }
+
+            if (aes.TextOutByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtAesTextOut.Text = Functions.ByteToBinary(aes.TextOutByte);
+
+            aes.TextOutType = TypeDisplay.Binary;
+            this.btnAesTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnAesTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
+        // кнопка Symb вЫход текста
         private void btnAesTextOutSymbol_Click(object sender, EventArgs e)
         {
+            if (aes.TextOutType == TypeDisplay.Symbol) return;
 
+            if (aes.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.TextOutType == TypeDisplay.Binary) this.btnAesTextOutBinary.Focus();
+                else if (aes.TextOutType == TypeDisplay.Hex) this.btnAesTextOutHex.Focus();
+                else if (aes.TextOutType == TypeDisplay.Symbol) this.btnAesTextOutSymbol.Focus();
+                return;
+            }
+
+            this.txtAesTextOut.Text = Functions.ByteToSymbol(aes.TextOutByte);
+
+            aes.TextOutType = TypeDisplay.Symbol;
+            this.btnAesTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnAesTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
         }
 
+        // кнопка Hex вЫход текста
         private void btnAesTextOutHex_Click(object sender, EventArgs e)
         {
+            if (aes.TextOutType == TypeDisplay.Hex) return;
 
+            if (aes.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (aes.TextOutType == TypeDisplay.Binary) this.btnAesTextOutBinary.Focus();
+                else if (aes.TextOutType == TypeDisplay.Hex) this.btnAesTextOutHex.Focus();
+                else if (aes.TextOutType == TypeDisplay.Symbol) this.btnAesTextOutSymbol.Focus();
+                return;
+            }
+
+            this.txtAesTextOut.Text = Functions.ByteToHex(aes.TextOutByte);
+
+            aes.TextOutType = TypeDisplay.Hex;
+            this.btnAesTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnAesTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
         }
 
+        // кнопка ВЕДРО откатить изменения ВХОД текста 
         private void btnAesTextInCancelChanged_Click(object sender, EventArgs e)
         {
+            if (aes.TextInType == TypeDisplay.Binary)
+                this.txtAesTextIn.Text = Functions.ByteToBinary(aes.TextInByte);
+            else if (aes.TextInType == TypeDisplay.Hex)
+                this.txtAesTextIn.Text = Functions.ByteToHex(aes.TextInByte);
+            else if (aes.TextInType == TypeDisplay.Symbol)
+                this.txtAesTextIn.Text = Functions.ByteToSymbol(aes.TextInByte);
 
+            this.flagAesTextInIsEdited.Checked = false;
+            this.checkBoxAesTextInEdit.Checked = false;
         }
 
+        // кнопка ДИСКЕТА сохранить изменения ВХОД текста 
         private void btnAesTextInSaveChanged_Click(object sender, EventArgs e)
         {
+            if (aes.TextInIsEdited == true)
+            {
+                if (aes.TextInType == TypeDisplay.Binary)
+                {
+                    if (Functions.checkStringIsBinarySequence(this.txtAesTextIn.Text) == true)
+                    {
+                        aes.TextInByte = Functions.BinaryToByte(this.txtAesTextIn.Text);
+                        this.flagAesTextInIsEdited.Checked = false;
+                        this.checkBoxAesTextInEdit.Checked = false;
+                        numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (aes.TextInType == TypeDisplay.Hex)
+                {
+                    if (Functions.checkStringIsHexSequence(this.txtAesTextIn.Text) == true)
+                    {
+                        aes.TextInByte = Functions.HexToByte(this.txtAesTextIn.Text);
+                        this.flagAesTextInIsEdited.Checked = false;
+                        this.checkBoxAesTextInEdit.Checked = false;
+                        numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (aes.TextInType == TypeDisplay.Symbol)
+                {
+                    aes.TextInByte = Functions.SymbolToByte(this.txtAesTextIn.Text);
+                    this.flagAesTextInIsEdited.Checked = false;
+                    this.checkBoxAesTextInEdit.Checked = false;
+                    numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
+                }
 
+                //вывести новое число байт
+                this.labelAesByteNumber.Text = aes.TextInByte.Length.ToString();
+
+                //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnAesTextInSaveChanged.Visible = false;
+                this.btnAesTextInCancelChanged.Visible = false;
+                this.checkBoxAesTextInEdit.Checked = false;
+            }
         }
 
+        // кнопка ВЕДРО откатить изменения КЛЮЧА 
         private void btnAesKeyCancelChanged_Click(object sender, EventArgs e)
         {
+            if (aes.KeyType == TypeDisplay.Binary)
+                this.txtAesKey.Text = Functions.ByteToBinary(aes.KeyByte);
+            else if (aes.KeyType == TypeDisplay.Hex)
+                this.txtAesKey.Text = Functions.ByteToHex(aes.KeyByte);
+            else if (aes.KeyType == TypeDisplay.Symbol)
+                this.txtAesKey.Text = Functions.ByteToSymbol(aes.KeyByte);
 
+            this.flagAesKeyIsEdited.Checked = false;
+            this.checkBoxAesKeyEdit.Checked = false;
         }
 
+        // кнопка ДИСКЕТА сохранить изменения КЛЮЧА 
         private void btnAesKeySaveChanged_Click(object sender, EventArgs e)
         {
-
+            if (aes.KeyIsEdited == true)
+            {
+                if (aes.KeyType == TypeDisplay.Binary)
+                {
+                    if (Functions.checkStringIsBinarySequence(this.txtAesKey.Text) == true)
+                    {
+                        aes.KeyByte = Functions.BinaryToByte(this.txtAesKey.Text);
+                        this.flagAesKeyIsEdited.Checked = false;
+                        this.checkBoxAesKeyEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененный ключ не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (aes.KeyType == TypeDisplay.Hex)
+                {
+                    if (Functions.checkStringIsHexSequence(this.txtAesKey.Text) == true)
+                    {
+                        aes.KeyByte = Functions.HexToByte(this.txtAesKey.Text);
+                        this.flagAesKeyIsEdited.Checked = false;
+                        this.checkBoxAesKeyEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененный ключ не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (aes.KeyType == TypeDisplay.Symbol)
+                {
+                    aes.KeyByte = Functions.SymbolToByte(this.txtAesKey.Text);
+                    this.flagAesKeyIsEdited.Checked = false;
+                    this.checkBoxAesKeyEdit.Checked = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnAesKeySaveChanged.Visible = false;
+                this.btnAesKeyCancelChanged.Visible = false;
+                this.checkBoxAesKeyEdit.Checked = false;
+            }
         }
 
+        // кнопка ВЕДРО откатить изменения ВЫХОД текста 
         private void btnAesTextOutCancelChanged_Click(object sender, EventArgs e)
         {
+            if (aes.TextOutType == TypeDisplay.Binary)
+                this.txtAesTextOut.Text = Functions.ByteToBinary(aes.TextOutByte);
+            else if (aes.TextOutType == TypeDisplay.Hex)
+                this.txtAesTextOut.Text = Functions.ByteToHex(aes.TextOutByte);
+            else if (aes.TextOutType == TypeDisplay.Symbol)
+                this.txtAesTextOut.Text = Functions.ByteToSymbol(aes.TextOutByte);
 
+            this.flagAesTextOutIsEdited.Checked = false;
+            this.checkBoxAesTextOutEdit.Checked = false;
         }
 
+        // кнопка ДИСКЕТА сохранить изменения вЫход текста 
         private void btnAesTextOutSaveChanged_Click(object sender, EventArgs e)
         {
+            if (aes.TextOutIsEdited == true)
+            {
+                DialogResult dr;
+                if (aes.EncryptOrDecrypt == true)
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененный шифротекст?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                else
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененное сообщение после дешифрования?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                if (dr == DialogResult.OK)
+                {
+
+                    if (aes.TextOutType == TypeDisplay.Binary)
+                    {
+                        if (Functions.checkStringIsBinarySequence(this.txtAesTextOut.Text) == true)
+                        {
+                            aes.TextOutByte = Functions.BinaryToByte(this.txtAesTextOut.Text);
+                            this.flagAesTextOutIsEdited.Checked = false;
+                            this.checkBoxAesTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (aes.TextOutType == TypeDisplay.Hex)
+                    {
+                        if (Functions.checkStringIsHexSequence(this.txtAesTextOut.Text) == true)
+                        {
+                            aes.TextOutByte = Functions.HexToByte(this.txtAesTextOut.Text);
+                            this.flagAesTextOutIsEdited.Checked = false;
+                            this.checkBoxAesTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (aes.TextOutType == TypeDisplay.Symbol)
+                    {
+                        aes.TextOutByte = Functions.SymbolToByte(this.txtAesTextOut.Text);
+                        this.flagAesTextOutIsEdited.Checked = false;
+                        this.checkBoxAesTextOutEdit.Checked = false;
+                        //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.btnAesTextInSaveChanged.Visible = false;
+                        this.btnAesTextInCancelChanged.Visible = false;
+                        this.checkBoxAesTextInEdit.Checked = false;
+                    }
+                }
+            }
         }
 
+        // ввод текста ВХОД
         private void txtAesTextIn_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (this.checkBoxAesTextInEdit.Checked == false)
+                return;
 
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagAesTextInIsEdited.Checked = true;
+            }
+            else if (aes.TextInType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagAesTextInIsEdited.Checked = true;
+            }
+            else if (aes.TextInType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagAesTextInIsEdited.Checked = true;
+            }
+            // русские буквы осуждаются (UPD: уже нет, мы толерантны ко всем)
+            //else if(aes.TextInType == TypeDisplay.Symbol/*&& !(e.KeyChar >= 1072 && e.KeyChar <=1105)*/)
+            //{
+            //    e.Handled = false;
+            //    this.flagTextInIsEdited.Checked = true;
+            //}
+            else if (aes.TextInType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagAesTextInIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
+        // ввод текста КЛЮЧ
         private void txtAesKey_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (this.checkBoxAesKeyEdit.Checked == false)
+                return;
 
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagAesKeyIsEdited.Checked = true;
+            }
+            else if (aes.KeyType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagAesKeyIsEdited.Checked = true;
+            }
+            else if (aes.KeyType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagAesKeyIsEdited.Checked = true;
+            }
+            // русские буквы осуждаются (UPD: уже нет, мы толерантны ко всем)
+            //else if(aes.KeyType == TypeDisplay.Symbol/* && !(e.KeyChar >= 1072 && e.KeyChar <=1105)*/)
+            //{
+            //    e.Handled = false;
+            //    this.flagKeyIsEdited.Checked = true;
+            //}
+            else if (aes.KeyType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagAesKeyIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
+        // ввод текста ВЫХОД
         private void txtAesTextOut_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (this.checkBoxAesTextOutEdit.Checked == false)
+                return;
 
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagAesTextOutIsEdited.Checked = true;
+            }
+            else if (aes.TextOutType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagAesTextOutIsEdited.Checked = true;
+            }
+            else if (aes.TextOutType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagAesTextOutIsEdited.Checked = true;
+            }
+            //русские буквы тоже тут осуждаются (UPD: уже тоже нет, мы толерантны ко всем)
+            //else if (aes.TextOutType == TypeDisplay.Symbol /*&& !(e.KeyChar >= 1072 && e.KeyChar <= 1105)/*)
+            //{
+            //    e.Handled = false;
+            //    this.flagAesTextOutIsEdited.Checked = true;
+            //}
+            else
+            {
+                e.Handled = true;
+            }
         }
 
+        // кнопка ВХОД ИЗ ФАЙЛА
         private void btnAesChoiceFileIn_Click(object sender, EventArgs e)
         {
+            OpenFileDialog ofd = new OpenFileDialog();
 
+            ofd.Title = "Выберите файл ..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        //if(aes.EncryptOrDecrypt == true) //закоментил фичу
+                        //    this.btnAesClear.PerformClick();
+                        //else
+                        //    this.clearAllWithoutKey();// очистили всё кроме ключа
+                        // Считали байты из файла
+                        aes.TextInByte = File.ReadAllBytes(ofd.FileName);
+                        this.labelAesByteNumber.Text = aes.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
+                        aes.FileExtension = ofd.SafeFileName.Substring(ofd.SafeFileName.LastIndexOf('.'));  // Запомнили расширение считанного файла
+                        if (aes.FileExtension.Length > 1) aes.FileExtension = aes.FileExtension.Substring(1);
+                        numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
+                        aes.TextInType = TypeDisplay.None;
+                        if (aes.FileExtension == "txt" && aes.EncryptOrDecrypt == true) // если тект и шифрование
+                        {
+                            this.btnAesTextInSymbol.PerformClick();
+                        }
+                        else
+                        {
+                            this.btnAesTextInHex.PerformClick();
+                        }
+                        // вывели на форму считанное в кодировке UTF8
+                        //if (aes.TextInType == TypeDisplay.Hex)
+                        //{
+                        //    this.txtAesTextIn.Text = Functions.ByteToHex(aes.TextInByte);
+                        //}
+                        //else if (aes.TextInType == TypeDisplay.Binary)
+                        //{
+                        //    this.txtAesTextIn.Text = Functions.ByteToBinary(aes.TextInByte);
+                        //}
+                        //else if (aes.TextInType == TypeDisplay.Symbol)
+                        //{
+                        //    this.txtAesTextIn.Text = Functions.ByteToSymbol(aes.TextInByte);
+                        //}
+
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Файла [" + ofd.FileName + "] не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
         }
 
+        // флаг изменен ли ВХОД текст
         private void flagAesTextInIsEdited_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (flagAesTextInIsEdited.Checked == true)
+            {
+                aes.TextInIsEdited = true;
+                this.btnAesTextInSaveChanged.Visible = true;
+                this.btnAesTextInCancelChanged.Visible = true;
+            }
+            else
+            {
+                aes.TextInIsEdited = false;
+                this.btnAesTextInSaveChanged.Visible = false;
+                this.btnAesTextInCancelChanged.Visible = false;
+            }
         }
 
+        // флаг изменен ли вЫход текст
         private void flagAesTextOutIsEdited_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (flagAesTextOutIsEdited.Checked == true)
+            {
+                aes.TextOutIsEdited = true;
+                this.btnAesTextOutSaveChanged.Visible = true;
+                this.btnAesTextOutCancelChanged.Visible = true;
+            }
+            else
+            {
+                aes.TextOutIsEdited = false;
+                this.btnAesTextOutSaveChanged.Visible = false;
+                this.btnAesTextOutCancelChanged.Visible = false;
+            }
         }
 
+        // флаг изменен ли КЛЮЧ
         private void flagAesKeyIsEdited_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (flagAesKeyIsEdited.Checked == true)
+            {
+                aes.KeyIsEdited = true;
+                this.btnAesKeySaveChanged.Visible = true;
+                this.btnAesKeyCancelChanged.Visible = true;
+            }
+            else
+            {
+                aes.KeyIsEdited = false;
+                this.btnAesKeySaveChanged.Visible = false;
+                this.btnAesKeyCancelChanged.Visible = false;
+            }
         }
 
+        //кнопка КЛЮЧ ИЗ ФАЙЛА
         private void btnAesKeyLoad_Click(object sender, EventArgs e)
         {
+            if (checkBoxAesKeyEdit.Checked == true)
+                btnAesKeyCancelChanged.PerformClick();
 
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Выберите файл с ключом..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // Папка откуда запустили exe
+            ofd.Filter = "Keys(*.key)|*.key"; // расширения файла ключа
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        aes.KeyByte = File.ReadAllBytes(ofd.FileName); // считали
+                        aes.KeyType = TypeDisplay.None;
+                        this.btnAesKeyHex.PerformClick(); // вывели в Hex
+                    }
+                    else
+                    {
+                        MessageBox.Show("Файла {" + ofd.FileName + "} не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
         }
 
+        // кнопка СГЕНЕРИРОВАТЬ КЛЮЧ
         private void btnAesKeyGenerate_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
 
+            if (aes.TextInByte.Length > 0)
+            {
+                aes.KeyByte = Functions.PRNGGenerateByteArray(aes.TextInByte.Length);
+                aes.KeyType = TypeDisplay.None;
+                btnAesKeyHex.PerformClick(); // не работает хз
+                btnAesKeyHex_Click(null, null); // вручную вызвал
+            }
+            else
+            {
+                if (aes.EncryptOrDecrypt == true)
+                    MessageBox.Show("Сообщение имеет нулевой размер!\nГенерация ключа невозможна.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Шифротекст имеет нулевой размер!\nГенерация ключа невозможна.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            this.Cursor = Cursors.Arrow;
         }
 
+        // кнопка СОХРАНИТЬ КЛЮЧ
         private void btnAesSaveKey_Click(object sender, EventArgs e)
         {
+            try
+            {
+                //Если ключа нет
+                if (aes.KeyByte.Length < 1 || aes.KeyIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Невозможно сохранить ключ:\n\tКлюч не введен или не сохранен!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
 
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла ключа (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*.key)|*.key"; // Сохранять только c расширением key
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    File.WriteAllBytes(filename, aes.KeyByte);
+
+                    this.Enabled = false;
+                    MessageBox.Show("КЛЮЧ записан в файл:\n" + filename, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
+        // кнопка СОХРАНИТЬ ВЫХОД
         private void btnAesSaveData_Click(object sender, EventArgs e)
         {
+            try
+            {
+                //Если выходные байты пусты 
+                if (aes.TextInByte.Length < 1)
+                {
+                    this.Enabled = false;
+                    if (aes.EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Исходный текст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
 
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*." + aes.FileExtension + ")|*." + aes.FileExtension; // Сохранять только c расширением как и у входного файла
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    File.WriteAllBytes(filename, aes.TextOutByte);
+
+                    this.Enabled = false;
+                    if (Global.Simm_EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст записан в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Дешифрованное сообщение записано в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
+        // кнопка действия ШИФРОВАТЬ/ДЕШИФРОВАТЬ
         private void btnAesEncryptDecrypt_Click(object sender, EventArgs e)
         {
+            if (aes.TextInByte.Length < 1 || aes.KeyByte.Length < 1)
+            {
+                MessageBox.Show("Не хватает ключа и данных!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (aes.EncryptOrDecrypt == true)
+            {
+                aes.TextOutByte = aes.Encrypt(aes.TextInByte, aes.KeyByte).ToArray();
+                File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
+                aes.TextOutType = TypeDisplay.None;
+                btnAesTextOutHex_Click(null, null);
+                //btnAesSecret_Click(null, null);
+            }
+            else
+            {
+                aes.TextOutByte = aes.Decrypt(aes.TextInByte, aes.KeyByte).ToArray();
+                //aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                aes.TextOutType = TypeDisplay.None;
+                btnAesTextOutHex_Click(null, null);
+            }
         }
+
+
     }
 }
