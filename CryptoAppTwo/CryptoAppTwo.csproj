@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AesClass.cs" />
+    <Compile Include="AesObject.cs" />
     <Compile Include="Algorithms.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="Feistel.cs" />
@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Gamirovanie.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="AesFunctions.cs" />
     <Compile Include="PrimeNumber.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

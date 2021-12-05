@@ -18,7 +18,7 @@ namespace CryptoAppTwo
     {
         private Gamirovanie gamirovanie = null;
         private Feistel feistel = null;
-        private AesClass aes = null;
+        private AesObject aes = null;
         
         private List<PrimeNumber> PrimeNumberList = null;
         
@@ -39,8 +39,9 @@ namespace CryptoAppTwo
             this.tabGam.Parent = null;
             this.tabGpn.Parent = null;
             //this.tabFst.Parent = null;
+            //this.tabAes.Parent = null;
             this.tabHesh.Parent = null;
-            //this.tabSim.Parent = null;
+            this.tabSim.Parent = null;
             this.tabAsimAlg.Parent = null;
             this.tabEds.Parent = null;
 
@@ -78,9 +79,9 @@ namespace CryptoAppTwo
 
             #region Дефолтные установки для СЕТИ ФЕЙСТЕЛЯ
             feistel = new Feistel();
-            this.radioBtnFstEncrypt.Checked = true; ; // режим шифрования при запуске Гамирования
+            this.radioBtnFstEncrypt.Checked = true; ; // режим шифрования при запуске 
             this.comboBoxFstSubkey.SelectedIndex = 0; // метод гамирования выбрать
-            this.btnFstClear.PerformClick(); // жмем кнопку очистить для Гамирования
+            this.btnFstClear.PerformClick(); // жмем кнопку очистить для 
             #endregion
 
             #region Дефолтные установки для генерации ПРОСТЫХ ЧИСЕЛ
@@ -89,6 +90,12 @@ namespace CryptoAppTwo
             this.numericGpnLeft.Maximum = new Decimal(1208925819614629174706176.0);
             this.numericGpnRight.Minimum = 1;
             this.numericGpnRight.Maximum = new Decimal(1208925819614629174706176.0);
+            #endregion
+
+            #region Дефолтные установки для СЕТИ ФЕЙСТЕЛЯ
+            aes = new AesObject();
+            this.radioBtnAesEncrypt.Checked = true; ; // режим шифрования при запуске 
+            this.btnAesClear_Click(null, null); // жмем кнопку очистить д
             #endregion
         }
 
@@ -3032,16 +3039,16 @@ namespace CryptoAppTwo
         private void btnAesClear_Click(object sender, EventArgs e)
         {
             bool rezhim = aes.EncryptOrDecrypt;
-            aes = new AesClass(); // перезаписываем объект
+            aes = new AesObject(); // перезаписываем объект
             aes.EncryptOrDecrypt = rezhim;
-            if (rezhim == true)
-                radioBtnAesEncrypt_CheckedChanged(null, null);
-            else
-                radioBtnAesDecrypt_CheckedChanged(null, null);
+            //if (rezhim == true)
+            //    radioBtnAesEncrypt_CheckedChanged(null, null);
+            //else
+            //    radioBtnAesDecrypt_CheckedChanged(null, null);
             //===================================
             // входные данные стираем
             this.txtAesTextIn.Text = "";
-            this.labelAesByteNumber.Text = "0";
+            this.labelAesTextInByteNumber.Text = "0";
             // ВЫходные данные стираем
             this.txtAesTextOut.Text = "";
             this.btnAesTextInSymbol.Enabled = true;
@@ -3049,9 +3056,6 @@ namespace CryptoAppTwo
             this.flagAesTextInIsEdited.Checked = false;
             this.flagAesTextOutIsEdited.Checked = false;
             this.flagAesKeyIsEdited.Checked = false;
-            // параметры
-            this.comboBoxAesFunc.SelectedIndex = 0;
-            this.comboBoxAesSubkey.SelectedIndex = 0;
 
             //кнопки редактирования
             this.btnAesTextInSaveChanged.Visible = false;
@@ -3077,28 +3081,6 @@ namespace CryptoAppTwo
                 this.btnAesKeyHex.PerformClick();
                 this.btnAesTextOutSymbol.PerformClick();
             }
-        }
-
-        // Вид получения подключа
-        private void comboBoxAesSubkey_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxAesSubkey.SelectedItem.ToString() == "Циклически")
-                aes.SubKeyMode = AesClass.KeyMethodGenerate.Cycle;
-            else if (comboBoxAesSubkey.SelectedItem.ToString() == "Скремблер")
-                aes.SubKeyMode = AesClass.KeyMethodGenerate.Scrambler;
-            else
-                aes.SubKeyMode = AesClass.KeyMethodGenerate.None;
-        }
-
-        // Вид образующей функции
-        private void comboBoxAesFunc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxAesFunc.SelectedItem.ToString() == "Единичная")
-                aes.FuncMode = AesClass.FunctionMethodGenerate.Single;
-            else if (comboBoxAesFunc.SelectedItem.ToString() == "XOR")
-                aes.FuncMode = AesClass.FunctionMethodGenerate.Xor;
-            else
-                aes.FuncMode = AesClass.FunctionMethodGenerate.None;
         }
 
         // галочка ВКЛ ВЫКЛ редактирование вход текста
@@ -3448,7 +3430,6 @@ namespace CryptoAppTwo
                         aes.TextInByte = Functions.BinaryToByte(this.txtAesTextIn.Text);
                         this.flagAesTextInIsEdited.Checked = false;
                         this.checkBoxAesTextInEdit.Checked = false;
-                        numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
                     }
                     else
                     {
@@ -3465,7 +3446,6 @@ namespace CryptoAppTwo
                         aes.TextInByte = Functions.HexToByte(this.txtAesTextIn.Text);
                         this.flagAesTextInIsEdited.Checked = false;
                         this.checkBoxAesTextInEdit.Checked = false;
-                        numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
                     }
                     else
                     {
@@ -3480,11 +3460,10 @@ namespace CryptoAppTwo
                     aes.TextInByte = Functions.SymbolToByte(this.txtAesTextIn.Text);
                     this.flagAesTextInIsEdited.Checked = false;
                     this.checkBoxAesTextInEdit.Checked = false;
-                    numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
                 }
 
                 //вывести новое число байт
-                this.labelAesByteNumber.Text = aes.TextInByte.Length.ToString();
+                this.labelAesTextInByteNumber.Text = aes.TextInByte.Length.ToString();
 
                 //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -3554,6 +3533,8 @@ namespace CryptoAppTwo
                     this.flagAesKeyIsEdited.Checked = false;
                     this.checkBoxAesKeyEdit.Checked = false;
                 }
+                //вывести новое число байт
+                this.labelAesKeyByteNumber.Text = aes.KeyByte.Length.ToString();
             }
             else
             {
@@ -3778,10 +3759,9 @@ namespace CryptoAppTwo
                         //    this.clearAllWithoutKey();// очистили всё кроме ключа
                         // Считали байты из файла
                         aes.TextInByte = File.ReadAllBytes(ofd.FileName);
-                        this.labelAesByteNumber.Text = aes.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
+                        this.labelAesTextInByteNumber.Text = aes.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
                         aes.FileExtension = ofd.SafeFileName.Substring(ofd.SafeFileName.LastIndexOf('.'));  // Запомнили расширение считанного файла
                         if (aes.FileExtension.Length > 1) aes.FileExtension = aes.FileExtension.Substring(1);
-                        numericAesChart.Maximum = aes.TextInByte.Length * 8 - 1;
                         aes.TextInType = TypeDisplay.None;
                         if (aes.FileExtension == "txt" && aes.EncryptOrDecrypt == true) // если тект и шифрование
                         {
@@ -4034,20 +4014,31 @@ namespace CryptoAppTwo
                 return;
             }
 
-            if (aes.EncryptOrDecrypt == true)
+            try
             {
-                aes.TextOutByte = aes.Encrypt(aes.TextInByte, aes.KeyByte).ToArray();
-                File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
-                aes.TextOutType = TypeDisplay.None;
-                btnAesTextOutHex_Click(null, null);
-                //btnAesSecret_Click(null, null);
+
+
+                if (aes.EncryptOrDecrypt == true)
+                {
+                    //aes.Encrypt();
+                    aes.TextOutByte = AesFunctions.encrypt(aes.TextInByte, aes.KeyByte);
+                    //File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
+                    aes.TextOutType = TypeDisplay.None;
+                    btnAesTextOutHex_Click(null, null);
+                    //btnAesSecret_Click(null, null);
+                }
+                else
+                {
+                    //aes.Decrypt();
+                    aes.TextOutByte = AesFunctions.decrypt(aes.TextInByte, aes.KeyByte);
+                    //aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                    aes.TextOutType = TypeDisplay.None;
+                    btnAesTextOutHex_Click(null, null);
+                }
             }
-            else
+            catch(Exception err)
             {
-                aes.TextOutByte = aes.Decrypt(aes.TextInByte, aes.KeyByte).ToArray();
-                //aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
-                aes.TextOutType = TypeDisplay.None;
-                btnAesTextOutHex_Click(null, null);
+                MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
