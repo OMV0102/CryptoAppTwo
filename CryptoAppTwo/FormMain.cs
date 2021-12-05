@@ -2994,5 +2994,182 @@ namespace CryptoAppTwo
             btnFstSecret.Visible = true;
         }
         #endregion
+
+        //#region Функции обработчики AES
+
+        private void radioBtnAesEncrypt_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioBtnAesDecrypt_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxAesSubkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxAesFunc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxAestTextInEdit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxAesKeyEdit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxAesTextOutEdit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextInBinary_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextInSymbol_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextInHex_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeyBinary_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeySymbol_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeyHex_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextOutBinary_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextOutSymbol_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextOutHex_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextInCancelChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextInSaveChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeyCancelChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeySaveChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextOutCancelChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesTextOutSaveChanged_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAesTextIn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtAesKey_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtAesTextOut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void btnAesChoiceFileIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flagAesTextInIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flagAesTextOutIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flagAesKeyIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeyLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesKeyGenerate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesSaveKey_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesSaveData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAesEncryptDecrypt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

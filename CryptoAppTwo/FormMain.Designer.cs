@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea63 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series63 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title63 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea64 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series64 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title64 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea61 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series61 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title61 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea62 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series62 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title62 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.toolTip_hesh_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_simm_file = new System.Windows.Forms.ToolTip(this.components);
             this.tabAsimAlg = new System.Windows.Forms.TabPage();
@@ -1285,24 +1285,24 @@
             // 
             // ChartFstKey
             // 
-            chartArea3.Name = "ChartArea1";
-            this.ChartFstKey.ChartAreas.Add(chartArea3);
+            chartArea63.Name = "ChartArea1";
+            this.ChartFstKey.ChartAreas.Add(chartArea63);
             this.ChartFstKey.Location = new System.Drawing.Point(866, 231);
             this.ChartFstKey.Name = "ChartFstKey";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.LabelBorderWidth = 4;
-            series3.Name = "Series1";
-            this.ChartFstKey.Series.Add(series3);
+            series63.BorderWidth = 3;
+            series63.ChartArea = "ChartArea1";
+            series63.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series63.LabelBorderWidth = 4;
+            series63.Name = "Series1";
+            this.ChartFstKey.Series.Add(series63);
             this.ChartFstKey.Size = new System.Drawing.Size(583, 195);
             this.ChartFstKey.TabIndex = 129;
             this.ChartFstKey.TabStop = false;
             this.ChartFstKey.Text = "chart2";
-            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title3.Name = "Title1";
-            title3.Text = "Кол-во изменных бит КЛЮЧА за раунд";
-            this.ChartFstKey.Titles.Add(title3);
+            title63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title63.Name = "Title1";
+            title63.Text = "Кол-во изменных бит КЛЮЧА за раунд";
+            this.ChartFstKey.Titles.Add(title63);
             // 
             // btnFstClear
             // 
@@ -1345,24 +1345,24 @@
             // 
             // ChartFstText
             // 
-            chartArea4.Name = "ChartArea1";
-            this.ChartFstText.ChartAreas.Add(chartArea4);
+            chartArea64.Name = "ChartArea1";
+            this.ChartFstText.ChartAreas.Add(chartArea64);
             this.ChartFstText.Location = new System.Drawing.Point(866, 35);
             this.ChartFstText.Name = "ChartFstText";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.LabelBorderWidth = 2;
-            series4.Name = "Series1";
-            this.ChartFstText.Series.Add(series4);
+            series64.BorderWidth = 3;
+            series64.ChartArea = "ChartArea1";
+            series64.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series64.LabelBorderWidth = 2;
+            series64.Name = "Series1";
+            this.ChartFstText.Series.Add(series64);
             this.ChartFstText.Size = new System.Drawing.Size(583, 195);
             this.ChartFstText.TabIndex = 126;
             this.ChartFstText.TabStop = false;
             this.ChartFstText.Text = "chart2";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title4.Name = "Title1";
-            title4.Text = "Кол-во изменных бит ТЕКСТА за раунд";
-            this.ChartFstText.Titles.Add(title4);
+            title64.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title64.Name = "Title1";
+            title64.Text = "Кол-во изменных бит ТЕКСТА за раунд";
+            this.ChartFstText.Titles.Add(title64);
             // 
             // comboBoxFstFunc
             // 
@@ -3146,27 +3146,28 @@
             this.btnAesKeySymbol.Tag = "";
             this.btnAesKeySymbol.Text = "Symb";
             this.btnAesKeySymbol.UseVisualStyleBackColor = true;
+            this.btnAesKeySymbol.Click += new System.EventHandler(this.btnAesKeySymbol_Click);
             // 
             // ChartAesKey
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ChartAesKey.ChartAreas.Add(chartArea1);
+            chartArea61.Name = "ChartArea1";
+            this.ChartAesKey.ChartAreas.Add(chartArea61);
             this.ChartAesKey.Location = new System.Drawing.Point(866, 231);
             this.ChartAesKey.Name = "ChartAesKey";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.LabelBorderWidth = 4;
-            series1.Name = "Series1";
-            this.ChartAesKey.Series.Add(series1);
+            series61.BorderWidth = 3;
+            series61.ChartArea = "ChartArea1";
+            series61.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series61.LabelBorderWidth = 4;
+            series61.Name = "Series1";
+            this.ChartAesKey.Series.Add(series61);
             this.ChartAesKey.Size = new System.Drawing.Size(583, 195);
             this.ChartAesKey.TabIndex = 129;
             this.ChartAesKey.TabStop = false;
             this.ChartAesKey.Text = "chart2";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title1.Name = "Title1";
-            title1.Text = "Кол-во изменных бит КЛЮЧА за раунд";
-            this.ChartAesKey.Titles.Add(title1);
+            title61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title61.Name = "Title1";
+            title61.Text = "Кол-во изменных бит КЛЮЧА за раунд";
+            this.ChartAesKey.Titles.Add(title61);
             // 
             // btnAesClear
             // 
@@ -3180,6 +3181,7 @@
             this.btnAesClear.Tag = "";
             this.btnAesClear.Text = "Очистить всё";
             this.btnAesClear.UseVisualStyleBackColor = true;
+            this.btnAesClear.Click += new System.EventHandler(this.btnAesClear_Click);
             // 
             // label38
             // 
@@ -3220,6 +3222,7 @@
             this.comboBoxAesFunc.Size = new System.Drawing.Size(170, 32);
             this.comboBoxAesFunc.TabIndex = 124;
             this.comboBoxAesFunc.TabStop = false;
+            this.comboBoxAesFunc.SelectedIndexChanged += new System.EventHandler(this.comboBoxAesFunc_SelectedIndexChanged);
             // 
             // label44
             // 
@@ -3253,6 +3256,7 @@
             this.btnAesEncryptDecrypt.Tag = "";
             this.btnAesEncryptDecrypt.Text = "Дешифровать";
             this.btnAesEncryptDecrypt.UseVisualStyleBackColor = false;
+            this.btnAesEncryptDecrypt.Click += new System.EventHandler(this.btnAesEncryptDecrypt_Click);
             // 
             // labelAesKeyCaption
             // 
@@ -3276,6 +3280,7 @@
             this.flagAesKeyIsEdited.Text = "flagAesKeyIsEdited";
             this.flagAesKeyIsEdited.UseVisualStyleBackColor = true;
             this.flagAesKeyIsEdited.Visible = false;
+            this.flagAesKeyIsEdited.CheckedChanged += new System.EventHandler(this.flagAesKeyIsEdited_CheckedChanged);
             // 
             // btnAesKeyLoad
             // 
@@ -3291,6 +3296,7 @@
             this.btnAesKeyLoad.TabStop = false;
             this.btnAesKeyLoad.Text = "Ключ из файла";
             this.btnAesKeyLoad.UseVisualStyleBackColor = true;
+            this.btnAesKeyLoad.Click += new System.EventHandler(this.btnAesKeyLoad_Click);
             // 
             // btnAesKeyGenerate
             // 
@@ -3305,6 +3311,7 @@
             this.btnAesKeyGenerate.Text = "Сгенерировать";
             this.btnAesKeyGenerate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAesKeyGenerate.UseVisualStyleBackColor = true;
+            this.btnAesKeyGenerate.Click += new System.EventHandler(this.btnAesKeyGenerate_Click);
             // 
             // btnAesKeyBinary
             // 
@@ -3318,6 +3325,7 @@
             this.btnAesKeyBinary.Tag = "";
             this.btnAesKeyBinary.Text = "Bin";
             this.btnAesKeyBinary.UseVisualStyleBackColor = true;
+            this.btnAesKeyBinary.Click += new System.EventHandler(this.btnAesKeyBinary_Click);
             // 
             // btnAesKeyHex
             // 
@@ -3331,6 +3339,7 @@
             this.btnAesKeyHex.Tag = "";
             this.btnAesKeyHex.Text = "Hex";
             this.btnAesKeyHex.UseVisualStyleBackColor = true;
+            this.btnAesKeyHex.Click += new System.EventHandler(this.btnAesKeyHex_Click);
             // 
             // txtAesKey
             // 
@@ -3346,6 +3355,7 @@
             this.txtAesKey.TabIndex = 117;
             this.txtAesKey.TabStop = false;
             this.txtAesKey.Text = "";
+            this.txtAesKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAesKey_KeyPress);
             // 
             // btnAesKeyCancelChanged
             // 
@@ -3362,6 +3372,7 @@
             this.btnAesKeyCancelChanged.TabStop = false;
             this.btnAesKeyCancelChanged.Tag = "";
             this.btnAesKeyCancelChanged.UseVisualStyleBackColor = true;
+            this.btnAesKeyCancelChanged.Click += new System.EventHandler(this.btnAesKeyCancelChanged_Click);
             // 
             // btnAesKeySaveChanged
             // 
@@ -3378,6 +3389,7 @@
             this.btnAesKeySaveChanged.TabStop = false;
             this.btnAesKeySaveChanged.Tag = "";
             this.btnAesKeySaveChanged.UseVisualStyleBackColor = true;
+            this.btnAesKeySaveChanged.Click += new System.EventHandler(this.btnAesKeySaveChanged_Click);
             // 
             // checkBoxAesKeyEdit
             // 
@@ -3390,6 +3402,7 @@
             this.checkBoxAesKeyEdit.TabIndex = 114;
             this.checkBoxAesKeyEdit.Text = "Edit";
             this.checkBoxAesKeyEdit.UseVisualStyleBackColor = true;
+            this.checkBoxAesKeyEdit.CheckedChanged += new System.EventHandler(this.checkBoxAesKeyEdit_CheckedChanged);
             // 
             // btnAesChoiceFileIn
             // 
@@ -3403,6 +3416,7 @@
             this.btnAesChoiceFileIn.Tag = "";
             this.btnAesChoiceFileIn.Text = "из файла";
             this.btnAesChoiceFileIn.UseVisualStyleBackColor = true;
+            this.btnAesChoiceFileIn.Click += new System.EventHandler(this.btnAesChoiceFileIn_Click);
             // 
             // comboBoxAesSubkey
             // 
@@ -3420,6 +3434,7 @@
             this.comboBoxAesSubkey.Size = new System.Drawing.Size(170, 32);
             this.comboBoxAesSubkey.TabIndex = 103;
             this.comboBoxAesSubkey.TabStop = false;
+            this.comboBoxAesSubkey.SelectedIndexChanged += new System.EventHandler(this.comboBoxAesSubkey_SelectedIndexChanged);
             // 
             // label51
             // 
@@ -3445,6 +3460,7 @@
             this.btnAesTextOutCancelChanged.TabStop = false;
             this.btnAesTextOutCancelChanged.Tag = "";
             this.btnAesTextOutCancelChanged.UseVisualStyleBackColor = true;
+            this.btnAesTextOutCancelChanged.Click += new System.EventHandler(this.btnAesTextOutCancelChanged_Click);
             // 
             // btnAesTextInCancelChanged
             // 
@@ -3461,6 +3477,7 @@
             this.btnAesTextInCancelChanged.TabStop = false;
             this.btnAesTextInCancelChanged.Tag = "";
             this.btnAesTextInCancelChanged.UseVisualStyleBackColor = true;
+            this.btnAesTextInCancelChanged.Click += new System.EventHandler(this.btnAesTextInCancelChanged_Click);
             // 
             // btnAesTextOutSaveChanged
             // 
@@ -3477,6 +3494,7 @@
             this.btnAesTextOutSaveChanged.TabStop = false;
             this.btnAesTextOutSaveChanged.Tag = "";
             this.btnAesTextOutSaveChanged.UseVisualStyleBackColor = true;
+            this.btnAesTextOutSaveChanged.Click += new System.EventHandler(this.btnAesTextOutSaveChanged_Click);
             // 
             // flagAesTextOutIsEdited
             // 
@@ -3490,6 +3508,7 @@
             this.flagAesTextOutIsEdited.Text = "flagAesTextOutIsEdited";
             this.flagAesTextOutIsEdited.UseVisualStyleBackColor = true;
             this.flagAesTextOutIsEdited.Visible = false;
+            this.flagAesTextOutIsEdited.CheckedChanged += new System.EventHandler(this.flagAesTextOutIsEdited_CheckedChanged);
             // 
             // flagAesTextInIsEdited
             // 
@@ -3503,6 +3522,7 @@
             this.flagAesTextInIsEdited.Text = "flagAesTextInIsEdited";
             this.flagAesTextInIsEdited.UseVisualStyleBackColor = true;
             this.flagAesTextInIsEdited.Visible = false;
+            this.flagAesTextInIsEdited.CheckedChanged += new System.EventHandler(this.flagAesTextInIsEdited_CheckedChanged);
             // 
             // btnAesTextInSaveChanged
             // 
@@ -3519,6 +3539,7 @@
             this.btnAesTextInSaveChanged.TabStop = false;
             this.btnAesTextInSaveChanged.Tag = "";
             this.btnAesTextInSaveChanged.UseVisualStyleBackColor = true;
+            this.btnAesTextInSaveChanged.Click += new System.EventHandler(this.btnAesTextInSaveChanged_Click);
             // 
             // label52
             // 
@@ -3540,6 +3561,7 @@
             this.checkBoxAesTextOutEdit.TabIndex = 95;
             this.checkBoxAesTextOutEdit.Text = "Edit";
             this.checkBoxAesTextOutEdit.UseVisualStyleBackColor = true;
+            this.checkBoxAesTextOutEdit.CheckedChanged += new System.EventHandler(this.checkBoxAesTextOutEdit_CheckedChanged);
             // 
             // checkBoxAestTextInEdit
             // 
@@ -3552,6 +3574,7 @@
             this.checkBoxAestTextInEdit.TabIndex = 94;
             this.checkBoxAestTextInEdit.Text = "Edit";
             this.checkBoxAestTextInEdit.UseVisualStyleBackColor = true;
+            this.checkBoxAestTextInEdit.CheckedChanged += new System.EventHandler(this.checkBoxAestTextInEdit_CheckedChanged);
             // 
             // btnAesTextOutBinary
             // 
@@ -3565,6 +3588,7 @@
             this.btnAesTextOutBinary.Tag = "";
             this.btnAesTextOutBinary.Text = "Bin";
             this.btnAesTextOutBinary.UseVisualStyleBackColor = true;
+            this.btnAesTextOutBinary.Click += new System.EventHandler(this.btnAesTextOutBinary_Click);
             // 
             // btnAesTextOutHex
             // 
@@ -3578,6 +3602,7 @@
             this.btnAesTextOutHex.Tag = "";
             this.btnAesTextOutHex.Text = "Hex";
             this.btnAesTextOutHex.UseVisualStyleBackColor = true;
+            this.btnAesTextOutHex.Click += new System.EventHandler(this.btnAesTextOutHex_Click);
             // 
             // btnAesTextOutSymbol
             // 
@@ -3591,6 +3616,7 @@
             this.btnAesTextOutSymbol.Tag = "";
             this.btnAesTextOutSymbol.Text = "Symb";
             this.btnAesTextOutSymbol.UseVisualStyleBackColor = true;
+            this.btnAesTextOutSymbol.Click += new System.EventHandler(this.btnAesTextOutSymbol_Click);
             // 
             // btnAesTextInBinary
             // 
@@ -3604,6 +3630,7 @@
             this.btnAesTextInBinary.Tag = "";
             this.btnAesTextInBinary.Text = "Bin";
             this.btnAesTextInBinary.UseVisualStyleBackColor = true;
+            this.btnAesTextInBinary.Click += new System.EventHandler(this.btnAesTextInBinary_Click);
             // 
             // btnAesTextInHex
             // 
@@ -3617,6 +3644,7 @@
             this.btnAesTextInHex.Tag = "";
             this.btnAesTextInHex.Text = "Hex";
             this.btnAesTextInHex.UseVisualStyleBackColor = true;
+            this.btnAesTextInHex.Click += new System.EventHandler(this.btnAesTextInHex_Click);
             // 
             // btnAesTextInSymbol
             // 
@@ -3630,6 +3658,7 @@
             this.btnAesTextInSymbol.Tag = "";
             this.btnAesTextInSymbol.Text = "Symb";
             this.btnAesTextInSymbol.UseVisualStyleBackColor = true;
+            this.btnAesTextInSymbol.Click += new System.EventHandler(this.btnAesTextInSymbol_Click);
             // 
             // label53
             // 
@@ -3653,6 +3682,7 @@
             this.btnAesSaveData.Tag = "";
             this.btnAesSaveData.Text = "Сохранить шифротекст\r\n";
             this.btnAesSaveData.UseVisualStyleBackColor = false;
+            this.btnAesSaveData.Click += new System.EventHandler(this.btnAesSaveData_Click);
             // 
             // txtAesTextOut
             // 
@@ -3667,6 +3697,7 @@
             this.txtAesTextOut.TabIndex = 82;
             this.txtAesTextOut.TabStop = false;
             this.txtAesTextOut.Text = "";
+            this.txtAesTextOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAesTextOut_KeyPress);
             // 
             // txtAesTextIn
             // 
@@ -3681,6 +3712,7 @@
             this.txtAesTextIn.TabIndex = 79;
             this.txtAesTextIn.TabStop = false;
             this.txtAesTextIn.Text = "";
+            this.txtAesTextIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAesTextIn_KeyPress);
             // 
             // labelAesCaptionOut
             // 
@@ -3703,6 +3735,7 @@
             this.radioBtnAesDecrypt.TabIndex = 71;
             this.radioBtnAesDecrypt.Text = "Дешифрование";
             this.radioBtnAesDecrypt.UseVisualStyleBackColor = true;
+            this.radioBtnAesDecrypt.CheckedChanged += new System.EventHandler(this.radioBtnAesDecrypt_CheckedChanged);
             // 
             // radioBtnAesEncrypt
             // 
@@ -3715,6 +3748,7 @@
             this.radioBtnAesEncrypt.TabIndex = 70;
             this.radioBtnAesEncrypt.Text = "Шифрование";
             this.radioBtnAesEncrypt.UseVisualStyleBackColor = true;
+            this.radioBtnAesEncrypt.CheckedChanged += new System.EventHandler(this.radioBtnAesEncrypt_CheckedChanged);
             // 
             // btnAesSaveKey
             // 
@@ -3729,6 +3763,7 @@
             this.btnAesSaveKey.Tag = "";
             this.btnAesSaveKey.Text = "Сохранить ключ";
             this.btnAesSaveKey.UseVisualStyleBackColor = false;
+            this.btnAesSaveKey.Click += new System.EventHandler(this.btnAesSaveKey_Click);
             // 
             // labelAesCaptionIn
             // 
@@ -3788,24 +3823,24 @@
             // 
             // ChartAesText
             // 
-            chartArea2.Name = "ChartArea1";
-            this.ChartAesText.ChartAreas.Add(chartArea2);
+            chartArea62.Name = "ChartArea1";
+            this.ChartAesText.ChartAreas.Add(chartArea62);
             this.ChartAesText.Location = new System.Drawing.Point(866, 35);
             this.ChartAesText.Name = "ChartAesText";
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.LabelBorderWidth = 2;
-            series2.Name = "Series1";
-            this.ChartAesText.Series.Add(series2);
+            series62.BorderWidth = 3;
+            series62.ChartArea = "ChartArea1";
+            series62.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series62.LabelBorderWidth = 2;
+            series62.Name = "Series1";
+            this.ChartAesText.Series.Add(series62);
             this.ChartAesText.Size = new System.Drawing.Size(583, 195);
             this.ChartAesText.TabIndex = 126;
             this.ChartAesText.TabStop = false;
             this.ChartAesText.Text = "chart2";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title2.Name = "Title1";
-            title2.Text = "Кол-во изменных бит ТЕКСТА за раунд";
-            this.ChartAesText.Titles.Add(title2);
+            title62.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title62.Name = "Title1";
+            title62.Text = "Кол-во изменных бит ТЕКСТА за раунд";
+            this.ChartAesText.Titles.Add(title62);
             // 
             // FormMain
             // 
