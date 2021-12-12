@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace CryptoAppTwo
 {
-    public class AesFunctions
+    public class AesClass
     {
-
-        private static int Nb, Nk, Nr;
+        private static int Nb; // число столбцов (32-битных слов), составляющих State. Для AES Nb = 4
+        private static int Nk; // число 32-битных слов, составляющих шифроключ. Для AES Nk = 4, 6, или 8
+        private static int Nr; // число раундов, которое является функцией Nk и Nb. Для AES (при Nb = 4) Nr = 10, 12, 14
         private static byte[,] w;
 
-        private static int[] sbox =
+        // нелинейная таблица замен, использующаяся в нескольких трансформациях замены байтов
+        // и в процедуре generateSubKeys для взаимнооднозначной замены значения байта.
+        // Предварительно рассчитанный S-box можно увидеть ниже
+        private static readonly int[] Sbox =
         {
             0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F,
             0xC5, 0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x76, 0xCA, 0x82,
@@ -40,7 +44,8 @@ namespace CryptoAppTwo
             0x99, 0x2D, 0x0F, 0xB0, 0x54, 0xBB, 0x16
         };
 
-        private static int[] inv_sbox =
+        // Обратный S-box для процедуры InvSubBytes
+        private static readonly int[] InvSbox =
         {
             0x52, 0x09, 0x6A, 0xD5, 0x30, 0x36, 0xA5,
             0x38, 0xBF, 0x40, 0xA3, 0x9E, 0x81, 0xF3, 0xD7, 0xFB, 0x7C, 0xE3,
@@ -68,6 +73,9 @@ namespace CryptoAppTwo
             0x69, 0x14, 0x63, 0x55, 0x21, 0x0C, 0x7D
         };
 
+        // массив, который состоит из битов 32-разрядного слова
+        // и является постоянным для данного раунда.
+        // Предварительно рассчитанный Rcon[] можно увидеть ниже
         private static int[] Rcon =
         {
             0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab, 0x4d, 0x9a,
@@ -88,7 +96,8 @@ namespace CryptoAppTwo
             0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 0x83, 0x1d, 0x3a, 0x74, 0xe8, 0xcb
         };
 
-        private static byte[] xor_func(byte[] a, byte[] b)
+        // Функция сложения по модулу XOR
+        private static byte[] XORfunc(byte[] a, byte[] b)
         {
             byte[] outp = new byte[a.Length];
             for (int i = 0; i < a.Length; i++)
@@ -99,7 +108,9 @@ namespace CryptoAppTwo
 
         }
 
-        private static byte[,] generateSubkeys(byte[] key)
+        // процедура генерации Round Keys из ключа
+
+        private static byte[,] KeyExpansion(byte[] key)
         {
             byte[,] tmp = new byte[Nb * (Nr + 1), 4];
 
@@ -130,7 +141,7 @@ namespace CryptoAppTwo
                 }
                 byte[] tmp2 = new byte[4] { tmp[i - Nk, 0], tmp[i - Nk, 1], tmp[i - Nk, 2], tmp[i - Nk, 3] };
                 byte[] result = new byte[4];
-                result = xor_func(tmp2, temp);
+                result = XORfunc(tmp2, temp);
                 // tmp[i] = xor_func(tmp2, temp);
                 tmp[i, 0] = result[0];
                 tmp[i, 1] = result[1];
@@ -142,16 +153,20 @@ namespace CryptoAppTwo
             return tmp;
         }
 
+        // функция, используемая в процедуре KeyExpansion, которая берёт на входе 4-байтовое
+        // слово и, применяя S-box к каждому из четырёх байтов, выдаёт выходное слово
         private static byte[] SubWord(byte[] inp)
         {
             byte[] tmp = new byte[inp.Length];
 
             for (int i = 0; i < tmp.Length; i++)
-                tmp[i] = (byte)(sbox[inp[i] & 0x000000ff] & 0xff);
+                tmp[i] = (byte)(Sbox[inp[i] & 0x000000ff] & 0xff);
 
             return tmp;
         }
 
+        // Функция циклического сдвига байтов
+        // используется в KeyExpansion()
         private static byte[] rotateWord(byte[] input)
         {
             byte[] tmp = new byte[input.Length];
@@ -163,6 +178,10 @@ namespace CryptoAppTwo
             return tmp;
         }
 
+        // трансформация при шифровании и обратном шифровании,
+        // при которой Round Key XOR’ится c State.
+        // Длина RoundKey равна размеру State
+        // (то есть при Nb = 4, то длина RoundKey равна 128 бит или 16 байт)
         private static byte[,] AddRoundKey(byte[,] state, byte[,] w, int round)
         {
 
@@ -177,6 +196,9 @@ namespace CryptoAppTwo
             return tmp;
         }
 
+        // трансформации при шифровании, которые обрабатывают State,
+        // используя нелинейную таблицу замещения байтов (S-box),
+        // применяя её независимо к каждому байту State
         private static byte[,] SubBytes(byte[,] state)
         {
 
@@ -184,20 +206,24 @@ namespace CryptoAppTwo
             byte[,] tmp = new byte[4, 4];
             for (int row = 0; row < 4; row++)
                 for (int col = 0; col < Nb; col++)
-                    tmp[row, col] = (byte)(sbox[(state[row, col] & 0x000000ff)] & 0xff);
+                    tmp[row, col] = (byte)(Sbox[(state[row, col] & 0x000000ff)] & 0xff);
 
             return tmp;
         }
 
+        // трансформация при расшифровании, которая является
+        // обратной по отношению к SubBytes()
         private static byte[,] InvSubBytes(byte[,] state)
         {
             for (int row = 0; row < 4; row++)
                 for (int col = 0; col < Nb; col++)
-                    state[row, col] = (byte)(inv_sbox[(state[row, col] & 0x000000ff)] & 0xff);
+                    state[row, col] = (byte)(InvSbox[(state[row, col] & 0x000000ff)] & 0xff);
 
             return state;
         }
 
+        // трансформации при шифровании, которые обрабатывают State,
+        // циклически смещая последние три строки State на разные величины
         private static byte[,] ShiftRows(byte[,] state)
         {
 
@@ -213,6 +239,8 @@ namespace CryptoAppTwo
             return state;
         }
 
+        // трансформация при расшифровании, которая является
+        // обратной по отношению к ShiftRows()
         private static byte[,] InvShiftRows(byte[,] state)
         {
             byte[] t = new byte[4];
@@ -226,6 +254,8 @@ namespace CryptoAppTwo
             return state;
         }
 
+        // трансформация при расшифровании, которая является
+        // обратной по отношению к MixColumns()
         private static byte[,] InvMixColumns(byte[,] s)
         {
             int[] sp = new int[4];
@@ -243,6 +273,8 @@ namespace CryptoAppTwo
             return s;
         }
 
+        // трансформация при шифровании, которая берёт все столбцы State и
+        // смешивает их данные (независимо друг от друга), чтобы получить новые столбцы
         private static byte[,] MixColumns(byte[,] s)
         {
             int[] sp = new int[4];
@@ -260,6 +292,11 @@ namespace CryptoAppTwo
             return s;
         }
 
+        // используется в MixColumns, где 4 байта каждой колонки State смешиваются,
+        // используя для этого обратимую линейную трансформацию.
+        // MixColumns обрабатывает состояния по колонкам, трактуя каждую из них как полином третьей степени.
+        // Над этими полиномами производится умножение в поле Галуа GF(2^8) по модулю {x^4 + 1} на
+        // фиксированный многочлен {3x^4 + x^2 + x + 2}. Вместе с ShiftRows MixColumns вносит диффузию в шифр.
         private static byte FFMul(byte a, byte b)
         {
             byte aa = a, bb = b, r = 0, t;
@@ -355,7 +392,7 @@ namespace CryptoAppTwo
             byte[] bloc = new byte[16];
 
 
-            w = generateSubkeys(key);
+            w = KeyExpansion(key);
 
             int count = 0;
 
@@ -393,7 +430,7 @@ namespace CryptoAppTwo
             Nb = 4;
             Nk = key.Length / 4;
             Nr = Nk + 6;
-            w = generateSubkeys(key);
+            w = KeyExpansion(key);
 
 
             for (i = 0; i < inp.Length; i++)

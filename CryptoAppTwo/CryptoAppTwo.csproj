@@ -91,7 +91,7 @@
     </Compile>
     <Compile Include="Gamirovanie.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="AesFunctions.cs" />
+    <Compile Include="AesClass.cs" />
     <Compile Include="PrimeNumber.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

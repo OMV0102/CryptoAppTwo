@@ -4021,7 +4021,7 @@ namespace CryptoAppTwo
                 if (aes.EncryptOrDecrypt == true)
                 {
                     //aes.Encrypt();
-                    aes.TextOutByte = AesFunctions.encrypt(aes.TextInByte, aes.KeyByte);
+                    aes.TextOutByte = AesClass.encrypt(aes.TextInByte, aes.KeyByte);
                     //File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
                     aes.TextOutType = TypeDisplay.None;
                     btnAesTextOutHex_Click(null, null);
@@ -4030,7 +4030,7 @@ namespace CryptoAppTwo
                 else
                 {
                     //aes.Decrypt();
-                    aes.TextOutByte = AesFunctions.decrypt(aes.TextInByte, aes.KeyByte);
+                    aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte);
                     //aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
                     aes.TextOutType = TypeDisplay.None;
                     btnAesTextOutHex_Click(null, null);
