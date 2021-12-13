@@ -17,7 +17,6 @@ namespace CryptoAppTwo
         public byte[] TextOutByte = new byte[0]; // ВЫходной массив байтов
         public TypeDisplay TextOutType = TypeDisplay.None; // 0 - symbol, 1 - Hex, 2 - binary
         public byte[] KeyByte = new byte[0]; // Ключ
-        public byte[] IVByte = new byte[0]; // вектор IV
         public TypeDisplay KeyType = TypeDisplay.None; // Режим вывода ключа 0 - symbol, 1 - Hex, 2 - binary
 
         public bool EncryptOrDecrypt = true;
@@ -26,6 +25,11 @@ namespace CryptoAppTwo
         public bool TextInIsEdited = false;
         public bool TextOutIsEdited = false;
         public bool KeyIsEdited = false;
+        //===================================
+        //дополнение к 4 лр
+        public byte[] KeyByteSecond = new byte[0]; // Ключ второй
+        public byte[] IVByte = new byte[0]; // вектор IV
+
         //================================================================================================
         /*
         public void Encrypt()

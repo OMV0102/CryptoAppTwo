@@ -105,6 +105,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabAes = new System.Windows.Forms.TabPage();
+            this.txtAesKeySecond = new System.Windows.Forms.RichTextBox();
+            this.checkBoxAesKeySecond = new System.Windows.Forms.CheckBox();
             this.label38 = new System.Windows.Forms.Label();
             this.labelAesKeyByteNumber = new System.Windows.Forms.Label();
             this.btnAesKeySymbol = new System.Windows.Forms.Button();
@@ -288,6 +290,8 @@
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.checkBoxAesPcbc = new System.Windows.Forms.CheckBox();
             this.tabAsimAlg.SuspendLayout();
             this.tabSim.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1174,14 +1178,19 @@
             // tabAes
             // 
             this.tabAes.BackColor = System.Drawing.Color.LightGray;
+            this.tabAes.Controls.Add(this.btnAesEncryptDecrypt);
             this.tabAes.Controls.Add(this.label38);
+            this.tabAes.Controls.Add(this.btnAesSaveKey);
+            this.tabAes.Controls.Add(this.btnAesKeyLoad);
+            this.tabAes.Controls.Add(this.richTextBox1);
+            this.tabAes.Controls.Add(this.checkBoxAesPcbc);
+            this.tabAes.Controls.Add(this.txtAesKeySecond);
+            this.tabAes.Controls.Add(this.checkBoxAesKeySecond);
             this.tabAes.Controls.Add(this.labelAesKeyByteNumber);
             this.tabAes.Controls.Add(this.btnAesKeySymbol);
             this.tabAes.Controls.Add(this.btnAesClear);
-            this.tabAes.Controls.Add(this.btnAesEncryptDecrypt);
             this.tabAes.Controls.Add(this.labelAesKeyCaption);
             this.tabAes.Controls.Add(this.flagAesKeyIsEdited);
-            this.tabAes.Controls.Add(this.btnAesKeyLoad);
             this.tabAes.Controls.Add(this.btnAesKeyGenerate);
             this.tabAes.Controls.Add(this.btnAesKeyBinary);
             this.tabAes.Controls.Add(this.btnAesKeyHex);
@@ -1212,7 +1221,6 @@
             this.tabAes.Controls.Add(this.labelAesCaptionOut);
             this.tabAes.Controls.Add(this.radioBtnAesDecrypt);
             this.tabAes.Controls.Add(this.radioBtnAesEncrypt);
-            this.tabAes.Controls.Add(this.btnAesSaveKey);
             this.tabAes.Controls.Add(this.labelAesCaptionIn);
             this.tabAes.Controls.Add(this.label56);
             this.tabAes.Controls.Add(this.label57);
@@ -1228,10 +1236,38 @@
             this.tabAes.TabIndex = 9;
             this.tabAes.Text = "AES";
             // 
+            // txtAesKeySecond
+            // 
+            this.txtAesKeySecond.BackColor = System.Drawing.SystemColors.Control;
+            this.txtAesKeySecond.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAesKeySecond.DetectUrls = false;
+            this.txtAesKeySecond.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtAesKeySecond.Location = new System.Drawing.Point(425, 300);
+            this.txtAesKeySecond.Name = "txtAesKeySecond";
+            this.txtAesKeySecond.ReadOnly = true;
+            this.txtAesKeySecond.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtAesKeySecond.Size = new System.Drawing.Size(395, 34);
+            this.txtAesKeySecond.TabIndex = 134;
+            this.txtAesKeySecond.TabStop = false;
+            this.txtAesKeySecond.Text = "";
+            // 
+            // checkBoxAesKeySecond
+            // 
+            this.checkBoxAesKeySecond.AutoSize = true;
+            this.checkBoxAesKeySecond.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxAesKeySecond.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxAesKeySecond.Location = new System.Drawing.Point(433, 270);
+            this.checkBoxAesKeySecond.Name = "checkBoxAesKeySecond";
+            this.checkBoxAesKeySecond.Size = new System.Drawing.Size(288, 24);
+            this.checkBoxAesKeySecond.TabIndex = 133;
+            this.checkBoxAesKeySecond.Text = "Использовать 2-ой ключ для EDE";
+            this.checkBoxAesKeySecond.UseVisualStyleBackColor = true;
+            this.checkBoxAesKeySecond.Visible = false;
+            // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(8, 353);
+            this.label38.Location = new System.Drawing.Point(13, 359);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(123, 24);
             this.label38.TabIndex = 131;
@@ -1265,7 +1301,7 @@
             // 
             this.btnAesClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAesClear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesClear.Location = new System.Drawing.Point(682, 250);
+            this.btnAesClear.Location = new System.Drawing.Point(682, 232);
             this.btnAesClear.Name = "btnAesClear";
             this.btnAesClear.Size = new System.Drawing.Size(123, 35);
             this.btnAesClear.TabIndex = 58;
@@ -1281,9 +1317,9 @@
             this.btnAesEncryptDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAesEncryptDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAesEncryptDecrypt.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAesEncryptDecrypt.Location = new System.Drawing.Point(534, 343);
+            this.btnAesEncryptDecrypt.Location = new System.Drawing.Point(102, 389);
             this.btnAesEncryptDecrypt.Name = "btnAesEncryptDecrypt";
-            this.btnAesEncryptDecrypt.Size = new System.Drawing.Size(163, 42);
+            this.btnAesEncryptDecrypt.Size = new System.Drawing.Size(163, 35);
             this.btnAesEncryptDecrypt.TabIndex = 122;
             this.btnAesEncryptDecrypt.TabStop = false;
             this.btnAesEncryptDecrypt.Tag = "";
@@ -1321,7 +1357,7 @@
             this.btnAesKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.btnAesKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.btnAesKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesKeyLoad.Location = new System.Drawing.Point(150, 386);
+            this.btnAesKeyLoad.Location = new System.Drawing.Point(145, 353);
             this.btnAesKeyLoad.Margin = new System.Windows.Forms.Padding(6);
             this.btnAesKeyLoad.Name = "btnAesKeyLoad";
             this.btnAesKeyLoad.Size = new System.Drawing.Size(97, 35);
@@ -1336,7 +1372,7 @@
             this.btnAesKeyGenerate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAesKeyGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAesKeyGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesKeyGenerate.Location = new System.Drawing.Point(7, 385);
+            this.btnAesKeyGenerate.Location = new System.Drawing.Point(7, 352);
             this.btnAesKeyGenerate.Name = "btnAesKeyGenerate";
             this.btnAesKeyGenerate.Size = new System.Drawing.Size(134, 35);
             this.btnAesKeyGenerate.TabIndex = 112;
@@ -1680,7 +1716,7 @@
             this.btnAesSaveData.BackColor = System.Drawing.Color.LightGray;
             this.btnAesSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAesSaveData.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesSaveData.Location = new System.Drawing.Point(434, 250);
+            this.btnAesSaveData.Location = new System.Drawing.Point(434, 232);
             this.btnAesSaveData.Name = "btnAesSaveData";
             this.btnAesSaveData.Size = new System.Drawing.Size(192, 33);
             this.btnAesSaveData.TabIndex = 84;
@@ -1761,7 +1797,7 @@
             this.btnAesSaveKey.BackColor = System.Drawing.Color.LightGray;
             this.btnAesSaveKey.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAesSaveKey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesSaveKey.Location = new System.Drawing.Point(261, 386);
+            this.btnAesSaveKey.Location = new System.Drawing.Point(259, 354);
             this.btnAesSaveKey.Name = "btnAesSaveKey";
             this.btnAesSaveKey.Size = new System.Drawing.Size(143, 34);
             this.btnAesSaveKey.TabIndex = 68;
@@ -3693,6 +3729,34 @@
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.richTextBox1.DetectUrls = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox1.Location = new System.Drawing.Point(425, 372);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.Size = new System.Drawing.Size(395, 34);
+            this.richTextBox1.TabIndex = 136;
+            this.richTextBox1.TabStop = false;
+            this.richTextBox1.Text = "";
+            // 
+            // checkBoxAesPcbc
+            // 
+            this.checkBoxAesPcbc.AutoSize = true;
+            this.checkBoxAesPcbc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxAesPcbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxAesPcbc.Location = new System.Drawing.Point(433, 342);
+            this.checkBoxAesPcbc.Name = "checkBoxAesPcbc";
+            this.checkBoxAesPcbc.Size = new System.Drawing.Size(321, 24);
+            this.checkBoxAesPcbc.TabIndex = 135;
+            this.checkBoxAesPcbc.Text = "Использовать IV в шифровании PCBC";
+            this.checkBoxAesPcbc.UseVisualStyleBackColor = true;
+            this.checkBoxAesPcbc.Visible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -3989,6 +4053,10 @@
         private System.Windows.Forms.Label labelAesTextInByteNumber;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label labelAesKeyByteNumber;
+        private System.Windows.Forms.RichTextBox txtAesKeySecond;
+        private System.Windows.Forms.CheckBox checkBoxAesKeySecond;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.CheckBox checkBoxAesPcbc;
     }
 }
 

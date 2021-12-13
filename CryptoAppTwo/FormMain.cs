@@ -92,7 +92,7 @@ namespace CryptoAppTwo
             this.numericGpnRight.Maximum = new Decimal(1208925819614629174706176.0);
             #endregion
 
-            #region Дефолтные установки для СЕТИ ФЕЙСТЕЛЯ
+            #region Дефолтные установки для AES
             aes = new AesObject();
             this.radioBtnAesEncrypt.Checked = true; ; // режим шифрования при запуске 
             this.btnAesClear_Click(null, null); // жмем кнопку очистить д
@@ -3049,6 +3049,7 @@ namespace CryptoAppTwo
             // входные данные стираем
             this.txtAesTextIn.Text = "";
             this.labelAesTextInByteNumber.Text = "0";
+            this.labelAesKeyByteNumber.Text = "0";
             // ВЫходные данные стираем
             this.txtAesTextOut.Text = "";
             this.btnAesTextInSymbol.Enabled = true;
@@ -4010,18 +4011,31 @@ namespace CryptoAppTwo
         {
             if (aes.TextInByte.Length < 1 || aes.KeyByte.Length < 1)
             {
-                MessageBox.Show("Не хватает ключа и данных!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Не введены ключ и данные!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            if (checkBoxAesKeySecond.Checked == true && txtAesKeySecond.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("Не введен второй ключ!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+                aes.KeyByteSecond = Functions.SymbolToByte(txtAesKeySecond.Text);
+
             try
             {
-
-
                 if (aes.EncryptOrDecrypt == true)
                 {
+                    if(checkBoxAesKeySecond.Checked == true) // при шифровании EDE
+                    {
+                        aes.TextOutByte = AesClass.encrypt(aes.TextInByte, aes.KeyByte); // шифруем сообщение с 1 ключом
+                        aes.TextOutByte = AesClass.decrypt(aes.TextOutByte, aes.KeyByteSecond); // дешифруем с 2 ключом
+                        aes.TextOutByte = AesClass.encrypt(aes.TextOutByte, aes.KeyByte); // опять шифруем с 1 ключом
+                    }
+                    else
+                        aes.TextOutByte = AesClass.encrypt(aes.TextInByte, aes.KeyByte);
                     //aes.Encrypt();
-                    aes.TextOutByte = AesClass.encrypt(aes.TextInByte, aes.KeyByte);
                     //File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
                     aes.TextOutType = TypeDisplay.None;
                     btnAesTextOutHex_Click(null, null);
@@ -4029,8 +4043,15 @@ namespace CryptoAppTwo
                 }
                 else
                 {
+                    if (checkBoxAesKeySecond.Checked == true) // при дешифровании EDE
+                    {
+                        aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte); // дешифруем шифротекст с 1 ключом
+                        aes.TextOutByte = AesClass.encrypt(aes.TextOutByte, aes.KeyByteSecond); // шифруем с 2 ключом
+                        aes.TextOutByte = AesClass.decrypt(aes.TextOutByte, aes.KeyByte); // дешифруем с 1 ключом
+                    }
+                    else
+                        aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte);
                     //aes.Decrypt();
-                    aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte);
                     //aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
                     aes.TextOutType = TypeDisplay.None;
                     btnAesTextOutHex_Click(null, null);
@@ -4041,7 +4062,5 @@ namespace CryptoAppTwo
                 MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
     }
 }

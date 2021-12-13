@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AesObject.cs" />
+    <Compile Include="AesPcbcClass.cs" />
     <Compile Include="Algorithms.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="Feistel.cs" />
