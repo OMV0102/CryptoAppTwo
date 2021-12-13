@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.toolTip_hesh_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_simm_file = new System.Windows.Forms.ToolTip(this.components);
             this.tabAsimAlg = new System.Windows.Forms.TabPage();
@@ -105,16 +105,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabAes = new System.Windows.Forms.TabPage();
+            this.btnGenerateIV = new System.Windows.Forms.Button();
+            this.btnAesEncryptDecrypt = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.btnAesSaveKey = new System.Windows.Forms.Button();
+            this.btnAesKeyLoad = new System.Windows.Forms.Button();
+            this.txtAesIV = new System.Windows.Forms.RichTextBox();
+            this.checkBoxAesPcbc = new System.Windows.Forms.CheckBox();
             this.txtAesKeySecond = new System.Windows.Forms.RichTextBox();
             this.checkBoxAesKeySecond = new System.Windows.Forms.CheckBox();
-            this.label38 = new System.Windows.Forms.Label();
             this.labelAesKeyByteNumber = new System.Windows.Forms.Label();
             this.btnAesKeySymbol = new System.Windows.Forms.Button();
             this.btnAesClear = new System.Windows.Forms.Button();
-            this.btnAesEncryptDecrypt = new System.Windows.Forms.Button();
             this.labelAesKeyCaption = new System.Windows.Forms.Label();
             this.flagAesKeyIsEdited = new System.Windows.Forms.CheckBox();
-            this.btnAesKeyLoad = new System.Windows.Forms.Button();
             this.btnAesKeyGenerate = new System.Windows.Forms.Button();
             this.btnAesKeyBinary = new System.Windows.Forms.Button();
             this.btnAesKeyHex = new System.Windows.Forms.Button();
@@ -145,7 +149,6 @@
             this.labelAesCaptionOut = new System.Windows.Forms.Label();
             this.radioBtnAesDecrypt = new System.Windows.Forms.RadioButton();
             this.radioBtnAesEncrypt = new System.Windows.Forms.RadioButton();
-            this.btnAesSaveKey = new System.Windows.Forms.Button();
             this.labelAesCaptionIn = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
@@ -290,8 +293,6 @@
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.checkBoxAesPcbc = new System.Windows.Forms.CheckBox();
             this.tabAsimAlg.SuspendLayout();
             this.tabSim.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -1178,11 +1179,11 @@
             // tabAes
             // 
             this.tabAes.BackColor = System.Drawing.Color.LightGray;
+            this.tabAes.Controls.Add(this.btnGenerateIV);
             this.tabAes.Controls.Add(this.btnAesEncryptDecrypt);
-            this.tabAes.Controls.Add(this.label38);
             this.tabAes.Controls.Add(this.btnAesSaveKey);
             this.tabAes.Controls.Add(this.btnAesKeyLoad);
-            this.tabAes.Controls.Add(this.richTextBox1);
+            this.tabAes.Controls.Add(this.txtAesIV);
             this.tabAes.Controls.Add(this.checkBoxAesPcbc);
             this.tabAes.Controls.Add(this.txtAesKeySecond);
             this.tabAes.Controls.Add(this.checkBoxAesKeySecond);
@@ -1227,6 +1228,7 @@
             this.tabAes.Controls.Add(this.label58);
             this.tabAes.Controls.Add(this.label59);
             this.tabAes.Controls.Add(this.labelAesTextInByteNumber);
+            this.tabAes.Controls.Add(this.label38);
             this.tabAes.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabAes.Location = new System.Drawing.Point(4, 33);
             this.tabAes.Margin = new System.Windows.Forms.Padding(4);
@@ -1236,6 +1238,102 @@
             this.tabAes.TabIndex = 9;
             this.tabAes.Text = "AES";
             // 
+            // btnGenerateIV
+            // 
+            this.btnGenerateIV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenerateIV.BackgroundImage")));
+            this.btnGenerateIV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGenerateIV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGenerateIV.Location = new System.Drawing.Point(795, 364);
+            this.btnGenerateIV.Name = "btnGenerateIV";
+            this.btnGenerateIV.Size = new System.Drawing.Size(25, 25);
+            this.btnGenerateIV.TabIndex = 137;
+            this.btnGenerateIV.TabStop = false;
+            this.btnGenerateIV.UseVisualStyleBackColor = true;
+            this.btnGenerateIV.Click += new System.EventHandler(this.btnGenerateIV_Click);
+            // 
+            // btnAesEncryptDecrypt
+            // 
+            this.btnAesEncryptDecrypt.BackColor = System.Drawing.Color.Azure;
+            this.btnAesEncryptDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAesEncryptDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAesEncryptDecrypt.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAesEncryptDecrypt.Location = new System.Drawing.Point(102, 389);
+            this.btnAesEncryptDecrypt.Name = "btnAesEncryptDecrypt";
+            this.btnAesEncryptDecrypt.Size = new System.Drawing.Size(163, 35);
+            this.btnAesEncryptDecrypt.TabIndex = 122;
+            this.btnAesEncryptDecrypt.TabStop = false;
+            this.btnAesEncryptDecrypt.Tag = "";
+            this.btnAesEncryptDecrypt.Text = "Дешифровать";
+            this.btnAesEncryptDecrypt.UseVisualStyleBackColor = false;
+            this.btnAesEncryptDecrypt.Click += new System.EventHandler(this.btnAesEncryptDecrypt_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(13, 354);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(123, 24);
+            this.label38.TabIndex = 131;
+            this.label38.Text = "Кол-во байт:";
+            this.label38.Visible = false;
+            // 
+            // btnAesSaveKey
+            // 
+            this.btnAesSaveKey.BackColor = System.Drawing.Color.LightGray;
+            this.btnAesSaveKey.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAesSaveKey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAesSaveKey.Location = new System.Drawing.Point(259, 354);
+            this.btnAesSaveKey.Name = "btnAesSaveKey";
+            this.btnAesSaveKey.Size = new System.Drawing.Size(143, 34);
+            this.btnAesSaveKey.TabIndex = 68;
+            this.btnAesSaveKey.TabStop = false;
+            this.btnAesSaveKey.Tag = "";
+            this.btnAesSaveKey.Text = "Сохранить ключ";
+            this.btnAesSaveKey.UseVisualStyleBackColor = false;
+            this.btnAesSaveKey.Click += new System.EventHandler(this.btnAesSaveKey_Click);
+            // 
+            // btnAesKeyLoad
+            // 
+            this.btnAesKeyLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAesKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnAesKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnAesKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAesKeyLoad.Location = new System.Drawing.Point(150, 353);
+            this.btnAesKeyLoad.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAesKeyLoad.Name = "btnAesKeyLoad";
+            this.btnAesKeyLoad.Size = new System.Drawing.Size(97, 35);
+            this.btnAesKeyLoad.TabIndex = 113;
+            this.btnAesKeyLoad.TabStop = false;
+            this.btnAesKeyLoad.Text = "из файла";
+            this.btnAesKeyLoad.UseVisualStyleBackColor = true;
+            this.btnAesKeyLoad.Click += new System.EventHandler(this.btnAesKeyLoad_Click);
+            // 
+            // txtAesIV
+            // 
+            this.txtAesIV.BackColor = System.Drawing.SystemColors.Control;
+            this.txtAesIV.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAesIV.DetectUrls = false;
+            this.txtAesIV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.txtAesIV.Location = new System.Drawing.Point(425, 389);
+            this.txtAesIV.Name = "txtAesIV";
+            this.txtAesIV.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtAesIV.Size = new System.Drawing.Size(395, 30);
+            this.txtAesIV.TabIndex = 136;
+            this.txtAesIV.TabStop = false;
+            this.txtAesIV.Text = "";
+            // 
+            // checkBoxAesPcbc
+            // 
+            this.checkBoxAesPcbc.AutoSize = true;
+            this.checkBoxAesPcbc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxAesPcbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxAesPcbc.Location = new System.Drawing.Point(433, 359);
+            this.checkBoxAesPcbc.Name = "checkBoxAesPcbc";
+            this.checkBoxAesPcbc.Size = new System.Drawing.Size(321, 24);
+            this.checkBoxAesPcbc.TabIndex = 135;
+            this.checkBoxAesPcbc.Text = "Использовать IV в шифровании PCBC";
+            this.checkBoxAesPcbc.UseVisualStyleBackColor = true;
+            // 
             // txtAesKeySecond
             // 
             this.txtAesKeySecond.BackColor = System.Drawing.SystemColors.Control;
@@ -1244,9 +1342,8 @@
             this.txtAesKeySecond.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtAesKeySecond.Location = new System.Drawing.Point(425, 300);
             this.txtAesKeySecond.Name = "txtAesKeySecond";
-            this.txtAesKeySecond.ReadOnly = true;
             this.txtAesKeySecond.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtAesKeySecond.Size = new System.Drawing.Size(395, 34);
+            this.txtAesKeySecond.Size = new System.Drawing.Size(395, 45);
             this.txtAesKeySecond.TabIndex = 134;
             this.txtAesKeySecond.TabStop = false;
             this.txtAesKeySecond.Text = "";
@@ -1262,16 +1359,6 @@
             this.checkBoxAesKeySecond.TabIndex = 133;
             this.checkBoxAesKeySecond.Text = "Использовать 2-ой ключ для EDE";
             this.checkBoxAesKeySecond.UseVisualStyleBackColor = true;
-            this.checkBoxAesKeySecond.Visible = false;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(13, 359);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(123, 24);
-            this.label38.TabIndex = 131;
-            this.label38.Text = "Кол-во байт:";
             // 
             // labelAesKeyByteNumber
             // 
@@ -1282,6 +1369,7 @@
             this.labelAesKeyByteNumber.TabIndex = 132;
             this.labelAesKeyByteNumber.Text = "0";
             this.labelAesKeyByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelAesKeyByteNumber.Visible = false;
             // 
             // btnAesKeySymbol
             // 
@@ -1311,22 +1399,6 @@
             this.btnAesClear.UseVisualStyleBackColor = true;
             this.btnAesClear.Click += new System.EventHandler(this.btnAesClear_Click);
             // 
-            // btnAesEncryptDecrypt
-            // 
-            this.btnAesEncryptDecrypt.BackColor = System.Drawing.Color.Azure;
-            this.btnAesEncryptDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAesEncryptDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAesEncryptDecrypt.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAesEncryptDecrypt.Location = new System.Drawing.Point(102, 389);
-            this.btnAesEncryptDecrypt.Name = "btnAesEncryptDecrypt";
-            this.btnAesEncryptDecrypt.Size = new System.Drawing.Size(163, 35);
-            this.btnAesEncryptDecrypt.TabIndex = 122;
-            this.btnAesEncryptDecrypt.TabStop = false;
-            this.btnAesEncryptDecrypt.Tag = "";
-            this.btnAesEncryptDecrypt.Text = "Дешифровать";
-            this.btnAesEncryptDecrypt.UseVisualStyleBackColor = false;
-            this.btnAesEncryptDecrypt.Click += new System.EventHandler(this.btnAesEncryptDecrypt_Click);
-            // 
             // labelAesKeyCaption
             // 
             this.labelAesKeyCaption.AutoSize = true;
@@ -1351,28 +1423,12 @@
             this.flagAesKeyIsEdited.Visible = false;
             this.flagAesKeyIsEdited.CheckedChanged += new System.EventHandler(this.flagAesKeyIsEdited_CheckedChanged);
             // 
-            // btnAesKeyLoad
-            // 
-            this.btnAesKeyLoad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAesKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.btnAesKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
-            this.btnAesKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesKeyLoad.Location = new System.Drawing.Point(145, 353);
-            this.btnAesKeyLoad.Margin = new System.Windows.Forms.Padding(6);
-            this.btnAesKeyLoad.Name = "btnAesKeyLoad";
-            this.btnAesKeyLoad.Size = new System.Drawing.Size(97, 35);
-            this.btnAesKeyLoad.TabIndex = 113;
-            this.btnAesKeyLoad.TabStop = false;
-            this.btnAesKeyLoad.Text = "из файла";
-            this.btnAesKeyLoad.UseVisualStyleBackColor = true;
-            this.btnAesKeyLoad.Click += new System.EventHandler(this.btnAesKeyLoad_Click);
-            // 
             // btnAesKeyGenerate
             // 
             this.btnAesKeyGenerate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAesKeyGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAesKeyGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesKeyGenerate.Location = new System.Drawing.Point(7, 352);
+            this.btnAesKeyGenerate.Location = new System.Drawing.Point(7, 353);
             this.btnAesKeyGenerate.Name = "btnAesKeyGenerate";
             this.btnAesKeyGenerate.Size = new System.Drawing.Size(134, 35);
             this.btnAesKeyGenerate.TabIndex = 112;
@@ -1792,21 +1848,6 @@
             this.radioBtnAesEncrypt.UseVisualStyleBackColor = true;
             this.radioBtnAesEncrypt.CheckedChanged += new System.EventHandler(this.radioBtnAesEncrypt_CheckedChanged);
             // 
-            // btnAesSaveKey
-            // 
-            this.btnAesSaveKey.BackColor = System.Drawing.Color.LightGray;
-            this.btnAesSaveKey.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAesSaveKey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAesSaveKey.Location = new System.Drawing.Point(259, 354);
-            this.btnAesSaveKey.Name = "btnAesSaveKey";
-            this.btnAesSaveKey.Size = new System.Drawing.Size(143, 34);
-            this.btnAesSaveKey.TabIndex = 68;
-            this.btnAesSaveKey.TabStop = false;
-            this.btnAesSaveKey.Tag = "";
-            this.btnAesSaveKey.Text = "Сохранить ключ";
-            this.btnAesSaveKey.UseVisualStyleBackColor = false;
-            this.btnAesSaveKey.Click += new System.EventHandler(this.btnAesSaveKey_Click);
-            // 
             // labelAesCaptionIn
             // 
             this.labelAesCaptionIn.AutoSize = true;
@@ -1960,24 +2001,24 @@
             // 
             // ChartFstKey
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ChartFstKey.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.ChartFstKey.ChartAreas.Add(chartArea5);
             this.ChartFstKey.Location = new System.Drawing.Point(866, 231);
             this.ChartFstKey.Name = "ChartFstKey";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.LabelBorderWidth = 4;
-            series1.Name = "Series1";
-            this.ChartFstKey.Series.Add(series1);
+            series5.BorderWidth = 3;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.LabelBorderWidth = 4;
+            series5.Name = "Series1";
+            this.ChartFstKey.Series.Add(series5);
             this.ChartFstKey.Size = new System.Drawing.Size(583, 195);
             this.ChartFstKey.TabIndex = 129;
             this.ChartFstKey.TabStop = false;
             this.ChartFstKey.Text = "chart2";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title1.Name = "Title1";
-            title1.Text = "Кол-во изменных бит КЛЮЧА за раунд";
-            this.ChartFstKey.Titles.Add(title1);
+            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title5.Name = "Title1";
+            title5.Text = "Кол-во изменных бит КЛЮЧА за раунд";
+            this.ChartFstKey.Titles.Add(title5);
             // 
             // btnFstClear
             // 
@@ -2020,24 +2061,24 @@
             // 
             // ChartFstText
             // 
-            chartArea2.Name = "ChartArea1";
-            this.ChartFstText.ChartAreas.Add(chartArea2);
+            chartArea6.Name = "ChartArea1";
+            this.ChartFstText.ChartAreas.Add(chartArea6);
             this.ChartFstText.Location = new System.Drawing.Point(866, 35);
             this.ChartFstText.Name = "ChartFstText";
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.LabelBorderWidth = 2;
-            series2.Name = "Series1";
-            this.ChartFstText.Series.Add(series2);
+            series6.BorderWidth = 3;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.LabelBorderWidth = 2;
+            series6.Name = "Series1";
+            this.ChartFstText.Series.Add(series6);
             this.ChartFstText.Size = new System.Drawing.Size(583, 195);
             this.ChartFstText.TabIndex = 126;
             this.ChartFstText.TabStop = false;
             this.ChartFstText.Text = "chart2";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title2.Name = "Title1";
-            title2.Text = "Кол-во изменных бит ТЕКСТА за раунд";
-            this.ChartFstText.Titles.Add(title2);
+            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title6.Name = "Title1";
+            title6.Text = "Кол-во изменных бит ТЕКСТА за раунд";
+            this.ChartFstText.Titles.Add(title6);
             // 
             // comboBoxFstFunc
             // 
@@ -3729,34 +3770,6 @@
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBox1.DetectUrls = false;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(425, 372);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(395, 34);
-            this.richTextBox1.TabIndex = 136;
-            this.richTextBox1.TabStop = false;
-            this.richTextBox1.Text = "";
-            // 
-            // checkBoxAesPcbc
-            // 
-            this.checkBoxAesPcbc.AutoSize = true;
-            this.checkBoxAesPcbc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxAesPcbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxAesPcbc.Location = new System.Drawing.Point(433, 342);
-            this.checkBoxAesPcbc.Name = "checkBoxAesPcbc";
-            this.checkBoxAesPcbc.Size = new System.Drawing.Size(321, 24);
-            this.checkBoxAesPcbc.TabIndex = 135;
-            this.checkBoxAesPcbc.Text = "Использовать IV в шифровании PCBC";
-            this.checkBoxAesPcbc.UseVisualStyleBackColor = true;
-            this.checkBoxAesPcbc.Visible = false;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -4055,8 +4068,9 @@
         private System.Windows.Forms.Label labelAesKeyByteNumber;
         private System.Windows.Forms.RichTextBox txtAesKeySecond;
         private System.Windows.Forms.CheckBox checkBoxAesKeySecond;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtAesIV;
         private System.Windows.Forms.CheckBox checkBoxAesPcbc;
+        private System.Windows.Forms.Button btnGenerateIV;
     }
 }
 

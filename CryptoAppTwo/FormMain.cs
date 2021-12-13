@@ -4062,5 +4062,10 @@ namespace CryptoAppTwo
                 MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnGenerateIV_Click(object sender, EventArgs e)
+        {
+            txtAesIV.Text = Functions.ByteToHex(Functions.GenerateIV());
+        }
     }
 }

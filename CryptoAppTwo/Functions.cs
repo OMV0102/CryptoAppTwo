@@ -229,6 +229,14 @@ namespace CryptoAppTwo
             }
         }
 
+        // генерировать IV
+        public static byte[] GenerateIV()
+        {
+            AesCng aescng = new AesCng();
+            aescng.GenerateIV();
+            return aescng.IV;
+        }
+
         //=============================================================
         // функции для остальных алгоритмов (deprecated)
         // Переводит 16-ричную строку в байты
