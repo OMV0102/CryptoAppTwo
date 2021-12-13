@@ -27,7 +27,7 @@ namespace CryptoAppTwo
         public bool TextOutIsEdited = false;
         public bool KeyIsEdited = false;
         //================================================================================================
-
+        /*
         public void Encrypt()
         {
             try
@@ -109,5 +109,7 @@ namespace CryptoAppTwo
             }
             return byteOut;
         }
+        
+        */
     }
 }

@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title13 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title14 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.toolTip_hesh_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_simm_file = new System.Windows.Forms.ToolTip(this.components);
             this.tabAsimAlg = new System.Windows.Forms.TabPage();
@@ -105,6 +105,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabAes = new System.Windows.Forms.TabPage();
+            this.label38 = new System.Windows.Forms.Label();
+            this.labelAesKeyByteNumber = new System.Windows.Forms.Label();
             this.btnAesKeySymbol = new System.Windows.Forms.Button();
             this.btnAesClear = new System.Windows.Forms.Button();
             this.btnAesEncryptDecrypt = new System.Windows.Forms.Button();
@@ -286,8 +288,6 @@
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
-            this.label38 = new System.Windows.Forms.Label();
-            this.labelAesKeyByteNumber = new System.Windows.Forms.Label();
             this.tabAsimAlg.SuspendLayout();
             this.tabSim.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -340,7 +340,7 @@
             this.tabAsimAlg.Margin = new System.Windows.Forms.Padding(4);
             this.tabAsimAlg.Name = "tabAsimAlg";
             this.tabAsimAlg.Padding = new System.Windows.Forms.Padding(4);
-            this.tabAsimAlg.Size = new System.Drawing.Size(1476, 429);
+            this.tabAsimAlg.Size = new System.Drawing.Size(833, 429);
             this.tabAsimAlg.TabIndex = 4;
             this.tabAsimAlg.Text = "Асимметричные алгоритмы (RSA)";
             // 
@@ -644,7 +644,7 @@
             this.tabSim.Margin = new System.Windows.Forms.Padding(4);
             this.tabSim.Name = "tabSim";
             this.tabSim.Padding = new System.Windows.Forms.Padding(4);
-            this.tabSim.Size = new System.Drawing.Size(1476, 429);
+            this.tabSim.Size = new System.Drawing.Size(833, 429);
             this.tabSim.TabIndex = 1;
             this.tabSim.Text = "Симметричные алгоритмы";
             // 
@@ -955,7 +955,7 @@
             this.tabHesh.Margin = new System.Windows.Forms.Padding(4);
             this.tabHesh.Name = "tabHesh";
             this.tabHesh.Padding = new System.Windows.Forms.Padding(4);
-            this.tabHesh.Size = new System.Drawing.Size(1476, 429);
+            this.tabHesh.Size = new System.Drawing.Size(833, 429);
             this.tabHesh.TabIndex = 0;
             this.tabHesh.Text = "Хэширование";
             // 
@@ -1227,6 +1227,25 @@
             this.tabAes.Size = new System.Drawing.Size(833, 429);
             this.tabAes.TabIndex = 9;
             this.tabAes.Text = "AES";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(8, 353);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(123, 24);
+            this.label38.TabIndex = 131;
+            this.label38.Text = "Кол-во байт:";
+            // 
+            // labelAesKeyByteNumber
+            // 
+            this.labelAesKeyByteNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelAesKeyByteNumber.Location = new System.Drawing.Point(137, 350);
+            this.labelAesKeyByteNumber.Name = "labelAesKeyByteNumber";
+            this.labelAesKeyByteNumber.Size = new System.Drawing.Size(128, 30);
+            this.labelAesKeyByteNumber.TabIndex = 132;
+            this.labelAesKeyByteNumber.Text = "0";
+            this.labelAesKeyByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnAesKeySymbol
             // 
@@ -1869,7 +1888,7 @@
             this.tabFst.Margin = new System.Windows.Forms.Padding(4);
             this.tabFst.Name = "tabFst";
             this.tabFst.Padding = new System.Windows.Forms.Padding(4);
-            this.tabFst.Size = new System.Drawing.Size(1476, 429);
+            this.tabFst.Size = new System.Drawing.Size(833, 429);
             this.tabFst.TabIndex = 7;
             this.tabFst.Text = "Сеть Фейстеля";
             // 
@@ -1905,24 +1924,24 @@
             // 
             // ChartFstKey
             // 
-            chartArea13.Name = "ChartArea1";
-            this.ChartFstKey.ChartAreas.Add(chartArea13);
+            chartArea1.Name = "ChartArea1";
+            this.ChartFstKey.ChartAreas.Add(chartArea1);
             this.ChartFstKey.Location = new System.Drawing.Point(866, 231);
             this.ChartFstKey.Name = "ChartFstKey";
-            series13.BorderWidth = 3;
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series13.LabelBorderWidth = 4;
-            series13.Name = "Series1";
-            this.ChartFstKey.Series.Add(series13);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.LabelBorderWidth = 4;
+            series1.Name = "Series1";
+            this.ChartFstKey.Series.Add(series1);
             this.ChartFstKey.Size = new System.Drawing.Size(583, 195);
             this.ChartFstKey.TabIndex = 129;
             this.ChartFstKey.TabStop = false;
             this.ChartFstKey.Text = "chart2";
-            title13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title13.Name = "Title1";
-            title13.Text = "Кол-во изменных бит КЛЮЧА за раунд";
-            this.ChartFstKey.Titles.Add(title13);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title1.Name = "Title1";
+            title1.Text = "Кол-во изменных бит КЛЮЧА за раунд";
+            this.ChartFstKey.Titles.Add(title1);
             // 
             // btnFstClear
             // 
@@ -1965,24 +1984,24 @@
             // 
             // ChartFstText
             // 
-            chartArea14.Name = "ChartArea1";
-            this.ChartFstText.ChartAreas.Add(chartArea14);
+            chartArea2.Name = "ChartArea1";
+            this.ChartFstText.ChartAreas.Add(chartArea2);
             this.ChartFstText.Location = new System.Drawing.Point(866, 35);
             this.ChartFstText.Name = "ChartFstText";
-            series14.BorderWidth = 3;
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series14.LabelBorderWidth = 2;
-            series14.Name = "Series1";
-            this.ChartFstText.Series.Add(series14);
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.LabelBorderWidth = 2;
+            series2.Name = "Series1";
+            this.ChartFstText.Series.Add(series2);
             this.ChartFstText.Size = new System.Drawing.Size(583, 195);
             this.ChartFstText.TabIndex = 126;
             this.ChartFstText.TabStop = false;
             this.ChartFstText.Text = "chart2";
-            title14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title14.Name = "Title1";
-            title14.Text = "Кол-во изменных бит ТЕКСТА за раунд";
-            this.ChartFstText.Titles.Add(title14);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title2.Name = "Title1";
+            title2.Text = "Кол-во изменных бит ТЕКСТА за раунд";
+            this.ChartFstText.Titles.Add(title2);
             // 
             // comboBoxFstFunc
             // 
@@ -2646,7 +2665,7 @@
             this.tabGam.Margin = new System.Windows.Forms.Padding(4);
             this.tabGam.Name = "tabGam";
             this.tabGam.Padding = new System.Windows.Forms.Padding(4);
-            this.tabGam.Size = new System.Drawing.Size(1476, 429);
+            this.tabGam.Size = new System.Drawing.Size(833, 429);
             this.tabGam.TabIndex = 6;
             this.tabGam.Text = "Гаммирование/Скремблирование";
             // 
@@ -3173,7 +3192,7 @@
             this.tabGpn.Margin = new System.Windows.Forms.Padding(4);
             this.tabGpn.Name = "tabGpn";
             this.tabGpn.Padding = new System.Windows.Forms.Padding(4);
-            this.tabGpn.Size = new System.Drawing.Size(1476, 429);
+            this.tabGpn.Size = new System.Drawing.Size(833, 429);
             this.tabGpn.TabIndex = 8;
             this.tabGpn.Text = "Простые числа";
             // 
@@ -3415,7 +3434,7 @@
             this.tabEds.Margin = new System.Windows.Forms.Padding(4);
             this.tabEds.Name = "tabEds";
             this.tabEds.Padding = new System.Windows.Forms.Padding(4);
-            this.tabEds.Size = new System.Drawing.Size(1476, 429);
+            this.tabEds.Size = new System.Drawing.Size(833, 429);
             this.tabEds.TabIndex = 5;
             this.tabEds.Text = "ЭЦП (RSA)";
             // 
@@ -3674,25 +3693,6 @@
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
             // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(8, 353);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(123, 24);
-            this.label38.TabIndex = 131;
-            this.label38.Text = "Кол-во байт:";
-            // 
-            // labelAesKeyByteNumber
-            // 
-            this.labelAesKeyByteNumber.BackColor = System.Drawing.Color.Transparent;
-            this.labelAesKeyByteNumber.Location = new System.Drawing.Point(137, 350);
-            this.labelAesKeyByteNumber.Name = "labelAesKeyByteNumber";
-            this.labelAesKeyByteNumber.Size = new System.Drawing.Size(128, 30);
-            this.labelAesKeyByteNumber.TabIndex = 132;
-            this.labelAesKeyByteNumber.Text = "0";
-            this.labelAesKeyByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -3708,7 +3708,6 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CryptoAppTwo";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabAsimAlg.ResumeLayout(false);
             this.tabAsimAlg.PerformLayout();

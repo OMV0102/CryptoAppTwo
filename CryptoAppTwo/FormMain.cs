@@ -38,7 +38,7 @@ namespace CryptoAppTwo
             // закоменчено, значит включено
             this.tabGam.Parent = null;
             this.tabGpn.Parent = null;
-            //this.tabFst.Parent = null;
+            this.tabFst.Parent = null;
             //this.tabAes.Parent = null;
             this.tabHesh.Parent = null;
             this.tabSim.Parent = null;
@@ -3072,13 +3072,13 @@ namespace CryptoAppTwo
             if (aes.EncryptOrDecrypt == true)
             {
                 this.btnAesTextInSymbol.PerformClick();
-                this.btnAesKeyHex.PerformClick();
+                this.btnAesKeySymbol.PerformClick();
                 this.btnAesTextOutHex.PerformClick();
             }
             else
             {
                 this.btnAesTextInHex.PerformClick();
-                this.btnAesKeyHex.PerformClick();
+                this.btnAesKeySymbol.PerformClick();
                 this.btnAesTextOutSymbol.PerformClick();
             }
         }
