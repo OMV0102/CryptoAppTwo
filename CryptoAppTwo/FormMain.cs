@@ -4023,6 +4023,14 @@ namespace CryptoAppTwo
             else
                 aes.KeyByteSecond = Functions.SymbolToByte(txtAesKeySecond.Text);
 
+            if (checkBoxAesPcbc.Checked == true && txtAesIV.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("Не введен вектор инициализации!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+                aes.IVByte = Functions.SymbolToByte(txtAesIV.Text);
+
             try
             {
                 if (aes.EncryptOrDecrypt == true)
@@ -4032,6 +4040,20 @@ namespace CryptoAppTwo
                         aes.TextOutByte = AesClass.encrypt(aes.TextInByte, aes.KeyByte); // шифруем сообщение с 1 ключом
                         aes.TextOutByte = AesClass.decrypt(aes.TextOutByte, aes.KeyByteSecond); // дешифруем с 2 ключом
                         aes.TextOutByte = AesClass.encrypt(aes.TextOutByte, aes.KeyByte); // опять шифруем с 1 ключом
+                        #region //
+                        File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
+                        #endregion
+                    }
+                    else if (checkBoxAesPcbc.Checked == true) // при шифровании PCBC
+                    {
+                        
+                        #region //
+                        File.WriteAllBytes(Application.StartupPath + "\\temp.txt", aes.TextInByte);
+                        byte[] aes_TextInByte = new byte[aes.TextInByte.Length];
+                        Array.Copy(aes.TextInByte, 0, aes_TextInByte, 0, aes.TextInByte.Length);
+                        aes_TextInByte[0] = aes.IVByte[0];
+                        #endregion
+                        aes.TextOutByte = AesClass.encrypt(aes_TextInByte, aes.KeyByte); // шифруем сообщение
                     }
                     else
                         aes.TextOutByte = AesClass.encrypt(aes.TextInByte, aes.KeyByte);
@@ -4048,6 +4070,16 @@ namespace CryptoAppTwo
                         aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte); // дешифруем шифротекст с 1 ключом
                         aes.TextOutByte = AesClass.encrypt(aes.TextOutByte, aes.KeyByteSecond); // шифруем с 2 ключом
                         aes.TextOutByte = AesClass.decrypt(aes.TextOutByte, aes.KeyByte); // дешифруем с 1 ключом
+                        #region //
+                        aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                        #endregion
+                    }
+                    else if (checkBoxAesPcbc.Checked == true) // при дешифровании PCBC
+                    {
+                        aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte); // дешифруем сообщение
+                        #region //
+                        aes.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                        #endregion
                     }
                     else
                         aes.TextOutByte = AesClass.decrypt(aes.TextInByte, aes.KeyByte);
