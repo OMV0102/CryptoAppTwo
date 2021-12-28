@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.toolTip_hesh_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_simm_file = new System.Windows.Forms.ToolTip(this.components);
             this.tabAsimAlg = new System.Windows.Forms.TabPage();
@@ -107,7 +107,6 @@
             this.tabAes = new System.Windows.Forms.TabPage();
             this.btnGenerateIV = new System.Windows.Forms.Button();
             this.btnAesEncryptDecrypt = new System.Windows.Forms.Button();
-            this.label38 = new System.Windows.Forms.Label();
             this.btnAesSaveKey = new System.Windows.Forms.Button();
             this.btnAesKeyLoad = new System.Windows.Forms.Button();
             this.txtAesIV = new System.Windows.Forms.RichTextBox();
@@ -155,6 +154,7 @@
             this.label58 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.labelAesTextInByteNumber = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.tabFst = new System.Windows.Forms.TabPage();
             this.btnFstSecret = new System.Windows.Forms.Button();
             this.btnFstKeySymbol = new System.Windows.Forms.Button();
@@ -289,10 +289,60 @@
             this.label_eds_lineDown = new System.Windows.Forms.Label();
             this.label_eds_lineUp = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.tabRsa = new System.Windows.Forms.TabPage();
+            this.btnRsaEncryptDecrypt = new System.Windows.Forms.Button();
+            this.btnRsaSaveKey = new System.Windows.Forms.Button();
+            this.btnRsaKeyLoad = new System.Windows.Forms.Button();
+            this.labelRsaKeyByteNumber = new System.Windows.Forms.Label();
+            this.btnRsaKeySymbol = new System.Windows.Forms.Button();
+            this.btnRsaClear = new System.Windows.Forms.Button();
+            this.labelRsaKeyCaption = new System.Windows.Forms.Label();
+            this.flagRsaKeyIsEdited = new System.Windows.Forms.CheckBox();
+            this.btnRsaKeyGenerate = new System.Windows.Forms.Button();
+            this.btnRsaKeyBinary = new System.Windows.Forms.Button();
+            this.btnRsaKeyHex = new System.Windows.Forms.Button();
+            this.txtRsaKey = new System.Windows.Forms.RichTextBox();
+            this.btnRsaKeyCancelChanged = new System.Windows.Forms.Button();
+            this.btnRsaKeySaveChanged = new System.Windows.Forms.Button();
+            this.checkBoxRsaKeyEdit = new System.Windows.Forms.CheckBox();
+            this.btnRsaChoiceFileIn = new System.Windows.Forms.Button();
+            this.btnRsaTextOutCancelChanged = new System.Windows.Forms.Button();
+            this.btnRsaTextInCancelChanged = new System.Windows.Forms.Button();
+            this.btnRsaTextOutSaveChanged = new System.Windows.Forms.Button();
+            this.flagRsaTextOutIsEdited = new System.Windows.Forms.CheckBox();
+            this.flagRsaTextInIsEdited = new System.Windows.Forms.CheckBox();
+            this.btnRsaTextInSaveChanged = new System.Windows.Forms.Button();
+            this.label44 = new System.Windows.Forms.Label();
+            this.checkBoxRsaTextOutEdit = new System.Windows.Forms.CheckBox();
+            this.checkBoxRsaTextInEdit = new System.Windows.Forms.CheckBox();
+            this.btnRsaTextOutBinary = new System.Windows.Forms.Button();
+            this.btnRsaTextOutHex = new System.Windows.Forms.Button();
+            this.btnRsaTextOutSymbol = new System.Windows.Forms.Button();
+            this.btnRsaTextInBinary = new System.Windows.Forms.Button();
+            this.btnRsaTextInHex = new System.Windows.Forms.Button();
+            this.btnRsaTextInSymbol = new System.Windows.Forms.Button();
+            this.label49 = new System.Windows.Forms.Label();
+            this.btnRsaSaveData = new System.Windows.Forms.Button();
+            this.txtRsaTextOut = new System.Windows.Forms.RichTextBox();
+            this.txtRsaTextIn = new System.Windows.Forms.RichTextBox();
+            this.labelRsaCaptionOut = new System.Windows.Forms.Label();
+            this.radioBtnRsaDecrypt = new System.Windows.Forms.RadioButton();
+            this.radioBtnRsaEncrypt = new System.Windows.Forms.RadioButton();
+            this.labelRsaCaptionIn = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.labelRsaTextInByteNumber = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.toolTip_Asim_file = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipGamFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipFstFileIn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_LoadKeyIV = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRsaGenerateKeyAsim = new System.Windows.Forms.Button();
+            this.txtRsaKeyAsim = new System.Windows.Forms.RichTextBox();
+            this.btnRsaKeyAsimLoad = new System.Windows.Forms.Button();
+            this.label61 = new System.Windows.Forms.Label();
             this.tabAsimAlg.SuspendLayout();
             this.tabSim.SuspendLayout();
             this.tabHesh.SuspendLayout();
@@ -308,6 +358,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericGpnLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericGpnRight)).BeginInit();
             this.tabEds.SuspendLayout();
+            this.tabRsa.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip_hesh_file
@@ -1155,6 +1206,7 @@
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Controls.Add(this.tabRsa);
             this.tabControlMain.Controls.Add(this.tabAes);
             this.tabControlMain.Controls.Add(this.tabFst);
             this.tabControlMain.Controls.Add(this.tabGam);
@@ -1266,16 +1318,6 @@
             this.btnAesEncryptDecrypt.Text = "Дешифровать";
             this.btnAesEncryptDecrypt.UseVisualStyleBackColor = false;
             this.btnAesEncryptDecrypt.Click += new System.EventHandler(this.btnAesEncryptDecrypt_Click);
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(13, 354);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(123, 24);
-            this.label38.TabIndex = 131;
-            this.label38.Text = "Кол-во байт:";
-            this.label38.Visible = false;
             // 
             // btnAesSaveKey
             // 
@@ -1904,6 +1946,16 @@
             this.labelAesTextInByteNumber.Text = "0";
             this.labelAesTextInByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(13, 354);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(123, 24);
+            this.label38.TabIndex = 131;
+            this.label38.Text = "Кол-во байт:";
+            this.label38.Visible = false;
+            // 
             // tabFst
             // 
             this.tabFst.BackColor = System.Drawing.Color.LightGray;
@@ -2001,24 +2053,24 @@
             // 
             // ChartFstKey
             // 
-            chartArea5.Name = "ChartArea1";
-            this.ChartFstKey.ChartAreas.Add(chartArea5);
+            chartArea7.Name = "ChartArea1";
+            this.ChartFstKey.ChartAreas.Add(chartArea7);
             this.ChartFstKey.Location = new System.Drawing.Point(866, 231);
             this.ChartFstKey.Name = "ChartFstKey";
-            series5.BorderWidth = 3;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.LabelBorderWidth = 4;
-            series5.Name = "Series1";
-            this.ChartFstKey.Series.Add(series5);
+            series7.BorderWidth = 3;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.LabelBorderWidth = 4;
+            series7.Name = "Series1";
+            this.ChartFstKey.Series.Add(series7);
             this.ChartFstKey.Size = new System.Drawing.Size(583, 195);
             this.ChartFstKey.TabIndex = 129;
             this.ChartFstKey.TabStop = false;
             this.ChartFstKey.Text = "chart2";
-            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title5.Name = "Title1";
-            title5.Text = "Кол-во изменных бит КЛЮЧА за раунд";
-            this.ChartFstKey.Titles.Add(title5);
+            title7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title7.Name = "Title1";
+            title7.Text = "Кол-во изменных бит КЛЮЧА за раунд";
+            this.ChartFstKey.Titles.Add(title7);
             // 
             // btnFstClear
             // 
@@ -2061,24 +2113,24 @@
             // 
             // ChartFstText
             // 
-            chartArea6.Name = "ChartArea1";
-            this.ChartFstText.ChartAreas.Add(chartArea6);
+            chartArea8.Name = "ChartArea1";
+            this.ChartFstText.ChartAreas.Add(chartArea8);
             this.ChartFstText.Location = new System.Drawing.Point(866, 35);
             this.ChartFstText.Name = "ChartFstText";
-            series6.BorderWidth = 3;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.LabelBorderWidth = 2;
-            series6.Name = "Series1";
-            this.ChartFstText.Series.Add(series6);
+            series8.BorderWidth = 3;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.LabelBorderWidth = 2;
+            series8.Name = "Series1";
+            this.ChartFstText.Series.Add(series8);
             this.ChartFstText.Size = new System.Drawing.Size(583, 195);
             this.ChartFstText.TabIndex = 126;
             this.ChartFstText.TabStop = false;
             this.ChartFstText.Text = "chart2";
-            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title6.Name = "Title1";
-            title6.Text = "Кол-во изменных бит ТЕКСТА за раунд";
-            this.ChartFstText.Titles.Add(title6);
+            title8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title8.Name = "Title1";
+            title8.Text = "Кол-во изменных бит ТЕКСТА за раунд";
+            this.ChartFstText.Titles.Add(title8);
             // 
             // comboBoxFstFunc
             // 
@@ -3763,12 +3815,728 @@
             this.label11.TabIndex = 91;
             this.label11.Text = "Файл с данными:";
             // 
+            // tabRsa
+            // 
+            this.tabRsa.BackColor = System.Drawing.Color.LightGray;
+            this.tabRsa.Controls.Add(this.label61);
+            this.tabRsa.Controls.Add(this.btnRsaKeyAsimLoad);
+            this.tabRsa.Controls.Add(this.txtRsaKeyAsim);
+            this.tabRsa.Controls.Add(this.btnRsaGenerateKeyAsim);
+            this.tabRsa.Controls.Add(this.btnRsaEncryptDecrypt);
+            this.tabRsa.Controls.Add(this.btnRsaSaveKey);
+            this.tabRsa.Controls.Add(this.btnRsaKeyLoad);
+            this.tabRsa.Controls.Add(this.labelRsaKeyByteNumber);
+            this.tabRsa.Controls.Add(this.btnRsaKeySymbol);
+            this.tabRsa.Controls.Add(this.btnRsaClear);
+            this.tabRsa.Controls.Add(this.labelRsaKeyCaption);
+            this.tabRsa.Controls.Add(this.flagRsaKeyIsEdited);
+            this.tabRsa.Controls.Add(this.btnRsaKeyGenerate);
+            this.tabRsa.Controls.Add(this.btnRsaKeyBinary);
+            this.tabRsa.Controls.Add(this.btnRsaKeyHex);
+            this.tabRsa.Controls.Add(this.txtRsaKey);
+            this.tabRsa.Controls.Add(this.btnRsaKeyCancelChanged);
+            this.tabRsa.Controls.Add(this.btnRsaKeySaveChanged);
+            this.tabRsa.Controls.Add(this.checkBoxRsaKeyEdit);
+            this.tabRsa.Controls.Add(this.btnRsaChoiceFileIn);
+            this.tabRsa.Controls.Add(this.btnRsaTextOutCancelChanged);
+            this.tabRsa.Controls.Add(this.btnRsaTextInCancelChanged);
+            this.tabRsa.Controls.Add(this.btnRsaTextOutSaveChanged);
+            this.tabRsa.Controls.Add(this.flagRsaTextOutIsEdited);
+            this.tabRsa.Controls.Add(this.flagRsaTextInIsEdited);
+            this.tabRsa.Controls.Add(this.btnRsaTextInSaveChanged);
+            this.tabRsa.Controls.Add(this.label44);
+            this.tabRsa.Controls.Add(this.checkBoxRsaTextOutEdit);
+            this.tabRsa.Controls.Add(this.checkBoxRsaTextInEdit);
+            this.tabRsa.Controls.Add(this.btnRsaTextOutBinary);
+            this.tabRsa.Controls.Add(this.btnRsaTextOutHex);
+            this.tabRsa.Controls.Add(this.btnRsaTextOutSymbol);
+            this.tabRsa.Controls.Add(this.btnRsaTextInBinary);
+            this.tabRsa.Controls.Add(this.btnRsaTextInHex);
+            this.tabRsa.Controls.Add(this.btnRsaTextInSymbol);
+            this.tabRsa.Controls.Add(this.label49);
+            this.tabRsa.Controls.Add(this.btnRsaSaveData);
+            this.tabRsa.Controls.Add(this.txtRsaTextOut);
+            this.tabRsa.Controls.Add(this.txtRsaTextIn);
+            this.tabRsa.Controls.Add(this.labelRsaCaptionOut);
+            this.tabRsa.Controls.Add(this.radioBtnRsaDecrypt);
+            this.tabRsa.Controls.Add(this.radioBtnRsaEncrypt);
+            this.tabRsa.Controls.Add(this.labelRsaCaptionIn);
+            this.tabRsa.Controls.Add(this.label50);
+            this.tabRsa.Controls.Add(this.label51);
+            this.tabRsa.Controls.Add(this.label54);
+            this.tabRsa.Controls.Add(this.label55);
+            this.tabRsa.Controls.Add(this.labelRsaTextInByteNumber);
+            this.tabRsa.Controls.Add(this.label60);
+            this.tabRsa.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabRsa.Location = new System.Drawing.Point(4, 33);
+            this.tabRsa.Margin = new System.Windows.Forms.Padding(4);
+            this.tabRsa.Name = "tabRsa";
+            this.tabRsa.Padding = new System.Windows.Forms.Padding(4);
+            this.tabRsa.Size = new System.Drawing.Size(833, 429);
+            this.tabRsa.TabIndex = 10;
+            this.tabRsa.Text = "RSA";
+            // 
+            // btnRsaEncryptDecrypt
+            // 
+            this.btnRsaEncryptDecrypt.BackColor = System.Drawing.Color.Azure;
+            this.btnRsaEncryptDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaEncryptDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaEncryptDecrypt.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRsaEncryptDecrypt.Location = new System.Drawing.Point(102, 389);
+            this.btnRsaEncryptDecrypt.Name = "btnRsaEncryptDecrypt";
+            this.btnRsaEncryptDecrypt.Size = new System.Drawing.Size(163, 35);
+            this.btnRsaEncryptDecrypt.TabIndex = 122;
+            this.btnRsaEncryptDecrypt.TabStop = false;
+            this.btnRsaEncryptDecrypt.Tag = "";
+            this.btnRsaEncryptDecrypt.Text = "Дешифровать";
+            this.btnRsaEncryptDecrypt.UseVisualStyleBackColor = false;
+            this.btnRsaEncryptDecrypt.Click += new System.EventHandler(this.btnRsaEncryptDecrypt_Click);
+            // 
+            // btnRsaSaveKey
+            // 
+            this.btnRsaSaveKey.BackColor = System.Drawing.Color.LightGray;
+            this.btnRsaSaveKey.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaSaveKey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaSaveKey.Location = new System.Drawing.Point(259, 354);
+            this.btnRsaSaveKey.Name = "btnRsaSaveKey";
+            this.btnRsaSaveKey.Size = new System.Drawing.Size(143, 34);
+            this.btnRsaSaveKey.TabIndex = 68;
+            this.btnRsaSaveKey.TabStop = false;
+            this.btnRsaSaveKey.Tag = "";
+            this.btnRsaSaveKey.Text = "Сохранить ключ";
+            this.btnRsaSaveKey.UseVisualStyleBackColor = false;
+            this.btnRsaSaveKey.Click += new System.EventHandler(this.btnRsaSaveKey_Click);
+            // 
+            // btnRsaKeyLoad
+            // 
+            this.btnRsaKeyLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeyLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnRsaKeyLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnRsaKeyLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeyLoad.Location = new System.Drawing.Point(150, 353);
+            this.btnRsaKeyLoad.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRsaKeyLoad.Name = "btnRsaKeyLoad";
+            this.btnRsaKeyLoad.Size = new System.Drawing.Size(97, 35);
+            this.btnRsaKeyLoad.TabIndex = 113;
+            this.btnRsaKeyLoad.TabStop = false;
+            this.btnRsaKeyLoad.Text = "из файла";
+            this.btnRsaKeyLoad.UseVisualStyleBackColor = true;
+            this.btnRsaKeyLoad.Click += new System.EventHandler(this.btnRsaKeyLoad_Click);
+            // 
+            // labelRsaKeyByteNumber
+            // 
+            this.labelRsaKeyByteNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelRsaKeyByteNumber.Location = new System.Drawing.Point(137, 350);
+            this.labelRsaKeyByteNumber.Name = "labelRsaKeyByteNumber";
+            this.labelRsaKeyByteNumber.Size = new System.Drawing.Size(128, 30);
+            this.labelRsaKeyByteNumber.TabIndex = 132;
+            this.labelRsaKeyByteNumber.Text = "0";
+            this.labelRsaKeyByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelRsaKeyByteNumber.Visible = false;
+            // 
+            // btnRsaKeySymbol
+            // 
+            this.btnRsaKeySymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeySymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeySymbol.Location = new System.Drawing.Point(145, 218);
+            this.btnRsaKeySymbol.Name = "btnRsaKeySymbol";
+            this.btnRsaKeySymbol.Size = new System.Drawing.Size(58, 30);
+            this.btnRsaKeySymbol.TabIndex = 130;
+            this.btnRsaKeySymbol.TabStop = false;
+            this.btnRsaKeySymbol.Tag = "";
+            this.btnRsaKeySymbol.Text = "Symb";
+            this.btnRsaKeySymbol.UseVisualStyleBackColor = true;
+            this.btnRsaKeySymbol.Click += new System.EventHandler(this.btnRsaKeySymbol_Click);
+            // 
+            // btnRsaClear
+            // 
+            this.btnRsaClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaClear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaClear.Location = new System.Drawing.Point(682, 232);
+            this.btnRsaClear.Name = "btnRsaClear";
+            this.btnRsaClear.Size = new System.Drawing.Size(123, 35);
+            this.btnRsaClear.TabIndex = 58;
+            this.btnRsaClear.TabStop = false;
+            this.btnRsaClear.Tag = "";
+            this.btnRsaClear.Text = "Очистить всё";
+            this.btnRsaClear.UseVisualStyleBackColor = true;
+            this.btnRsaClear.Click += new System.EventHandler(this.btnRsaClear_Click);
+            // 
+            // labelRsaKeyCaption
+            // 
+            this.labelRsaKeyCaption.AutoSize = true;
+            this.labelRsaKeyCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRsaKeyCaption.Location = new System.Drawing.Point(7, 223);
+            this.labelRsaKeyCaption.Name = "labelRsaKeyCaption";
+            this.labelRsaKeyCaption.Size = new System.Drawing.Size(69, 25);
+            this.labelRsaKeyCaption.TabIndex = 121;
+            this.labelRsaKeyCaption.Text = "Ключ";
+            // 
+            // flagRsaKeyIsEdited
+            // 
+            this.flagRsaKeyIsEdited.AutoSize = true;
+            this.flagRsaKeyIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagRsaKeyIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagRsaKeyIsEdited.Location = new System.Drawing.Point(685, 40);
+            this.flagRsaKeyIsEdited.Name = "flagRsaKeyIsEdited";
+            this.flagRsaKeyIsEdited.Size = new System.Drawing.Size(168, 24);
+            this.flagRsaKeyIsEdited.TabIndex = 120;
+            this.flagRsaKeyIsEdited.Text = "flagRsaKeyIsEdited";
+            this.flagRsaKeyIsEdited.UseVisualStyleBackColor = true;
+            this.flagRsaKeyIsEdited.Visible = false;
+            this.flagRsaKeyIsEdited.CheckedChanged += new System.EventHandler(this.flagRsaKeyIsEdited_CheckedChanged);
+            // 
+            // btnRsaKeyGenerate
+            // 
+            this.btnRsaKeyGenerate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRsaKeyGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeyGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeyGenerate.Location = new System.Drawing.Point(7, 353);
+            this.btnRsaKeyGenerate.Name = "btnRsaKeyGenerate";
+            this.btnRsaKeyGenerate.Size = new System.Drawing.Size(134, 35);
+            this.btnRsaKeyGenerate.TabIndex = 112;
+            this.btnRsaKeyGenerate.TabStop = false;
+            this.btnRsaKeyGenerate.Text = "Сгенерировать";
+            this.btnRsaKeyGenerate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRsaKeyGenerate.UseVisualStyleBackColor = true;
+            this.btnRsaKeyGenerate.Click += new System.EventHandler(this.btnRsaKeyGenerate_Click);
+            // 
+            // btnRsaKeyBinary
+            // 
+            this.btnRsaKeyBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeyBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeyBinary.Location = new System.Drawing.Point(82, 218);
+            this.btnRsaKeyBinary.Name = "btnRsaKeyBinary";
+            this.btnRsaKeyBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnRsaKeyBinary.TabIndex = 119;
+            this.btnRsaKeyBinary.TabStop = false;
+            this.btnRsaKeyBinary.Tag = "";
+            this.btnRsaKeyBinary.Text = "Bin";
+            this.btnRsaKeyBinary.UseVisualStyleBackColor = true;
+            this.btnRsaKeyBinary.Click += new System.EventHandler(this.btnRsaKeyBinary_Click);
+            // 
+            // btnRsaKeyHex
+            // 
+            this.btnRsaKeyHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeyHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeyHex.Location = new System.Drawing.Point(209, 218);
+            this.btnRsaKeyHex.Name = "btnRsaKeyHex";
+            this.btnRsaKeyHex.Size = new System.Drawing.Size(50, 30);
+            this.btnRsaKeyHex.TabIndex = 118;
+            this.btnRsaKeyHex.TabStop = false;
+            this.btnRsaKeyHex.Tag = "";
+            this.btnRsaKeyHex.Text = "Hex";
+            this.btnRsaKeyHex.UseVisualStyleBackColor = true;
+            this.btnRsaKeyHex.Click += new System.EventHandler(this.btnRsaKeyHex_Click);
+            // 
+            // txtRsaKey
+            // 
+            this.txtRsaKey.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRsaKey.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRsaKey.DetectUrls = false;
+            this.txtRsaKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtRsaKey.Location = new System.Drawing.Point(7, 254);
+            this.txtRsaKey.Name = "txtRsaKey";
+            this.txtRsaKey.ReadOnly = true;
+            this.txtRsaKey.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtRsaKey.Size = new System.Drawing.Size(395, 92);
+            this.txtRsaKey.TabIndex = 117;
+            this.txtRsaKey.TabStop = false;
+            this.txtRsaKey.Text = "";
+            this.txtRsaKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRsaKey_KeyPress);
+            // 
+            // btnRsaKeyCancelChanged
+            // 
+            this.btnRsaKeyCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRsaKeyCancelChanged.BackgroundImage")));
+            this.btnRsaKeyCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRsaKeyCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeyCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnRsaKeyCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaKeyCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeyCancelChanged.Location = new System.Drawing.Point(265, 218);
+            this.btnRsaKeyCancelChanged.Name = "btnRsaKeyCancelChanged";
+            this.btnRsaKeyCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnRsaKeyCancelChanged.TabIndex = 116;
+            this.btnRsaKeyCancelChanged.TabStop = false;
+            this.btnRsaKeyCancelChanged.Tag = "";
+            this.btnRsaKeyCancelChanged.UseVisualStyleBackColor = true;
+            this.btnRsaKeyCancelChanged.Click += new System.EventHandler(this.btnRsaKeyCancelChanged_Click);
+            // 
+            // btnRsaKeySaveChanged
+            // 
+            this.btnRsaKeySaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnRsaKeySaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRsaKeySaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeySaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnRsaKeySaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaKeySaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeySaveChanged.Location = new System.Drawing.Point(305, 221);
+            this.btnRsaKeySaveChanged.Name = "btnRsaKeySaveChanged";
+            this.btnRsaKeySaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnRsaKeySaveChanged.TabIndex = 115;
+            this.btnRsaKeySaveChanged.TabStop = false;
+            this.btnRsaKeySaveChanged.Tag = "";
+            this.btnRsaKeySaveChanged.UseVisualStyleBackColor = true;
+            this.btnRsaKeySaveChanged.Click += new System.EventHandler(this.btnRsaKeySaveChanged_Click);
+            // 
+            // checkBoxRsaKeyEdit
+            // 
+            this.checkBoxRsaKeyEdit.AutoSize = true;
+            this.checkBoxRsaKeyEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxRsaKeyEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxRsaKeyEdit.Location = new System.Drawing.Point(346, 226);
+            this.checkBoxRsaKeyEdit.Name = "checkBoxRsaKeyEdit";
+            this.checkBoxRsaKeyEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxRsaKeyEdit.TabIndex = 114;
+            this.checkBoxRsaKeyEdit.Text = "Edit";
+            this.checkBoxRsaKeyEdit.UseVisualStyleBackColor = true;
+            this.checkBoxRsaKeyEdit.CheckedChanged += new System.EventHandler(this.checkBoxRsaKeyEdit_CheckedChanged);
+            // 
+            // btnRsaChoiceFileIn
+            // 
+            this.btnRsaChoiceFileIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaChoiceFileIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaChoiceFileIn.Location = new System.Drawing.Point(311, 130);
+            this.btnRsaChoiceFileIn.Name = "btnRsaChoiceFileIn";
+            this.btnRsaChoiceFileIn.Size = new System.Drawing.Size(91, 30);
+            this.btnRsaChoiceFileIn.TabIndex = 56;
+            this.btnRsaChoiceFileIn.TabStop = false;
+            this.btnRsaChoiceFileIn.Tag = "";
+            this.btnRsaChoiceFileIn.Text = "из файла";
+            this.btnRsaChoiceFileIn.UseVisualStyleBackColor = true;
+            this.btnRsaChoiceFileIn.Click += new System.EventHandler(this.btnRsaChoiceFileIn_Click);
+            // 
+            // btnRsaTextOutCancelChanged
+            // 
+            this.btnRsaTextOutCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRsaTextOutCancelChanged.BackgroundImage")));
+            this.btnRsaTextOutCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRsaTextOutCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextOutCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnRsaTextOutCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaTextOutCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextOutCancelChanged.Location = new System.Drawing.Point(690, 76);
+            this.btnRsaTextOutCancelChanged.Name = "btnRsaTextOutCancelChanged";
+            this.btnRsaTextOutCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnRsaTextOutCancelChanged.TabIndex = 102;
+            this.btnRsaTextOutCancelChanged.TabStop = false;
+            this.btnRsaTextOutCancelChanged.Tag = "";
+            this.btnRsaTextOutCancelChanged.UseVisualStyleBackColor = true;
+            this.btnRsaTextOutCancelChanged.Click += new System.EventHandler(this.btnRsaTextOutCancelChanged_Click);
+            // 
+            // btnRsaTextInCancelChanged
+            // 
+            this.btnRsaTextInCancelChanged.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRsaTextInCancelChanged.BackgroundImage")));
+            this.btnRsaTextInCancelChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRsaTextInCancelChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextInCancelChanged.FlatAppearance.BorderSize = 0;
+            this.btnRsaTextInCancelChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaTextInCancelChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextInCancelChanged.Location = new System.Drawing.Point(265, 6);
+            this.btnRsaTextInCancelChanged.Name = "btnRsaTextInCancelChanged";
+            this.btnRsaTextInCancelChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnRsaTextInCancelChanged.TabIndex = 101;
+            this.btnRsaTextInCancelChanged.TabStop = false;
+            this.btnRsaTextInCancelChanged.Tag = "";
+            this.btnRsaTextInCancelChanged.UseVisualStyleBackColor = true;
+            this.btnRsaTextInCancelChanged.Click += new System.EventHandler(this.btnRsaTextInCancelChanged_Click);
+            // 
+            // btnRsaTextOutSaveChanged
+            // 
+            this.btnRsaTextOutSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnRsaTextOutSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRsaTextOutSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextOutSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnRsaTextOutSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaTextOutSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextOutSaveChanged.Location = new System.Drawing.Point(731, 76);
+            this.btnRsaTextOutSaveChanged.Name = "btnRsaTextOutSaveChanged";
+            this.btnRsaTextOutSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnRsaTextOutSaveChanged.TabIndex = 100;
+            this.btnRsaTextOutSaveChanged.TabStop = false;
+            this.btnRsaTextOutSaveChanged.Tag = "";
+            this.btnRsaTextOutSaveChanged.UseVisualStyleBackColor = true;
+            this.btnRsaTextOutSaveChanged.Click += new System.EventHandler(this.btnRsaTextOutSaveChanged_Click);
+            // 
+            // flagRsaTextOutIsEdited
+            // 
+            this.flagRsaTextOutIsEdited.AutoSize = true;
+            this.flagRsaTextOutIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagRsaTextOutIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagRsaTextOutIsEdited.Location = new System.Drawing.Point(685, 24);
+            this.flagRsaTextOutIsEdited.Name = "flagRsaTextOutIsEdited";
+            this.flagRsaTextOutIsEdited.Size = new System.Drawing.Size(198, 24);
+            this.flagRsaTextOutIsEdited.TabIndex = 99;
+            this.flagRsaTextOutIsEdited.Text = "flagRsaTextOutIsEdited";
+            this.flagRsaTextOutIsEdited.UseVisualStyleBackColor = true;
+            this.flagRsaTextOutIsEdited.Visible = false;
+            this.flagRsaTextOutIsEdited.CheckedChanged += new System.EventHandler(this.flagRsaTextOutIsEdited_CheckedChanged);
+            // 
+            // flagRsaTextInIsEdited
+            // 
+            this.flagRsaTextInIsEdited.AutoSize = true;
+            this.flagRsaTextInIsEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flagRsaTextInIsEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flagRsaTextInIsEdited.Location = new System.Drawing.Point(685, 5);
+            this.flagRsaTextInIsEdited.Name = "flagRsaTextInIsEdited";
+            this.flagRsaTextInIsEdited.Size = new System.Drawing.Size(186, 24);
+            this.flagRsaTextInIsEdited.TabIndex = 98;
+            this.flagRsaTextInIsEdited.Text = "flagRsaTextInIsEdited";
+            this.flagRsaTextInIsEdited.UseVisualStyleBackColor = true;
+            this.flagRsaTextInIsEdited.Visible = false;
+            this.flagRsaTextInIsEdited.CheckedChanged += new System.EventHandler(this.flagRsaTextInIsEdited_CheckedChanged);
+            // 
+            // btnRsaTextInSaveChanged
+            // 
+            this.btnRsaTextInSaveChanged.BackgroundImage = global::CryptoAppTwo.Properties.Resources.discet;
+            this.btnRsaTextInSaveChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRsaTextInSaveChanged.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextInSaveChanged.FlatAppearance.BorderSize = 0;
+            this.btnRsaTextInSaveChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsaTextInSaveChanged.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextInSaveChanged.Location = new System.Drawing.Point(305, 7);
+            this.btnRsaTextInSaveChanged.Name = "btnRsaTextInSaveChanged";
+            this.btnRsaTextInSaveChanged.Size = new System.Drawing.Size(35, 30);
+            this.btnRsaTextInSaveChanged.TabIndex = 97;
+            this.btnRsaTextInSaveChanged.TabStop = false;
+            this.btnRsaTextInSaveChanged.Tag = "";
+            this.btnRsaTextInSaveChanged.UseVisualStyleBackColor = true;
+            this.btnRsaTextInSaveChanged.Click += new System.EventHandler(this.btnRsaTextInSaveChanged_Click);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(430, 196);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(176, 24);
+            this.label44.TabIndex = 96;
+            this.label44.Text = "Вид отображения:";
+            // 
+            // checkBoxRsaTextOutEdit
+            // 
+            this.checkBoxRsaTextOutEdit.AutoSize = true;
+            this.checkBoxRsaTextOutEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxRsaTextOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxRsaTextOutEdit.Location = new System.Drawing.Point(769, 82);
+            this.checkBoxRsaTextOutEdit.Name = "checkBoxRsaTextOutEdit";
+            this.checkBoxRsaTextOutEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxRsaTextOutEdit.TabIndex = 95;
+            this.checkBoxRsaTextOutEdit.Text = "Edit";
+            this.checkBoxRsaTextOutEdit.UseVisualStyleBackColor = true;
+            this.checkBoxRsaTextOutEdit.CheckedChanged += new System.EventHandler(this.checkBoxRsaTextOutEdit_CheckedChanged);
+            // 
+            // checkBoxRsaTextInEdit
+            // 
+            this.checkBoxRsaTextInEdit.AutoSize = true;
+            this.checkBoxRsaTextInEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxRsaTextInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxRsaTextInEdit.Location = new System.Drawing.Point(346, 12);
+            this.checkBoxRsaTextInEdit.Name = "checkBoxRsaTextInEdit";
+            this.checkBoxRsaTextInEdit.Size = new System.Drawing.Size(56, 24);
+            this.checkBoxRsaTextInEdit.TabIndex = 94;
+            this.checkBoxRsaTextInEdit.Text = "Edit";
+            this.checkBoxRsaTextInEdit.UseVisualStyleBackColor = true;
+            this.checkBoxRsaTextInEdit.CheckedChanged += new System.EventHandler(this.checkBoxRsaTextInEdit_CheckedChanged);
+            // 
+            // btnRsaTextOutBinary
+            // 
+            this.btnRsaTextOutBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextOutBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextOutBinary.Location = new System.Drawing.Point(612, 196);
+            this.btnRsaTextOutBinary.Name = "btnRsaTextOutBinary";
+            this.btnRsaTextOutBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnRsaTextOutBinary.TabIndex = 93;
+            this.btnRsaTextOutBinary.TabStop = false;
+            this.btnRsaTextOutBinary.Tag = "";
+            this.btnRsaTextOutBinary.Text = "Bin";
+            this.btnRsaTextOutBinary.UseVisualStyleBackColor = true;
+            this.btnRsaTextOutBinary.Click += new System.EventHandler(this.btnRsaTextOutBinary_Click);
+            // 
+            // btnRsaTextOutHex
+            // 
+            this.btnRsaTextOutHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextOutHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextOutHex.Location = new System.Drawing.Point(755, 196);
+            this.btnRsaTextOutHex.Name = "btnRsaTextOutHex";
+            this.btnRsaTextOutHex.Size = new System.Drawing.Size(50, 30);
+            this.btnRsaTextOutHex.TabIndex = 92;
+            this.btnRsaTextOutHex.TabStop = false;
+            this.btnRsaTextOutHex.Tag = "";
+            this.btnRsaTextOutHex.Text = "Hex";
+            this.btnRsaTextOutHex.UseVisualStyleBackColor = true;
+            this.btnRsaTextOutHex.Click += new System.EventHandler(this.btnRsaTextOutHex_Click);
+            // 
+            // btnRsaTextOutSymbol
+            // 
+            this.btnRsaTextOutSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextOutSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextOutSymbol.Location = new System.Drawing.Point(673, 196);
+            this.btnRsaTextOutSymbol.Name = "btnRsaTextOutSymbol";
+            this.btnRsaTextOutSymbol.Size = new System.Drawing.Size(62, 30);
+            this.btnRsaTextOutSymbol.TabIndex = 91;
+            this.btnRsaTextOutSymbol.TabStop = false;
+            this.btnRsaTextOutSymbol.Tag = "";
+            this.btnRsaTextOutSymbol.Text = "Symb";
+            this.btnRsaTextOutSymbol.UseVisualStyleBackColor = true;
+            this.btnRsaTextOutSymbol.Click += new System.EventHandler(this.btnRsaTextOutSymbol_Click);
+            // 
+            // btnRsaTextInBinary
+            // 
+            this.btnRsaTextInBinary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextInBinary.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextInBinary.Location = new System.Drawing.Point(189, 160);
+            this.btnRsaTextInBinary.Name = "btnRsaTextInBinary";
+            this.btnRsaTextInBinary.Size = new System.Drawing.Size(50, 30);
+            this.btnRsaTextInBinary.TabIndex = 90;
+            this.btnRsaTextInBinary.TabStop = false;
+            this.btnRsaTextInBinary.Tag = "";
+            this.btnRsaTextInBinary.Text = "Bin";
+            this.btnRsaTextInBinary.UseVisualStyleBackColor = true;
+            this.btnRsaTextInBinary.Click += new System.EventHandler(this.btnRsaTextInBinary_Click);
+            // 
+            // btnRsaTextInHex
+            // 
+            this.btnRsaTextInHex.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextInHex.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextInHex.Location = new System.Drawing.Point(320, 160);
+            this.btnRsaTextInHex.Name = "btnRsaTextInHex";
+            this.btnRsaTextInHex.Size = new System.Drawing.Size(50, 30);
+            this.btnRsaTextInHex.TabIndex = 89;
+            this.btnRsaTextInHex.TabStop = false;
+            this.btnRsaTextInHex.Tag = "";
+            this.btnRsaTextInHex.Text = "Hex";
+            this.btnRsaTextInHex.UseVisualStyleBackColor = true;
+            this.btnRsaTextInHex.Click += new System.EventHandler(this.btnRsaTextInHex_Click);
+            // 
+            // btnRsaTextInSymbol
+            // 
+            this.btnRsaTextInSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaTextInSymbol.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaTextInSymbol.Location = new System.Drawing.Point(251, 160);
+            this.btnRsaTextInSymbol.Name = "btnRsaTextInSymbol";
+            this.btnRsaTextInSymbol.Size = new System.Drawing.Size(58, 30);
+            this.btnRsaTextInSymbol.TabIndex = 88;
+            this.btnRsaTextInSymbol.TabStop = false;
+            this.btnRsaTextInSymbol.Tag = "";
+            this.btnRsaTextInSymbol.Text = "Symb";
+            this.btnRsaTextInSymbol.UseVisualStyleBackColor = true;
+            this.btnRsaTextInSymbol.Click += new System.EventHandler(this.btnRsaTextInSymbol_Click);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(7, 160);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(176, 24);
+            this.label49.TabIndex = 87;
+            this.label49.Text = "Вид отображения:";
+            // 
+            // btnRsaSaveData
+            // 
+            this.btnRsaSaveData.BackColor = System.Drawing.Color.LightGray;
+            this.btnRsaSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaSaveData.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaSaveData.Location = new System.Drawing.Point(434, 232);
+            this.btnRsaSaveData.Name = "btnRsaSaveData";
+            this.btnRsaSaveData.Size = new System.Drawing.Size(192, 33);
+            this.btnRsaSaveData.TabIndex = 84;
+            this.btnRsaSaveData.TabStop = false;
+            this.btnRsaSaveData.Tag = "";
+            this.btnRsaSaveData.Text = "Сохранить шифротекст\r\n";
+            this.btnRsaSaveData.UseVisualStyleBackColor = false;
+            this.btnRsaSaveData.Click += new System.EventHandler(this.btnRsaSaveData_Click);
+            // 
+            // txtRsaTextOut
+            // 
+            this.txtRsaTextOut.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRsaTextOut.DetectUrls = false;
+            this.txtRsaTextOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtRsaTextOut.Location = new System.Drawing.Point(430, 109);
+            this.txtRsaTextOut.Name = "txtRsaTextOut";
+            this.txtRsaTextOut.ReadOnly = true;
+            this.txtRsaTextOut.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtRsaTextOut.Size = new System.Drawing.Size(395, 84);
+            this.txtRsaTextOut.TabIndex = 82;
+            this.txtRsaTextOut.TabStop = false;
+            this.txtRsaTextOut.Text = "";
+            this.txtRsaTextOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRsaTextOut_KeyPress);
+            // 
+            // txtRsaTextIn
+            // 
+            this.txtRsaTextIn.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRsaTextIn.DetectUrls = false;
+            this.txtRsaTextIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtRsaTextIn.Location = new System.Drawing.Point(7, 38);
+            this.txtRsaTextIn.Name = "txtRsaTextIn";
+            this.txtRsaTextIn.ReadOnly = true;
+            this.txtRsaTextIn.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtRsaTextIn.Size = new System.Drawing.Size(395, 92);
+            this.txtRsaTextIn.TabIndex = 79;
+            this.txtRsaTextIn.TabStop = false;
+            this.txtRsaTextIn.Text = "";
+            this.txtRsaTextIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRsaTextIn_KeyPress);
+            // 
+            // labelRsaCaptionOut
+            // 
+            this.labelRsaCaptionOut.AutoSize = true;
+            this.labelRsaCaptionOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRsaCaptionOut.Location = new System.Drawing.Point(425, 79);
+            this.labelRsaCaptionOut.Name = "labelRsaCaptionOut";
+            this.labelRsaCaptionOut.Size = new System.Drawing.Size(147, 25);
+            this.labelRsaCaptionOut.TabIndex = 75;
+            this.labelRsaCaptionOut.Text = "Шифротекст";
+            // 
+            // radioBtnRsaDecrypt
+            // 
+            this.radioBtnRsaDecrypt.AutoSize = true;
+            this.radioBtnRsaDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioBtnRsaDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnRsaDecrypt.Location = new System.Drawing.Point(498, 35);
+            this.radioBtnRsaDecrypt.Name = "radioBtnRsaDecrypt";
+            this.radioBtnRsaDecrypt.Size = new System.Drawing.Size(199, 29);
+            this.radioBtnRsaDecrypt.TabIndex = 71;
+            this.radioBtnRsaDecrypt.Text = "Дешифрование";
+            this.radioBtnRsaDecrypt.UseVisualStyleBackColor = true;
+            this.radioBtnRsaDecrypt.CheckedChanged += new System.EventHandler(this.radioBtnRsaDecrypt_CheckedChanged);
+            // 
+            // radioBtnRsaEncrypt
+            // 
+            this.radioBtnRsaEncrypt.AutoSize = true;
+            this.radioBtnRsaEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioBtnRsaEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnRsaEncrypt.Location = new System.Drawing.Point(498, 7);
+            this.radioBtnRsaEncrypt.Name = "radioBtnRsaEncrypt";
+            this.radioBtnRsaEncrypt.Size = new System.Drawing.Size(170, 29);
+            this.radioBtnRsaEncrypt.TabIndex = 70;
+            this.radioBtnRsaEncrypt.Text = "Шифрование";
+            this.radioBtnRsaEncrypt.UseVisualStyleBackColor = true;
+            this.radioBtnRsaEncrypt.CheckedChanged += new System.EventHandler(this.radioBtnRsaEncrypt_CheckedChanged);
+            // 
+            // labelRsaCaptionIn
+            // 
+            this.labelRsaCaptionIn.AutoSize = true;
+            this.labelRsaCaptionIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRsaCaptionIn.Location = new System.Drawing.Point(8, 4);
+            this.labelRsaCaptionIn.Name = "labelRsaCaptionIn";
+            this.labelRsaCaptionIn.Size = new System.Drawing.Size(137, 25);
+            this.labelRsaCaptionIn.TabIndex = 61;
+            this.labelRsaCaptionIn.Text = "Сообщение";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(7, 133);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(123, 24);
+            this.label50.TabIndex = 57;
+            this.label50.Text = "Кол-во байт:";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(425, 10);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(76, 24);
+            this.label51.TabIndex = 74;
+            this.label51.Text = "Режим:";
+            // 
+            // label54
+            // 
+            this.label54.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label54.Enabled = false;
+            this.label54.Location = new System.Drawing.Point(3, 205);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(415, 2);
+            this.label54.TabIndex = 73;
+            // 
+            // label55
+            // 
+            this.label55.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label55.Enabled = false;
+            this.label55.Location = new System.Drawing.Point(417, 2);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(2, 424);
+            this.label55.TabIndex = 76;
+            // 
+            // labelRsaTextInByteNumber
+            // 
+            this.labelRsaTextInByteNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelRsaTextInByteNumber.Location = new System.Drawing.Point(136, 130);
+            this.labelRsaTextInByteNumber.Name = "labelRsaTextInByteNumber";
+            this.labelRsaTextInByteNumber.Size = new System.Drawing.Size(128, 30);
+            this.labelRsaTextInByteNumber.TabIndex = 60;
+            this.labelRsaTextInByteNumber.Text = "0";
+            this.labelRsaTextInByteNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(13, 354);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(123, 24);
+            this.label60.TabIndex = 131;
+            this.label60.Text = "Кол-во байт:";
+            this.label60.Visible = false;
+            // 
             // toolTip_LoadKeyIV
             // 
             this.toolTip_LoadKeyIV.AutoPopDelay = 20000;
             this.toolTip_LoadKeyIV.InitialDelay = 300;
             this.toolTip_LoadKeyIV.ReshowDelay = 100;
             this.toolTip_LoadKeyIV.ShowAlways = true;
+            // 
+            // btnRsaGenerateKeyAsim
+            // 
+            this.btnRsaGenerateKeyAsim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRsaGenerateKeyAsim.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaGenerateKeyAsim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaGenerateKeyAsim.Location = new System.Drawing.Point(430, 374);
+            this.btnRsaGenerateKeyAsim.Name = "btnRsaGenerateKeyAsim";
+            this.btnRsaGenerateKeyAsim.Size = new System.Drawing.Size(232, 50);
+            this.btnRsaGenerateKeyAsim.TabIndex = 138;
+            this.btnRsaGenerateKeyAsim.TabStop = false;
+            this.btnRsaGenerateKeyAsim.Text = "Сгенерировать публичный\r\nи секретный ключи RSA";
+            this.btnRsaGenerateKeyAsim.UseVisualStyleBackColor = true;
+            this.btnRsaGenerateKeyAsim.Click += new System.EventHandler(this.btnRsaGenerateKeyAsim_Click);
+            // 
+            // txtRsaKeyAsim
+            // 
+            this.txtRsaKeyAsim.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRsaKeyAsim.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRsaKeyAsim.DetectUrls = false;
+            this.txtRsaKeyAsim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtRsaKeyAsim.Location = new System.Drawing.Point(434, 311);
+            this.txtRsaKeyAsim.Name = "txtRsaKeyAsim";
+            this.txtRsaKeyAsim.ReadOnly = true;
+            this.txtRsaKeyAsim.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtRsaKeyAsim.Size = new System.Drawing.Size(395, 57);
+            this.txtRsaKeyAsim.TabIndex = 139;
+            this.txtRsaKeyAsim.TabStop = false;
+            this.txtRsaKeyAsim.Text = "";
+            // 
+            // btnRsaKeyAsimLoad
+            // 
+            this.btnRsaKeyAsimLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRsaKeyAsimLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnRsaKeyAsimLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnRsaKeyAsimLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRsaKeyAsimLoad.Location = new System.Drawing.Point(730, 374);
+            this.btnRsaKeyAsimLoad.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRsaKeyAsimLoad.Name = "btnRsaKeyAsimLoad";
+            this.btnRsaKeyAsimLoad.Size = new System.Drawing.Size(97, 35);
+            this.btnRsaKeyAsimLoad.TabIndex = 140;
+            this.btnRsaKeyAsimLoad.TabStop = false;
+            this.btnRsaKeyAsimLoad.Text = "из файла";
+            this.btnRsaKeyAsimLoad.UseVisualStyleBackColor = true;
+            this.btnRsaKeyAsimLoad.Click += new System.EventHandler(this.btnRsaKeyAsimLoad_Click);
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(430, 284);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(86, 24);
+            this.label61.TabIndex = 141;
+            this.label61.Text = "Ключ rsa";
             // 
             // FormMain
             // 
@@ -3809,6 +4577,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericGpnRight)).EndInit();
             this.tabEds.ResumeLayout(false);
             this.tabEds.PerformLayout();
+            this.tabRsa.ResumeLayout(false);
+            this.tabRsa.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4071,6 +4841,56 @@
         private System.Windows.Forms.RichTextBox txtAesIV;
         private System.Windows.Forms.CheckBox checkBoxAesPcbc;
         private System.Windows.Forms.Button btnGenerateIV;
+        private System.Windows.Forms.TabPage tabRsa;
+        private System.Windows.Forms.Button btnRsaEncryptDecrypt;
+        private System.Windows.Forms.Button btnRsaSaveKey;
+        private System.Windows.Forms.Button btnRsaKeyLoad;
+        private System.Windows.Forms.Label labelRsaKeyByteNumber;
+        private System.Windows.Forms.Button btnRsaKeySymbol;
+        private System.Windows.Forms.Button btnRsaClear;
+        private System.Windows.Forms.Label labelRsaKeyCaption;
+        private System.Windows.Forms.CheckBox flagRsaKeyIsEdited;
+        private System.Windows.Forms.Button btnRsaKeyGenerate;
+        private System.Windows.Forms.Button btnRsaKeyBinary;
+        private System.Windows.Forms.Button btnRsaKeyHex;
+        private System.Windows.Forms.RichTextBox txtRsaKey;
+        private System.Windows.Forms.Button btnRsaKeyCancelChanged;
+        private System.Windows.Forms.Button btnRsaKeySaveChanged;
+        private System.Windows.Forms.CheckBox checkBoxRsaKeyEdit;
+        private System.Windows.Forms.Button btnRsaChoiceFileIn;
+        private System.Windows.Forms.Button btnRsaTextOutCancelChanged;
+        private System.Windows.Forms.Button btnRsaTextInCancelChanged;
+        private System.Windows.Forms.Button btnRsaTextOutSaveChanged;
+        private System.Windows.Forms.CheckBox flagRsaTextOutIsEdited;
+        private System.Windows.Forms.CheckBox flagRsaTextInIsEdited;
+        private System.Windows.Forms.Button btnRsaTextInSaveChanged;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.CheckBox checkBoxRsaTextOutEdit;
+        private System.Windows.Forms.CheckBox checkBoxRsaTextInEdit;
+        private System.Windows.Forms.Button btnRsaTextOutBinary;
+        private System.Windows.Forms.Button btnRsaTextOutHex;
+        private System.Windows.Forms.Button btnRsaTextOutSymbol;
+        private System.Windows.Forms.Button btnRsaTextInBinary;
+        private System.Windows.Forms.Button btnRsaTextInHex;
+        private System.Windows.Forms.Button btnRsaTextInSymbol;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Button btnRsaSaveData;
+        private System.Windows.Forms.RichTextBox txtRsaTextOut;
+        private System.Windows.Forms.RichTextBox txtRsaTextIn;
+        private System.Windows.Forms.Label labelRsaCaptionOut;
+        private System.Windows.Forms.RadioButton radioBtnRsaDecrypt;
+        private System.Windows.Forms.RadioButton radioBtnRsaEncrypt;
+        private System.Windows.Forms.Label labelRsaCaptionIn;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label labelRsaTextInByteNumber;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Button btnRsaGenerateKeyAsim;
+        private System.Windows.Forms.RichTextBox txtRsaKeyAsim;
+        private System.Windows.Forms.Button btnRsaKeyAsimLoad;
+        private System.Windows.Forms.Label label61;
     }
 }
 

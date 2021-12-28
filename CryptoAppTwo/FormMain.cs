@@ -19,7 +19,8 @@ namespace CryptoAppTwo
         private Gamirovanie gamirovanie = null;
         private Feistel feistel = null;
         private AesObject aes = null;
-        
+        private RsaObject rsa = null;
+
         private List<PrimeNumber> PrimeNumberList = null;
         
         public FormMain()
@@ -39,7 +40,8 @@ namespace CryptoAppTwo
             this.tabGam.Parent = null;
             this.tabGpn.Parent = null;
             this.tabFst.Parent = null;
-            //this.tabAes.Parent = null;
+            this.tabAes.Parent = null;
+            //this.tabRsa.Parent = null;
             this.tabHesh.Parent = null;
             this.tabSim.Parent = null;
             this.tabAsimAlg.Parent = null;
@@ -96,6 +98,12 @@ namespace CryptoAppTwo
             aes = new AesObject();
             this.radioBtnAesEncrypt.Checked = true; ; // режим шифрования при запуске 
             this.btnAesClear_Click(null, null); // жмем кнопку очистить д
+            #endregion
+
+            #region Дефолтные установки для RSA
+            rsa = new RsaObject();
+            this.radioBtnRsaEncrypt.Checked = true; ; // режим шифрования при запуске 
+            this.btnRsaClear_Click(null, null); // жмем кнопку очистить д
             #endregion
         }
 
@@ -3003,7 +3011,7 @@ namespace CryptoAppTwo
         }
         #endregion
 
-        //#region Функции обработчики AES
+        #region Функции обработчики AES
 
         // радио батон ШИФРОВАНИЕ
         private void radioBtnAesEncrypt_CheckedChanged(object sender, EventArgs e)
@@ -4098,6 +4106,1207 @@ namespace CryptoAppTwo
         private void btnGenerateIV_Click(object sender, EventArgs e)
         {
             txtAesIV.Text = Functions.ByteToHex(Functions.GenerateIV());
+        }
+
+        #endregion
+
+        #region Функции обработчики RSA
+
+        // радио батон ШИФРОВАНИЕ
+        private void radioBtnRsaEncrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            btnRsaEncryptDecrypt.Text = "Шифровать";
+            labelRsaCaptionIn.Text = "Сообщение";
+            labelRsaCaptionOut.Text = "Шифротекст";
+            btnRsaSaveData.Text = "Сохранить шифротекст";
+            btnRsaClear.PerformClick(); // Очистить всё при переключении
+            rsa.EncryptOrDecrypt = true;
+            //btnRsaKeyGenerate.Visible = true;
+            //btnRsaKeyLoad.Visible = false;
+
+            //checkBoxRsaTextOutEdit.Visible = false; //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
+        }
+
+        // радио батон ДЕШИФРОВАНИЕ
+        private void radioBtnRsaDecrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            this.btnRsaEncryptDecrypt.Text = "Дешифровать";
+            this.labelRsaCaptionIn.Text = "Шифротекст";
+            this.labelRsaCaptionOut.Text = "Сообщение";
+            this.btnRsaSaveData.Text = "Сохранить сообщение";
+            btnRsaClear.PerformClick(); // Очистить всё при переключении
+            rsa.EncryptOrDecrypt = false;
+            //btnRsaKeyGenerate.Visible = false;
+            //btnRsaKeyLoad.Visible = true;
+
+            //this.checkBoxRsaTextOutEdit.Visible = false; //ВЫКЛЮЧИЛ КНОПКУ РЕДАКТИРОВАНИЯ ВЫХОДА
+        }
+
+        // кнопка ОЧИСТИТЬ всё
+        private void btnRsaClear_Click(object sender, EventArgs e)
+        {
+            bool rezhim = rsa.EncryptOrDecrypt;
+            rsa = new RsaObject(); // перезаписываем объект
+            rsa.EncryptOrDecrypt = rezhim;
+            //if (rezhim == true)
+            //    radioBtnRsaEncrypt_CheckedChanged(null, null);
+            //else
+            //    radioBtnRsaDecrypt_CheckedChanged(null, null);
+            //===================================
+            // входные данные стираем
+            this.txtRsaTextIn.Text = "";
+            this.labelRsaTextInByteNumber.Text = "0";
+            this.labelRsaKeyByteNumber.Text = "0";
+            // ВЫходные данные стираем
+            this.txtRsaTextOut.Text = "";
+            this.btnRsaTextInSymbol.Enabled = true;
+            //флаги
+            this.flagRsaTextInIsEdited.Checked = false;
+            this.flagRsaTextOutIsEdited.Checked = false;
+            this.flagRsaKeyIsEdited.Checked = false;
+
+            //кнопки редактирования
+            this.btnRsaTextInSaveChanged.Visible = false;
+            this.btnRsaTextOutSaveChanged.Visible = false;
+            this.btnRsaTextInCancelChanged.Visible = false;
+            this.btnRsaTextOutCancelChanged.Visible = false;
+            this.btnRsaKeySaveChanged.Visible = false;
+            this.btnRsaKeyCancelChanged.Visible = false;
+            checkBoxRsaTextInEdit.Checked = false;
+            checkBoxRsaTextOutEdit.Checked = false;
+            checkBoxRsaKeyEdit.Checked = false;
+
+
+            if (rsa.EncryptOrDecrypt == true)
+            {
+                this.btnRsaTextInSymbol.PerformClick();
+                this.btnRsaKeySymbol.PerformClick();
+                this.btnRsaTextOutHex.PerformClick();
+            }
+            else
+            {
+                this.btnRsaTextInHex.PerformClick();
+                this.btnRsaKeySymbol.PerformClick();
+                this.btnRsaTextOutSymbol.PerformClick();
+            }
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование вход текста
+        private void checkBoxRsaTextInEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxRsaTextInEdit.Checked == true)
+            {
+                this.txtRsaTextIn.ReadOnly = false;
+            }
+            else
+            {
+                if (rsa.TextInIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxRsaTextInEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtRsaTextIn.ReadOnly = true;
+                }
+            }
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование ключа
+        private void checkBoxRsaKeyEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxRsaKeyEdit.Checked == true)
+            {
+                this.txtRsaKey.ReadOnly = false;
+            }
+            else
+            {
+                if (rsa.KeyIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxRsaKeyEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtRsaTextIn.ReadOnly = true;
+                }
+            }
+        }
+
+        // галочка ВКЛ ВЫКЛ редактирование вЫход текста
+        private void checkBoxRsaTextOutEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxRsaTextOutEdit.Checked == true)
+            {
+                this.txtRsaTextOut.ReadOnly = false;
+            }
+            else
+            {
+                if (rsa.TextOutIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    this.checkBoxRsaTextOutEdit.Checked = true;
+                }
+                else
+                {
+                    this.txtRsaTextOut.ReadOnly = true;
+                }
+            }
+        }
+
+        // кнопка Bin вход текста
+        private void btnRsaTextInBinary_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextInType == TypeDisplay.Binary) return;
+
+            if (rsa.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.TextInType == TypeDisplay.Binary) this.btnRsaTextInBinary.Focus();
+                else if (rsa.TextInType == TypeDisplay.Hex) this.btnRsaTextInHex.Focus();
+                else if (rsa.TextInType == TypeDisplay.Symbol) this.btnRsaTextInSymbol.Focus();
+                return;
+            }
+
+            if (rsa.TextInByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtRsaTextIn.Text = Functions.ByteToBinary(rsa.TextInByte);
+
+            rsa.TextInType = TypeDisplay.Binary;
+            this.btnRsaTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnRsaTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Symb вход текста
+        private void btnRsaTextInSymbol_Click(object sender, EventArgs e)
+        {
+
+            if (rsa.TextInType == TypeDisplay.Symbol) return;
+
+            if (rsa.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.TextInType == TypeDisplay.Binary) this.btnRsaTextInBinary.Focus();
+                else if (rsa.TextInType == TypeDisplay.Hex) this.btnRsaTextInHex.Focus();
+                else if (rsa.TextInType == TypeDisplay.Symbol) this.btnRsaTextInSymbol.Focus();
+                return;
+            }
+
+            if (!(rsa.FileExtension == "txt" && rsa.EncryptOrDecrypt == true))
+            {
+                this.Enabled = false;
+                MessageBox.Show("Отображение данных в текстовом виде доступно только для файлов с расширением .txt в режиме шифрования!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtRsaTextIn.Text = Functions.ByteToSymbol(rsa.TextInByte);
+
+            rsa.TextInType = TypeDisplay.Symbol;
+            this.btnRsaTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnRsaTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Hex вход текста
+        private void btnRsaTextInHex_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextInType == TypeDisplay.Hex) return;
+
+            if (rsa.TextInIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.TextInType == TypeDisplay.Binary) this.btnRsaTextInBinary.Focus();
+                else if (rsa.TextInType == TypeDisplay.Hex) this.btnRsaTextInHex.Focus();
+                else if (rsa.TextInType == TypeDisplay.Symbol) this.btnRsaTextInSymbol.Focus();
+                return;
+            }
+
+            this.txtRsaTextIn.Text = Functions.ByteToHex(rsa.TextInByte);
+
+            rsa.TextInType = TypeDisplay.Hex;
+            this.btnRsaTextInBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextInSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextInHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+        }
+
+        // кнопка Bin  ключ
+        private void btnRsaKeyBinary_Click(object sender, EventArgs e)
+        {
+            if (rsa.KeyType == TypeDisplay.Binary) return;
+
+            if (rsa.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.KeyType == TypeDisplay.Binary) this.btnRsaKeyBinary.Focus();
+                else if (rsa.KeyType == TypeDisplay.Symbol) this.btnRsaKeySymbol.Focus();
+                else if (rsa.KeyType == TypeDisplay.Hex) this.btnRsaKeyHex.Focus();
+                return;
+            }
+
+            if (rsa.KeyByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (rsa.KeyType == TypeDisplay.Binary) this.btnRsaKeyBinary.Focus();
+                else if (rsa.KeyType == TypeDisplay.Symbol) this.btnRsaKeySymbol.Focus();
+                else if (rsa.KeyType == TypeDisplay.Hex) this.btnRsaKeyHex.Focus();
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtRsaKey.Text = Functions.ByteToBinary(rsa.KeyByte);
+
+            rsa.KeyType = TypeDisplay.Binary;
+            this.btnRsaKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnRsaKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Symb  ключ
+        private void btnRsaKeySymbol_Click(object sender, EventArgs e)
+        {
+            if (rsa.KeyType == TypeDisplay.Symbol) return;
+
+            if (rsa.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.KeyType == TypeDisplay.Binary) this.btnRsaKeyBinary.Focus();
+                else if (rsa.KeyType == TypeDisplay.Hex) this.btnRsaKeyHex.Focus();
+                else if (rsa.KeyType == TypeDisplay.Symbol) this.btnRsaKeySymbol.Focus();
+                return;
+            }
+
+            this.txtRsaKey.Text = Functions.ByteToSymbol(rsa.KeyByte);
+
+            rsa.KeyType = TypeDisplay.Symbol;
+            this.btnRsaKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnRsaKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Hex ключ
+        private void btnRsaKeyHex_Click(object sender, EventArgs e)
+        {
+            if (rsa.KeyType == TypeDisplay.Hex) return;
+
+            if (rsa.KeyIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Ключ был изменен!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.KeyType == TypeDisplay.Binary) this.btnRsaKeyBinary.Focus();
+                else if (rsa.KeyType == TypeDisplay.Symbol) this.btnRsaKeySymbol.Focus();
+                else if (rsa.KeyType == TypeDisplay.Hex) this.btnRsaKeyHex.Focus();
+                return;
+            }
+
+            this.txtRsaKey.Text = Functions.ByteToHex(rsa.KeyByte);
+
+            rsa.KeyType = TypeDisplay.Hex;
+            this.btnRsaKeyBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaKeySymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaKeyHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+        }
+
+        // кнопка Bin вЫход текста
+        private void btnRsaTextOutBinary_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextOutType == TypeDisplay.Binary) return;
+
+            if (rsa.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.TextOutType == TypeDisplay.Binary) this.btnRsaTextOutBinary.Focus();
+                else if (rsa.TextOutType == TypeDisplay.Hex) this.btnRsaTextOutHex.Focus();
+                else if (rsa.TextOutType == TypeDisplay.Symbol) this.btnRsaTextOutSymbol.Focus();
+                return;
+            }
+
+            if (rsa.TextOutByte.Length > 50000)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Количество байтов слишком велико!\n(Больше 50000 байт)\nОтображение в бинарном виде недоступно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Enabled = true;
+                return;
+            }
+
+            this.txtRsaTextOut.Text = Functions.ByteToBinary(rsa.TextOutByte);
+
+            rsa.TextOutType = TypeDisplay.Binary;
+            this.btnRsaTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnRsaTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Symb вЫход текста
+        private void btnRsaTextOutSymbol_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextOutType == TypeDisplay.Symbol) return;
+
+            if (rsa.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.TextOutType == TypeDisplay.Binary) this.btnRsaTextOutBinary.Focus();
+                else if (rsa.TextOutType == TypeDisplay.Hex) this.btnRsaTextOutHex.Focus();
+                else if (rsa.TextOutType == TypeDisplay.Symbol) this.btnRsaTextOutSymbol.Focus();
+                return;
+            }
+
+            this.txtRsaTextOut.Text = Functions.ByteToSymbol(rsa.TextOutByte);
+
+            rsa.TextOutType = TypeDisplay.Symbol;
+            this.btnRsaTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+            this.btnRsaTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Black);
+        }
+
+        // кнопка Hex вЫход текста
+        private void btnRsaTextOutHex_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextOutType == TypeDisplay.Hex) return;
+
+            if (rsa.TextOutIsEdited == true)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Данные были изменены!\nСначала сохраните или отмените изменения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Enabled = true;
+                if (rsa.TextOutType == TypeDisplay.Binary) this.btnRsaTextOutBinary.Focus();
+                else if (rsa.TextOutType == TypeDisplay.Hex) this.btnRsaTextOutHex.Focus();
+                else if (rsa.TextOutType == TypeDisplay.Symbol) this.btnRsaTextOutSymbol.Focus();
+                return;
+            }
+
+            this.txtRsaTextOut.Text = Functions.ByteToHex(rsa.TextOutByte);
+
+            rsa.TextOutType = TypeDisplay.Hex;
+            this.btnRsaTextOutBinary.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextOutSymbol.ForeColor = Color.FromKnownColor(KnownColor.Black);
+            this.btnRsaTextOutHex.ForeColor = Color.FromKnownColor(KnownColor.Blue);
+        }
+
+        // кнопка ВЕДРО откатить изменения ВХОД текста 
+        private void btnRsaTextInCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextInType == TypeDisplay.Binary)
+                this.txtRsaTextIn.Text = Functions.ByteToBinary(rsa.TextInByte);
+            else if (rsa.TextInType == TypeDisplay.Hex)
+                this.txtRsaTextIn.Text = Functions.ByteToHex(rsa.TextInByte);
+            else if (rsa.TextInType == TypeDisplay.Symbol)
+                this.txtRsaTextIn.Text = Functions.ByteToSymbol(rsa.TextInByte);
+
+            this.flagRsaTextInIsEdited.Checked = false;
+            this.checkBoxRsaTextInEdit.Checked = false;
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения ВХОД текста 
+        private void btnRsaTextInSaveChanged_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextInIsEdited == true)
+            {
+                if (rsa.TextInType == TypeDisplay.Binary)
+                {
+                    if (Functions.checkStringIsBinarySequence(this.txtRsaTextIn.Text) == true)
+                    {
+                        rsa.TextInByte = Functions.BinaryToByte(this.txtRsaTextIn.Text);
+                        this.flagRsaTextInIsEdited.Checked = false;
+                        this.checkBoxRsaTextInEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (rsa.TextInType == TypeDisplay.Hex)
+                {
+                    if (Functions.checkStringIsHexSequence(this.txtRsaTextIn.Text) == true)
+                    {
+                        rsa.TextInByte = Functions.HexToByte(this.txtRsaTextIn.Text);
+                        this.flagRsaTextInIsEdited.Checked = false;
+                        this.checkBoxRsaTextInEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (rsa.TextInType == TypeDisplay.Symbol)
+                {
+                    rsa.TextInByte = Functions.SymbolToByte(this.txtRsaTextIn.Text);
+                    this.flagRsaTextInIsEdited.Checked = false;
+                    this.checkBoxRsaTextInEdit.Checked = false;
+                }
+
+                //вывести новое число байт
+                this.labelRsaTextInByteNumber.Text = rsa.TextInByte.Length.ToString();
+
+                //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnRsaTextInSaveChanged.Visible = false;
+                this.btnRsaTextInCancelChanged.Visible = false;
+                this.checkBoxRsaTextInEdit.Checked = false;
+            }
+        }
+
+        // кнопка ВЕДРО откатить изменения КЛЮЧА 
+        private void btnRsaKeyCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (rsa.KeyType == TypeDisplay.Binary)
+                this.txtRsaKey.Text = Functions.ByteToBinary(rsa.KeyByte);
+            else if (rsa.KeyType == TypeDisplay.Hex)
+                this.txtRsaKey.Text = Functions.ByteToHex(rsa.KeyByte);
+            else if (rsa.KeyType == TypeDisplay.Symbol)
+                this.txtRsaKey.Text = Functions.ByteToSymbol(rsa.KeyByte);
+
+            this.flagRsaKeyIsEdited.Checked = false;
+            this.checkBoxRsaKeyEdit.Checked = false;
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения КЛЮЧА 
+        private void btnRsaKeySaveChanged_Click(object sender, EventArgs e)
+        {
+            if (rsa.KeyIsEdited == true)
+            {
+                if (rsa.KeyType == TypeDisplay.Binary)
+                {
+                    if (Functions.checkStringIsBinarySequence(this.txtRsaKey.Text) == true)
+                    {
+                        rsa.KeyByte = Functions.BinaryToByte(this.txtRsaKey.Text);
+                        this.flagRsaKeyIsEdited.Checked = false;
+                        this.checkBoxRsaKeyEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененный ключ не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (rsa.KeyType == TypeDisplay.Hex)
+                {
+                    if (Functions.checkStringIsHexSequence(this.txtRsaKey.Text) == true)
+                    {
+                        rsa.KeyByte = Functions.HexToByte(this.txtRsaKey.Text);
+                        this.flagRsaKeyIsEdited.Checked = false;
+                        this.checkBoxRsaKeyEdit.Checked = false;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Измененный ключ не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else if (rsa.KeyType == TypeDisplay.Symbol)
+                {
+                    rsa.KeyByte = Functions.SymbolToByte(this.txtRsaKey.Text);
+                    this.flagRsaKeyIsEdited.Checked = false;
+                    this.checkBoxRsaKeyEdit.Checked = false;
+                }
+                //вывести новое число байт
+                this.labelRsaKeyByteNumber.Text = rsa.KeyByte.Length.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnRsaKeySaveChanged.Visible = false;
+                this.btnRsaKeyCancelChanged.Visible = false;
+                this.checkBoxRsaKeyEdit.Checked = false;
+            }
+        }
+
+        // кнопка ВЕДРО откатить изменения ВЫХОД текста 
+        private void btnRsaTextOutCancelChanged_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextOutType == TypeDisplay.Binary)
+                this.txtRsaTextOut.Text = Functions.ByteToBinary(rsa.TextOutByte);
+            else if (rsa.TextOutType == TypeDisplay.Hex)
+                this.txtRsaTextOut.Text = Functions.ByteToHex(rsa.TextOutByte);
+            else if (rsa.TextOutType == TypeDisplay.Symbol)
+                this.txtRsaTextOut.Text = Functions.ByteToSymbol(rsa.TextOutByte);
+
+            this.flagRsaTextOutIsEdited.Checked = false;
+            this.checkBoxRsaTextOutEdit.Checked = false;
+        }
+
+        // кнопка ДИСКЕТА сохранить изменения вЫход текста 
+        private void btnRsaTextOutSaveChanged_Click(object sender, EventArgs e)
+        {
+            if (rsa.TextOutIsEdited == true)
+            {
+                DialogResult dr;
+                if (rsa.EncryptOrDecrypt == true)
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененный шифротекст?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                else
+                    dr = MessageBox.Show("Вы действительно хотите сохранить измененное сообщение после дешифрования?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.OK)
+                {
+
+                    if (rsa.TextOutType == TypeDisplay.Binary)
+                    {
+                        if (Functions.checkStringIsBinarySequence(this.txtRsaTextOut.Text) == true)
+                        {
+                            rsa.TextOutByte = Functions.BinaryToByte(this.txtRsaTextOut.Text);
+                            this.flagRsaTextOutIsEdited.Checked = false;
+                            this.checkBoxRsaTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют бинарному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (rsa.TextOutType == TypeDisplay.Hex)
+                    {
+                        if (Functions.checkStringIsHexSequence(this.txtRsaTextOut.Text) == true)
+                        {
+                            rsa.TextOutByte = Functions.HexToByte(this.txtRsaTextOut.Text);
+                            this.flagRsaTextOutIsEdited.Checked = false;
+                            this.checkBoxRsaTextOutEdit.Checked = false;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            MessageBox.Show("Измененные данные не соответствуют 16-ричному формату!\nСохранение невозможно.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Enabled = true;
+                            return;
+                        }
+                    }
+                    else if (rsa.TextOutType == TypeDisplay.Symbol)
+                    {
+                        rsa.TextOutByte = Functions.SymbolToByte(this.txtRsaTextOut.Text);
+                        this.flagRsaTextOutIsEdited.Checked = false;
+                        this.checkBoxRsaTextOutEdit.Checked = false;
+                        //MessageBox.Show("Изменения сохранены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Изменений не было!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.btnRsaTextInSaveChanged.Visible = false;
+                        this.btnRsaTextInCancelChanged.Visible = false;
+                        this.checkBoxRsaTextInEdit.Checked = false;
+                    }
+                }
+            }
+        }
+
+        // ввод текста ВХОД
+        private void txtRsaTextIn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxRsaTextInEdit.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagRsaTextInIsEdited.Checked = true;
+            }
+            else if (rsa.TextInType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagRsaTextInIsEdited.Checked = true;
+            }
+            else if (rsa.TextInType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagRsaTextInIsEdited.Checked = true;
+            }
+            // русские буквы осуждаются (UPD: уже нет, мы толерантны ко всем)
+            //else if(aes.TextInType == TypeDisplay.Symbol/*&& !(e.KeyChar >= 1072 && e.KeyChar <=1105)*/)
+            //{
+            //    e.Handled = false;
+            //    this.flagTextInIsEdited.Checked = true;
+            //}
+            else if (rsa.TextInType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagRsaTextInIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        // ввод текста КЛЮЧ
+        private void txtRsaKey_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxRsaKeyEdit.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagRsaKeyIsEdited.Checked = true;
+            }
+            else if (rsa.KeyType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagRsaKeyIsEdited.Checked = true;
+            }
+            else if (rsa.KeyType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagRsaKeyIsEdited.Checked = true;
+            }
+            // русские буквы осуждаются (UPD: уже нет, мы толерантны ко всем)
+            //else if(aes.KeyType == TypeDisplay.Symbol/* && !(e.KeyChar >= 1072 && e.KeyChar <=1105)*/)
+            //{
+            //    e.Handled = false;
+            //    this.flagKeyIsEdited.Checked = true;
+            //}
+            else if (rsa.KeyType == TypeDisplay.Symbol)
+            {
+                e.Handled = false;
+                this.flagRsaKeyIsEdited.Checked = true;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        // ввод текста ВЫХОД
+        private void txtRsaTextOut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.checkBoxRsaTextOutEdit.Checked == false)
+                return;
+
+            if (e.KeyChar == 8 || e.KeyChar == 127) // Backspace или Delete
+            {
+                e.Handled = false;
+                this.flagRsaTextOutIsEdited.Checked = true;
+            }
+            else if (rsa.TextOutType == TypeDisplay.Hex && Functions.checkSymbolIsHex(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                if (Functions.checkSymbolaf(e.KeyChar) == true) // если ввели маленькие строчки a-f
+                    e.KeyChar = (char)((int)e.KeyChar - 32); // то привести их к верхнему регистру
+                this.flagRsaTextOutIsEdited.Checked = true;
+            }
+            else if (rsa.TextOutType == TypeDisplay.Binary && Functions.checkSymbolIsBinary(e.KeyChar) == true)
+            {
+                e.Handled = false;
+                this.flagRsaTextOutIsEdited.Checked = true;
+            }
+            //русские буквы тоже тут осуждаются (UPD: уже тоже нет, мы толерантны ко всем)
+            //else if (aes.TextOutType == TypeDisplay.Symbol /*&& !(e.KeyChar >= 1072 && e.KeyChar <= 1105)/*)
+            //{
+            //    e.Handled = false;
+            //    this.flagRsaTextOutIsEdited.Checked = true;
+            //}
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        // кнопка ВХОД ИЗ ФАЙЛА
+        private void btnRsaChoiceFileIn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Title = "Выберите файл ..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // путь откуда запустили
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        //if(aes.EncryptOrDecrypt == true) //закоментил фичу
+                        //    this.btnRsaClear.PerformClick();
+                        //else
+                        //    this.clearAllWithoutKey();// очистили всё кроме ключа
+                        // Считали байты из файла
+                        rsa.TextInByte = File.ReadAllBytes(ofd.FileName);
+                        this.labelRsaTextInByteNumber.Text = rsa.TextInByte.Length.ToString(); // Вывели кол-во считанных байт
+                        rsa.FileExtension = ofd.SafeFileName.Substring(ofd.SafeFileName.LastIndexOf('.'));  // Запомнили расширение считанного файла
+                        if (rsa.FileExtension.Length > 1) rsa.FileExtension = rsa.FileExtension.Substring(1);
+                        rsa.TextInType = TypeDisplay.None;
+                        if (rsa.FileExtension == "txt" && rsa.EncryptOrDecrypt == true) // если тект и шифрование
+                        {
+                            this.btnRsaTextInSymbol.PerformClick();
+                        }
+                        else
+                        {
+                            this.btnRsaTextInHex.PerformClick();
+                        }
+                        // вывели на форму считанное в кодировке UTF8
+                        //if (aes.TextInType == TypeDisplay.Hex)
+                        //{
+                        //    this.txtRsaTextIn.Text = Functions.ByteToHex(aes.TextInByte);
+                        //}
+                        //else if (aes.TextInType == TypeDisplay.Binary)
+                        //{
+                        //    this.txtRsaTextIn.Text = Functions.ByteToBinary(aes.TextInByte);
+                        //}
+                        //else if (aes.TextInType == TypeDisplay.Symbol)
+                        //{
+                        //    this.txtRsaTextIn.Text = Functions.ByteToSymbol(aes.TextInByte);
+                        //}
+
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        MessageBox.Show("Файла [" + ofd.FileName + "] не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Enabled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
+        }
+
+        // флаг изменен ли ВХОД текст
+        private void flagRsaTextInIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagRsaTextInIsEdited.Checked == true)
+            {
+                rsa.TextInIsEdited = true;
+                this.btnRsaTextInSaveChanged.Visible = true;
+                this.btnRsaTextInCancelChanged.Visible = true;
+            }
+            else
+            {
+                rsa.TextInIsEdited = false;
+                this.btnRsaTextInSaveChanged.Visible = false;
+                this.btnRsaTextInCancelChanged.Visible = false;
+            }
+        }
+
+        // флаг изменен ли вЫход текст
+        private void flagRsaTextOutIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagRsaTextOutIsEdited.Checked == true)
+            {
+                rsa.TextOutIsEdited = true;
+                this.btnRsaTextOutSaveChanged.Visible = true;
+                this.btnRsaTextOutCancelChanged.Visible = true;
+            }
+            else
+            {
+                rsa.TextOutIsEdited = false;
+                this.btnRsaTextOutSaveChanged.Visible = false;
+                this.btnRsaTextOutCancelChanged.Visible = false;
+            }
+        }
+
+        // флаг изменен ли КЛЮЧ
+        private void flagRsaKeyIsEdited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagRsaKeyIsEdited.Checked == true)
+            {
+                rsa.KeyIsEdited = true;
+                this.btnRsaKeySaveChanged.Visible = true;
+                this.btnRsaKeyCancelChanged.Visible = true;
+            }
+            else
+            {
+                rsa.KeyIsEdited = false;
+                this.btnRsaKeySaveChanged.Visible = false;
+                this.btnRsaKeyCancelChanged.Visible = false;
+            }
+        }
+
+        //кнопка КЛЮЧ ИЗ ФАЙЛА
+        private void btnRsaKeyLoad_Click(object sender, EventArgs e)
+        {
+            if (checkBoxRsaKeyEdit.Checked == true)
+                btnRsaKeyCancelChanged.PerformClick();
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Выберите файл с ключом..."; // Заголовок окна
+            ofd.InitialDirectory = Application.StartupPath; // Папка откуда запустили exe
+            //ofd.Filter = "Keys(*.key)|*.key"; // расширения файла ключа
+
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        if (rsa.EncryptOrDecrypt == false)
+                        {
+                            rsa.KeyByteEncoded = File.ReadAllBytes(ofd.FileName); // считали
+                        }
+                        else
+                        {
+                            rsa.KeyByte = File.ReadAllBytes(ofd.FileName); // считали
+                            rsa.KeyType = TypeDisplay.None;
+                            this.btnRsaKeyHex.PerformClick(); // вывели в Hex
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Файла {" + ofd.FileName + "} не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
+        }
+
+        // кнопка СГЕНЕРИРОВАТЬ КЛЮЧ
+        private void btnRsaKeyGenerate_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (rsa.TextInByte.Length > 0)
+            {
+                rsa.KeyByte = Functions.PRNGGenerateByteArray(rsa.TextInByte.Length);
+                rsa.KeyType = TypeDisplay.None;
+                btnRsaKeyHex.PerformClick(); // не работает хз
+                btnRsaKeyHex_Click(null, null); // вручную вызвал
+            }
+            else
+            {
+                if (rsa.EncryptOrDecrypt == true)
+                    MessageBox.Show("Сообщение имеет нулевой размер!\nГенерация ключа невозможна.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Шифротекст имеет нулевой размер!\nГенерация ключа невозможна.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            this.Cursor = Cursors.Arrow;
+        }
+
+        // кнопка СОХРАНИТЬ КЛЮЧ
+        private void btnRsaSaveKey_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Если ключа нет
+                //if (rsa.KeyByte.Length < 1 || rsa.KeyIsEdited == true)
+                if (rsa.KeyByteEncoded.Length < 1 || rsa.KeyIsEdited == true)
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Невозможно сохранить ключ:\n\tКлюч не введен или не сохранен!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла ключа (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*.key)|*.key"; // Сохранять только c расширением key
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    //File.WriteAllBytes(filename, rsa.KeyByte);
+                    File.WriteAllBytes(filename, rsa.KeyByteEncoded);
+
+                    this.Enabled = false;
+                    MessageBox.Show("КЛЮЧ записан в файл:\n" + filename, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        // кнопка СОХРАНИТЬ ВЫХОД
+        private void btnRsaSaveData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Если выходные байты пусты 
+                if (rsa.TextInByte.Length < 1)
+                {
+                    this.Enabled = false;
+                    if (rsa.EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Исходный текст отсутствует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Enabled = true;
+                    return;
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите папку и введите название файла (БЕЗ расширения) ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.Filter = "Files(*." + rsa.FileExtension + ")|*." + rsa.FileExtension; // Сохранять только c расширением как и у входного файла
+                sfd.AddExtension = true;  //Добавить расширение к имени если не указали
+
+                DialogResult res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    // сохраняем байты в файл
+                    File.WriteAllBytes(filename, rsa.TextOutByte);
+
+                    this.Enabled = false;
+                    if (Global.Simm_EncryptOrDecrypt == true)
+                        MessageBox.Show("Шифротекст записан в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Дешифрованное сообщение записано в файл:\n" + filename, "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "НЕПРЕДВИДЕННАЯ ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        // кнопка действия ШИФРОВАТЬ/ДЕШИФРОВАТЬ
+        private void btnRsaEncryptDecrypt_Click(object sender, EventArgs e)
+        {
+            //if (rsa.TextInByte.Length < 1 || rsa.KeyByte.Length < 1)
+            if (rsa.EncryptOrDecrypt == false && (rsa.TextInByte.Length < 1 || rsa.KeyByteEncoded.Length < 1))
+            {
+                MessageBox.Show("Не введены закодированный ключ Aes или данные!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (rsa.EncryptOrDecrypt == true && (rsa.TextInByte.Length < 1 || rsa.KeyByte.Length < 1))
+            {
+                MessageBox.Show("Не введены ключ Aes или данные!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (txtRsaKeyAsim.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("Не введен ключ Rsa!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                if (rsa.EncryptOrDecrypt == true) // шифрование
+                {
+                    //if (checkBoxRsaKeySecond.Checked == true) // при шифровании EDE
+                    //{
+                    //    rsa.TextOutByte = AesClass.encrypt(rsa.TextInByte, rsa.KeyByte); // шифруем сообщение с 1 ключом
+                    //    rsa.TextOutByte = AesClass.decrypt(rsa.TextOutByte, rsa.KeyByteSecond); // дешифруем с 2 ключом
+                    //    rsa.TextOutByte = AesClass.encrypt(rsa.TextOutByte, rsa.KeyByte); // опять шифруем с 1 ключом
+                    //    #region //
+                    //    File.WriteAllBytes(Application.StartupPath + "\\temp.txt", rsa.TextInByte);
+                    //    #endregion
+                    //}
+                    //else
+                        rsa.TextOutByte = AesClass.encrypt(rsa.TextInByte, rsa.KeyByte);
+                    rsa.KeyByteEncoded = Algorithms.AsimAlg(rsa.KeyByte, rsa.KeyByteRsa, "RSA", rsa.EncryptOrDecrypt);
+                    //aes.Encrypt();
+                    File.WriteAllBytes(Application.StartupPath + "\\temp.txt", rsa.TextInByte);
+                    rsa.TextOutType = TypeDisplay.None;
+                    btnRsaTextOutHex_Click(null, null);
+                    //btnRsaSecret_Click(null, null);
+                }
+                else
+                {
+                    //if (checkBoxRsaKeySecond.Checked == true) // при дешифровании EDE
+                    //{
+                    //    rsa.TextOutByte = AesClass.decrypt(rsa.TextInByte, rsa.KeyByte); // дешифруем шифротекст с 1 ключом
+                    //    rsa.TextOutByte = AesClass.encrypt(rsa.TextOutByte, rsa.KeyByteSecond); // шифруем с 2 ключом
+                    //    rsa.TextOutByte = AesClass.decrypt(rsa.TextOutByte, rsa.KeyByte); // дешифруем с 1 ключом
+                    //    #region //
+                    //    rsa.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                    //    #endregion
+                    //}
+                    //else if (checkBoxRsaPcbc.Checked == true) // при дешифровании PCBC
+                    //{
+                    //    rsa.TextOutByte = AesClass.decrypt(rsa.TextInByte, rsa.KeyByte); // дешифруем сообщение
+                    //    #region //
+                    //    rsa.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                    //    #endregion
+                    //}
+                    //else
+                    rsa.KeyByte = Algorithms.AsimAlg(rsa.KeyByteEncoded, rsa.KeyByteRsa, "RSA", rsa.EncryptOrDecrypt);
+                    rsa.KeyType = TypeDisplay.None;
+                    btnRsaKeyHex_Click(null, null);
+                    rsa.TextOutByte = AesClass.decrypt(rsa.TextInByte, rsa.KeyByte);
+                    //rsa.TextOutByte = File.ReadAllBytes(Application.StartupPath + "\\temp.txt");
+                    rsa.TextOutType = TypeDisplay.None;
+                    btnRsaTextOutHex_Click(null, null);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        // кнопка Генерировать ключи для RSA
+        private void btnRsaGenerateKeyAsim_Click(object sender, EventArgs e)
+        {
+            DialogResult res;
+
+            // ждущий режим формы
+            this.Enabled = false;
+            this.Cursor = Cursors.WaitCursor;
+
+            byte[] keyPrivate = new byte[0];
+            byte[] keyPublic = new byte[0];
+
+            RSACryptoServiceProvider rsacrypto = new RSACryptoServiceProvider(2048); // Размер ключа в битах для rsa (2048 бит = 256 байт указан макс. размер)
+            keyPrivate = rsacrypto.ExportCspBlob(true); // запомнили приватный ключ
+            keyPublic = rsacrypto.ExportCspBlob(false); // запомнили публичный ключ
+
+            try
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберите место и введите название файла (БЕЗ РАСШИРЕНИЯ) для сохранения сгенерированных ключей ...";
+                sfd.InitialDirectory = Application.StartupPath;
+                sfd.AddExtension = true;  //Добавлять расширение к имени если не указали
+                sfd.Filter = "Keys(*.pkey;*.skey)|*.pkey;*.skey"; // Сохранять только c расширением 
+
+
+                res = sfd.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    // получаем выбранный файл
+                    string filename = sfd.FileName;
+                    filename = filename.Remove(filename.LastIndexOf('.'));
+                    // сохраняем байты в файл
+                    File.WriteAllBytes(filename + ".pkey", keyPublic);
+                    File.WriteAllBytes(filename + ".skey", keyPrivate);
+
+
+                    this.Enabled = false;
+                    string message = "Ключи сохранены.\nПубличный ключ записан в файл:\n" +
+                        filename + ".pkey\n" +
+                        "Приватный ключ записан в файл:\n" +
+                        filename + ".skey\n";
+                        //+ "\nВвести сгенерированный (публичный) ключ сейчас для шифрования?";
+                    res = MessageBox.Show(message, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    this.Enabled = true;
+                }
+                sfd.Dispose();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+            // включаем форму
+            this.Enabled = true;
+            this.Cursor = Cursors.Arrow;
+        }
+
+
+        private void btnRsaKeyAsimLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (rsa.EncryptOrDecrypt == true) // Если шифруем
+            {
+                ofd.Title = "ШИФРОВАНИЕ: Выбрать файл c ключом ..."; // Заголовок окна
+                ofd.InitialDirectory = Application.StartupPath; // Папка проекта
+                ofd.Filter = "Keys(*.pkey;*.skey)|*.pkey;*.skey"; // расширения public/private
+            }
+            else
+            {
+                ofd.Title = "РАСШИФРОВКА: Выбрать файл c секретным ключом ..."; // Заголовок окна
+                ofd.InitialDirectory = Application.StartupPath; // Папка проекта
+                ofd.Filter = "Keys(*.skey)|*.skey"; // расширения public/private
+            }
+            if (ofd.ShowDialog() == DialogResult.OK) // Если выбрали файл
+            {
+                // читаем байты из файла
+                if (ofd.FileName.Length > 0) // Если путь не нулевой
+                {
+                    if (File.Exists(ofd.FileName) == true) // Если указанный файл существует
+                    {
+                        byte[] tempKey = new byte[0];
+                        tempKey = File.ReadAllBytes(ofd.FileName);
+                        if (tempKey == null || tempKey.Length <(2048/8))
+                        {
+                            MessageBox.Show("Ошибка считывания ключа!\n", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Выводим в форму считанные данные
+                        rsa.KeyByteRsa = tempKey;
+                        txtRsaKeyAsim.Text = Functions.ByteToHex(rsa.KeyByteRsa);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Файла {" + ofd.FileName + "} не существует!", " Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    this.Enabled = false;
+                    MessageBox.Show("Указан неверный путь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Enabled = true;
+                    return;
+                }
+            }
+            ofd.Dispose();
         }
     }
 }
